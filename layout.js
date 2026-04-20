@@ -1,5 +1,4 @@
 function initLayout() {
-  // 위치보기 플로팅 메뉴
   const openBtn = document.getElementById('careOpenLocationMenu');
   const menu = document.getElementById('careLocationMenu');
 
@@ -31,7 +30,6 @@ function initLayout() {
     });
   }
 
-  // 유튜브 팝업 닫기
   const popup = document.getElementById('videoPopup');
   const iframe = document.getElementById('popupVideo');
   const closeBtn = document.querySelector('#videoPopup .closeBtn');
@@ -61,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <a href="/index.html" class="site-brand" aria-label="더수원 홈으로 이동">
             <img
-              src="/images/ds-logo.png"
+              src="/logo.png"
               alt="더수원 로고"
               class="site-brand-logo"
             />
@@ -210,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   }
 
-  // 유튜브 팝업
   if (!document.getElementById('videoPopupStyle')) {
     const style = document.createElement('style');
     style.id = 'videoPopupStyle';
