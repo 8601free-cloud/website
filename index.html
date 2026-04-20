@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>수원 팔달구 주간보호·요양원 | 더수원 어르신 통합케어</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="수원 팔달구 더수원 어르신 주간보호 & 요양원. 치매 어르신 맞춤 케어, 장기요양보험 적용, 건강관리·인지활동·재활 프로그램 제공." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:title" content="수원 팔달구 주간보호·요양원 | 더수원 어르신 통합케어" />
+  <meta property="og:description" content="치매 어르신 맞춤 케어 · 장기요양보험 적용 · 건강관리·인지·재활 프로그램 운영. 수원 팔달구 더수원." />
+  <meta property="og:image" content="https://cdn.imweb.me/upload/S20250616705368ebc899d/be1cbfd33fe5b.png" />
+  <meta property="og:url" content="https://thesuwonsilver.imweb.me/" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --dsw-green:#3A6A4B;
+      --dsw-green-deep:#2F5A40;
+      --dsw-charcoal:#2B2B2B;
+      --dsw-gray:#565B60;
+      --dsw-soft:#F2F4F3;
+      --dsw-mint:#EDF7F0;
+      --dsw-mint-strong:#E3F3E8;
+
+      --dsw-bg:
+        radial-gradient(circle at 15% 20%, rgba(58,106,75,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.55), transparent 20%),
+        radial-gradient(circle at 85% 80%, rgba(58,106,75,.08), transparent 24%),
+        linear-gradient(180deg, #f6f1e8 0%, #efe7dc 100%);
+
+      --dsw-line: rgba(43,43,43,.08);
+      --dsw-glow: 0 24px 60px rgba(0,0,0,.12);
+      --dsw-softshadow: 0 14px 34px rgba(0,0,0,.08);
+
+      --tiltX: 0deg;
+      --tiltY: 0deg;
+      --floatZ: 0px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      font-family:'Noto Sans KR', sans-serif;
+      margin:0;
+      padding:0;
+      background: var(--dsw-bg);
+      color:var(--dsw-charcoal);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x:hidden;
+    }
+
+    strong{ font-weight:700; }
+
+    .sr-only{
+      position:absolute !important;
+      width:1px !important;
+      height:1px !important;
+      padding:0 !important;
+      margin:-1px !important;
+      overflow:hidden !important;
+      clip:rect(0,0,0,0) !important;
+      white-space:nowrap !important;
+      border:0 !important;
+    }
+
+    .hero-wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:46px 20px;
+      perspective:1800px;
+    }
+
+    .hero-surface{
+      position:relative;
+      border-radius:28px;
+      padding:36px;
+      background:
+        radial-gradient(1200px 420px at 20% 15%, rgba(58,106,75,.09), transparent 55%),
+        radial-gradient(900px 380px at 85% 85%, rgba(58,106,75,.07), transparent 60%),
+        linear-gradient(145deg, rgba(255,255,255,.72), rgba(255,255,255,.34));
+      border:1px solid rgba(255,255,255,.52);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.7),
+        inset 0 -1px 0 rgba(255,255,255,.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+      transform-style: preserve-3d;
+      transform:
+        rotateX(var(--tiltX))
+        rotateY(var(--tiltY))
+        translateZ(var(--floatZ));
+      transition: transform .25s ease, box-shadow .35s ease;
+      will-change: transform;
+      isolation:isolate;
+    }
+
+    .hero-surface::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,0) 42%);
+      pointer-events:none;
+      opacity:.75;
+      z-index:0;
+    }
+
+    .hero-surface::after{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      right:-70px;
+      top:-70px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 70%);
+      filter: blur(12px);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .hero-orb{
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      filter:blur(1px);
+      z-index:0;
+      transform:translateZ(30px);
+    }
+
+    .hero-orb.orb-1{
+      width:180px;
+      height:180px;
+      left:-50px;
+      bottom:-40px;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.7), rgba(58,106,75,.14) 55%, rgba(58,106,75,0) 72%);
+      opacity:.75;
+    }
+
+    .hero-orb.orb-2{
+      width:110px;
+      height:110px;
+      right:18%;
+      bottom:12%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), rgba(58,106,75,.12) 58%, rgba(58,106,75,0) 78%);
+      opacity:.55;
+    }
+
+    .hero-table{
+      width:100%;
+      table-layout:fixed;
+      border-collapse:collapse;
+      vertical-align:top;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-table td{ vertical-align:top; }
+
+    .cell-img{ width:50%; }
+    .cell-gap{ width:6%; }
+    .cell-text{ width:44%; }
+
+    .visual-shell{
+      position:relative;
+      transform-style:preserve-3d;
+      transform:translateZ(36px);
+    }
+
+    .visual-shell::before{
+      content:"";
+      position:absolute;
+      inset:14px -8px -14px 20px;
+      border-radius:22px;
+      background: linear-gradient(145deg, rgba(58,106,75,.22), rgba(58,106,75,.05));
+      filter:blur(12px);
+      z-index:0;
+      transform:translateZ(-18px);
+    }
+
+    .visual-img-wrap{
+      position:relative;
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:20px;
+      overflow:hidden;
+      background: var(--dsw-soft);
+      box-shadow:
+        0 26px 56px rgba(0,0,0,0.16),
+        0 8px 18px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,.45);
+      transform:
+        rotateY(-5deg)
+        rotateX(2deg)
+        translateZ(42px);
+      transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+      filter: saturate(1.03) contrast(1.02);
+      z-index:1;
+    }
+
+    .visual-img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition: opacity .55s ease, transform .55s ease;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
+
+    .base-img{
+      opacity:1;
+      z-index:1;
+    }
+
+    .hover-img{
+  object-fit: cover;
+  object-position: 10% 35%;  /* ← 왼쪽으로 이동 */
+}
+
+    .visual-gloss{
+      position:absolute;
+      inset:0;
+      border-radius:20px;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.34) 0%, rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 32%);
+      pointer-events:none;
+      z-index:3;
+      transform: translateZ(56px);
+    }
+
+    .hero-stack{
+      position:relative;
+      transform-style:preserve-3d;
+    }
+
+    .hero-stack > *{
+      position:relative;
+      transform-style:preserve-3d;
+    }
+
+    @media (hover:hover){
+      .hero-surface:hover{
+        box-shadow:
+          0 34px 78px rgba(0,0,0,.14),
+          inset 0 1px 0 rgba(255,255,255,.72),
+          inset 0 -1px 0 rgba(255,255,255,.2);
+      }
+
+      .visual-shell:hover .visual-img-wrap{
+        transform:
+          rotateY(-3deg)
+          rotateX(1deg)
+          translateZ(52px)
+          translateY(-4px);
+        box-shadow:
+          0 32px 70px rgba(0,0,0,.18),
+          0 10px 22px rgba(0,0,0,.09),
+          inset 0 1px 0 rgba(255,255,255,.48);
+        filter: saturate(1.06) contrast(1.03);
+      }
+
+      .visual-shell:hover .base-img{
+        opacity:0;
+        transform:scale(1.03);
+      }
+
+      .visual-shell:hover .hover-img{
+        opacity:1;
+        transform:scale(1.03);
+      }
+    }
+
+    @keyframes dswFadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    @keyframes dswFloat{
+      0%{ transform: translateY(0); }
+      50%{ transform: translateY(-6px); }
+      100%{ transform: translateY(0); }
+    }
+
+    .visual-shell,
+    .hero-stack > *{
+      animation: dswFadeUp .7s ease both;
+    }
+
+    .visual-shell{ animation-delay: .05s; }
+    .hero-stack > :nth-child(1){ animation-delay: .10s; }
+    .hero-stack > :nth-child(2){ animation-delay: .16s; }
+    .hero-stack > :nth-child(3){ animation-delay: .22s; }
+    .hero-stack > :nth-child(4){ animation-delay: .28s; }
+    .hero-stack > :nth-child(5){ animation-delay: .34s; }
+    .hero-stack > :nth-child(6){ animation-delay: .40s; }
+
+    .hero-orb{
+      animation: dswFloat 6s ease-in-out infinite;
+    }
+
+    .hero-orb.orb-2{
+      animation-delay:1.4s;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .visual-shell,
+      .hero-stack > *,
+      .hero-orb{
+        animation:none !important;
+      }
+
+      .visual-img,
+      .visual-img-wrap,
+      .hero-surface{
+        transition:none !important;
+      }
+    }
+
+    .brand-name{
+      display:block;
+      font-size:86px;
+      font-weight:800;
+      line-height:1.02;
+      letter-spacing:0.02em;
+      margin:0 0 20px;
+      text-shadow: 0 18px 38px rgba(58,106,75,.12);
+      background: linear-gradient(180deg, #4c7f5d 0%, #2f5a40 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color: transparent;
+      transform: translateZ(72px);
+    }
+
+    .hero-h1,
+    h1.hero-h1{
+      font-size:34px !important;
+      font-weight:800 !important;
+      line-height:1.14 !important;
+      letter-spacing:-0.025em;
+      margin:0 !important;
+      padding:0 !important;
+      white-space:normal;
+      word-break:keep-all;
+      color:var(--dsw-charcoal);
+      transform: translateZ(62px);
+    }
+
+    .hero-subline{
+      margin-top:12px;
+      font-size:16px;
+      font-weight:600;
+      line-height:1.65;
+      color:var(--dsw-gray);
+      transform: translateZ(48px);
+    }
+
+    .hero-cta{
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      transform: translateZ(68px);
+    }
+
+    .hero-cta a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 16px;
+      border-radius:16px;
+      text-decoration:none;
+      font-weight:800;
+      font-size:14px;
+      letter-spacing:-0.01em;
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:
+        0 12px 26px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.4);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      background: rgba(255,255,255,.62);
+      color: var(--dsw-charcoal);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .hero-cta a.primary{
+      background: linear-gradient(135deg, #5a976f, #2f5a40);
+      color:#fff;
+      border-color: rgba(58,106,75,.35);
+      box-shadow:
+        0 16px 30px rgba(47,90,64,.28),
+        inset 0 1px 0 rgba(255,255,255,.22);
+    }
+
+    @media (hover:hover){
+      .hero-cta a:hover{
+        transform: translateY(-3px) translateZ(4px);
+        box-shadow:
+          0 18px 36px rgba(0,0,0,.12),
+          inset 0 1px 0 rgba(255,255,255,.45);
+        filter: saturate(1.03);
+      }
+    }
+
+    .hero-diffline{
+      margin-top:18px;
+      padding:18px 18px 18px 20px;
+      border-radius:18px;
+      background:
+        linear-gradient(180deg, rgba(237,247,240,.96), rgba(227,243,232,.92));
+      border:1px solid rgba(58,106,75,.12);
+      color:#1f3b2c;
+      font-weight:700;
+      line-height:1.68;
+      font-size:16.5px;
+      box-shadow:
+        0 18px 36px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.58);
+      position:relative;
+      transition: transform .25s ease, box-shadow .25s ease;
+      transform: translateZ(56px);
+      overflow:hidden;
+    }
+
+    .hero-diffline::before{
+      content:"";
+      position:absolute;
+      left:12px;
+      top:12px;
+      bottom:12px;
+      width:3px;
+      border-radius:99px;
+      background:rgba(58,106,75,.45);
+    }
+
+    .hero-diffline::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, rgba(255,255,255,.18), rgba(255,255,255,0) 34%);
+      pointer-events:none;
+    }
+
+    @media (hover:hover){
+      .hero-diffline:hover{
+        transform: translateY(-2px) translateZ(56px);
+        box-shadow:
+          0 22px 42px rgba(0,0,0,.10),
+          inset 0 1px 0 rgba(255,255,255,.58);
+      }
+    }
+
+    .hero-diffline strong{ font-weight:800; }
+
+    .hero-closing{
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:18px;
+      background: rgba(255,255,255,0.48);
+      border:1px solid rgba(43,43,43,.08);
+      box-shadow:
+        0 14px 28px rgba(0,0,0,0.06),
+        inset 0 1px 0 rgba(255,255,255,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transform: translateZ(50px);
+    }
+
+    .hero-closing-region{
+      font-size:15.5px;
+      font-weight:700;
+      color: var(--dsw-gray);
+      margin-bottom:8px;
+      letter-spacing:-0.01em;
+    }
+
+    .hero-closing-text{
+      margin:0;
+      font-size:20px;
+      line-height:1.75;
+      color: var(--dsw-charcoal);
+      letter-spacing:-0.01em;
+    }
+
+    .hero-closing-text strong{
+      font-weight:800;
+      color: var(--dsw-green);
+    }
+
+    @media (max-width:900px){
+      .hero-wrap{
+        padding:26px 16px;
+        perspective:none;
+      }
+
+      .hero-surface{
+        padding:24px 18px;
+        border-radius:22px;
+        transform:none !important;
+      }
+
+      .hero-table,
+      .hero-table tbody,
+      .hero-table tr,
+      .hero-table td{
+        display:block;
+        width:100%!important;
+      }
+
+      .cell-gap{ display:none; }
+
+      .visual-shell,
+      .brand-name,
+      .hero-h1,
+      .hero-subline,
+      .hero-cta,
+      .hero-diffline,
+      .hero-closing{
+        transform:none !important;
+      }
+
+      .visual-img-wrap{
+        transform:none !important;
+        aspect-ratio:auto;
+      }
+
+      .base-img,
+      .hover-img{
+        position:relative;
+        inset:auto;
+        width:100%;
+        height:auto;
+      }
+
+      .hover-img{
+        display:none;
+      }
+
+      .brand-name{
+        font-size:54px;
+        margin-bottom:14px;
+      }
+
+      .hero-h1, h1.hero-h1{
+        font-size:26px !important;
+      }
+
+      .hero-subline{
+        font-size:14.5px;
+      }
+
+      .hero-cta a{
+        font-size:13.5px;
+        padding:11px 13px;
+        border-radius:13px;
+      }
+
+      .hero-diffline{
+        font-size:14.8px;
+        padding:14px 14px 14px 16px;
+        border-radius:14px;
+      }
+
+      .hero-closing-region{
+        font-size:14px;
+      }
+
+      .hero-closing-text{
+        font-size:16.8px;
+        line-height:1.8;
+      }
+    }
+
+    @media (max-width:380px){
+      .brand-name{ font-size:48px; }
+      .hero-h1, h1.hero-h1{ font-size:23px !important; }
+      .hero-closing-text{ font-size:16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="sr-only">수원 팔달구 더수원 어르신 주간보호 및 요양원 통합케어</h1>
+
+  <div class="hero-wrap">
+    <div class="hero-surface" id="hero3d">
+      <span class="hero-orb orb-1" aria-hidden="true"></span>
+      <span class="hero-orb orb-2" aria-hidden="true"></span>
+
+      <table class="hero-table">
+        <tbody>
+          <tr>
+            <td class="cell-img">
+              <div class="visual-shell">
+                <div class="visual-img-wrap">
+                  <img
+                    src="https://cdn.imweb.me/upload/S20250616705368ebc899d/885454f620bd2.png"
+                    alt="더수원 어르신 주간보호 요양원 통합케어"
+                    class="visual-img base-img"
+                  />
+                  <img
+                    src="https://cdn.imweb.me/upload/S20250616705368ebc899d/cb5144d219845.png"
+                    alt="더수원 주간보호 직원과 어르신의 돌봄 모습"
+                    class="visual-img hover-img"
+                  />
+                </div>
+                <span class="visual-gloss" aria-hidden="true"></span>
+              </div>
+            </td>
+
+            <td class="cell-gap"></td>
+
+            <td class="cell-text">
+              <div class="hero-stack">
+                <div class="brand-name">더수원</div>
+
+                <div class="hero-h1">수원 주간보호·요양원 통합케어</div>
+
+                <div class="hero-subline">
+                  치매 어르신을 위한 <strong>세심한 돌봄</strong> · 장기요양보험 적용 · 건강관리 프로그램
+                </div>
+
+                <div class="hero-cta" aria-label="빠른 문의">
+                  <a class="primary" href="tel:16668853">📞 전화 상담하기</a>
+                </div>
+
+                <div class="hero-diffline">
+                  주간보호와 요양원 사이에서 <strong>고민하지 않으셔도</strong> 됩니다.<br>
+                  더수원은 어르신의 상태에 맞춰 <strong>부담 없이 이어지는 돌봄</strong>을<br>
+                  함께 만들어갑니다.
+                </div>
+
+                <div class="hero-closing">
+                  <div class="hero-closing-region">
+                    수원 팔달구·장안구·권선구·영통구 지역
+                  </div>
+
+                  <p class="hero-closing-text">
+                    어르신의 하루를 가까이에서 돌보는<br>
+                    통합 돌봄 공간, <strong>더수원</strong>입니다.
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="contact"></div>
+
+  <script>
+    (function () {
+      const hero = document.getElementById('hero3d');
+      if (!hero) return;
+
+      const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+      if (isReducedMotion || isTouchDevice) return;
+
+      let rafId = null;
+
+      hero.addEventListener('mousemove', function (e) {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 4.5;
+        const rotateX = ((centerY - y) / centerY) * 4.5;
+
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          hero.style.setProperty('--tiltX', rotateX.toFixed(2) + 'deg');
+          hero.style.setProperty('--tiltY', rotateY.toFixed(2) + 'deg');
+          hero.style.setProperty('--floatZ', '4px');
+        });
+      });
+
+      hero.addEventListener('mouseleave', function () {
+        if (rafId) cancelAnimationFrame(rafId);
+        hero.style.setProperty('--tiltX', '0deg');
+        hero.style.setProperty('--tiltY', '0deg');
+        hero.style.setProperty('--floatZ', '0px');
+      });
+    })();
+  </script>
+</body>
+</html>
+<section class="hero-note dsw-reveal" aria-label="더수원 돌봄 안내"> 
+  <div class="hero-note-inner">
+    <div class="hero-note-corner tl" aria-hidden="true">✦</div>
+    <div class="hero-note-corner tr" aria-hidden="true">✦</div>
+    <div class="hero-note-corner bl" aria-hidden="true">✦</div>
+    <div class="hero-note-corner br" aria-hidden="true">✦</div>
+
+    <div class="hero-note-badge" aria-hidden="true">
+      <span class="hero-note-badge-icon">✦</span>
+      <span class="hero-note-badge-text">더수원 케어 안내</span>
+    </div>
+
+    <p class="hero-note-eyebrow">매일의 돌봄이 더 편안해지도록</p>
+
+    <p class="hero-note-text">
+      주간보호센터와 요양원을 함께 운영하며,<br>
+      어르신의 건강 상태와 생활 리듬을 천천히 살펴봅니다.<br><br>
+      보호자와 가족의 마음까지 다정히 헤아리는 돌봄으로,<br>
+      하루가 조금 더 편안해질 수 있도록 정성을 다하고 있습니다.
+    </p>
+
+    <div class="hero-note-divider" aria-hidden="true"></div>
+
+    <p class="hero-note-foot">
+      필요하시면 <strong>상담 → 안내 → 방문</strong>까지 차근차근 도와드릴게요.
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero-note{
+    max-width: 760px;
+    margin: 30px auto 0;
+    padding: 0;
+    border-radius: 26px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+      radial-gradient(rgba(0,0,0,.014) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.012) 1px, transparent 1px),
+      radial-gradient(780px 260px at 16% 12%, rgba(58,106,75,.08), rgba(58,106,75,0) 58%),
+      radial-gradient(640px 240px at 88% 86%, rgba(58,106,75,.06), rgba(58,106,75,0) 60%),
+      linear-gradient(145deg, rgba(255,252,245,.96), rgba(247,242,232,.92));
+    background-size: 4px 4px, 4px 4px, auto, auto, auto;
+    background-position: 0 0, 2px 2px, 0 0, 0 0, 0 0;
+
+    border: 1px solid rgba(222,210,184,.72);
+    box-shadow:
+      0 22px 56px rgba(0,0,0,.10),
+      inset 0 1px 0 rgba(255,255,255,.80),
+      inset 0 -1px 0 rgba(255,255,255,.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
+    isolation: isolate;
+  }
+
+  /* 바깥 금빛 프레임 */
+  .hero-note::before{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border-radius:20px;
+    border:1.5px solid rgba(191,157,85,.55);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,245,214,.22),
+      0 0 0 1px rgba(255,255,255,.18);
+    pointer-events:none;
+    z-index: 1;
+  }
+
+  /* 안쪽 보조 프레임 */
+  .hero-note::after{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border-radius:16px;
+    border:1px solid rgba(191,157,85,.26);
+    pointer-events:none;
+    z-index: 1;
+  }
+
+  .hero-note-inner{
+    position: relative;
+    padding: 28px 30px 24px;
+    z-index: 2;
+    transform: translateZ(18px);
+  }
+
+  /* 상단 빛 반사 */
+  .hero-note-inner .hero-note-badge,
+  .hero-note-inner .hero-note-eyebrow,
+  .hero-note-inner .hero-note-text,
+  .hero-note-inner .hero-note-divider,
+  .hero-note-inner .hero-note-foot{
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-note-inner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(255,255,255,.34), rgba(255,255,255,0) 46%);
+    pointer-events:none;
+    z-index: 0;
+    border-radius: 18px;
+  }
+
+  /* 카드 아래 그림자 */
+  .hero-note-shadow{
+    display:none;
+  }
+
+  .hero-note-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin: 0 auto 14px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #fdf8ee, #f1e7d4);
+    border: 1px solid rgba(191,157,85,.35);
+    box-shadow:
+      0 8px 18px rgba(0,0,0,.04),
+      inset 0 1px 0 rgba(255,255,255,.74);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) translateZ(30px);
+  }
+
+  .hero-note-badge-icon{
+    width: 18px;
+    height: 18px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background: linear-gradient(135deg, #c8a458, #8d6b2d);
+    color:#fffdf6;
+    font-size: 11px;
+    line-height:1;
+    box-shadow: 0 4px 10px rgba(141,107,45,.22);
+    flex: 0 0 18px;
+  }
+
+  .hero-note-badge-text{
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #6f5421;
+    white-space: nowrap;
+  }
+
+  .hero-note-eyebrow{
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 14.5px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: rgba(78,64,36,.76);
+    transform: translateZ(24px);
+  }
+
+  .hero-note-text{
+    margin: 0;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.95;
+    color: #374046;
+    letter-spacing: -0.012em;
+    font-weight: 600;
+    transform: translateZ(30px);
+    word-break: keep-all;
+  }
+
+  .hero-note-text strong{
+    color:#2f5a40;
+    font-weight: 800;
+  }
+
+  .hero-note-divider{
+    margin: 18px auto 14px;
+    width: 88%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(191,157,85,.12) 12%,
+      rgba(191,157,85,.42) 50%,
+      rgba(191,157,85,.12) 88%,
+      transparent
+    );
+    transform: translateZ(20px);
+  }
+
+  .hero-note-foot{
+    margin: 0;
+    text-align: center;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: rgba(62,54,40,.84);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    transform: translateZ(26px);
+  }
+
+  .hero-note-foot strong{
+    font-weight: 800;
+    color: #2f5a40;
+  }
+
+  /* 모서리 장식 */
+  .hero-note-corner{
+    position:absolute;
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    color: rgba(191,157,85,.68);
+    z-index: 4;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    pointer-events:none;
+  }
+
+  .hero-note-corner::before,
+  .hero-note-corner::after{
+    content:"";
+    position:absolute;
+    background: rgba(191,157,85,.32);
+    border-radius:999px;
+  }
+
+  .hero-note-corner::before{
+    width:18px;
+    height:1px;
+  }
+
+  .hero-note-corner::after{
+    width:1px;
+    height:18px;
+  }
+
+  .hero-note-corner.tl{
+    top:18px;
+    left:18px;
+  }
+
+  .hero-note-corner.tr{
+    top:18px;
+    right:18px;
+  }
+
+  .hero-note-corner.bl{
+    bottom:18px;
+    left:18px;
+  }
+
+  .hero-note-corner.br{
+    bottom:18px;
+    right:18px;
+  }
+
+  .hero-note-corner.tl::before,
+  .hero-note-corner.bl::before{
+    right:-6px;
+  }
+
+  .hero-note-corner.tr::before,
+  .hero-note-corner.br::before{
+    left:-6px;
+  }
+
+  .hero-note-corner.tl::after,
+  .hero-note-corner.tr::after{
+    bottom:-6px;
+  }
+
+  .hero-note-corner.bl::after,
+  .hero-note-corner.br::after{
+    top:-6px;
+  }
+
+  @media (hover:hover){
+    .hero-note{
+      transition: transform .32s ease, box-shadow .32s ease, filter .32s ease;
+    }
+
+    .hero-note:hover{
+      transform: translateY(-4px);
+      box-shadow:
+        0 28px 64px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.82),
+        inset 0 -1px 0 rgba(255,255,255,.22);
+      filter: saturate(1.01);
+    }
+  }
+
+  .dsw-reveal{
+    opacity: 0;
+    transform:
+      perspective(1400px)
+      translateY(78px)
+      translateZ(-150px)
+      rotateX(14deg)
+      rotateY(-6deg)
+      scale(.95);
+    filter: blur(7px);
+    transition:
+      opacity .9s cubic-bezier(.19,1,.22,1),
+      transform .95s cubic-bezier(.19,1,.22,1),
+      filter .85s ease,
+      box-shadow .85s ease;
+  }
+
+  .dsw-reveal.is-in{
+    opacity: 1;
+    transform:
+      perspective(1400px)
+      translateY(0)
+      translateZ(0)
+      rotateX(0deg)
+      rotateY(0deg)
+      scale(1);
+    filter: blur(0);
+  }
+
+  @media (max-width:900px){
+    .hero-note{
+      max-width: 100%;
+      margin: 18px 0 0;
+      border-radius: 20px;
+    }
+
+    .hero-note::before{
+      inset:8px;
+      border-radius:16px;
+    }
+
+    .hero-note::after{
+      inset:14px;
+      border-radius:13px;
+    }
+
+    .hero-note-inner{
+      padding: 22px 18px 20px;
+    }
+
+    .hero-note-badge{
+      margin-bottom: 12px;
+      padding: 7px 11px;
+    }
+
+    .hero-note-badge-text{
+      font-size: 12px;
+    }
+
+    .hero-note-text{
+      font-size: 15.8px;
+      line-height: 1.9;
+    }
+
+    .hero-note-foot{
+      font-size: 14.6px;
+    }
+
+    .hero-note-corner{
+      width:24px;
+      height:24px;
+      font-size:11px;
+    }
+
+    .hero-note-corner.tl{ top:14px; left:14px; }
+    .hero-note-corner.tr{ top:14px; right:14px; }
+    .hero-note-corner.bl{ bottom:14px; left:14px; }
+    .hero-note-corner.br{ bottom:14px; right:14px; }
+
+    .dsw-reveal{
+      transform:
+        perspective(1000px)
+        translateY(40px)
+        translateZ(-70px)
+        rotateX(9deg)
+        scale(.97);
+      filter: blur(4px);
+    }
+
+    .dsw-reveal.is-in{
+      transform:
+        perspective(1000px)
+        translateY(0)
+        translateZ(0)
+        rotateX(0deg)
+        scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .dsw-reveal,
+    .dsw-reveal.is-in{
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+
+    .hero-note{
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function(){
+    const targets = document.querySelectorAll('.dsw-reveal');
+    if(!targets.length) return;
+
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-in');
+          } else {
+            entry.target.classList.remove('is-in');
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: "0px 0px -6% 0px"
+      });
+
+      targets.forEach(el => io.observe(el));
+      return;
+    }
+
+    targets.forEach(el => el.classList.add('is-in'));
+  })();
+</script>
+<style>
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    width: 100%;
+    margin-top: 40px;
+    perspective: 1600px;
+  }
+
+  .card-cell {
+    width: 33.33%;
+    height: 440px;
+    perspective: 1400px;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition:
+      transform 0.9s cubic-bezier(.4,1.6,.3,1),
+      box-shadow .35s ease;
+    will-change: transform;
+  }
+
+  .card-cell.flip .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #ffffff, #f3f5f3);
+    box-shadow:
+      0 22px 46px rgba(0,0,0,.10),
+      inset 0 1px 0 rgba(255,255,255,.65);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+  }
+
+  .img-wrapper {
+    height: 72%;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .img-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .55s ease;
+    z-index: 1;
+  }
+
+  /* 이미지 전체 톤 정리 */
+  .img-bg::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0) 28%),
+      radial-gradient(circle at 50% 22%, rgba(255,255,255,.10), rgba(255,255,255,0) 40%);
+    z-index: 1;
+  }
+
+  /* 하단 가독성 오버레이 강화 */
+  .img-bg::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10,18,18,0) 38%,
+        rgba(10,18,18,.18) 60%,
+        rgba(10,18,18,.52) 82%,
+        rgba(10,18,18,.72) 100%
+      );
+    z-index: 2;
+  }
+
+  /* 글로스 효과 */
+  .img-wrapper::before {
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background: linear-gradient(
+      115deg,
+      rgba(255,255,255,0) 30%,
+      rgba(255,255,255,.16) 48%,
+      rgba(255,255,255,0) 62%
+    );
+    transform: translateX(-120%) rotate(8deg);
+    transition: transform .7s ease;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  /* 제목 영역 */
+  .img-title-wrap {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .img-title {
+    display: inline-block;
+    max-width: 100%;
+    padding: 10px 14px 11px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.28;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -0.02em;
+    white-space: normal;
+    word-break: keep-all;
+    text-shadow:
+      0 2px 8px rgba(0,0,0,.45),
+      0 8px 20px rgba(0,0,0,.30);
+
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.16),
+      inset 0 1px 0 rgba(255,255,255,.12);
+
+    transform: translateZ(36px);
+  }
+
+  .sub-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.72;
+    padding: 16px 18px 18px;
+    color: #4f5559;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,249,247,.98));
+  }
+
+  @media (hover:hover) {
+    .card-cell:hover .card-inner {
+      box-shadow: 0 28px 54px rgba(0,0,0,.14);
+    }
+
+    .card-cell:hover .img-bg {
+      transform: scale(1.04);
+    }
+
+    .card-cell:hover .img-wrapper::before {
+      transform: translateX(120%) rotate(8deg);
+    }
+  }
+
+  @media (max-width:1100px){
+    .img-title{
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width:900px){
+    .card-row{
+      flex-direction: column;
+    }
+
+    .card-cell{
+      width:100%;
+      height:380px;
+    }
+
+    .img-wrapper{
+      height: 70%;
+    }
+
+    .img-title-wrap{
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+    }
+
+    .img-title{
+      font-size: 17px;
+      width: 100%;
+      padding: 9px 12px 10px;
+      border-radius: 14px;
+    }
+
+    .sub-text{
+      font-size: 14.5px;
+      padding: 14px 16px 16px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card-inner,
+    .img-bg,
+    .img-wrapper::before{
+      transition: none !important;
+    }
+  }
+</style>
+
+<div class="card-row">
+
+  <div class="card-cell" id="wrap1">
+    <div class="card-inner">
+      <div class="card-face">
+        <div class="img-wrapper">
+          <div class="img-bg" id="front1"></div>
+          <div class="img-title-wrap">
+            <div class="img-title" id="title1"></div>
+          </div>
+        </div>
+        <div class="sub-text" id="desc1"></div>
+      </div>
+
+      <div class="card-face card-back">
+        <div class="img-wrapper">
+          <div class="img-bg" id="back1"></div>
+          <div class="img-title-wrap">
+            <div class="img-title" id="title1b"></div>
+          </div>
+        </div>
+        <div class="sub-text" id="desc1b"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-cell" id="wrap2">
+    <div class="card-inner">
+      <div class="card-face">
+        <div class="img-wrapper">
+          <div class="img-bg" id="front2"></div>
+          <div class="img-title-wrap">
+            <div class="img-title" id="title2"></div>
+          </div>
+        </div>
+        <div class="sub-text" id="desc2"></div>
+      </div>
+
+      <div class="card-face card-back">
+        <div class="img-wrapper">
+          <div class="img-bg" id="back2"></div>
+          <div class="img-title-wrap">
+            <div class="img-title" id="title2b"></div>
+          </div>
+        </div>
+        <div class="sub-text" id="desc2b"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-cell" id="wrap3">
+    <div class="card-inner">
+      <div class="card-face">
+        <div class="img-wrapper">
+          <div class="img-bg" id="front3"></div>
+          <div class="img-title-wrap">
+            <div class="img-title" id="title3"></div>
+          </div>
+        </div>
+        <div class="sub-text" id="desc3"></div>
+      </div>
+
+      <div class="card-face card-back">
+        <div class="img-wrapper">
+          <div class="img-bg" id="back3"></div>
+          <div class="img-title-wrap">
+            <div class="img-title" id="title3b"></div>
+          </div>
+        </div>
+        <div class="sub-text" id="desc3b"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const cardData = [
+    [
+      {
+        title: "체계적인 맞춤 건강관리",
+        desc: "정기 건강 체크, 식사·영양 관리, 만성질환 모니터링",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/0ee42b7ef8a6f.png"
+      },
+      {
+        title: "전문 간호 인력 상주",
+        desc: "응급 대응, 투약 관리, 상처 처치 등 전문 간호 서비스 제공",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/079cf5c21c067.png"
+      }
+    ],
+    [
+      {
+        title: "개별 맞춤 인지 자극 활동",
+        desc: "그림 그리기, 회상치료, 놀이 치료 등",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/37b58603932fd.png"
+      },
+      {
+        title: "정서 안정과 사회적 교류 프로그램",
+        desc: "생신잔치, 음악치료, 원예치료 등",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/da5ef3bd374d0.png"
+      }
+    ],
+    [
+      {
+        title: "병원 연계 진료 지원",
+        desc: "진료 동행, 정기 검진, 응급 상황 신속 대응",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/ac825af59c00b.png"
+      },
+      {
+        title: "가족과의 소통 강화",
+        desc: "보호자 간담회, 가정통신문, 실시간 사진 공유",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/148ab3b5e2d9d.png"
+      }
+    ]
+  ];
+
+  let index = 0;
+
+  function init() {
+    for (let i = 0; i < 3; i++) {
+      document.getElementById(`front${i + 1}`).style.backgroundImage =
+        `url('${cardData[i][0].bg}')`;
+      document.getElementById(`title${i + 1}`).innerText =
+        cardData[i][0].title;
+      document.getElementById(`desc${i + 1}`).innerText =
+        cardData[i][0].desc;
+    }
+  }
+
+  function flipCards() {
+    index = (index + 1) % 2;
+
+    for (let i = 0; i < 3; i++) {
+      const wrap = document.getElementById(`wrap${i + 1}`);
+      const isFlipped = wrap.classList.contains("flip");
+
+      const target = isFlipped ? "front" : "back";
+      const title = isFlipped ? `title${i + 1}` : `title${i + 1}b`;
+      const desc = isFlipped ? `desc${i + 1}` : `desc${i + 1}b`;
+
+      document.getElementById(`${target}${i + 1}`).style.backgroundImage =
+        `url('${cardData[i][index].bg}')`;
+
+      document.getElementById(title).innerText =
+        cardData[i][index].title;
+
+      document.getElementById(desc).innerText =
+        cardData[i][index].desc;
+
+      wrap.classList.toggle("flip");
+    }
+  }
+
+  init();
+  setInterval(flipCards, 4000);
+
+  (function () {
+    const cards = document.querySelectorAll('.card-cell');
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isTouch || reduced) return;
+
+    cards.forEach((card) => {
+      const inner = card.querySelector('.card-inner');
+
+      card.addEventListener('mousemove', (e) => {
+        if (card.classList.contains('flip')) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 8;
+        const rotateX = ((centerY - y) / centerY) * 8;
+
+        inner.style.transform =
+          `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (card.classList.contains('flip')) {
+          inner.style.transform = 'rotateY(180deg)';
+        } else {
+          inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        }
+      });
+    });
+
+    setInterval(() => {
+      cards.forEach((card) => {
+        const inner = card.querySelector('.card-inner');
+        if (card.matches(':hover')) return;
+        inner.style.transform = card.classList.contains('flip')
+          ? 'rotateY(180deg)'
+          : 'rotateX(0deg) rotateY(0deg)';
+      });
+    }, 4050);
+  })();
+</script>
