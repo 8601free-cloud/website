@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         >
           <a
             id="linkDaycare"
-            href="https://map.naver.com/"
+            href="https://map.naver.com/p/entry/place/2041796109"
             role="menuitem"
             target="_blank"
             rel="noopener noreferrer"
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </a>
           <a
             id="linkNursing"
-            href="https://map.naver.com/"
+            href="https://map.naver.com/p/entry/place/1286446205"
             role="menuitem"
             target="_blank"
             rel="noopener noreferrer"
