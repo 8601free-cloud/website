@@ -80,7 +80,7 @@
   margin:0 auto;
   padding:14px 20px;
   display:flex;
-  justify-content:center;
+  justify-content:flex-start;
   gap:14px;
 }
 
@@ -1242,5 +1242,25 @@
       }, 4050);
     })();
   </script>
+  <script>
+  document.querySelectorAll('.has-dropdown .nav-link').forEach(link => {
+    link.addEventListener('click', function(e){
+      const parent = this.parentElement;
+
+      if (window.innerWidth < 900){
+        e.preventDefault();
+        parent.classList.toggle('open');
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.has-dropdown').forEach(item => {
+      if (!item.contains(e.target)){
+        item.classList.remove('open');
+      }
+    });
+  });
+</script>
 </body>
 </html>
