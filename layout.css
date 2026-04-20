@@ -2,22 +2,53 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(246,241,232,.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(246,241,232,.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,.05);
 }
 
-.top-nav{
-  max-width: 1200px;
+.top-nav-inner{
+  max-width: 1280px;
   margin: 0 auto;
   padding: 14px 20px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-brand{
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.site-brand-logo{
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.10));
+}
+
+.site-brand-text{
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #234b34;
+  line-height: 1;
+}
+
+.top-nav{
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
-  position: relative;
 }
 
 .top-nav > a,
@@ -25,27 +56,31 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding: 0 18px;
+  min-height: 54px;
+  padding: 0 20px;
   text-decoration: none;
-  border-radius: 16px;
-  background: rgba(255,255,255,.9);
-  border: 1px solid rgba(0,0,0,.05);
-  box-shadow: 0 8px 18px rgba(0,0,0,.05);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(244,237,225,.92));
+  border: 1px solid rgba(86,78,61,.12);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.8),
+    0 6px 14px rgba(0,0,0,.08);
   font-weight: 800;
   font-size: 15px;
   color: #2B2B2B;
   line-height: 1;
   white-space: nowrap;
-  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, color .22s ease;
 }
 
 .top-nav > a:hover,
 .nav-link:hover{
-  background: #3A6A4B;
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #3f6d4d, #2e5a40);
   color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(58,106,75,.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 12px 24px rgba(58,106,75,.22);
 }
 
 .nav-item{
@@ -66,12 +101,14 @@
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  min-width: 190px;
-  padding: 8px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.96);
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(255,251,245,.96);
   border: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 18px 36px rgba(0,0,0,.12);
+  box-shadow: 0 18px 36px rgba(0,0,0,.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -81,11 +118,13 @@
 .dropdown-menu a{
   display: block;
   padding: 11px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-decoration: none;
   color: #333;
   font-size: 14px;
   font-weight: 700;
+  line-height: 1.35;
+  transition: background .2s ease, color .2s ease;
 }
 
 .dropdown-menu a:hover{
@@ -100,50 +139,109 @@
   transform: translateY(0);
 }
 
+/* ===== 3D Floating Buttons ===== */
 .floating-buttons{
   position: fixed;
   right: 24px;
   bottom: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 999;
+  gap: 14px;
+  z-index: 9999;
 }
 
 .floating-btn{
-  border: none;
+  position: relative;
+  border: 0;
   text-decoration: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 150px;
-  padding: 14px 18px;
+  gap: 10px;
+  min-width: 220px;
+  min-height: 70px;
+  padding: 0 26px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #81c784, #388e3c);
-  color: #fff;
-  font-weight: 800;
-  font-size: 14px;
-  box-shadow: 0 14px 28px rgba(0,0,0,.16);
-  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.4px;
+  transform: translateY(0);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.38),
+    inset 0 -4px 8px rgba(0,0,0,.16),
+    0 16px 26px rgba(0,0,0,.20),
+    0 5px 0 rgba(0,0,0,.14);
+}
+
+.floating-btn::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  top:8px;
+  height:42%;
+  border-radius:999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,0));
+  pointer-events:none;
 }
 
 .floating-btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 18px 32px rgba(0,0,0,.2);
-  filter: brightness(1.03);
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.42),
+    inset 0 -4px 8px rgba(0,0,0,.18),
+    0 22px 34px rgba(0,0,0,.24),
+    0 6px 0 rgba(0,0,0,.13);
+}
+
+.floating-btn:active{
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.28),
+    inset 0 -4px 8px rgba(0,0,0,.16),
+    0 10px 18px rgba(0,0,0,.18),
+    0 3px 0 rgba(0,0,0,.10);
+}
+
+.floating-btn__icon{
+  position: relative;
+  z-index: 1;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.floating-btn__text{
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+
+.floating-btn--green{
+  background: linear-gradient(180deg, #356f4d 0%, #1f5a3a 52%, #174b31 100%);
+  color: #fff8eb;
+  border: 1px solid rgba(255,240,204,.26);
+}
+
+.floating-btn--ivory{
+  background: linear-gradient(180deg, #fffaf0 0%, #efe3c5 58%, #d9c08b 100%);
+  color: #234b34;
+  border: 1px solid rgba(122,96,40,.18);
 }
 
 .care-location-menu{
   position: absolute;
-  right: 0;
-  bottom: 60px;
-  width: 200px;
-  background: #fff;
-  border-radius: 16px;
-  padding: 8px;
-  box-shadow: 0 18px 36px rgba(0,0,0,.16);
-  border: 1px solid rgba(0,0,0,.06);
+  right: 4px;
+  bottom: 84px;
+  width: 250px;
+  background: linear-gradient(180deg, rgba(255,251,245,.98), rgba(247,240,226,.96));
+  border-radius: 24px;
+  padding: 10px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.8),
+    0 20px 42px rgba(0,0,0,.18);
+  border: 1px solid rgba(0,0,0,.08);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -159,10 +257,15 @@
 .care-location-menu a{
   display: block;
   text-decoration: none;
-  color: #2B2B2B;
-  font-weight: 700;
-  padding: 10px 12px;
-  border-radius: 10px;
+  color: #234b34;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.care-location-menu a + a{
+  border-top: 1px solid rgba(0,0,0,.06);
 }
 
 .care-location-menu a:hover{
@@ -170,37 +273,23 @@
   color: #2f5a40;
 }
 
-.site-footer{
-  margin-top: 60px;
-  padding: 36px 20px 44px;
-  background: rgba(255,255,255,.55);
-  border-top: 1px solid rgba(0,0,0,.06);
-}
+@media (max-width: 1100px){
+  .top-nav-inner{
+    gap: 16px;
+  }
 
-.site-footer-inner{
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
+  .site-brand-logo{
+    width: 60px;
+    height: 60px;
+  }
 
-.footer-title{
-  margin: 0 0 10px;
-  font-size: 20px;
-  font-weight: 800;
-  color: #2f5a40;
-}
+  .site-brand-text{
+    font-size: 26px;
+  }
 
-.footer-text{
-  margin: 6px 0;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: #565B60;
-}
-
-.footer-copy{
-  margin: 14px 0 0;
-  font-size: 13px;
-  color: #888;
+  .top-nav{
+    gap: 10px;
+  }
 }
 
 @media (max-width: 900px){
@@ -208,19 +297,22 @@
     overflow-x: auto;
   }
 
+  .top-nav-inner{
+    min-width: max-content;
+    align-items: center;
+  }
+
   .top-nav{
     justify-content: flex-start;
-    align-items: center;
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding: 12px 14px;
     gap: 10px;
   }
 
   .top-nav > a,
   .nav-link{
-    min-height: 46px;
-    padding: 0 15px;
+    min-height: 48px;
+    padding: 0 16px;
     font-size: 14px;
     border-radius: 14px;
     flex: 0 0 auto;
@@ -232,17 +324,39 @@
 
   .dropdown-menu{
     top: calc(100% + 8px);
-    min-width: 170px;
+    min-width: 180px;
   }
 
   .floating-buttons{
     right: 16px;
     bottom: 16px;
+    gap: 10px;
   }
 
   .floating-btn{
-    min-width: 136px;
-    padding: 12px 16px;
-    font-size: 13.5px;
+    min-width: 190px;
+    min-height: 60px;
+    font-size: 15px;
+    padding: 0 20px;
+  }
+
+  .floating-btn__icon{
+    font-size: 24px;
+  }
+
+  .care-location-menu{
+    width: 220px;
+    bottom: 72px;
+  }
+}
+
+@media (max-width: 640px){
+  .site-brand-text{
+    display: none;
+  }
+
+  .site-brand-logo{
+    width: 54px;
+    height: 54px;
   }
 }
