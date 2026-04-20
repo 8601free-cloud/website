@@ -16,6 +16,7 @@
   <meta property="og:url" content="https://website-rouge-chi-18.vercel.app/" />
 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/layout.css" />
 
   <style>
     :root{
@@ -64,161 +65,6 @@
       white-space:nowrap !important;
       border:0 !important;
     }
-
-    /* 상단 메뉴 */
-    .top-nav-wrap{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(246,241,232,.85);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.top-nav{
-  max-width:1200px;
-  margin:0 auto;
-  padding:14px 20px;
-  display:flex;
-  justify-content:flex-start;
-  gap:14px;
-}
-
-/* 상단 메뉴 */
-.top-nav-wrap{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(246,241,232,.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
-
-.top-nav{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;   /* ✅ 핵심 */
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.top-nav > a,
-.nav-link{
-  display: inline-flex;   /* ✅ 핵심 */
-  align-items: center;    /* ✅ 핵심 */
-  justify-content: center;
-  min-height: 52px;       /* ✅ 높이 통일 */
-  padding: 0 18px;
-  text-decoration: none;
-  border-radius: 16px;
-  background: rgba(255,255,255,.9);
-  border: 1px solid rgba(0,0,0,.05);
-  box-shadow: 0 8px 18px rgba(0,0,0,.05);
-  font-weight: 800;
-  font-size: 15px;
-  color: #2B2B2B;
-  line-height: 1;
-  white-space: nowrap;
-  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
-}
-
-.top-nav > a:hover,
-.nav-link:hover{
-  background: #3A6A4B;
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(58,106,75,.18);
-}
-
-.nav-item{
-  position: relative;
-  display: flex;          /* ✅ 핵심 */
-  align-items: center;    /* ✅ 핵심 */
-}
-
-.has-dropdown .nav-link::after{
-  content: "▾";
-  margin-left: 8px;
-  font-size: 11px;
-  line-height: 1;
-  transform: translateY(1px);
-}
-
-.dropdown-menu{
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  min-width: 190px;
-  padding: 8px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.96);
-  border: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 18px 36px rgba(0,0,0,.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity .22s ease, visibility .22s ease, transform .22s ease;
-}
-
-.dropdown-menu a{
-  display: block;
-  padding: 11px 12px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.35;
-  transition: background .2s ease, color .2s ease;
-}
-
-.dropdown-menu a:hover{
-  background: #edf7f0;
-  color: #2f5a40;
-}
-
-.nav-item:hover .dropdown-menu,
-.nav-item.open .dropdown-menu{
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-@media (max-width:900px){
-  .top-nav{
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 12px 14px;
-    gap: 10px;
-  }
-
-  .top-nav > a,
-  .nav-link{
-    min-height: 46px;
-    padding: 0 15px;
-    font-size: 14px;
-    border-radius: 14px;
-    flex: 0 0 auto;
-  }
-
-  .nav-item{
-    flex: 0 0 auto;
-  }
-
-  .dropdown-menu{
-    top: calc(100% + 8px);
-    min-width: 170px;
-  }
-}
 
     /* 메인 히어로 */
     .hero-wrap{
@@ -798,18 +644,6 @@
     }
 
     @media (max-width:900px){
-      .top-nav{
-        justify-content:flex-start;
-        flex-wrap:nowrap;
-        overflow-x:auto;
-        padding:12px 14px;
-      }
-
-      .top-nav a{
-        white-space:nowrap;
-        font-size:14px;
-      }
-
       .hero-wrap{
         padding:26px 16px 18px;
         perspective:none;
@@ -929,57 +763,7 @@
 <body>
   <h1 class="sr-only">수원 팔달구 더수원 어르신 주간보호 및 요양원 통합케어</h1>
 
-  <div class="top-nav-wrap">
-  <nav class="top-nav">
-
-    <a href="index.html">홈</a>
-
-    <div class="nav-item has-dropdown">
-      <a href="센터소개.html" class="nav-link">센터소개</a>
-      <div class="dropdown-menu">
-        <a href="운영철학.html">운영철학</a>
-        <a href="시설안내.html">시설 안내</a>
-        <a href="오시는길.html">오시는 길</a>
-      </div>
-    </div>
-
-    <div class="nav-item has-dropdown">
-      <a href="이용안내.html" class="nav-link">이용안내</a>
-      <div class="dropdown-menu">
-        <a href="입소절차.html">입소 절차</a>
-        <a href="비용안내.html">비용 안내</a>
-        <a href="FAQ.html">자주 묻는 질문</a>
-      </div>
-    </div>
-
-    <div class="nav-item has-dropdown">
-      <a href="프로그램.html" class="nav-link">프로그램</a>
-      <div class="dropdown-menu">
-        <a href="건강관리.html">건강관리</a>
-        <a href="인지활동.html">인지활동</a>
-        <a href="정서사회교류.html">정서·사회교류</a>
-        <a href="주간일정표.html">주간 일정표</a>
-      </div>
-    </div>
-
-    <div class="nav-item has-dropdown">
-      <a href="소식.html" class="nav-link">소식</a>
-      <div class="dropdown-menu">
-        <a href="공지사항.html">공지사항</a>
-        <a href="활동사진.html">활동사진</a>
-      </div>
-    </div>
-
-    <div class="nav-item has-dropdown">
-      <a href="상담안내.html" class="nav-link">상담</a>
-      <div class="dropdown-menu">
-        <a href="상담안내.html">상담 안내</a>
-        <a href="문의하기.html">문의하기</a>
-      </div>
-    </div>
-
-  </nav>
-</div>
+  <div id="site-header"></div>
 
   <div class="hero-wrap">
     <div class="hero-surface" id="hero3d">
@@ -1320,25 +1104,9 @@
       }, 4050);
     })();
   </script>
-  <script>
-  document.querySelectorAll('.has-dropdown .nav-link').forEach(link => {
-    link.addEventListener('click', function(e){
-      const parent = this.parentElement;
 
-      if (window.innerWidth < 900){
-        e.preventDefault();
-        parent.classList.toggle('open');
-      }
-    });
-  });
+  <div id="site-footer"></div>
 
-  document.addEventListener('click', function(e){
-    document.querySelectorAll('.has-dropdown').forEach(item => {
-      if (!item.contains(e.target)){
-        item.classList.remove('open');
-      }
-    });
-  });
-</script>
+  <script src="/layout.js"></script>
 </body>
 </html>
