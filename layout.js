@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
               alt="더수원 로고"
               class="site-brand-logo"
             />
-            <span class="site-brand-text">더수원</span>
           </a>
 
           <nav class="top-nav">
