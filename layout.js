@@ -1,59 +1,5 @@
-function initLayout() {
-  document.querySelectorAll('.has-dropdown .nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      const parent = this.parentElement;
-
-      if (window.innerWidth < 900) {
-        e.preventDefault();
-
-        document.querySelectorAll('.has-dropdown').forEach(item => {
-          if (item !== parent) item.classList.remove('open');
-        });
-
-        parent.classList.toggle('open');
-      }
-    });
-  });
-
-  document.addEventListener('click', function (e) {
-    document.querySelectorAll('.has-dropdown').forEach(item => {
-      if (!item.contains(e.target)) {
-        item.classList.remove('open');
-      }
-    });
-  });
-
-  const openBtn = document.getElementById('careOpenLocationMenu');
-  const menu = document.getElementById('careLocationMenu');
-
-  if (openBtn && menu) {
-    openBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      const isOpen = menu.classList.toggle('open');
-      openBtn.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    menu.addEventListener('click', function (e) {
-      e.stopPropagation();
-    });
-
-    document.addEventListener('click', function (e) {
-      if (!menu.contains(e.target) && !openBtn.contains(e.target)) {
-        menu.classList.remove('open');
-        openBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        menu.classList.remove('open');
-        openBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function () {
+
   const headerRoot = document.getElementById('site-header');
   const footerRoot = document.getElementById('site-footer');
 
@@ -111,19 +57,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="floating-buttons">
         <a href="tel:16668853" class="floating-btn">📞 전화 상담</a>
-        <button
-          id="careOpenLocationMenu"
-          class="floating-btn"
-          type="button"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          📍 위치 보기
-        </button>
+        <button id="careOpenLocationMenu" class="floating-btn">📍 위치 보기</button>
 
-        <div id="careLocationMenu" class="care-location-menu" role="menu">
-          <a id="linkDaycare" href="https://map.naver.com/" role="menuitem" target="_blank" rel="noopener noreferrer">더수원주간보호</a>
-          <a id="linkNursing" href="https://map.naver.com/" role="menuitem" target="_blank" rel="noopener noreferrer">더수원요양원</a>
+        <div id="careLocationMenu" class="care-location-menu">
+          <a href="https://map.naver.com/" target="_blank">더수원주간보호</a>
+          <a href="https://map.naver.com/" target="_blank">더수원요양원</a>
         </div>
       </div>
     `;
@@ -135,12 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="site-footer-inner">
           <p class="footer-title">더수원 어르신 통합케어</p>
           <p class="footer-text">수원 주간보호·요양원 | 상담전화 1666-8853</p>
-          <p class="footer-text">본 사이트의 사진·문구·디자인 무단 복제 및 무단 사용을 금합니다.</p>
-          <p class="footer-copy">© 2026 더수원. All rights reserved.</p>
+          <p class="footer-text">본 사이트의 사진·문구·디자인 무단 복제 금지</p>
+          <p class="footer-copy">© 2026 더수원</p>
         </div>
       </footer>
     `;
   }
 
-  initLayout();
 });
