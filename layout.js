@@ -1,36 +1,11 @@
 function initLayout() {
-  // 모바일 드롭다운 열기/닫기
-  document.querySelectorAll('.has-dropdown .nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      const parent = this.parentElement;
-
-      if (window.innerWidth < 900) {
-        e.preventDefault();
-
-        document.querySelectorAll('.has-dropdown').forEach(item => {
-          if (item !== parent) item.classList.remove('open');
-        });
-
-        parent.classList.toggle('open');
-      }
-    });
-  });
-
-  // 바깥 클릭 시 드롭다운 닫기
-  document.addEventListener('click', function (e) {
-    document.querySelectorAll('.has-dropdown').forEach(item => {
-      if (!item.contains(e.target)) {
-        item.classList.remove('open');
-      }
-    });
-  });
-
   // 위치보기 플로팅 메뉴
   const openBtn = document.getElementById('careOpenLocationMenu');
   const menu = document.getElementById('careLocationMenu');
 
   if (openBtn && menu) {
     openBtn.addEventListener('click', function (e) {
+      e.preventDefault();
       e.stopPropagation();
       const isOpen = menu.classList.toggle('open');
       openBtn.setAttribute('aria-expanded', String(isOpen));
@@ -54,6 +29,24 @@ function initLayout() {
       }
     });
   }
+
+  // 유튜브 팝업 닫기
+  const popup = document.getElementById('videoPopup');
+  const iframe = document.getElementById('popupVideo');
+  const closeBtn = document.querySelector('#videoPopup .closeBtn');
+
+  if (popup && iframe && closeBtn) {
+    closeBtn.addEventListener('click', closePopup);
+
+    popup.addEventListener('click', function (e) {
+      if (e.target === popup) closePopup();
+    });
+
+    function closePopup() {
+      iframe.src = '';
+      popup.style.display = 'none';
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -67,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <a href="/index.html">홈</a>
 
           <div class="nav-item has-dropdown">
-            <a href="/센터소개.html" class="nav-link">센터소개</a>
+            <a href="/운영철학.html" class="nav-link">센터소개</a>
             <div class="dropdown-menu">
               <a href="/운영철학.html">운영철학</a>
               <a href="/시설안내.html">시설 안내</a>
@@ -76,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
 
           <div class="nav-item has-dropdown">
-            <a href="/이용안내.html" class="nav-link">이용안내</a>
+            <a href="/입소절차.html" class="nav-link">이용안내</a>
             <div class="dropdown-menu">
               <a href="/입소절차.html">입소 절차</a>
               <a href="/비용안내.html">비용 안내</a>
@@ -85,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
 
           <div class="nav-item has-dropdown">
-            <a href="/프로그램.html" class="nav-link">프로그램</a>
+            <a href="/건강관리.html" class="nav-link">프로그램</a>
             <div class="dropdown-menu">
               <a href="/건강관리.html">건강관리</a>
               <a href="/인지활동.html">인지활동</a>
@@ -95,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
 
           <div class="nav-item has-dropdown">
-            <a href="/소식.html" class="nav-link">소식</a>
+            <a href="/공지사항.html" class="nav-link">소식</a>
             <div class="dropdown-menu">
               <a href="/공지사항.html">공지사항</a>
               <a href="/활동사진.html">활동사진</a>
@@ -114,6 +107,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="floating-buttons">
         <a href="tel:16668853" class="floating-btn">📞 전화 상담</a>
+
+        <a
+          href="https://blog.naver.com/thesuwonsilver"
+          class="floating-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📝 더수원 블로그
+        </a>
 
         <button
           id="careOpenLocationMenu"
@@ -192,6 +194,103 @@ document.addEventListener('DOMContentLoaded', function () {
         </p>
       </div>
     `;
+  }
+
+  // 유튜브 팝업 스타일 중복 방지
+  if (!document.getElementById('videoPopupStyle')) {
+    const style = document.createElement('style');
+    style.id = 'videoPopupStyle';
+    style.textContent = `
+      #videoPopup{
+        position:fixed;
+        inset:0;
+        width:100vw;
+        height:100vh;
+        background:rgba(0,0,0,0.9);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        z-index:99999;
+      }
+
+      #videoPopup .videoWrap{
+        position:relative;
+        width:95vw;
+        height:75vh;
+        max-width:1200px;
+        max-height:85vh;
+        overflow:hidden;
+        border-radius:8px;
+      }
+
+      #videoPopup iframe{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        border:0;
+      }
+
+      #videoPopup .closeBtn{
+        position:absolute;
+        top:calc(18px + env(safe-area-inset-top));
+        right:calc(18px + env(safe-area-inset-right));
+        font-size:36px;
+        color:#fff;
+        background:rgba(0,0,0,0.6);
+        padding:8px 12px;
+        border-radius:6px;
+        cursor:pointer;
+        z-index:10;
+        line-height:1;
+      }
+
+      @media (max-width:768px){
+        #videoPopup .videoWrap{
+          width:100vw;
+          height:100vh;
+          max-width:none;
+          max-height:none;
+          border-radius:0;
+        }
+
+        #videoPopup iframe{
+          transform:scale(1.25);
+          transform-origin:center;
+        }
+      }
+
+      @media (max-width:380px){
+        #videoPopup iframe{
+          transform:scale(1.35);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // 유튜브 팝업 HTML 중복 방지
+  if (!document.getElementById('videoPopup')) {
+    const popup = document.createElement('div');
+    popup.id = 'videoPopup';
+    popup.innerHTML = `
+      <div class="closeBtn">✕</div>
+      <div class="videoWrap">
+        <iframe
+          id="popupVideo"
+          src="https://www.youtube.com/embed/Q85KCCnUpww?autoplay=1&mute=1&playsinline=1"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    `;
+    document.body.appendChild(popup);
+
+    // 세션당 1회 노출
+    if (!sessionStorage.getItem('videoPopupShown')) {
+      popup.style.display = 'flex';
+      sessionStorage.setItem('videoPopupShown', 'yes');
+    }
   }
 
   initLayout();
