@@ -32,14 +32,11 @@
       0 14px 34px rgba(22,40,29,.12),
       0 4px 10px rgba(22,40,29,.06);
     --dsw-shadow-strong:
-      0 22px 44px rgba(22,40,29,.18),
+      0 24px 52px rgba(22,40,29,.18),
       0 8px 18px rgba(22,40,29,.10);
     --dsw-inset:
       inset 0 1px 0 rgba(255,255,255,.65),
       inset 0 -1px 0 rgba(20,40,25,.05);
-    --dsw-radius-xl:30px;
-    --dsw-radius-lg:24px;
-    --dsw-radius-md:18px;
   }
 
   .dsw-map-page{
@@ -65,9 +62,15 @@
     padding:34px 30px;
     border-radius:30px;
     background:
-      linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(245,248,243,.95) 52%, rgba(236,244,237,.96) 100%);
+      linear-gradient(135deg, rgba(255,255,255,.96) 0%, rgba(245,248,243,.96) 52%, rgba(236,244,237,.97) 100%);
     border:1px solid rgba(255,255,255,.78);
     box-shadow:var(--dsw-shadow), var(--dsw-inset);
+    transform-style:preserve-3d;
+    transition:
+      transform .42s ease,
+      box-shadow .42s ease,
+      background .42s ease,
+      border-color .42s ease;
   }
 
   .dsw-map-hero::before{
@@ -80,6 +83,7 @@
     border-radius:50%;
     background:radial-gradient(circle, rgba(82,140,103,.18), transparent 68%);
     pointer-events:none;
+    transition:transform .42s ease, opacity .42s ease;
   }
 
   .dsw-map-hero::after{
@@ -90,18 +94,34 @@
     width:160px;
     height:160px;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(169,122,52,.12), transparent 70%);
+    background:
+      radial-gradient(circle, rgba(169,122,52,.16), transparent 70%);
     pointer-events:none;
+    transition:transform .42s ease, opacity .42s ease;
+  }
+
+  .dsw-map-hero:hover{
+    transform:translateY(-7px) perspective(1400px) rotateX(3deg) rotateY(-2deg);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.99) 0%, rgba(232,244,236,.98) 50%, rgba(244,236,222,.96) 100%);
+    box-shadow:var(--dsw-shadow-strong), var(--dsw-inset);
+    border-color:rgba(169,122,52,.18);
+  }
+
+  .dsw-map-hero:hover::before{
+    transform:scale(1.08) translate3d(-6px, -4px, 0);
+    opacity:1;
+  }
+
+  .dsw-map-hero:hover::after{
+    transform:scale(1.08) translate3d(6px, 4px, 0);
+    opacity:1;
   }
 
   .dsw-map-hero-inner{
     position:relative;
     z-index:1;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:18px;
-    flex-wrap:wrap;
+    display:block;
   }
 
   .dsw-map-kicker{
@@ -158,30 +178,6 @@
     line-height:1.8;
     color:#506257;
     word-break:keep-all;
-  }
-
-  .dsw-map-back-btn{
-    appearance:none;
-    border:1px solid rgba(169,122,52,.18);
-    background:linear-gradient(180deg, #fffdfa 0%, #ece0c7 100%);
-    color:#31583d;
-    border-radius:14px;
-    padding:12px 16px;
-    font-size:14px;
-    font-weight:800;
-    cursor:pointer;
-    white-space:nowrap;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.72),
-      0 10px 16px rgba(78,62,32,.08);
-    transition:transform .22s ease, box-shadow .22s ease;
-  }
-
-  .dsw-map-back-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.82),
-      0 16px 22px rgba(78,62,32,.12);
   }
 
   .dsw-map-wrap{
@@ -243,7 +239,11 @@
     padding:14px 14px 13px;
     text-align:left;
     cursor:pointer;
-    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+    transition:
+      transform .22s ease,
+      box-shadow .22s ease,
+      border-color .22s ease,
+      background .22s ease;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.7),
       0 10px 18px rgba(22,40,29,.06);
@@ -256,6 +256,8 @@
       inset 0 1px 0 rgba(255,255,255,.82),
       0 16px 24px rgba(22,40,29,.10);
     border-color:rgba(169,122,52,.18);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(240,248,242,.96) 55%, rgba(247,241,230,.92) 100%);
   }
 
   .map-location-card.active{
@@ -406,8 +408,6 @@
             더수원 주간보호와 요양원을 한눈에 확인하실 수 있습니다.
           </p>
         </div>
-
-        <button type="button" class="dsw-map-back-btn" onclick="history.back();">← 이전 화면</button>
       </div>
     </section>
 
@@ -430,32 +430,28 @@
 <!-- 공통 JS -->
 <script src="layout.js"></script>
 
-<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=igssinu6xy"></script>
+<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=igssinu6xy&submodules=geocoder"></script>
 
 <script>
   const placeList = [
     {
       title: "더수원 주간보호",
-      address: "경기도 수원시 팔달구 정조로 804",
-      lat: 37.2809,
-      lng: 127.0153
+      address: "경기도 수원시 팔달구 정조로 804"
     },
     {
       title: "더수원 요양원",
-      address: "경기도 수원시 팔달구 중부대로125번길 14",
-      lat: 37.2778,
-      lng: 127.0282
+      address: "경기도 수원시 팔달구 중부대로125번길 14"
     }
   ];
 
   const map = new naver.maps.Map('full-map', {
-    center: new naver.maps.LatLng(placeList[0].lat, placeList[0].lng),
     zoom: 16,
     mapTypeControl: true
   });
 
   const placeObjects = [];
   const locationListEl = document.getElementById('mapLocationList');
+  let completedCount = 0;
 
   function setActiveCard(index) {
     const cards = document.querySelectorAll('.map-location-card');
@@ -470,47 +466,23 @@
 
     placeObjects.forEach(obj => obj.infowindow.close());
 
-    map.panTo(target.position);
+    const offsetLat = window.innerWidth <= 767 ? 0.0018 : 0.0022;
+    const adjustedCenter = new naver.maps.LatLng(
+      target.position.lat() + offsetLat,
+      target.position.lng()
+    );
+
+    map.setCenter(adjustedCenter);
+    map.setZoom(16);
 
     setTimeout(() => {
-      map.setZoom(16);
       target.infowindow.open(map, target.marker);
-    }, 220);
+    }, 140);
 
     setActiveCard(index);
   }
 
   placeList.forEach((place, index) => {
-    const position = new naver.maps.LatLng(place.lat, place.lng);
-
-    const marker = new naver.maps.Marker({
-      position: position,
-      map: map,
-      icon: {
-        content: '<div class="marker-icon"></div>',
-        anchor: new naver.maps.Point(23, 62)
-      }
-    });
-
-    const infowindow = new naver.maps.InfoWindow({
-      content: `
-        <div class="marker-label-custom">
-          <div class="marker-title">${place.title}</div>
-          <div class="marker-sub">${place.address}</div>
-        </div>
-      `,
-      borderWidth: 0,
-      backgroundColor: "transparent",
-      disableAnchor: false,
-      pixelOffset: new naver.maps.Point(0, -10)
-    });
-
-    placeObjects.push({
-      position,
-      marker,
-      infowindow
-    });
-
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'map-location-card';
@@ -519,19 +491,76 @@
       <span class="map-location-card-title">${place.title}</span>
       <div class="map-location-card-address">${place.address}</div>
     `;
-
-    card.addEventListener('click', function() {
-      focusPlace(index);
-    });
-
+    card.disabled = true;
     locationListEl.appendChild(card);
 
-    naver.maps.Event.addListener(marker, 'click', function() {
-      focusPlace(index);
-    });
-  });
+    naver.maps.Service.geocode({ query: place.address }, function(status, response) {
+      completedCount += 1;
 
-  window.addEventListener('load', function() {
-    focusPlace(0);
+      if (status !== naver.maps.Service.Status.OK) {
+        console.error("주소 검색 실패:", place.address);
+        card.querySelector('.map-location-card-address').textContent = "주소 확인 실패";
+        if (completedCount === placeList.length && placeObjects.length) {
+          focusPlace(0);
+        }
+        return;
+      }
+
+      const result = response.v2;
+      if (!result || !result.addresses || result.addresses.length === 0) {
+        console.error("검색 결과 없음:", place.address);
+        card.querySelector('.map-location-card-address').textContent = "검색 결과 없음";
+        if (completedCount === placeList.length && placeObjects.length) {
+          focusPlace(0);
+        }
+        return;
+      }
+
+      const first = result.addresses[0];
+      const lat = parseFloat(first.y);
+      const lng = parseFloat(first.x);
+      const position = new naver.maps.LatLng(lat, lng);
+
+      const marker = new naver.maps.Marker({
+        position: position,
+        map: map,
+        icon: {
+          content: '<div class="marker-icon"></div>',
+          anchor: new naver.maps.Point(23, 62)
+        }
+      });
+
+      const infowindow = new naver.maps.InfoWindow({
+        content: `
+          <div class="marker-label-custom">
+            <div class="marker-title">${place.title}</div>
+            <div class="marker-sub">${place.address}</div>
+          </div>
+        `,
+        borderWidth: 0,
+        backgroundColor: "transparent",
+        disableAnchor: false,
+        pixelOffset: new naver.maps.Point(0, -10)
+      });
+
+      placeObjects[index] = {
+        position,
+        marker,
+        infowindow
+      };
+
+      card.disabled = false;
+      card.addEventListener('click', function() {
+        focusPlace(index);
+      });
+
+      naver.maps.Event.addListener(marker, 'click', function() {
+        focusPlace(index);
+      });
+
+      if (completedCount === placeList.length && placeObjects.filter(Boolean).length) {
+        focusPlace(0);
+      }
+    });
   });
 </script>
