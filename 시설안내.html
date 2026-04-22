@@ -1,14 +1,11 @@
-<!-- =========================
-더수원 시설안내 페이지 전체 코드
-- 상단 소개
-- 더수원요양원 시설안내
-- 더수원주간보호 시설안내
-- 공통 플로팅 버튼
-- 공통 스크립트
-========================= -->
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- 공통 CSS -->
+<link rel="stylesheet" href="/common/common.css">
+
+<!-- 공통 헤더 -->
+<div id="site-header"></div>
 
 <style>
   :root{
@@ -58,7 +55,6 @@
     backdrop-filter:blur(8px);
   }
 
-  /* 상단 인사 섹션 */
   .dsw-hero{
     position:relative;
     overflow:hidden;
@@ -154,7 +150,6 @@
     word-break:keep-all;
   }
 
-  /* 기관 섹션 공통 */
   .dsw-facility-card{
     padding:22px;
   }
@@ -218,7 +213,6 @@
     align-items:stretch;
   }
 
-  /* 슬라이더 */
   .dsw-slider-wrap{
     position:relative;
     width:100%;
@@ -321,7 +315,6 @@
     background:#fff;
   }
 
-  /* 기관 정보 카드 */
   .dsw-info-card{
     padding:26px 22px;
     display:flex;
@@ -390,7 +383,6 @@
     font-weight:600;
   }
 
-  /* 등장 효과 */
   .dsw-reveal{
     opacity:0;
     transform:translateY(20px);
@@ -400,115 +392,6 @@
     opacity:1;
     transform:none;
     transition:opacity .8s ease, transform .8s ease;
-  }
-
-  /* 플로팅 버튼 */
-  .floating-buttons{
-    position:fixed;
-    right:24px;
-    bottom:24px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    z-index:1100;
-    transition:opacity .35s ease, transform .35s ease;
-  }
-
-  .floating-buttons.dimmed{
-    opacity:.55;
-    transform:translateY(4px);
-  }
-
-  .floating-btn{
-    border:none;
-    text-decoration:none;
-    background:linear-gradient(135deg, #81c784 0%, #388e3c 100%);
-    color:#fff;
-    min-width:138px;
-    padding:13px 18px;
-    border-radius:999px;
-    font-size:15px;
-    font-weight:800;
-    letter-spacing:-0.01em;
-    box-shadow:
-      0 10px 24px rgba(46,125,50,.28),
-      inset 0 1px 0 rgba(255,255,255,.25);
-    transition:
-      transform .25s ease,
-      box-shadow .25s ease,
-      background .25s ease;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-
-  .floating-btn:hover{
-    background:linear-gradient(135deg, #66bb6a 0%, #2e7d32 100%);
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:
-      0 14px 28px rgba(46,125,50,.34),
-      inset 0 1px 0 rgba(255,255,255,.25);
-  }
-
-  .floating-btn:focus-visible{
-    outline:3px solid rgba(129,199,132,.35);
-    outline-offset:2px;
-  }
-
-  .care-location-menu{
-    position:fixed;
-    right:24px;
-    bottom:84px;
-    width:248px;
-    background:rgba(255,255,255,.97);
-    border:1px solid rgba(46,125,50,.10);
-    border-radius:18px;
-    box-shadow:0 18px 38px rgba(30,54,37,.18);
-    padding:10px;
-    z-index:1101;
-    display:none;
-    backdrop-filter:blur(10px);
-  }
-
-  .care-location-menu.open{
-    display:block;
-  }
-
-  .care-location-menu-title{
-    font-size:13px;
-    font-weight:800;
-    color:#2d5a33;
-    padding:8px 10px 6px;
-  }
-
-  .care-location-link{
-    display:block;
-    text-decoration:none;
-    background:#f4faf4;
-    color:#1f4b27;
-    padding:12px 14px;
-    border-radius:12px;
-    margin:6px 0;
-    font-size:14px;
-    font-weight:700;
-    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
-  }
-
-  .care-location-link:hover{
-    background:#e8f5e9;
-    transform:translateY(-1px);
-    box-shadow:0 8px 18px rgba(46,125,50,.08);
-  }
-
-  .care-location-link small{
-    display:block;
-    margin-top:4px;
-    font-size:12px;
-    font-weight:600;
-    color:#5d7862;
   }
 
   @media (max-width: 1100px){
@@ -523,7 +406,7 @@
 
   @media (max-width: 767px){
     .dsw-page{
-      padding:18px 14px 110px;
+      padding:18px 14px 100px;
     }
 
     .dsw-hero{
@@ -581,32 +464,12 @@
       padding:14px 12px;
       font-size:14px;
     }
-
-    .floating-buttons{
-      right:16px;
-      bottom:16px;
-      gap:10px;
-    }
-
-    .floating-btn{
-      min-width:124px;
-      padding:12px 16px;
-      font-size:14px;
-    }
-
-    .care-location-menu{
-      right:16px;
-      bottom:72px;
-      width:220px;
-    }
   }
 
   @media (prefers-reduced-motion: reduce){
     .dsw-reveal,
     .dsw-slide,
-    .dsw-slider-caption,
-    .floating-buttons,
-    .floating-btn{
+    .dsw-slider-caption{
       transition:none !important;
       animation:none !important;
     }
@@ -621,7 +484,6 @@
 <div class="dsw-page">
   <div class="dsw-container">
 
-    <!-- 상단 공통 인사 -->
     <section class="dsw-section">
       <div class="dsw-card dsw-hero dsw-reveal">
         <div class="dsw-kicker">더수원 시설안내</div>
@@ -645,7 +507,6 @@
       </div>
     </section>
 
-    <!-- 더수원요양원 -->
     <section class="dsw-section">
       <div class="dsw-card dsw-facility-card dsw-reveal">
         <div class="dsw-facility-head">
@@ -698,7 +559,6 @@
       </div>
     </section>
 
-    <!-- 더수원주간보호 -->
     <section class="dsw-section">
       <div class="dsw-card dsw-facility-card dsw-reveal">
         <div class="dsw-facility-head">
@@ -754,35 +614,17 @@
   </div>
 </div>
 
-<!-- 공통 플로팅 버튼 -->
-<div class="floating-buttons">
-  <a href="tel:16668853" class="floating-btn">📞 문의하기</a>
-  <button id="careOpenLocationMenu" class="floating-btn" aria-haspopup="menu" aria-expanded="false" type="button">
-    📍 위치 보기
-  </button>
-</div>
+<!-- 공통 푸터 -->
+<div id="site-footer"></div>
 
-<div id="careLocationMenu" class="care-location-menu" role="menu" aria-labelledby="careOpenLocationMenu">
-  <div class="care-location-menu-title">위치 선택</div>
+<!-- 공통 JS -->
+<script src="/common/common.js"></script>
 
-  <a id="linkDaycare" class="care-location-link" href="#" target="_blank" rel="noopener noreferrer" role="menuitem">
-    더수원주간보호
-    <small>네이버 지도 열기</small>
-  </a>
-
-  <a id="linkNursing" class="care-location-link" href="#" target="_blank" rel="noopener noreferrer" role="menuitem">
-    더수원요양원
-    <small>네이버 지도 열기</small>
-  </a>
-</div>
-
+<!-- 페이지 전용 JS -->
 <script>
 (function(){
-  const MAP_URL_NURSING = "https://map.naver.com/p/entry/place/1286446205?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202509231447&locale=ko&svcName=map_pcv5";
-  const MAP_URL_DAYCARE = "https://map.naver.com/p/entry/place/2041796109?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202509231448&locale=ko&svcName=map_pcv5";
-
-  /* 1) 등장 효과 */
   const revealItems = document.querySelectorAll('.dsw-reveal');
+
   if ('IntersectionObserver' in window && revealItems.length) {
     const revealIO = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry, index) => {
@@ -800,13 +642,13 @@
     revealItems.forEach(el => el.classList.add('in-view'));
   }
 
-  /* 2) 슬라이더 공통 */
   function initSlider(sliderEl){
     if (!sliderEl) return;
 
     const slides = sliderEl.querySelectorAll('.dsw-slide');
     const caption = sliderEl.querySelector('.dsw-slider-caption');
     const dotsWrap = sliderEl.querySelector('.dsw-slider-dots');
+
     if (!slides.length || !caption || !dotsWrap) return;
 
     let currentIndex = 0;
@@ -845,6 +687,7 @@
 
     function start(){
       if (slides.length < 2) return;
+      if (timer) clearInterval(timer);
       timer = setInterval(() => {
         const next = (currentIndex + 1) % slides.length;
         showSlide(next);
@@ -864,64 +707,5 @@
   }
 
   document.querySelectorAll('.dsw-slider-wrap').forEach(initSlider);
-
-  /* 3) 플로팅 버튼 스크롤 디밍 */
-  const floatingGroup = document.querySelector('.floating-buttons');
-  let scrollTimer = null;
-
-  if (floatingGroup) {
-    window.addEventListener('scroll', function(){
-      floatingGroup.classList.add('dimmed');
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        floatingGroup.classList.remove('dimmed');
-      }, 300);
-    }, { passive:true });
-  }
-
-  /* 4) 위치 메뉴 */
-  const openLocationBtn = document.getElementById('careOpenLocationMenu');
-  const locationMenu = document.getElementById('careLocationMenu');
-  const daycareLink = document.getElementById('linkDaycare');
-  const nursingLink = document.getElementById('linkNursing');
-
-  if (daycareLink) daycareLink.href = MAP_URL_DAYCARE;
-  if (nursingLink) nursingLink.href = MAP_URL_NURSING;
-
-  function openMenu(){
-    if (!locationMenu || !openLocationBtn) return;
-    locationMenu.classList.add('open');
-    openLocationBtn.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeMenu(){
-    if (!locationMenu || !openLocationBtn) return;
-    locationMenu.classList.remove('open');
-    openLocationBtn.setAttribute('aria-expanded', 'false');
-  }
-
-  function toggleMenu(e){
-    e.preventDefault();
-    if (!locationMenu) return;
-    locationMenu.classList.contains('open') ? closeMenu() : openMenu();
-  }
-
-  if (openLocationBtn && locationMenu) {
-    openLocationBtn.addEventListener('click', toggleMenu);
-
-    document.addEventListener('click', function(e){
-      if (!locationMenu.classList.contains('open')) return;
-      if (!openLocationBtn.contains(e.target) && !locationMenu.contains(e.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && locationMenu.classList.contains('open')) {
-        closeMenu();
-        openLocationBtn.focus();
-      }
-    });
-  }
 })();
 </script>
