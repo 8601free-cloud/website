@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- 공통 CSS -->
 <link rel="stylesheet" href="layout.css">
 
+<!-- 공통 헤더 -->
 <div id="site-header"></div>
 
 <style>
@@ -10,59 +13,187 @@
     padding: 0;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
+  :root{
+    --dsw-green:#2f6b46;
+    --dsw-green-deep:#1f4f34;
+    --dsw-green-dark:#173d29;
+    --dsw-green-light:#88b89a;
+    --dsw-green-soft:#edf5ef;
+    --dsw-gold:#a97a34;
+    --dsw-text:#223129;
+    --dsw-sub:#55685d;
+    --dsw-line:rgba(47,107,70,.16);
+    --dsw-white:#ffffff;
+    --dsw-shadow:
+      0 14px 34px rgba(22,40,29,.12),
+      0 4px 10px rgba(22,40,29,.06);
+    --dsw-shadow-strong:
+      0 22px 44px rgba(22,40,29,.18),
+      0 8px 18px rgba(22,40,29,.10);
+    --dsw-inset:
+      inset 0 1px 0 rgba(255,255,255,.65),
+      inset 0 -1px 0 rgba(20,40,25,.05);
+    --dsw-radius-xl:30px;
+    --dsw-radius-lg:24px;
+    --dsw-radius-md:18px;
+  }
+
   .dsw-map-page{
     font-family:'Pretendard','Noto Sans KR',sans-serif;
-    background:linear-gradient(180deg, #f4efe5 0%, #edf4ee 100%);
+    color:var(--dsw-text);
+    background:
+      radial-gradient(circle at 8% 8%, rgba(136,184,154,.18), transparent 24%),
+      radial-gradient(circle at 92% 14%, rgba(169,122,52,.10), transparent 22%),
+      linear-gradient(180deg, #f4efe5 0%, #f7f8f3 34%, #edf4ee 100%);
     padding:30px 20px 110px;
   }
 
   .dsw-map-container{
+    width:100%;
     max-width:1280px;
     margin:0 auto;
   }
 
-  /* 🔥 타이틀 카드 */
   .dsw-map-hero{
     position:relative;
+    overflow:hidden;
     margin-bottom:22px;
     padding:34px 30px;
     border-radius:30px;
-    background:linear-gradient(135deg, #ffffff 0%, #eef5f0 100%);
-    box-shadow:0 18px 40px rgba(0,0,0,.12);
-    overflow:hidden;
-    transition:all .4s ease;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(245,248,243,.95) 52%, rgba(236,244,237,.96) 100%);
+    border:1px solid rgba(255,255,255,.78);
+    box-shadow:var(--dsw-shadow), var(--dsw-inset);
   }
 
-  /* ✨ 3D 호버 효과 */
-  .dsw-map-hero:hover{
-    transform:translateY(-6px) scale(1.01);
-    background:
-      linear-gradient(135deg, #ffffff 0%, #e3f1e8 60%, #f4efe5 100%);
-    box-shadow:0 28px 60px rgba(0,0,0,.18);
+  .dsw-map-hero::before{
+    content:"";
+    position:absolute;
+    right:-40px;
+    bottom:-46px;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(82,140,103,.18), transparent 68%);
+    pointer-events:none;
+  }
+
+  .dsw-map-hero::after{
+    content:"";
+    position:absolute;
+    left:-24px;
+    top:-22px;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(169,122,52,.12), transparent 70%);
+    pointer-events:none;
+  }
+
+  .dsw-map-hero-inner{
+    position:relative;
+    z-index:1;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+
+  .dsw-map-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:max-content;
+    padding:10px 18px 10px 16px;
+    margin-bottom:18px;
+    color:#234d34;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    background:linear-gradient(180deg, #fbf7ef 0%, #ebe0ca 100%);
+    border:1px solid rgba(117,90,37,.20);
+    border-radius:14px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.65),
+      0 10px 20px rgba(70,55,28,.10);
+  }
+
+  .dsw-map-kicker::before{
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:linear-gradient(180deg, #4f8a62 0%, #2f6b46 100%);
+    box-shadow:0 0 0 4px rgba(79,138,98,.12);
+    flex:0 0 auto;
   }
 
   .dsw-map-title{
+    margin:0 0 12px;
     font-size:42px;
+    line-height:1.15;
     font-weight:900;
+    letter-spacing:-0.04em;
+    color:#213126;
   }
 
   .dsw-map-title-brand{
-    background:linear-gradient(180deg,#3f7a55,#173d29);
+    background:linear-gradient(180deg, #3f7a55 0%, #24563a 58%, #173d29 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    background-clip:text;
+    color:transparent;
   }
 
   .dsw-map-desc{
+    margin:0;
+    max-width:760px;
     font-size:18px;
+    line-height:1.8;
     color:#506257;
+    word-break:keep-all;
+  }
+
+  .dsw-map-back-btn{
+    appearance:none;
+    border:1px solid rgba(169,122,52,.18);
+    background:linear-gradient(180deg, #fffdfa 0%, #ece0c7 100%);
+    color:#31583d;
+    border-radius:14px;
+    padding:12px 16px;
+    font-size:14px;
+    font-weight:800;
+    cursor:pointer;
+    white-space:nowrap;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.72),
+      0 10px 16px rgba(78,62,32,.08);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+
+  .dsw-map-back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.82),
+      0 16px 22px rgba(78,62,32,.12);
   }
 
   .dsw-map-wrap{
     position:relative;
-    height:70vh;
+    width:100%;
+    height:min(78vh, 820px);
+    min-height:520px;
     border-radius:30px;
     overflow:hidden;
-    box-shadow:0 20px 40px rgba(0,0,0,.12);
+    background:#dfe9df;
+    border:1px solid rgba(255,255,255,.78);
+    box-shadow:var(--dsw-shadow), var(--dsw-inset);
   }
 
   #full-map{
@@ -70,145 +201,337 @@
     height:100%;
   }
 
-  /* 카드 */
   .map-location-panel{
     position:absolute;
-    left:20px;
-    bottom:20px;
-    width:320px;
+    left:24px;
+    bottom:24px;
+    z-index:20;
+    width:min(360px, calc(100% - 48px));
     padding:16px;
-    border-radius:20px;
-    background:rgba(255,255,255,.95);
+    border-radius:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(249,250,246,.93));
+    border:1px solid rgba(255,255,255,.78);
+    box-shadow:var(--dsw-shadow), var(--dsw-inset);
     backdrop-filter:blur(10px);
-    box-shadow:0 18px 40px rgba(0,0,0,.18);
+  }
+
+  .map-location-panel-title{
+    font-size:16px;
+    font-weight:900;
+    color:#203128;
+    margin-bottom:6px;
+  }
+
+  .map-location-panel-sub{
+    font-size:13px;
+    color:#66706a;
+    margin-bottom:14px;
+    line-height:1.45;
+  }
+
+  .map-location-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
   }
 
   .map-location-card{
-    padding:14px;
-    border-radius:14px;
-    background:#fff;
-    margin-bottom:10px;
+    appearance:none;
+    border:1px solid rgba(47,107,70,.14);
+    background:#ffffff;
+    border-radius:18px;
+    padding:14px 14px 13px;
+    text-align:left;
     cursor:pointer;
-    transition:.2s;
-    border:1px solid #ddd;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.7),
+      0 10px 18px rgba(22,40,29,.06);
+    width:100%;
   }
 
   .map-location-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 20px rgba(0,0,0,.1);
+    transform:translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.82),
+      0 16px 24px rgba(22,40,29,.10);
+    border-color:rgba(169,122,52,.18);
   }
 
   .map-location-card.active{
-    border:2px solid #2f6b4b;
+    border-color:#2f6b4b;
+    background:linear-gradient(180deg, #f7fbf8 0%, #eef7f1 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.82),
+      0 16px 24px rgba(47,107,75,.14);
+  }
+
+  .map-location-card-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:24px;
+    height:24px;
+    border-radius:999px;
+    background:linear-gradient(180deg, #4b8b63 0%, #2f6b4b 100%);
+    color:#fff;
+    font-size:12px;
+    font-weight:800;
+    margin-right:8px;
+    vertical-align:middle;
+    box-shadow:0 6px 14px rgba(47,107,75,.24);
+  }
+
+  .map-location-card-title{
+    display:inline-block;
+    vertical-align:middle;
+    font-size:16px;
+    font-weight:800;
+    color:#1f4d35;
+  }
+
+  .map-location-card-address{
+    margin-top:8px;
+    padding-left:32px;
+    font-size:13px;
+    color:#66706a;
+    line-height:1.5;
+    font-weight:500;
   }
 
   .marker-label-custom{
-    background:#fff;
-    padding:12px;
-    border-radius:14px;
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    font-family:'Pretendard','Noto Sans KR',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    padding:13px 16px;
+    background:#ffffff;
+    border:1px solid rgba(36,86,58,.18);
+    border-radius:16px;
+    color:#1f4d35;
+    box-shadow:0 14px 30px rgba(17,24,39,.16);
+    text-align:center;
+    white-space:nowrap;
+    max-width:280px;
+    line-height:1.45;
   }
 
+  .marker-title{
+    font-size:17px;
+    margin-bottom:4px;
+    color:#1f4d35;
+    font-weight:800;
+  }
+
+  .marker-sub{
+    font-size:13px;
+    color:#5f6660;
+    font-weight:500;
+  }
+
+  .marker-icon{
+    width:46px;
+    height:62px;
+    background:url('https://cdn.imweb.me/upload/S20250616705368ebc899d/3e0af01e5664f.png') no-repeat center;
+    background-size:contain;
+    filter:drop-shadow(0 10px 14px rgba(0,0,0,.2));
+  }
+
+  @media (max-width: 767px){
+    .dsw-map-page{
+      padding:18px 14px 100px;
+    }
+
+    .dsw-map-hero{
+      padding:26px 18px;
+      border-radius:24px;
+    }
+
+    .dsw-map-title{
+      font-size:30px;
+    }
+
+    .dsw-map-desc{
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .dsw-map-wrap{
+      height:68vh;
+      min-height:460px;
+      border-radius:22px;
+    }
+
+    .map-location-panel{
+      left:12px;
+      right:12px;
+      bottom:12px;
+      width:auto;
+      padding:14px;
+      border-radius:18px;
+    }
+
+    .map-location-card{
+      padding:12px 12px 11px;
+      border-radius:14px;
+    }
+
+    .map-location-card-title{
+      font-size:15px;
+    }
+
+    .map-location-card-address{
+      font-size:12px;
+      padding-left:32px;
+    }
+
+    .marker-label-custom{
+      max-width:220px;
+      white-space:normal;
+    }
+  }
 </style>
 
 <div class="dsw-map-page">
   <div class="dsw-map-container">
 
-    <div class="dsw-map-hero">
-      <h1 class="dsw-map-title">
-        <span class="dsw-map-title-brand">더수원</span> 오시는 길
-      </h1>
-      <p class="dsw-map-desc">시설을 선택하면 해당 위치로 이동합니다</p>
-    </div>
+    <section class="dsw-map-hero">
+      <div class="dsw-map-hero-inner">
+        <div>
+          <div class="dsw-map-kicker">THE SUWON CARE CENTER</div>
+          <h1 class="dsw-map-title">
+            <span class="dsw-map-title-brand">더수원</span> 오시는 길
+          </h1>
+          <p class="dsw-map-desc">
+            방문하실 시설을 선택하시면 해당 위치로 지도가 이동합니다.
+            더수원 주간보호와 요양원을 한눈에 확인하실 수 있습니다.
+          </p>
+        </div>
 
-    <div class="dsw-map-wrap">
+        <button type="button" class="dsw-map-back-btn" onclick="history.back();">← 이전 화면</button>
+      </div>
+    </section>
+
+    <section class="dsw-map-wrap">
       <div id="full-map"></div>
 
-      <div class="map-location-panel" id="mapLocationList"></div>
-    </div>
+      <div class="map-location-panel">
+        <div class="map-location-panel-title">시설 선택</div>
+        <div class="map-location-panel-sub">원하시는 지점을 선택해 주세요.</div>
+        <div class="map-location-list" id="mapLocationList"></div>
+      </div>
+    </section>
 
   </div>
 </div>
 
+<!-- 공통 푸터 -->
 <div id="site-footer"></div>
+
+<!-- 공통 JS -->
 <script src="layout.js"></script>
 
 <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=igssinu6xy"></script>
 
 <script>
-const placeList = [
-  {
-    title: "더수원 주간보호",
-    address: "정조로 804",
-    lat: 37.2809,
-    lng: 127.0153
-  },
-  {
-    title: "더수원 요양원",
-    address: "중부대로125번길 14",
-    lat: 37.2778,
-    lng: 127.0282
+  const placeList = [
+    {
+      title: "더수원 주간보호",
+      address: "경기도 수원시 팔달구 정조로 804",
+      lat: 37.2809,
+      lng: 127.0153
+    },
+    {
+      title: "더수원 요양원",
+      address: "경기도 수원시 팔달구 중부대로125번길 14",
+      lat: 37.2778,
+      lng: 127.0282
+    }
+  ];
+
+  const map = new naver.maps.Map('full-map', {
+    center: new naver.maps.LatLng(placeList[0].lat, placeList[0].lng),
+    zoom: 16,
+    mapTypeControl: true
+  });
+
+  const placeObjects = [];
+  const locationListEl = document.getElementById('mapLocationList');
+
+  function setActiveCard(index) {
+    const cards = document.querySelectorAll('.map-location-card');
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
   }
-];
 
-const map = new naver.maps.Map('full-map', {
-  center: new naver.maps.LatLng(placeList[0].lat, placeList[0].lng),
-  zoom: 16
-});
+  function focusPlace(index) {
+    const target = placeObjects[index];
+    if (!target) return;
 
-const placeObjects = [];
-const panel = document.getElementById('mapLocationList');
+    placeObjects.forEach(obj => obj.infowindow.close());
 
-function focusPlace(index){
-  const p = placeObjects[index];
+    map.panTo(target.position);
 
-  placeObjects.forEach(o=>o.info.close());
+    setTimeout(() => {
+      map.setZoom(16);
+      target.infowindow.open(map, target.marker);
+    }, 220);
 
-  // 🔥 카드 가림 보정 (위쪽으로 이동)
-  const offset = 0.0025;
-  const newPos = new naver.maps.LatLng(
-    p.position.lat() + offset,
-    p.position.lng()
-  );
+    setActiveCard(index);
+  }
 
-  map.panTo(newPos);
+  placeList.forEach((place, index) => {
+    const position = new naver.maps.LatLng(place.lat, place.lng);
 
-  setTimeout(()=>{
-    map.setZoom(17);
-    p.info.open(map, p.marker);
-  },200);
+    const marker = new naver.maps.Marker({
+      position: position,
+      map: map,
+      icon: {
+        content: '<div class="marker-icon"></div>',
+        anchor: new naver.maps.Point(23, 62)
+      }
+    });
 
-  document.querySelectorAll('.map-location-card').forEach((c,i)=>{
-    c.classList.toggle('active', i===index);
+    const infowindow = new naver.maps.InfoWindow({
+      content: `
+        <div class="marker-label-custom">
+          <div class="marker-title">${place.title}</div>
+          <div class="marker-sub">${place.address}</div>
+        </div>
+      `,
+      borderWidth: 0,
+      backgroundColor: "transparent",
+      disableAnchor: false,
+      pixelOffset: new naver.maps.Point(0, -10)
+    });
+
+    placeObjects.push({
+      position,
+      marker,
+      infowindow
+    });
+
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'map-location-card';
+    card.innerHTML = `
+      <span class="map-location-card-num">${index + 1}</span>
+      <span class="map-location-card-title">${place.title}</span>
+      <div class="map-location-card-address">${place.address}</div>
+    `;
+
+    card.addEventListener('click', function() {
+      focusPlace(index);
+    });
+
+    locationListEl.appendChild(card);
+
+    naver.maps.Event.addListener(marker, 'click', function() {
+      focusPlace(index);
+    });
   });
-}
 
-placeList.forEach((place, index)=>{
-  const pos = new naver.maps.LatLng(place.lat, place.lng);
-
-  const marker = new naver.maps.Marker({
-    position: pos,
-    map: map
+  window.addEventListener('load', function() {
+    focusPlace(0);
   });
-
-  const info = new naver.maps.InfoWindow({
-    content: `
-      <div class="marker-label-custom">
-        <strong>${place.title}</strong><br>${place.address}
-      </div>`
-  });
-
-  placeObjects.push({position:pos, marker, info});
-
-  const card = document.createElement('div');
-  card.className='map-location-card';
-  card.innerHTML = `<strong>${index+1}. ${place.title}</strong><br>${place.address}`;
-  card.onclick=()=>focusPlace(index);
-
-  panel.appendChild(card);
-
-  naver.maps.Event.addListener(marker,'click',()=>focusPlace(index));
-});
-
-window.onload=()=>focusPlace(0);
 </script>
