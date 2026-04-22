@@ -1,0 +1,840 @@
+<!-- =========================
+더수원 시설안내 페이지 전체 코드
+: 이 코드로 기존 시설안내 페이지 내용을 통째로 교체
+========================= -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --dsw-green:#2e7d32;
+    --dsw-green-light:#81c784;
+    --dsw-green-soft:#f4fbf4;
+    --dsw-green-soft-2:#edf7ee;
+    --dsw-gold:#a86b2d;
+    --dsw-text:#243238;
+    --dsw-sub:#5f6f65;
+    --dsw-line:rgba(46,125,50,.12);
+    --dsw-white:#ffffff;
+    --dsw-shadow:0 14px 40px rgba(34, 60, 42, 0.10);
+    --dsw-shadow-strong:0 18px 48px rgba(34, 60, 42, 0.16);
+    --dsw-radius-xl:28px;
+    --dsw-radius-lg:22px;
+    --dsw-radius-md:16px;
+  }
+
+  *{box-sizing:border-box;}
+
+  .dsw-facility-page{
+    font-family:'Pretendard','Noto Sans KR',sans-serif;
+    color:var(--dsw-text);
+    background:
+      radial-gradient(circle at top left, rgba(129,199,132,.12), transparent 32%),
+      linear-gradient(180deg, #fcfffc 0%, #f7fbf7 100%);
+    padding: 28px 20px 90px;
+  }
+
+  .dsw-container{
+    width:100%;
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  .dsw-section{
+    margin-bottom:28px;
+  }
+
+  .dsw-card{
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:var(--dsw-radius-xl);
+    box-shadow:var(--dsw-shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  /* 상단 소개 */
+  .dsw-hero{
+    position:relative;
+    overflow:hidden;
+    padding:52px 42px;
+  }
+
+  .dsw-hero::before{
+    content:"";
+    position:absolute;
+    inset:auto -60px -60px auto;
+    width:220px;
+    height:220px;
+    background:radial-gradient(circle, rgba(129,199,132,.22), transparent 70%);
+    pointer-events:none;
+  }
+
+  .dsw-hero::after{
+    content:"";
+    position:absolute;
+    left:-40px;
+    top:-40px;
+    width:180px;
+    height:180px;
+    background:radial-gradient(circle, rgba(168,107,45,.10), transparent 70%);
+    pointer-events:none;
+  }
+
+  .dsw-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--dsw-green-soft);
+    color:var(--dsw-green);
+    border:1px solid rgba(46,125,50,.14);
+    border-radius:999px;
+    padding:10px 16px;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:18px;
+  }
+
+  .dsw-title{
+    margin:0 0 18px;
+    font-size:46px;
+    line-height:1.18;
+    font-weight:800;
+    letter-spacing:-0.03em;
+    color:#1f2d24;
+  }
+
+  .dsw-desc{
+    margin:0;
+    font-size:21px;
+    line-height:1.8;
+    color:var(--dsw-sub);
+    word-break:keep-all;
+  }
+
+  .dsw-highlight{
+    color:var(--dsw-green);
+    font-weight:800;
+    position:relative;
+    display:inline-block;
+  }
+
+  .dsw-highlight.gold{
+    color:var(--dsw-gold);
+  }
+
+  .dsw-highlight::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:3px;
+    width:100%;
+    height:10px;
+    background:rgba(129,199,132,.20);
+    border-radius:999px;
+    z-index:-1;
+  }
+
+  /* 가운데 안내 문장 */
+  .dsw-mid-copy{
+    text-align:center;
+    padding:30px 24px;
+  }
+
+  .dsw-mid-copy p{
+    margin:0;
+    font-size:22px;
+    line-height:1.8;
+    color:#355042;
+    font-weight:600;
+    word-break:keep-all;
+  }
+
+  /* 메인 2단 구성 */
+  .dsw-grid{
+    display:grid;
+    grid-template-columns: minmax(0, 1.28fr) minmax(320px, .72fr);
+    gap:24px;
+    align-items:stretch;
+  }
+
+  /* 슬라이더 카드 */
+  .dsw-slider-card{
+    padding:18px;
+  }
+
+  .dsw-slider-shell{
+    position:relative;
+    width:100%;
+    min-height:620px;
+    border-radius:24px;
+    overflow:hidden;
+    background:#dde9dc;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+  }
+
+  .dsw-slide{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transform:scale(1.02);
+    transition:opacity .9s ease, transform 2.8s ease;
+  }
+
+  .dsw-slide.active{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  .dsw-slide-overlay{
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg, rgba(15,25,18,.10) 0%, rgba(15,25,18,.00) 35%, rgba(15,25,18,.18) 100%);
+    pointer-events:none;
+    z-index:1;
+  }
+
+  .dsw-slide-badge{
+    position:absolute;
+    top:18px;
+    left:18px;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,.88);
+    backdrop-filter: blur(8px);
+    color:#23412e;
+    font-size:14px;
+    font-weight:700;
+    box-shadow:0 8px 24px rgba(0,0,0,.10);
+  }
+
+  .dsw-slide-caption{
+    position:absolute;
+    left:20px;
+    bottom:20px;
+    z-index:2;
+    display:inline-block;
+    max-width:calc(100% - 40px);
+    background:rgba(25,43,31,.74);
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    line-height:1.4;
+    padding:10px 14px;
+    border-radius:12px;
+    backdrop-filter:blur(5px);
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+
+  .dsw-slide-caption.active{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .dsw-slide-dots{
+    position:absolute;
+    right:18px;
+    bottom:18px;
+    z-index:2;
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+
+  .dsw-slide-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    transition:all .25s ease;
+  }
+
+  .dsw-slide-dot.active{
+    width:24px;
+    border-radius:999px;
+    background:#fff;
+  }
+
+  /* 기관개요 카드 */
+  .dsw-info-card{
+    padding:28px 24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+
+  .dsw-info-top{
+    margin-bottom:22px;
+  }
+
+  .dsw-info-label{
+    display:inline-block;
+    font-size:13px;
+    font-weight:800;
+    color:var(--dsw-green);
+    letter-spacing:.08em;
+    margin-bottom:10px;
+  }
+
+  .dsw-info-title{
+    margin:0 0 10px;
+    font-size:32px;
+    line-height:1.25;
+    font-weight:800;
+    color:#203128;
+    letter-spacing:-0.03em;
+  }
+
+  .dsw-info-sub{
+    margin:0;
+    font-size:15px;
+    line-height:1.7;
+    color:#607066;
+  }
+
+  .dsw-info-table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:18px;
+    background:#fbfdfb;
+    border:1px solid var(--dsw-line);
+  }
+
+  .dsw-info-table tr + tr td{
+    border-top:1px solid var(--dsw-line);
+  }
+
+  .dsw-info-table td{
+    padding:16px 16px;
+    vertical-align:middle;
+    font-size:15px;
+    line-height:1.6;
+    word-break:keep-all;
+  }
+
+  .dsw-info-table td:first-child{
+    width:34%;
+    background:linear-gradient(180deg, #f3faf3 0%, #eef7ef 100%);
+    color:#2a5b33;
+    font-weight:800;
+  }
+
+  .dsw-info-table td:last-child{
+    color:#33433a;
+    font-weight:600;
+  }
+
+  .dsw-info-note{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:16px;
+    background:linear-gradient(180deg, rgba(129,199,132,.10), rgba(129,199,132,.05));
+    color:#446252;
+    font-size:14px;
+    line-height:1.7;
+    font-weight:600;
+  }
+
+  /* reveal */
+  .dsw-reveal{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  .dsw-reveal.in-view{
+    opacity:1;
+    transform:none;
+    transition:opacity .8s ease, transform .8s ease;
+  }
+
+  /* ===== 공통 플로팅 버튼 ===== */
+  .floating-buttons{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:1100;
+    transition:opacity .35s ease, transform .35s ease;
+  }
+
+  .floating-buttons.dimmed{
+    opacity:.55;
+    transform:translateY(4px);
+  }
+
+  .floating-btn{
+    border:none;
+    text-decoration:none;
+    background:linear-gradient(135deg, #81c784 0%, #388e3c 100%);
+    color:#fff;
+    min-width:138px;
+    padding:13px 18px;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    box-shadow:
+      0 10px 24px rgba(46,125,50,.28),
+      inset 0 1px 0 rgba(255,255,255,.25);
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease,
+      background .25s ease,
+      opacity .25s ease;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+
+  .floating-btn:hover{
+    background:linear-gradient(135deg, #66bb6a 0%, #2e7d32 100%);
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:
+      0 14px 28px rgba(46,125,50,.34),
+      inset 0 1px 0 rgba(255,255,255,.25);
+  }
+
+  .floating-btn:focus-visible{
+    outline:3px solid rgba(129,199,132,.35);
+    outline-offset:2px;
+  }
+
+  .care-location-menu{
+    position:fixed;
+    right:24px;
+    bottom:84px;
+    width:248px;
+    background:rgba(255,255,255,.97);
+    border:1px solid rgba(46,125,50,.10);
+    border-radius:18px;
+    box-shadow:0 18px 38px rgba(30,54,37,.18);
+    padding:10px;
+    z-index:1101;
+    display:none;
+    backdrop-filter:blur(10px);
+  }
+
+  .care-location-menu.open{
+    display:block;
+  }
+
+  .care-location-menu-title{
+    font-size:13px;
+    font-weight:800;
+    color:#2d5a33;
+    padding:8px 10px 6px;
+  }
+
+  .care-location-link{
+    display:block;
+    text-decoration:none;
+    background:#f4faf4;
+    color:#1f4b27;
+    padding:12px 14px;
+    border-radius:12px;
+    margin:6px 0;
+    font-size:14px;
+    font-weight:700;
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+
+  .care-location-link:hover{
+    background:#e8f5e9;
+    transform:translateY(-1px);
+    box-shadow:0 8px 18px rgba(46,125,50,.08);
+  }
+
+  .care-location-link small{
+    display:block;
+    margin-top:4px;
+    font-size:12px;
+    font-weight:600;
+    color:#5d7862;
+  }
+
+  @media (max-width: 1100px){
+    .dsw-grid{
+      grid-template-columns:1fr;
+    }
+
+    .dsw-slider-shell{
+      min-height:560px;
+    }
+  }
+
+  @media (max-width: 767px){
+    .dsw-facility-page{
+      padding:18px 14px 110px;
+    }
+
+    .dsw-hero{
+      padding:32px 22px;
+      border-radius:24px;
+    }
+
+    .dsw-title{
+      font-size:31px;
+      line-height:1.28;
+    }
+
+    .dsw-desc{
+      font-size:17px;
+      line-height:1.8;
+    }
+
+    .dsw-mid-copy{
+      padding:22px 18px;
+    }
+
+    .dsw-mid-copy p{
+      font-size:17px;
+      line-height:1.8;
+    }
+
+    .dsw-slider-card{
+      padding:12px;
+    }
+
+    .dsw-slider-shell{
+      min-height:380px;
+      border-radius:18px;
+    }
+
+    .dsw-info-card{
+      padding:22px 18px;
+    }
+
+    .dsw-info-title{
+      font-size:26px;
+    }
+
+    .dsw-info-table td{
+      padding:14px 12px;
+      font-size:14px;
+    }
+
+    .floating-buttons{
+      right:16px;
+      bottom:16px;
+      gap:10px;
+    }
+
+    .floating-btn{
+      min-width:124px;
+      padding:12px 16px;
+      font-size:14px;
+    }
+
+    .care-location-menu{
+      right:16px;
+      bottom:72px;
+      width:220px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .dsw-reveal,
+    .dsw-slide,
+    .dsw-slide-caption,
+    .floating-buttons,
+    .floating-btn{
+      transition:none !important;
+      animation:none !important;
+    }
+
+    .dsw-reveal{
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
+</style>
+
+<div class="dsw-facility-page">
+  <div class="dsw-container">
+
+    <!-- 상단 소개 -->
+    <section class="dsw-section">
+      <div class="dsw-card dsw-hero dsw-reveal">
+        <div class="dsw-kicker">더수원 시설안내</div>
+        <h1 class="dsw-title">
+          더수원을 찾아주셔서 감사합니다.
+        </h1>
+        <p class="dsw-desc">
+          <span class="dsw-highlight gold">성빈센트병원</span>과
+          <span class="dsw-highlight gold">동수원병원</span> 인근에 위치한
+          <span class="dsw-highlight">더수원</span>은<br>
+          든든한 간호조무사와 요양보호사, 물리치료사 등 전문 인력이 함께하며<br>
+          어르신들의 건강과 일상이 편안하게 이어질 수 있도록 정성껏 돌보고 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 중간 문장 -->
+    <section class="dsw-section">
+      <div class="dsw-card dsw-mid-copy dsw-reveal">
+        <p>
+          주간보호센터와 요양원을 함께 운영함으로써,<br>
+          낮부터 밤까지 끊김 없는 돌봄이 가능하도록 하였습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 시설 이미지 + 기관개요 -->
+    <section class="dsw-section">
+      <div class="dsw-grid">
+
+        <div class="dsw-card dsw-slider-card dsw-reveal">
+          <div class="dsw-slider-shell" id="facilitySlider">
+            <img src="https://cdn.imweb.me/upload/S20250616705368ebc899d/70eed623e998e.png" class="dsw-slide active" alt="테라스" data-caption="테라스">
+            <img src="https://cdn.imweb.me/upload/S20250616705368ebc899d/e1034fba2fc6e.png" class="dsw-slide" alt="활력 공간" data-caption="활력 공간">
+            <img src="https://cdn.imweb.me/upload/S20250616705368ebc899d/30a5723990d4f.png" class="dsw-slide" alt="소통 프로그램실" data-caption="소통 프로그램실">
+            <img src="https://cdn.imweb.me/upload/S20250616705368ebc899d/aa8e47470f957.png" class="dsw-slide" alt="소통 프로그램실 전경" data-caption="소통 프로그램실">
+            <img src="https://cdn.imweb.me/upload/S20250616705368ebc899d/6c7ed5962f90a.png" class="dsw-slide" alt="편안 쉼터" data-caption="편안 쉼터">
+
+            <div class="dsw-slide-overlay"></div>
+            <div class="dsw-slide-badge">더수원 공간 둘러보기</div>
+            <div class="dsw-slide-caption active" id="facilitySliderCaption" aria-live="polite">테라스</div>
+            <div class="dsw-slide-dots" id="facilitySliderDots" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="dsw-card dsw-info-card dsw-reveal">
+          <div class="dsw-info-top">
+            <div class="dsw-info-label">INFORMATION</div>
+            <h2 class="dsw-info-title">기관 개요</h2>
+            <p class="dsw-info-sub">
+              어르신 한 분 한 분의 편안한 일상과 안전한 돌봄을 위해
+              체계적인 공간과 전문 인력을 갖추고 운영하고 있습니다.
+            </p>
+          </div>
+
+          <table class="dsw-info-table">
+            <tr>
+              <td>기관명</td>
+              <td>더수원주간보호</td>
+            </tr>
+            <tr>
+              <td>설립일</td>
+              <td>2025.09.01</td>
+            </tr>
+            <tr>
+              <td>위치</td>
+              <td>정조로 804, 동양빌딩 5층</td>
+            </tr>
+            <tr>
+              <td>주요 서비스</td>
+              <td>주간보호시설</td>
+            </tr>
+            <tr>
+              <td>정원</td>
+              <td>31명</td>
+            </tr>
+          </table>
+
+          <div class="dsw-info-note">
+            필요 시 상담을 통해 기관 이용 절차, 프로그램, 송영 가능 여부 등을 안내해드립니다.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- 공통 플로팅 버튼 -->
+<div class="floating-buttons">
+  <a href="tel:16668853" class="floating-btn">📞 문의하기</a>
+  <button id="careOpenLocationMenu" class="floating-btn" aria-haspopup="menu" aria-expanded="false" type="button">
+    📍 위치 보기
+  </button>
+</div>
+
+<div id="careLocationMenu" class="care-location-menu" role="menu" aria-labelledby="careOpenLocationMenu">
+  <div class="care-location-menu-title">위치 선택</div>
+
+  <a id="linkDaycare" class="care-location-link" href="#" target="_blank" rel="noopener noreferrer" role="menuitem">
+    더수원주간보호
+    <small>네이버 지도 열기</small>
+  </a>
+
+  <a id="linkNursing" class="care-location-link" href="#" target="_blank" rel="noopener noreferrer" role="menuitem">
+    더수원요양원
+    <small>네이버 지도 열기</small>
+  </a>
+</div>
+
+<script>
+/* =========================
+   더수원 공통 스크립트 시작
+   - reveal
+   - slider
+   - floating buttons dim
+   - location menu
+========================= */
+(function(){
+  const MAP_URL_DAYCARE = "https://map.naver.com/p/entry/place/2041796109?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202509231127&locale=ko&svcName=map_pcv5";
+  const MAP_URL_NURSING = "https://map.naver.com/p/search/%EB%8D%94%EC%88%98%EC%9B%90%EC%9A%94%EC%96%91%EC%9B%90/place/1286446205?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202509231128&locale=ko&svcName=map_pcv5&searchText=%EB%8D%94%EC%88%98%EC%9B%90%EC%9A%94%EC%96%91%EC%9B%90";
+
+  /* 1) 순차 등장 */
+  const revealItems = document.querySelectorAll('.dsw-reveal');
+  if ('IntersectionObserver' in window && revealItems.length) {
+    const revealIO = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        setTimeout(() => {
+          el.classList.add('in-view');
+        }, Math.min(index * 90, 320));
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(el => revealIO.observe(el));
+  } else {
+    revealItems.forEach(el => el.classList.add('in-view'));
+  }
+
+  /* 2) 시설 슬라이더 */
+  const slider = document.getElementById('facilitySlider');
+  const slides = slider ? slider.querySelectorAll('.dsw-slide') : [];
+  const caption = document.getElementById('facilitySliderCaption');
+  const dotsWrap = document.getElementById('facilitySliderDots');
+  let currentIndex = 0;
+  let sliderTimer = null;
+
+  function renderDots(total){
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    for(let i = 0; i < total; i++){
+      const dot = document.createElement('span');
+      dot.className = 'dsw-slide-dot' + (i === 0 ? ' active' : '');
+      dotsWrap.appendChild(dot);
+    }
+  }
+
+  function updateDots(index){
+    if (!dotsWrap) return;
+    const dots = dotsWrap.querySelectorAll('.dsw-slide-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function showSlide(index){
+    if (!slides.length) return;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+
+    if (caption) {
+      const text = slides[index].getAttribute('data-caption') || '';
+      caption.classList.remove('active');
+      caption.textContent = text;
+      void caption.offsetWidth;
+      caption.classList.add('active');
+    }
+
+    updateDots(index);
+    currentIndex = index;
+  }
+
+  function startSlider(){
+    if (slides.length < 2) return;
+    sliderTimer = setInterval(() => {
+      const next = (currentIndex + 1) % slides.length;
+      showSlide(next);
+    }, 3200);
+  }
+
+  function stopSlider(){
+    if (sliderTimer) clearInterval(sliderTimer);
+  }
+
+  if (slides.length) {
+    renderDots(slides.length);
+    showSlide(0);
+    startSlider();
+
+    if (slider) {
+      slider.addEventListener('mouseenter', stopSlider);
+      slider.addEventListener('mouseleave', startSlider);
+    }
+  }
+
+  /* 3) 스크롤 시 플로팅 버튼 디밍 */
+  const floatingGroup = document.querySelector('.floating-buttons');
+  let scrollTimer = null;
+
+  if (floatingGroup) {
+    window.addEventListener('scroll', function(){
+      floatingGroup.classList.add('dimmed');
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        floatingGroup.classList.remove('dimmed');
+      }, 300);
+    }, { passive:true });
+  }
+
+  /* 4) 위치 메뉴 */
+  const openLocationBtn = document.getElementById('careOpenLocationMenu');
+  const locationMenu = document.getElementById('careLocationMenu');
+  const daycareLink = document.getElementById('linkDaycare');
+  const nursingLink = document.getElementById('linkNursing');
+
+  if (daycareLink) daycareLink.href = MAP_URL_DAYCARE;
+  if (nursingLink) nursingLink.href = MAP_URL_NURSING;
+
+  function openMenu(){
+    if (!locationMenu || !openLocationBtn) return;
+    locationMenu.classList.add('open');
+    openLocationBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu(){
+    if (!locationMenu || !openLocationBtn) return;
+    locationMenu.classList.remove('open');
+    openLocationBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleMenu(e){
+    e.preventDefault();
+    if (!locationMenu) return;
+    locationMenu.classList.contains('open') ? closeMenu() : openMenu();
+  }
+
+  if (openLocationBtn && locationMenu) {
+    openLocationBtn.addEventListener('click', toggleMenu);
+
+    document.addEventListener('click', function(e){
+      if (!locationMenu.classList.contains('open')) return;
+      if (!openLocationBtn.contains(e.target) && !locationMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && locationMenu.classList.contains('open')) {
+        closeMenu();
+        openLocationBtn.focus();
+      }
+    });
+  }
+})();
+</script>
