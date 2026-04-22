@@ -1,33 +1,41 @@
-<link rel="stylesheet" href="/layout.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 
 <div id="site-header"></div>
 
 <section class="ops-page" aria-label="운영철칙">
 
-  <!-- HERO -->
   <section class="ops-hero-block">
     <div class="ops-wrap">
-      <div class="ops-hero-shell">
+      <div class="ops-hero-shell ops-reveal">
         <div class="ops-hero-media" style="--hero-img:url('https://cdn.imweb.me/upload/S20250616705368ebc899d/3a638cc230528.png');">
           <div class="ops-hero-dim"></div>
+          <div class="ops-hero-shine"></div>
 
           <div class="ops-hero-copy">
             <span class="ops-kicker">THE SUWON CARE PHILOSOPHY</span>
             <h1 class="ops-hero-title">
-              더수원은<br>
+              <span class="ops-title-brand">더수원</span>은<br>
               마음을 먼저 생각합니다
             </h1>
             <p class="ops-hero-text">
               어르신의 하루가 편안하고, 보호자의 마음이 놓일 수 있도록<br>
               더수원은 돌봄의 기준을 정성껏 세우고 꾸준히 지켜갑니다.
             </p>
+
+            <div class="ops-hero-tags">
+              <span class="ops-hero-tag">존엄을 지키는 돌봄</span>
+              <span class="ops-hero-tag">안전 중심 운영</span>
+              <span class="ops-hero-tag">보호자와의 투명한 소통</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRINCIPLES -->
   <section class="ops-sec ops-reveal" aria-label="핵심 운영 원칙">
     <div class="ops-wrap">
       <div class="ops-head">
@@ -119,7 +127,6 @@
     </div>
   </section>
 
-  <!-- HOW -->
   <section class="ops-sec ops-reveal" aria-label="운영 방식">
     <div class="ops-wrap">
       <div class="ops-panel">
@@ -191,7 +198,6 @@
     </div>
   </section>
 
-  <!-- PROMISE -->
   <section class="ops-sec ops-reveal" aria-label="보호자를 향한 약속">
     <div class="ops-wrap">
       <div class="ops-promise">
@@ -213,20 +219,25 @@
 <div id="site-footer"></div>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
-
   :root{
-    --ops-bg: #f7f3ec;
+    --ops-bg: #f5efe5;
     --ops-surface: #fffdf9;
-    --ops-surface-2: #f4efe7;
-    --ops-line: rgba(38, 68, 49, 0.10);
-    --ops-line-strong: rgba(38, 68, 49, 0.16);
+    --ops-surface-2: #f4eee3;
+    --ops-line: rgba(38, 68, 49, 0.12);
+    --ops-line-strong: rgba(38, 68, 49, 0.20);
     --ops-text: #1e2c22;
     --ops-text-soft: rgba(30, 44, 34, 0.72);
     --ops-green: #315b40;
+    --ops-green-deep: #1f4f34;
     --ops-green-soft: #edf4ee;
-    --ops-shadow: 0 16px 36px rgba(26, 34, 28, 0.08);
+    --ops-gold: #ab7d36;
+    --ops-gold-soft: #ead8b6;
+    --ops-shadow:
+      0 16px 34px rgba(26, 34, 28, 0.10),
+      0 6px 12px rgba(26, 34, 28, 0.05);
+    --ops-shadow-strong:
+      0 24px 44px rgba(26, 34, 28, 0.14),
+      0 10px 18px rgba(26, 34, 28, 0.08);
     --ops-radius-xl: 32px;
     --ops-radius-lg: 24px;
     --ops-radius-md: 18px;
@@ -238,8 +249,9 @@
     line-height: 1.7;
     padding-top: 10px;
     background:
-      radial-gradient(circle at top, rgba(129,199,132,0.08), transparent 24%),
-      linear-gradient(180deg, #fbf8f3 0%, #f6f1e8 100%);
+      radial-gradient(circle at 10% 4%, rgba(129,199,132,0.10), transparent 24%),
+      radial-gradient(circle at 92% 10%, rgba(171,125,54,0.08), transparent 20%),
+      linear-gradient(180deg, #fbf7f0 0%, #f5efe5 55%, #eef3ed 100%);
   }
 
   .ops-wrap{
@@ -248,30 +260,59 @@
   }
 
   .ops-sec{
-    padding: 56px 0;
+    padding: 58px 0;
   }
 
   .ops-head{
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
   }
 
   .ops-eyebrow,
   .ops-kicker{
-    display: inline-block;
-    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px 16px;
+    border-radius: 14px;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 1.8px;
-    color: rgba(49, 91, 64, 0.72);
+    color: rgba(49, 91, 64, 0.86);
+    background: linear-gradient(180deg, #fbf7ef 0%, #ece1cb 100%);
+    border: 1px solid rgba(117,90,37,.18);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.7),
+      0 10px 18px rgba(70,55,28,.08);
+  }
+
+  .ops-eyebrow::before,
+  .ops-kicker::before{
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:linear-gradient(180deg, #4e8962 0%, #315b40 100%);
+    box-shadow:0 0 0 4px rgba(78,137,98,.10);
+    flex:0 0 auto;
   }
 
   .ops-title{
     margin: 0;
-    font-size: clamp(28px, 3vw, 38px);
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-size: clamp(30px, 3vw, 40px);
+    font-weight: 900;
+    letter-spacing: -0.7px;
     color: var(--ops-text);
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  }
+
+  .ops-title-brand{
+    background: linear-gradient(180deg, #427b57 0%, #2b6543 58%, #1f4f34 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
   }
 
   .ops-lead{
@@ -292,17 +333,25 @@
   }
 
   .ops-hero-shell{
-    background: rgba(255,255,255,0.38);
-    border: 1px solid rgba(255,255,255,0.55);
+    background: linear-gradient(180deg, rgba(255,255,255,0.48), rgba(250,246,239,0.52));
+    border: 1px solid rgba(255,255,255,0.62);
     border-radius: var(--ops-radius-xl);
-    box-shadow: 0 22px 52px rgba(43, 52, 45, 0.10);
+    box-shadow: var(--ops-shadow-strong);
     padding: 16px;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+
+  .ops-hero-shell:hover{
+    transform: translateY(-4px);
+    box-shadow:
+      0 28px 52px rgba(43, 52, 45, 0.16),
+      0 10px 18px rgba(43, 52, 45, 0.08);
   }
 
   .ops-hero-media{
     position: relative;
-    min-height: 540px;
+    min-height: 560px;
     border-radius: calc(var(--ops-radius-xl) - 10px);
     overflow: hidden;
     background-image: var(--hero-img);
@@ -310,73 +359,130 @@
     background-position: center;
     display: flex;
     align-items: center;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.5),
+      0 14px 28px rgba(27, 35, 29, 0.10);
   }
 
   .ops-hero-dim{
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(255,250,244,0.92) 0%, rgba(255,250,244,0.78) 38%, rgba(255,250,244,0.12) 100%);
+      linear-gradient(90deg, rgba(255,250,244,0.94) 0%, rgba(255,250,244,0.80) 38%, rgba(255,250,244,0.18) 100%);
+  }
+
+  .ops-hero-shine{
+    position:absolute;
+    inset:auto auto 0 0;
+    width:55%;
+    height:100%;
+    background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,0));
+    pointer-events:none;
+    mix-blend-mode:screen;
   }
 
   .ops-hero-copy{
     position: relative;
     z-index: 1;
-    width: min(620px, calc(100% - 48px));
+    width: min(640px, calc(100% - 48px));
     margin-left: 48px;
     padding: 20px 0;
   }
 
   .ops-hero-title{
     margin: 0;
-    font-size: clamp(34px, 4.2vw, 56px);
-    line-height: 1.18;
-    font-weight: 800;
-    letter-spacing: -0.9px;
+    font-size: clamp(36px, 4.3vw, 58px);
+    line-height: 1.16;
+    font-weight: 900;
+    letter-spacing: -1px;
     color: #1c2a21;
+    text-shadow: 0 1px 0 rgba(255,255,255,.45);
   }
 
   .ops-hero-text{
     margin: 18px 0 0;
     font-size: clamp(16px, 1.7vw, 20px);
-    line-height: 1.8;
-    color: rgba(28, 42, 33, 0.78);
+    line-height: 1.85;
+    color: rgba(28, 42, 33, 0.80);
     font-weight: 500;
+  }
+
+  .ops-hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+  }
+
+  .ops-hero-tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 14px;
+    border-radius:14px;
+    background:linear-gradient(180deg, #fffdfa 0%, #ece1c8 100%);
+    border:1px solid rgba(117,90,37,.14);
+    color:#315b40;
+    font-size:14px;
+    font-weight:800;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.75),
+      0 8px 16px rgba(66,52,28,.08);
+    transition: transform .22s ease, box-shadow .22s ease, color .22s ease;
+  }
+
+  .ops-hero-tag:hover{
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.8),
+      0 14px 24px rgba(66,52,28,.11);
+    color:#1f4f34;
   }
 
   .ops-grid{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
-    margin-top: 28px;
+    margin-top: 30px;
   }
 
   .ops-card{
-    min-height: 250px;
-    background: rgba(255,255,255,0.88);
+    min-height: 260px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,249,245,0.92));
     border: 1px solid var(--ops-line);
     border-radius: var(--ops-radius-lg);
     box-shadow: var(--ops-shadow);
     padding: 24px 22px 22px;
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
   }
 
   .ops-card:hover{
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(26, 34, 28, 0.11);
+    transform: translateY(-5px);
+    box-shadow: var(--ops-shadow-strong);
     border-color: var(--ops-line-strong);
   }
 
   .ops-icon{
-    width: 54px;
-    height: 54px;
+    width: 58px;
+    height: 58px;
     border-radius: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--ops-green-soft);
+    background: linear-gradient(180deg, #f4f9f4 0%, #e2ede4 100%);
     color: var(--ops-green);
     margin-bottom: 18px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.72),
+      0 10px 20px rgba(26,34,28,.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .ops-card:hover .ops-icon{
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.8),
+      0 14px 24px rgba(26,34,28,.12);
   }
 
   .ops-icon svg{
@@ -387,7 +493,7 @@
   .ops-card-title{
     margin: 0 0 10px;
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.2px;
     color: #203126;
   }
@@ -401,11 +507,17 @@
   }
 
   .ops-panel{
-    background: rgba(255,255,255,0.72);
+    background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(247,242,233,0.88));
     border: 1px solid var(--ops-line);
     border-radius: var(--ops-radius-xl);
-    padding: 28px;
+    padding: 30px;
     box-shadow: var(--ops-shadow);
+    transition: transform .26s ease, box-shadow .26s ease;
+  }
+
+  .ops-panel:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--ops-shadow-strong);
   }
 
   .ops-two{
@@ -419,10 +531,20 @@
     width: 100%;
     height: 440px;
     object-fit: cover;
-    border-radius: 22px;
+    border-radius: 24px;
     border: 1px solid var(--ops-line);
-    box-shadow: 0 14px 30px rgba(27, 35, 29, 0.08);
+    box-shadow:
+      0 18px 34px rgba(27,35,29,0.10),
+      inset 0 1px 0 rgba(255,255,255,.35);
     display: block;
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+
+  .ops-photo:hover{
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 24px 44px rgba(27,35,29,0.14),
+      inset 0 1px 0 rgba(255,255,255,.4);
   }
 
   .ops-cap{
@@ -441,10 +563,22 @@
   }
 
   .ops-acc{
-    background: #fffdfa;
+    background: linear-gradient(180deg, #fffdfa 0%, #faf6ee 100%);
     border: 1px solid var(--ops-line);
     border-radius: 18px;
     overflow: hidden;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.7),
+      0 8px 16px rgba(26,34,28,.04);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+
+  .ops-acc:hover{
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.76),
+      0 14px 22px rgba(26,34,28,.08);
+    border-color: var(--ops-line-strong);
   }
 
   .ops-acc__btn{
@@ -458,7 +592,7 @@
     gap: 16px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
     color: #233428;
     text-align: left;
   }
@@ -496,12 +630,18 @@
   }
 
   .ops-promise{
-    background: linear-gradient(180deg, rgba(255,255,255,0.80), rgba(250,246,239,0.94));
+    background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(247,241,231,0.94));
     border: 1px solid var(--ops-line);
     border-radius: var(--ops-radius-xl);
     box-shadow: var(--ops-shadow);
-    padding: 42px 30px;
+    padding: 44px 30px;
     text-align: center;
+    transition: transform .26s ease, box-shadow .26s ease;
+  }
+
+  .ops-promise:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--ops-shadow-strong);
   }
 
   .ops-promise-text{
@@ -516,8 +656,8 @@
 
   .ops-reveal{
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity .55s ease, transform .55s ease;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
   }
 
   .ops-reveal.is-visible{
@@ -533,12 +673,12 @@
 
   @media (max-width: 980px){
     .ops-hero-media{
-      min-height: 470px;
+      min-height: 500px;
     }
 
     .ops-hero-dim{
       background:
-        linear-gradient(180deg, rgba(255,250,244,0.92) 0%, rgba(255,250,244,0.74) 58%, rgba(255,250,244,0.18) 100%);
+        linear-gradient(180deg, rgba(255,250,244,0.94) 0%, rgba(255,250,244,0.78) 58%, rgba(255,250,244,0.20) 100%);
     }
 
     .ops-hero-copy{
@@ -574,7 +714,7 @@
     }
 
     .ops-hero-media{
-      min-height: 400px;
+      min-height: 420px;
       border-radius: 18px;
       align-items: flex-end;
     }
@@ -585,12 +725,23 @@
     }
 
     .ops-hero-title{
-      font-size: 34px;
+      font-size: 36px;
     }
 
     .ops-hero-text{
       font-size: 15px;
       line-height: 1.75;
+    }
+
+    .ops-hero-tags{
+      gap:8px;
+      margin-top:18px;
+    }
+
+    .ops-hero-tag{
+      font-size:13px;
+      padding:9px 12px;
+      border-radius:12px;
     }
 
     .ops-grid{
@@ -619,6 +770,26 @@
     .ops-promise-text{
       font-size: 21px;
       line-height: 1.85;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ops-hero-shell,
+    .ops-card,
+    .ops-icon,
+    .ops-panel,
+    .ops-photo,
+    .ops-acc,
+    .ops-promise,
+    .ops-hero-tag,
+    .ops-reveal{
+      transition:none !important;
+      animation:none !important;
+    }
+
+    .ops-reveal{
+      opacity:1 !important;
+      transform:none !important;
     }
   }
 </style>
@@ -679,4 +850,4 @@
 })();
 </script>
 
-<script src="/layout.js"></script>
+<script src="layout.js"></script>
