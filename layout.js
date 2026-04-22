@@ -26,8 +26,22 @@ function initLayout() {
       if (e.key === 'Escape') {
         menu.classList.remove('open');
         openBtn.setAttribute('aria-expanded', 'false');
+        openBtn.focus();
       }
     });
+  }
+
+  const floatingGroup = document.querySelector('.floating-buttons');
+  let scrollTimer = null;
+
+  if (floatingGroup) {
+    window.addEventListener('scroll', function () {
+      floatingGroup.classList.add('dimmed');
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        floatingGroup.classList.remove('dimmed');
+      }, 300);
+    }, { passive: true });
   }
 
   const popup = document.getElementById('videoPopup');
@@ -116,14 +130,14 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
 
       <div class="floating-buttons">
-        <a href="tel:16668853" class="floating-btn floating-btn--green">
+        <a href="tel:16668853" class="floating-btn">
           <span class="floating-btn__icon">📞</span>
-          <span class="floating-btn__text">전화 상담</span>
+          <span class="floating-btn__text">문의하기</span>
         </a>
 
         <a
           href="https://blog.naver.com/thesuwonsilver"
-          class="floating-btn floating-btn--ivory"
+          class="floating-btn"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -133,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         <button
           id="careOpenLocationMenu"
-          class="floating-btn floating-btn--green"
+          class="floating-btn"
           type="button"
           aria-haspopup="true"
           aria-expanded="false"
@@ -142,24 +156,31 @@ document.addEventListener('DOMContentLoaded', function () {
           <span class="floating-btn__text">위치 보기</span>
         </button>
 
-        <div id="careLocationMenu" class="care-location-menu" role="menu">
+        <div id="careLocationMenu" class="care-location-menu" role="menu" aria-labelledby="careOpenLocationMenu">
+          <div class="care-location-menu-title">위치 선택</div>
+
           <a
             id="linkDaycare"
+            class="care-location-link"
             href="https://map.naver.com/p/entry/place/2041796109"
             role="menuitem"
             target="_blank"
             rel="noopener noreferrer"
           >
             더수원주간보호
+            <small>네이버 지도 열기</small>
           </a>
+
           <a
             id="linkNursing"
+            class="care-location-link"
             href="https://map.naver.com/p/entry/place/1286446205"
             role="menuitem"
             target="_blank"
             rel="noopener noreferrer"
           >
             더수원요양원
+            <small>네이버 지도 열기</small>
           </a>
         </div>
       </div>

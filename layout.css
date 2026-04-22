@@ -139,130 +139,124 @@
   transform: translateY(0);
 }
 
-/* ===== 3D Floating Buttons ===== */
+/* ===== 공통 플로팅 버튼: 시설안내 페이지 버전으로 변경 ===== */
 .floating-buttons{
   position: fixed;
   right: 24px;
   bottom: 24px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   z-index: 9999;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+  opacity: 1;
+}
+
+.floating-buttons.dimmed{
+  opacity: 0.55;
+  transform: translateY(4px);
 }
 
 .floating-btn{
-  position: relative;
-  border: 0;
+  background: linear-gradient(135deg, #81c784 0%, #388e3c 100%);
+  color: #fff;
+  min-width: 138px;
+  padding: 13px 18px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  cursor: pointer;
+  border: none;
+  box-shadow:
+    0 10px 24px rgba(46,125,50,.28),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease,
+    opacity .25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 180px;
-  min-height: 56px;
-  padding: 0 20px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: -0.3px;
-  transform: translateY(0);
-  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-  box-shadow:
-    inset 0 2px 3px rgba(255,255,255,.38),
-    inset 0 -4px 8px rgba(0,0,0,.16),
-    0 12px 20px rgba(0,0,0,.18),
-    0 4px 0 rgba(0,0,0,.12);
-}
-
-.floating-btn::before{
-  content:"";
-  position:absolute;
-  left:10px;
-  right:10px;
-  top:7px;
-  height:38%;
-  border-radius:999px;
-  background: linear-gradient(180deg, rgba(255,255,255,.48), rgba(255,255,255,0));
-  pointer-events:none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .floating-btn:hover{
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #66bb6a 0%, #2e7d32 100%);
+  transform: translateY(-3px) scale(1.03);
   box-shadow:
-    inset 0 2px 3px rgba(255,255,255,.42),
-    inset 0 -4px 8px rgba(0,0,0,.18),
-    0 16px 24px rgba(0,0,0,.22),
-    0 5px 0 rgba(0,0,0,.12);
+    0 14px 28px rgba(46,125,50,.34),
+    inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.floating-btn:focus-visible{
+  outline: 3px solid rgba(129,199,132,.35);
+  outline-offset: 2px;
 }
 
 .floating-btn__icon{
-  position: relative;
-  z-index: 1;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1;
 }
 
 .floating-btn__text{
-  position: relative;
-  z-index: 1;
   line-height: 1;
-}
-
-
-.floating-btn--green{
-  background: linear-gradient(180deg, #356f4d 0%, #1f5a3a 52%, #174b31 100%);
-  color: #fff8eb;
-  border: 1px solid rgba(255,240,204,.26);
-}
-
-.floating-btn--ivory{
-  background: linear-gradient(180deg, #fffaf0 0%, #efe3c5 58%, #d9c08b 100%);
-  color: #234b34;
-  border: 1px solid rgba(122,96,40,.18);
 }
 
 .care-location-menu{
   position: absolute;
-  right: 4px;
-  bottom: 84px;
-  width: 250px;
-  background: linear-gradient(180deg, rgba(255,251,245,.98), rgba(247,240,226,.96));
-  border-radius: 24px;
+  right: 0;
+  bottom: 72px;
+  width: 248px;
+  background: rgba(255,255,255,.97);
+  border: 1px solid rgba(46,125,50,.10);
+  border-radius: 18px;
+  box-shadow: 0 18px 38px rgba(30,54,37,.18);
   padding: 10px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.8),
-    0 20px 42px rgba(0,0,0,.18);
-  border: 1px solid rgba(0,0,0,.08);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity .22s ease, visibility .22s ease, transform .22s ease;
+  z-index: 10000;
+  display: none;
+  backdrop-filter: blur(10px);
 }
 
 .care-location-menu.open{
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: block;
 }
 
-.care-location-menu a{
+.care-location-menu-title{
+  font-size: 13px;
+  font-weight: 800;
+  color: #2d5a33;
+  padding: 8px 10px 6px;
+}
+
+.care-location-link{
   display: block;
   text-decoration: none;
-  color: #234b34;
-  font-weight: 800;
-  font-size: 16px;
-  padding: 14px 16px;
-  border-radius: 14px;
+  background: #f4faf4;
+  color: #1f4b27;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin: 6px 0;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
-.care-location-menu a + a{
-  border-top: 1px solid rgba(0,0,0,.06);
+.care-location-link:hover{
+  background: #e8f5e9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(46,125,50,.08);
 }
 
-.care-location-menu a:hover{
-  background: #edf7f0;
-  color: #2f5a40;
+.care-location-link small{
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5d7862;
 }
 
 @media (max-width: 1100px){
@@ -326,19 +320,19 @@
   }
 
   .floating-btn{
-    min-width: 190px;
-    min-height: 60px;
-    font-size: 15px;
-    padding: 0 20px;
+    min-width: 124px;
+    padding: 12px 16px;
+    font-size: 14px;
   }
 
   .floating-btn__icon{
-    font-size: 24px;
+    font-size: 17px;
   }
 
   .care-location-menu{
+    right: 0;
+    bottom: 68px;
     width: 220px;
-    bottom: 72px;
   }
 }
 
