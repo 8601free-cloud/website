@@ -4,53 +4,258 @@
     padding: 0;
   }
 
-  #full-map {
+  #map-wrap {
+    position: relative;
     width: 100%;
     height: 100dvh;
+    overflow: hidden;
+    font-family: "Noto Sans KR", sans-serif;
   }
 
+  #full-map {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 왼쪽 상단 타이틀 카드 */
+  .map-page-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 20;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 14px 34px rgba(17, 24, 39, 0.16);
+    border: 1px solid rgba(36, 86, 58, 0.14);
+    backdrop-filter: blur(8px);
+  }
+
+  .map-page-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #5f7d68;
+    margin-bottom: 6px;
+  }
+
+  .map-page-title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1f4d35;
+    margin: 0;
+  }
+
+  .map-page-desc {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #5b635d;
+    font-weight: 500;
+  }
+
+  /* 왼쪽 하단 선택 카드 */
+  .map-location-panel {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    z-index: 20;
+    width: min(360px, calc(100% - 32px));
+    padding: 16px;
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,251,248,0.96) 100%);
+    box-shadow: 0 18px 40px rgba(17, 24, 39, 0.18);
+    border: 1px solid rgba(36, 86, 58, 0.14);
+    backdrop-filter: blur(10px);
+  }
+
+  .map-location-panel-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1f4d35;
+    margin-bottom: 6px;
+  }
+
+  .map-location-panel-sub {
+    font-size: 13px;
+    color: #66706a;
+    margin-bottom: 14px;
+    line-height: 1.45;
+  }
+
+  .map-location-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .map-location-card {
+    appearance: none;
+    border: 1px solid rgba(36, 86, 58, 0.14);
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 14px 14px 13px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.06);
+    width: 100%;
+  }
+
+  .map-location-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(17, 24, 39, 0.12);
+    border-color: rgba(50, 110, 78, 0.28);
+    background: #fcfffd;
+  }
+
+  .map-location-card.active {
+    border-color: #2f6b4b;
+    background: linear-gradient(180deg, #f7fbf8 0%, #eef7f1 100%);
+    box-shadow: 0 14px 28px rgba(47, 107, 75, 0.16);
+  }
+
+  .map-location-card-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #4b8b63 0%, #2f6b4b 100%);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    margin-right: 8px;
+    vertical-align: middle;
+    box-shadow: 0 6px 14px rgba(47, 107, 75, 0.24);
+  }
+
+  .map-location-card-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 800;
+    color: #1f4d35;
+  }
+
+  .map-location-card-address {
+    margin-top: 8px;
+    padding-left: 32px;
+    font-size: 13px;
+    color: #66706a;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* 마커 정보창 */
   .marker-label-custom {
     font-family: "Noto Sans KR", sans-serif;
     font-size: 15px;
     font-weight: 700;
-    padding: 12px 16px;
+    padding: 13px 16px;
     background: #ffffff;
-    border: 2px solid #d32f2f;
-    border-radius: 12px;
-    color: #d32f2f;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(36, 86, 58, 0.18);
+    border-radius: 16px;
+    color: #1f4d35;
+    box-shadow: 0 14px 30px rgba(17, 24, 39, 0.16);
     text-align: center;
     white-space: nowrap;
-    max-width: 260px;
+    max-width: 280px;
     line-height: 1.45;
   }
 
   .marker-title {
     font-size: 17px;
     margin-bottom: 4px;
-    color: #b71c1c;
+    color: #1f4d35;
+    font-weight: 800;
   }
 
   .marker-sub {
     font-size: 13px;
-    color: #444;
+    color: #5f6660;
     font-weight: 500;
   }
 
   .marker-icon {
-    width: 42px;
-    height: 58px;
+    width: 46px;
+    height: 62px;
     background: url('https://cdn.imweb.me/upload/S20250616705368ebc899d/3e0af01e5664f.png') no-repeat center;
     background-size: contain;
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.2));
+  }
+
+  @media (max-width: 768px) {
+    .map-page-badge {
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+    }
+
+    .map-page-title {
+      font-size: 18px;
+    }
+
+    .map-page-desc {
+      font-size: 12px;
+    }
+
+    .map-location-panel {
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      width: auto;
+      padding: 14px;
+      border-radius: 18px;
+    }
+
+    .map-location-card {
+      padding: 12px 12px 11px;
+      border-radius: 14px;
+    }
+
+    .map-location-card-title {
+      font-size: 15px;
+    }
+
+    .map-location-card-address {
+      font-size: 12px;
+      padding-left: 32px;
+    }
+
+    .marker-label-custom {
+      max-width: 220px;
+      white-space: normal;
+    }
   }
 </style>
 
-<div id="full-map"></div>
+<div id="map-wrap">
+  <div id="full-map"></div>
 
-<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=igssinu6xy&submodules=geocoder"></script>
+  <div class="map-page-badge">
+    <div class="map-page-eyebrow">LOCATION GUIDE</div>
+    <h2 class="map-page-title">더수원 오시는 길</h2>
+    <div class="map-page-desc">원하시는 시설을 선택하면 해당 위치로 지도가 이동합니다.</div>
+  </div>
+
+  <div class="map-location-panel">
+    <div class="map-location-panel-title">시설 선택</div>
+    <div class="map-location-panel-sub">가고자 하시는 지점을 선택해 주세요.</div>
+
+    <div class="map-location-list" id="mapLocationList">
+      <!-- JS로 카드 생성 -->
+    </div>
+  </div>
+</div>
+
+<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=igssinu6xy"></script>
 
 <script>
-  // 좌표 직접 입력 권장
   const placeList = [
     {
       title: "더수원 주간보호",
@@ -73,7 +278,31 @@
   });
 
   const bounds = new naver.maps.LatLngBounds();
-  const infoWindows = [];
+  const placeObjects = [];
+  const locationListEl = document.getElementById('mapLocationList');
+
+  function setActiveCard(index) {
+    const cards = document.querySelectorAll('.map-location-card');
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
+  }
+
+  function focusPlace(index) {
+    const target = placeObjects[index];
+    if (!target) return;
+
+    placeObjects.forEach(obj => obj.infowindow.close());
+
+    map.panTo(target.position);
+
+    setTimeout(() => {
+      map.setZoom(16);
+      target.infowindow.open(map, target.marker);
+    }, 220);
+
+    setActiveCard(index);
+  }
 
   placeList.forEach((place, index) => {
     const position = new naver.maps.LatLng(place.lat, place.lng);
@@ -84,7 +313,7 @@
       map: map,
       icon: {
         content: '<div class="marker-icon"></div>',
-        anchor: new naver.maps.Point(21, 58)
+        anchor: new naver.maps.Point(23, 62)
       }
     });
 
@@ -98,29 +327,42 @@
       borderWidth: 0,
       backgroundColor: "transparent",
       disableAnchor: false,
-      pixelOffset: new naver.maps.Point(0, -8)
+      pixelOffset: new naver.maps.Point(0, -10)
     });
 
-    infoWindows.push(infowindow);
+    placeObjects.push({
+      position,
+      marker,
+      infowindow
+    });
+
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'map-location-card';
+    card.innerHTML = `
+      <span class="map-location-card-num">${index + 1}</span>
+      <span class="map-location-card-title">${place.title}</span>
+      <div class="map-location-card-address">${place.address}</div>
+    `;
+
+    card.addEventListener('click', function() {
+      focusPlace(index);
+    });
+
+    locationListEl.appendChild(card);
 
     naver.maps.Event.addListener(marker, 'click', function() {
-      infoWindows.forEach(iw => iw.close());
-      infowindow.open(map, marker);
+      focusPlace(index);
     });
-
-    // 첫 번째 마커만 기본 오픈
-    if (index === 0) {
-      infowindow.open(map, marker);
-    }
   });
 
   map.fitBounds(bounds);
 
-  // fitBounds 후 너무 가까우면 줌이 과하게 들어갈 수 있어 약간 보정
   naver.maps.Event.once(map, 'idle', function() {
     const currentZoom = map.getZoom();
     if (currentZoom > 15) {
       map.setZoom(15);
     }
+    focusPlace(0);
   });
 </script>
