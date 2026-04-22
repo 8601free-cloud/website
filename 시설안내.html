@@ -60,6 +60,117 @@
     overflow:hidden;
     padding:54px 42px;
   }
+  .dsw-hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0, 1.2fr) minmax(280px, .8fr);
+  gap:24px;
+  align-items:stretch;
+}
+
+.dsw-hero-main{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.dsw-hero-side{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.dsw-hero-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.dsw-hero-tag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  background:linear-gradient(180deg, #f4fbf4 0%, #edf7ee 100%);
+  border:1px solid rgba(46,125,50,.12);
+  color:#2b5e35;
+  font-size:14px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.dsw-hero-mini-card{
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(46,125,50,.10);
+  border-radius:22px;
+  padding:22px 20px;
+  box-shadow:0 12px 26px rgba(34,60,42,.08);
+}
+
+.dsw-hero-mini-label{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:#2e7d32;
+  margin-bottom:8px;
+}
+
+.dsw-hero-mini-title{
+  font-size:22px;
+  font-weight:800;
+  line-height:1.4;
+  letter-spacing:-0.03em;
+  color:#203128;
+  margin-bottom:10px;
+  word-break:keep-all;
+}
+
+.dsw-hero-mini-text{
+  font-size:14px;
+  line-height:1.75;
+  color:#617066;
+  word-break:keep-all;
+}
+
+@media (max-width: 980px){
+  .dsw-hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .dsw-hero-side{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width: 767px){
+  .dsw-hero-side{
+    grid-template-columns:1fr;
+  }
+
+  .dsw-hero-tags{
+    gap:8px;
+    margin-top:18px;
+  }
+
+  .dsw-hero-tag{
+    font-size:13px;
+    padding:9px 12px;
+  }
+
+  .dsw-hero-mini-card{
+    padding:18px 16px;
+    border-radius:18px;
+  }
+
+  .dsw-hero-mini-title{
+    font-size:19px;
+  }
+
+  .dsw-hero-mini-text{
+    font-size:13px;
+  }
+}
 
   .dsw-hero::before{
     content:"";
@@ -484,20 +595,54 @@
 <div class="dsw-page">
   <div class="dsw-container">
 
-    <section class="dsw-section">
-      <div class="dsw-card dsw-hero dsw-reveal">
-        <div class="dsw-kicker">더수원 시설안내</div>
-        <h1 class="dsw-title">더수원을 찾아주셔서 감사합니다.</h1>
+   <section class="dsw-section">
+  <div class="dsw-card dsw-hero dsw-reveal">
+    <div class="dsw-hero-grid">
+      <div class="dsw-hero-main">
+        <div class="dsw-kicker">THE SUWON CARE CENTER</div>
+
+        <h1 class="dsw-title">
+          더수원을<br>
+          찾아주셔서 감사합니다.
+        </h1>
+
         <p class="dsw-desc">
           <span class="dsw-highlight gold">성빈센트병원</span>과
           <span class="dsw-highlight gold">동수원병원</span> 인근에 위치한
-          <span class="dsw-highlight">더수원</span>은<br>
-          든든한 간호조무사와 요양보호사, 물리치료사 등 전문 인력이 함께하며<br>
+          <span class="dsw-highlight">더수원</span>은
+          든든한 간호조무사와 요양보호사, 물리치료사 등 전문 인력이 함께하며,
           어르신들의 건강과 일상이 편안하게 이어질 수 있도록 정성껏 돌보고 있습니다.
         </p>
-      </div>
-    </section>
 
+        <div class="dsw-hero-tags">
+          <span class="dsw-hero-tag">주간보호센터 운영</span>
+          <span class="dsw-hero-tag">요양원 함께 운영</span>
+          <span class="dsw-hero-tag">전문 돌봄 인력</span>
+        </div>
+      </div>
+
+      <div class="dsw-hero-side">
+        <div class="dsw-hero-mini-card">
+          <div class="dsw-hero-mini-label">CARE</div>
+          <div class="dsw-hero-mini-title">낮부터 밤까지<br>연속 돌봄</div>
+          <div class="dsw-hero-mini-text">
+            주간보호와 요양원을 함께 운영하여
+            상황에 맞는 돌봄 연계가 가능합니다.
+          </div>
+        </div>
+
+        <div class="dsw-hero-mini-card">
+          <div class="dsw-hero-mini-label">STAFF</div>
+          <div class="dsw-hero-mini-title">전문 인력과 함께하는<br>안심 케어</div>
+          <div class="dsw-hero-mini-text">
+            간호조무사, 요양보호사, 물리치료사 등
+            전문 인력이 함께합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     <section class="dsw-section">
       <div class="dsw-card dsw-mid-copy dsw-reveal">
         <p>
