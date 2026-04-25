@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="dropdown-menu">
                 <a href="/건강관리.html">건강관리</a>
                 <a href="/인지활동.html">인지활동</a>
-                <a href="/정서사회교류.html">정서·사회교류</a>
+                <a href="/정서+사회교류.html">정서·사회교류</a>
                 <a href="/주간일정표.html">주간 일정표</a>
               </div>
             </div>
