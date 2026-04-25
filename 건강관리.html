@@ -1,0 +1,563 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="layout.css">
+
+<div id="site-header"></div>
+
+<section class="dsw-health" aria-label="건강관리">
+  <style>
+    .dsw-health{
+      --deep:#173d29;
+      --green:#2f5a3e;
+      --green2:#4f8b63;
+      --gold:#c9872d;
+      --cream:#fffaf0;
+      --line:rgba(31,64,47,.15);
+      --text:#1d2d22;
+      --muted:rgba(29,45,34,.72);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      padding:72px 18px 88px;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 6%, rgba(79,139,99,.18), transparent 35%),
+        radial-gradient(circle at 86% 12%, rgba(201,135,45,.18), transparent 34%),
+        linear-gradient(180deg,#fffaf0 0%,#f4ead5 48%,#fffaf0 100%);
+      overflow:hidden;
+    }
+
+    .dsw-health__wrap{
+      max-width:1120px;
+      margin:0 auto;
+    }
+
+    .dsw-health__hero{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .dsw-health__eyebrow{
+      display:inline-flex;
+      margin-bottom:14px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .dsw-health__title{
+      margin:0;
+      font-size:clamp(34px,4.4vw,56px);
+      line-height:1.14;
+      font-weight:900;
+      letter-spacing:-1.5px;
+      color:var(--deep);
+    }
+
+    .dsw-health__title strong{
+      background:linear-gradient(180deg,#4f8b63 0%,#24563a 58%,#173d29 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .dsw-health__desc{
+      max-width:760px;
+      margin:16px auto 0;
+      font-size:16px;
+      line-height:1.8;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .dsw-health__heroCard{
+      position:relative;
+      margin:34px auto 0;
+      max-width:980px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:center;
+      padding:30px;
+      border-radius:32px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.62)),
+        radial-gradient(circle at 12% 0%,rgba(201,135,45,.14),transparent 36%);
+      border:1px solid var(--line);
+      box-shadow:
+        0 26px 64px rgba(23,61,41,.16),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      overflow:hidden;
+    }
+
+    .dsw-health__heroCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(160px 110px at 8% 18%, rgba(201,135,45,.1), transparent 70%),
+        radial-gradient(180px 130px at 92% 28%, rgba(47,90,62,.09), transparent 70%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0px, rgba(0,0,0,.018) 1px, transparent 1px, transparent 7px);
+      opacity:.48;
+      pointer-events:none;
+    }
+
+    .dsw-health__heroText,
+    .dsw-health__visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .dsw-health__heroText{
+      text-align:left;
+    }
+
+    .dsw-health__heroText h2{
+      margin:0;
+      color:var(--deep);
+      font-size:clamp(24px,3vw,36px);
+      line-height:1.28;
+      font-weight:900;
+      letter-spacing:-.9px;
+    }
+
+    .dsw-health__heroText p{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+      font-weight:700;
+    }
+
+    .dsw-health__badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:20px;
+    }
+
+    .dsw-health__badge{
+      padding:9px 13px;
+      border-radius:999px;
+      background:rgba(47,90,62,.09);
+      border:1px solid rgba(47,90,62,.15);
+      color:var(--green);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .dsw-health__visual{
+      min-height:250px;
+      border-radius:28px;
+      background:
+        linear-gradient(135deg,rgba(47,90,62,.88),rgba(23,61,41,.96)),
+        radial-gradient(circle at 25% 20%,rgba(255,255,255,.22),transparent 28%);
+      box-shadow:0 24px 48px rgba(23,61,41,.22);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+
+    .dsw-health__visual::before{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      background:rgba(255,255,255,.1);
+      top:-54px;
+      right:-42px;
+    }
+
+    .dsw-health__visualIcon{
+      position:relative;
+      z-index:1;
+      width:150px;
+      height:150px;
+      border-radius:42px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.25);
+      display:grid;
+      place-items:center;
+      font-size:76px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+    }
+
+    .dsw-health__grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:26px;
+    }
+
+    .dsw-health__card{
+      position:relative;
+      padding:24px 22px;
+      border-radius:26px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(31,64,47,.12);
+      box-shadow:0 14px 30px rgba(23,61,41,.08);
+      transition:.22s ease;
+      overflow:hidden;
+    }
+
+    .dsw-health__card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 18% 0%,rgba(201,135,45,.12),transparent 34%);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .dsw-health__card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 24px 48px rgba(23,61,41,.15);
+      background:rgba(255,255,255,.9);
+    }
+
+    .dsw-health__icon,
+    .dsw-health__card h3,
+    .dsw-health__card p{
+      position:relative;
+      z-index:1;
+    }
+
+    .dsw-health__icon{
+      width:48px;
+      height:48px;
+      border-radius:17px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      color:#fff;
+      font-size:24px;
+      box-shadow:0 14px 26px rgba(47,90,62,.22);
+      margin-bottom:16px;
+    }
+
+    .dsw-health__card h3{
+      margin:0;
+      color:var(--deep);
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-.45px;
+    }
+
+    .dsw-health__card p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.72;
+      font-weight:700;
+    }
+
+    .dsw-health__process{
+      margin-top:34px;
+      padding:28px;
+      border-radius:30px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.6)),
+        radial-gradient(circle at 16% 0%,rgba(47,90,62,.1),transparent 35%);
+      border:1px solid var(--line);
+      box-shadow:0 22px 54px rgba(23,61,41,.13);
+    }
+
+    .dsw-health__sectionTitle{
+      margin:0 0 20px;
+      text-align:center;
+      color:var(--deep);
+      font-size:clamp(24px,3vw,34px);
+      font-weight:900;
+      letter-spacing:-.8px;
+    }
+
+    .dsw-health__steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .dsw-health__step{
+      position:relative;
+      padding:22px 18px;
+      border-radius:24px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(31,64,47,.11);
+      box-shadow:0 10px 24px rgba(23,61,41,.07);
+      text-align:center;
+    }
+
+    .dsw-health__stepNo{
+      width:38px;
+      height:38px;
+      margin:0 auto 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#c9872d,#e0a34b);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      box-shadow:0 12px 24px rgba(201,135,45,.24);
+    }
+
+    .dsw-health__step h3{
+      margin:0;
+      color:var(--deep);
+      font-size:17px;
+      font-weight:900;
+    }
+
+    .dsw-health__step p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.65;
+      font-weight:700;
+    }
+
+    .dsw-health__notice{
+      margin:26px auto 0;
+      max-width:900px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(47,90,62,.13);
+      box-shadow:0 12px 26px rgba(23,61,41,.07);
+      text-align:center;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+      font-weight:800;
+    }
+
+    .dsw-health__cta{
+      margin:18px auto 0;
+      max-width:900px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .dsw-health__btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:190px;
+      padding:15px 22px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:900;
+      transition:.22s ease;
+    }
+
+    .dsw-health__btn--primary{
+      color:#fff;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      box-shadow:0 18px 34px rgba(47,90,62,.24);
+    }
+
+    .dsw-health__btn--sub{
+      color:var(--green);
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(47,90,62,.18);
+      box-shadow:0 12px 26px rgba(23,61,41,.08);
+    }
+
+    .dsw-health__btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 24px 44px rgba(23,61,41,.16);
+    }
+
+    @media(max-width:900px){
+      .dsw-health__heroCard{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-health__grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .dsw-health__steps{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:620px){
+      .dsw-health{
+        padding:54px 14px 68px;
+      }
+
+      .dsw-health__heroCard{
+        padding:22px;
+        border-radius:26px;
+      }
+
+      .dsw-health__heroText{
+        text-align:center;
+      }
+
+      .dsw-health__badges{
+        justify-content:center;
+      }
+
+      .dsw-health__visual{
+        min-height:210px;
+      }
+
+      .dsw-health__grid,
+      .dsw-health__steps{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-health__process{
+        padding:22px 16px;
+      }
+
+      .dsw-health__btn{
+        width:100%;
+      }
+    }
+  </style>
+
+  <div class="dsw-health__wrap">
+    <header class="dsw-health__hero">
+      <div class="dsw-health__eyebrow">THE SUWON HEALTH CARE</div>
+      <h1 class="dsw-health__title">
+        어르신의 하루를 지키는<br>
+        <strong>더수원 건강관리</strong>
+      </h1>
+      <p class="dsw-health__desc">
+        더수원은 어르신의 작은 변화도 놓치지 않도록 매일의 건강 상태를 세심하게 살피고,
+        생활 속 돌봄과 건강관리를 함께 이어갑니다.
+      </p>
+
+      <div class="dsw-health__heroCard">
+        <div class="dsw-health__heroText">
+          <h2>매일 확인하고, 기록하고, 필요할 때 빠르게 대응합니다.</h2>
+          <p>
+            어르신의 혈압, 체온, 컨디션, 식사량, 복약 여부 등을 꾸준히 확인하며
+            보호자분들이 안심하실 수 있도록 안정적인 돌봄 체계를 운영합니다.
+          </p>
+
+          <div class="dsw-health__badges">
+            <span class="dsw-health__badge">건강 상태 확인</span>
+            <span class="dsw-health__badge">복약 관리</span>
+            <span class="dsw-health__badge">영양·수분 관리</span>
+            <span class="dsw-health__badge">응급상황 대응</span>
+          </div>
+        </div>
+
+        <div class="dsw-health__visual" aria-hidden="true">
+          <div class="dsw-health__visualIcon">🩺</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="dsw-health__grid">
+      <article class="dsw-health__card">
+        <div class="dsw-health__icon">🌡️</div>
+        <h3>기본 건강 체크</h3>
+        <p>
+          혈압, 체온, 맥박 등 기본 활력징후와 하루 컨디션을 확인하여
+          평소와 다른 변화를 빠르게 살핍니다.
+        </p>
+      </article>
+
+      <article class="dsw-health__card">
+        <div class="dsw-health__icon">💊</div>
+        <h3>복약 관리</h3>
+        <p>
+          정해진 시간에 맞춰 복약 여부를 확인하고,
+          약 복용과 관련된 특이사항을 세심하게 관리합니다.
+        </p>
+      </article>
+
+      <article class="dsw-health__card">
+        <div class="dsw-health__icon">🥗</div>
+        <h3>영양·수분 관리</h3>
+        <p>
+          식사량과 수분 섭취를 관찰하며 어르신의 상태에 맞는 식사 보조와
+          건강한 생활 리듬을 돕습니다.
+        </p>
+      </article>
+
+      <article class="dsw-health__card">
+        <div class="dsw-health__icon">🚶</div>
+        <h3>운동·기능 유지</h3>
+        <p>
+          무리하지 않는 체조, 걷기, 관절 운동 등을 통해 신체 기능 유지와
+          일상생활 동작을 지원합니다.
+        </p>
+      </article>
+
+      <article class="dsw-health__card">
+        <div class="dsw-health__icon">🧼</div>
+        <h3>위생·감염관리</h3>
+        <p>
+          손 위생, 환경 정리, 개인 위생관리 등을 통해 어르신이 쾌적하고
+          안전하게 생활하실 수 있도록 돕습니다.
+        </p>
+      </article>
+
+      <article class="dsw-health__card">
+        <div class="dsw-health__icon">🚑</div>
+        <h3>응급상황 대응</h3>
+        <p>
+          갑작스러운 컨디션 변화나 응급상황 발생 시 보호자 연락과 필요한
+          대응이 신속하게 이루어지도록 관리합니다.
+        </p>
+      </article>
+    </div>
+
+    <section class="dsw-health__process" aria-label="건강관리 과정">
+      <h2 class="dsw-health__sectionTitle">더수원의 건강관리 흐름</h2>
+
+      <div class="dsw-health__steps">
+        <article class="dsw-health__step">
+          <div class="dsw-health__stepNo">1</div>
+          <h3>상태 확인</h3>
+          <p>등원·기상 후 컨디션과 기본 건강 상태를 확인합니다.</p>
+        </article>
+
+        <article class="dsw-health__step">
+          <div class="dsw-health__stepNo">2</div>
+          <h3>생활 관찰</h3>
+          <p>식사, 수분, 활동량, 표정 변화 등을 생활 속에서 살핍니다.</p>
+        </article>
+
+        <article class="dsw-health__step">
+          <div class="dsw-health__stepNo">3</div>
+          <h3>기록·공유</h3>
+          <p>필요한 내용은 기록하고 보호자 상담 시 이해하기 쉽게 안내합니다.</p>
+        </article>
+
+        <article class="dsw-health__step">
+          <div class="dsw-health__stepNo">4</div>
+          <h3>신속 대응</h3>
+          <p>특이사항 발생 시 보호자 연락과 필요한 조치를 빠르게 진행합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <p class="dsw-health__notice">
+      ※ 건강관리는 의료행위를 대체하는 것이 아니라, 어르신의 일상 상태를 세심하게 살피고
+      필요한 경우 보호자 및 의료기관과 연계할 수 있도록 돕는 돌봄 과정입니다.
+    </p>
+
+    <div class="dsw-health__cta">
+      <a href="tel:16668853" class="dsw-health__btn dsw-health__btn--primary">전화 상담하기</a>
+      <a href="https://blog.naver.com/thesuwonsilver" target="_blank" rel="noopener" class="dsw-health__btn dsw-health__btn--sub">블로그 보기</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="layout.js"></script>
