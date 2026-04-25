@@ -1,0 +1,314 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="layout.css">
+
+<div id="site-header"></div>
+
+<section class="dsw-cognitive" aria-label="인지활동">
+  <style>
+    .dsw-cognitive{
+      --deep:#173d29;
+      --green:#2f5a3e;
+      --green2:#4f8b63;
+      --gold:#c9872d;
+      --cream:#fffaf0;
+      --line:rgba(31,64,47,.15);
+      --text:#1d2d22;
+      --muted:rgba(29,45,34,.72);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      padding:72px 18px 88px;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 6%, rgba(79,139,99,.18), transparent 35%),
+        radial-gradient(circle at 86% 12%, rgba(201,135,45,.18), transparent 34%),
+        linear-gradient(180deg,#fffaf0 0%,#f4ead5 48%,#fffaf0 100%);
+      overflow:hidden;
+    }
+
+    .dsw-cognitive__wrap{
+      max-width:1120px;
+      margin:0 auto;
+    }
+
+    .dsw-cognitive__hero{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .dsw-cognitive__eyebrow{
+      display:inline-flex;
+      margin-bottom:14px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .dsw-cognitive__title{
+      margin:0;
+      font-size:clamp(34px,4.4vw,56px);
+      line-height:1.14;
+      font-weight:900;
+      letter-spacing:-1.5px;
+      color:var(--deep);
+    }
+
+    .dsw-cognitive__title strong{
+      background:linear-gradient(180deg,#4f8b63 0%,#24563a 58%,#173d29 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .dsw-cognitive__desc{
+      max-width:760px;
+      margin:16px auto 0;
+      font-size:16px;
+      line-height:1.8;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .dsw-cognitive__heroCard{
+      margin:34px auto 0;
+      max-width:980px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      align-items:center;
+      padding:30px;
+      border-radius:32px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.62)),
+        radial-gradient(circle at 12% 0%,rgba(201,135,45,.14),transparent 36%);
+      border:1px solid var(--line);
+      box-shadow:
+        0 26px 64px rgba(23,61,41,.16),
+        inset 0 1px 0 rgba(255,255,255,.75);
+    }
+
+    .dsw-cognitive__heroText h2{
+      margin:0;
+      color:var(--deep);
+      font-size:clamp(24px,3vw,36px);
+      line-height:1.28;
+      font-weight:900;
+    }
+
+    .dsw-cognitive__heroText p{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+      font-weight:700;
+    }
+
+    .dsw-cognitive__badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:20px;
+    }
+
+    .dsw-cognitive__badge{
+      padding:9px 13px;
+      border-radius:999px;
+      background:rgba(47,90,62,.09);
+      border:1px solid rgba(47,90,62,.15);
+      color:var(--green);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .dsw-cognitive__visual{
+      min-height:250px;
+      border-radius:28px;
+      background:
+        linear-gradient(135deg,rgba(47,90,62,.88),rgba(23,61,41,.96));
+      box-shadow:0 24px 48px rgba(23,61,41,.22);
+      display:grid;
+      place-items:center;
+    }
+
+    .dsw-cognitive__visualIcon{
+      font-size:76px;
+    }
+
+    .dsw-cognitive__grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:26px;
+    }
+
+    .dsw-cognitive__card{
+      padding:24px 22px;
+      border-radius:26px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(31,64,47,.12);
+      box-shadow:0 14px 30px rgba(23,61,41,.08);
+      transition:.22s ease;
+    }
+
+    .dsw-cognitive__card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 24px 48px rgba(23,61,41,.15);
+    }
+
+    .dsw-cognitive__icon{
+      width:48px;
+      height:48px;
+      border-radius:17px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      color:#fff;
+      font-size:24px;
+      margin-bottom:16px;
+    }
+
+    .dsw-cognitive__card h3{
+      margin:0;
+      color:var(--deep);
+      font-size:20px;
+      font-weight:900;
+    }
+
+    .dsw-cognitive__card p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.72;
+      font-weight:700;
+    }
+
+    .dsw-cognitive__notice{
+      margin:28px auto 0;
+      max-width:900px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(47,90,62,.13);
+      text-align:center;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+      font-weight:800;
+    }
+
+    @media(max-width:900px){
+      .dsw-cognitive__heroCard{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-cognitive__grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:620px){
+      .dsw-cognitive{
+        padding:54px 14px 68px;
+      }
+
+      .dsw-cognitive__grid{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-cognitive__heroText{
+        text-align:center;
+      }
+
+      .dsw-cognitive__badges{
+        justify-content:center;
+      }
+    }
+  </style>
+
+  <div class="dsw-cognitive__wrap">
+    <header class="dsw-cognitive__hero">
+      <div class="dsw-cognitive__eyebrow">THE SUWON COGNITIVE CARE</div>
+      <h1 class="dsw-cognitive__title">
+        즐겁게 참여하는<br>
+        <strong>더수원 인지활동</strong>
+      </h1>
+      <p class="dsw-cognitive__desc">
+        단순한 시간을 보내는 활동이 아니라, 기억력과 집중력, 정서적 안정까지 고려한
+        의미 있는 인지 프로그램을 운영합니다.
+      </p>
+
+      <div class="dsw-cognitive__heroCard">
+        <div class="dsw-cognitive__heroText">
+          <h2>어르신의 마음과 기억을 함께 깨우는 시간</h2>
+          <p>
+            더수원은 어르신의 현재 인지 상태와 컨디션에 맞추어
+            무리 없이 참여하실 수 있는 맞춤형 활동을 제공합니다.
+          </p>
+
+          <div class="dsw-cognitive__badges">
+            <span class="dsw-cognitive__badge">회상 훈련</span>
+            <span class="dsw-cognitive__badge">소근육 활동</span>
+            <span class="dsw-cognitive__badge">집중력 향상</span>
+            <span class="dsw-cognitive__badge">정서 안정</span>
+          </div>
+        </div>
+
+        <div class="dsw-cognitive__visual" aria-hidden="true">
+          <div class="dsw-cognitive__visualIcon">🧩</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="dsw-cognitive__grid">
+      <article class="dsw-cognitive__card">
+        <div class="dsw-cognitive__icon">🧠</div>
+        <h3>기억력 자극 활동</h3>
+        <p>회상 훈련, 단어 맞추기, 기억 게임 등을 통해 자연스럽게 기억력을 자극합니다.</p>
+      </article>
+
+      <article class="dsw-cognitive__card">
+        <div class="dsw-cognitive__icon">🎨</div>
+        <h3>미술·창작 활동</h3>
+        <p>색칠하기, 만들기, 꾸미기 활동을 통해 창의성과 소근육을 함께 자극합니다.</p>
+      </article>
+
+      <article class="dsw-cognitive__card">
+        <div class="dsw-cognitive__icon">🎵</div>
+        <h3>음악 활동</h3>
+        <p>노래, 율동, 악기 활동을 통해 즐거움과 정서적 안정을 제공합니다.</p>
+      </article>
+
+      <article class="dsw-cognitive__card">
+        <div class="dsw-cognitive__icon">🗣️</div>
+        <h3>소통 프로그램</h3>
+        <p>대화, 발표, 그룹 활동을 통해 사회성과 표현 능력을 유지합니다.</p>
+      </article>
+
+      <article class="dsw-cognitive__card">
+        <div class="dsw-cognitive__icon">✋</div>
+        <h3>소근육 훈련</h3>
+        <p>손 사용 활동을 통해 일상생활 기능 유지와 집중력 향상을 돕습니다.</p>
+      </article>
+
+      <article class="dsw-cognitive__card">
+        <div class="dsw-cognitive__icon">😊</div>
+        <h3>정서 안정 활동</h3>
+        <p>즐거운 참여 경험을 통해 자존감과 정서적 만족감을 높입니다.</p>
+      </article>
+    </div>
+
+    <p class="dsw-cognitive__notice">
+      ※ 인지활동은 어르신의 상태에 따라 난이도와 참여 방식이 조정되며,
+      즐거움과 성취감을 느끼실 수 있도록 무리 없이 진행됩니다.
+    </p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="layout.js"></script>
