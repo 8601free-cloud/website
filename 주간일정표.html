@@ -1,0 +1,531 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="layout.css">
+
+<div id="site-header"></div>
+
+<section class="dsw-program" aria-label="주간 프로그램">
+  <script>
+    window.DSW_PROGRAM_CONFIG = {
+      BLOG_URL: "https://blog.naver.com/thesuwonsilver",
+      BRAND_NAME: "더수원",
+      PAGE_TITLE: "주간 프로그램",
+      PAGE_DESC: "어르신의 하루가 편안하고 활기 있게 이어질 수 있도록 요양원과 주간보호 프로그램을 정성껏 운영합니다.",
+      NOTE_TEXT: "모든 프로그램은 어르신의 컨디션과 건강 상태에 따라 탄력적으로 진행되며, 무리하지 않는 돌봄을 원칙으로 합니다."
+    };
+  </script>
+
+  <style>
+    .dsw-program{
+      --deep:#173d29;
+      --green:#2f5a3e;
+      --green2:#4f8b63;
+      --gold:#c9872d;
+      --cream:#fffaf0;
+      --line:rgba(31,64,47,.15);
+      --text:#1d2d22;
+      --muted:rgba(29,45,34,.72);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      padding:72px 18px 84px;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 6%, rgba(79,139,99,.18), transparent 35%),
+        radial-gradient(circle at 86% 12%, rgba(201,135,45,.18), transparent 34%),
+        linear-gradient(180deg,#fffaf0 0%,#f4ead5 48%,#fffaf0 100%);
+      overflow:hidden;
+    }
+
+    .dsw-program__wrap{
+      max-width:1080px;
+      margin:0 auto;
+    }
+
+    .dsw-program__header{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .dsw-program__eyebrow{
+      display:inline-flex;
+      margin-bottom:14px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .dsw-program__title{
+      margin:0;
+      font-size:clamp(32px,4vw,52px);
+      line-height:1.16;
+      font-weight:900;
+      letter-spacing:-1.3px;
+      color:var(--deep);
+    }
+
+    .dsw-program__title strong{
+      background:linear-gradient(180deg,#4f8b63 0%,#24563a 58%,#173d29 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .dsw-program__desc{
+      max-width:720px;
+      margin:14px auto 24px;
+      font-size:16px;
+      line-height:1.75;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .dsw-tabs{
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      max-width:520px;
+      margin:0 auto;
+      padding:6px;
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(47,90,62,.18);
+      box-shadow:0 16px 34px rgba(23,61,41,.1);
+      backdrop-filter:blur(10px);
+    }
+
+    .dsw-tab{
+      position:relative;
+      z-index:2;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      padding:13px 14px;
+      border-radius:999px;
+      font-family:inherit;
+      font-weight:900;
+      color:var(--green);
+      font-size:18px;
+      transition:.18s ease;
+    }
+
+    .dsw-tab.is-active{
+      color:#fff;
+    }
+
+    .dsw-tab:active{
+      transform:scale(.98);
+    }
+
+    .dsw-tab:focus-visible{
+      outline:3px solid rgba(201,135,45,.45);
+      outline-offset:3px;
+    }
+
+    .dsw-tabs__pill{
+      position:absolute;
+      top:6px;
+      bottom:6px;
+      left:6px;
+      width:calc(50% - 6px);
+      border-radius:999px;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      box-shadow:0 16px 30px rgba(47,90,62,.25);
+      transition:transform .28s cubic-bezier(.2,.9,.2,1);
+      z-index:1;
+    }
+
+    .dsw-program__main{
+      padding-top:4px;
+    }
+
+    .dsw-panel{
+      display:none;
+      opacity:0;
+      transform:translateY(8px);
+    }
+
+    .dsw-panel.is-active{
+      display:block;
+      animation:dswFadeUp .28s ease forwards;
+    }
+
+    @keyframes dswFadeUp{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .dsw-timeline{
+      position:relative;
+      max-width:860px;
+      margin:0 auto;
+      padding:20px;
+      border-radius:30px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.62)),
+        radial-gradient(circle at 16% 0%,rgba(201,135,45,.13),transparent 35%);
+      border:1px solid var(--line);
+      box-shadow:
+        0 26px 64px rgba(23,61,41,.16),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      backdrop-filter:blur(10px);
+      overflow:hidden;
+    }
+
+    .dsw-timeline::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(160px 110px at 8% 18%, rgba(201,135,45,.11), transparent 70%),
+        radial-gradient(180px 130px at 92% 28%, rgba(47,90,62,.09), transparent 70%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0px, rgba(0,0,0,.018) 1px, transparent 1px, transparent 7px);
+      opacity:.5;
+      pointer-events:none;
+    }
+
+    .dsw-item{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:18px 155px 1fr;
+      gap:14px;
+      align-items:start;
+      padding:18px 16px;
+      margin:10px 0;
+      border-radius:22px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(31,64,47,.1);
+      box-shadow:0 10px 24px rgba(23,61,41,.07);
+      transition:.22s ease;
+    }
+
+    .dsw-item:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 36px rgba(23,61,41,.13);
+      background:rgba(255,255,255,.86);
+    }
+
+    .dsw-dotWrap{
+      position:relative;
+      height:100%;
+      padding-top:5px;
+    }
+
+    .dsw-dot{
+      width:12px;
+      height:12px;
+      border-radius:999px;
+      background:var(--gold);
+      box-shadow:0 0 0 7px rgba(201,135,45,.18);
+    }
+
+    .dsw-line{
+      position:absolute;
+      top:24px;
+      left:5px;
+      bottom:-30px;
+      width:2px;
+      background:linear-gradient(180deg,rgba(47,90,62,.28),rgba(47,90,62,.04));
+      border-radius:2px;
+    }
+
+    .dsw-item:last-child .dsw-line{
+      display:none;
+    }
+
+    .dsw-time{
+      padding-top:1px;
+      color:var(--green);
+      font-size:16px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .dsw-title{
+      margin:0;
+      color:var(--deep);
+      font-size:19px;
+      line-height:1.35;
+      font-weight:900;
+      letter-spacing:-.35px;
+    }
+
+    .dsw-sub{
+      margin-top:7px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      font-weight:700;
+    }
+
+    .dsw-note{
+      max-width:860px;
+      margin:22px auto 16px;
+      padding:17px 20px;
+      border-radius:20px;
+      text-align:center;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(47,90,62,.13);
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.7;
+      font-weight:800;
+      box-shadow:0 12px 26px rgba(23,61,41,.07);
+    }
+
+    .dsw-blogBtn{
+      max-width:860px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      text-align:center;
+      text-decoration:none;
+      padding:22px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,250,240,.78));
+      border:1px solid rgba(47,90,62,.22);
+      box-shadow:0 18px 38px rgba(23,61,41,.11);
+      transition:.22s ease;
+    }
+
+    .dsw-blogBtn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 24px 48px rgba(23,61,41,.16);
+      border-color:rgba(47,90,62,.35);
+    }
+
+    .dsw-blogBtn__small{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .dsw-blogBtn__big{
+      color:var(--green);
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-.2px;
+    }
+
+    @media(max-width:680px){
+      .dsw-program{
+        padding:54px 14px 64px;
+      }
+
+      .dsw-tabs{
+        max-width:100%;
+      }
+
+      .dsw-tab{
+        font-size:16px;
+        padding:12px 10px;
+      }
+
+      .dsw-timeline{
+        padding:12px;
+        border-radius:24px;
+      }
+
+      .dsw-item{
+        grid-template-columns:18px 1fr;
+        grid-template-areas:
+          "dot time"
+          "dot content";
+        gap:9px 12px;
+        padding:16px 14px;
+        border-radius:18px;
+      }
+
+      .dsw-dotWrap{
+        grid-area:dot;
+      }
+
+      .dsw-time{
+        grid-area:time;
+      }
+
+      .dsw-content{
+        grid-area:content;
+      }
+
+      .dsw-title{
+        font-size:17px;
+      }
+
+      .dsw-sub{
+        font-size:14px;
+      }
+
+      .dsw-blogBtn{
+        border-radius:24px;
+      }
+    }
+  </style>
+
+  <div class="dsw-program__wrap">
+    <header class="dsw-program__header">
+      <div class="dsw-program__eyebrow">THE SUWON DAILY CARE</div>
+      <h1 class="dsw-program__title">
+        <strong>더수원</strong> 주간 프로그램
+      </h1>
+      <p class="dsw-program__desc"></p>
+
+      <div class="dsw-tabs" role="tablist" aria-label="기관 선택">
+        <button class="dsw-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="dswPanelNursing" id="dswTabNursing" data-tab="nursing">
+          요양원
+        </button>
+        <button class="dsw-tab" type="button" role="tab" aria-selected="false" aria-controls="dswPanelDaycare" id="dswTabDaycare" data-tab="daycare">
+          주간보호
+        </button>
+        <span class="dsw-tabs__pill" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <main class="dsw-program__main">
+      <section class="dsw-panel is-active" role="tabpanel" tabindex="0" id="dswPanelNursing" aria-labelledby="dswTabNursing" data-panel="nursing">
+        <div class="dsw-timeline" id="dswTimelineNursing"></div>
+      </section>
+
+      <section class="dsw-panel" role="tabpanel" tabindex="0" id="dswPanelDaycare" aria-labelledby="dswTabDaycare" data-panel="daycare">
+        <div class="dsw-timeline" id="dswTimelineDaycare"></div>
+      </section>
+
+      <p class="dsw-note" id="dswNote"></p>
+
+      <a class="dsw-blogBtn" id="dswBlogBtn" href="#" target="_blank" rel="noopener">
+        <span class="dsw-blogBtn__small">프로그램 사진과 실제 활동 모습은 블로그에서 확인하실 수 있습니다</span>
+        <span class="dsw-blogBtn__big">더수원 블로그 이동하기 <span aria-hidden="true">›</span></span>
+      </a>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      var cfg = window.DSW_PROGRAM_CONFIG || {};
+
+      var DATA = {
+        nursing: [
+          { time:"06:30 – 07:00", title:"기상 · 위생관리", sub:"개인별 기상 도움 · 세면 · 구강 관리 · 하루 컨디션 확인" },
+          { time:"07:00 – 07:30", title:"아침 식사", sub:"영양 균형을 고려한 식사 · 복약 확인 · 식사 보조" },
+          { time:"08:00 – 09:00", title:"아침 체조", sub:"관절 가동 · 혈액 순환 촉진 · 무리 없는 전신 스트레칭" },
+          { time:"09:00 – 10:30", title:"개인 휴식 · 정서 케어", sub:"컨디션에 맞춘 휴식 · 대화 · 정서 안정 지원" },
+          { time:"11:00 – 12:00", title:"인지 자극 활동", sub:"소근육 자극 · 회상 활동 · 개인 상태별 맞춤 프로그램" },
+          { time:"12:00 – 13:00", title:"점심 식사", sub:"개인 식이 상태 고려 · 충분한 식사 시간 제공" },
+          { time:"14:00 – 15:00", title:"건강 관리 · 재활 운동", sub:"기능 유지 중심 운동 · 일상 동작 훈련 · 가벼운 재활" },
+          { time:"15:00 – 17:00", title:"자유 활동 · 휴식", sub:"차분한 여가 활동 · 개별 휴식 · 저녁 준비" }
+        ],
+        daycare: [
+          { time:"08:30 – 09:30", title:"등원 · 컨디션 체크", sub:"안전 확인 · 건강 상태 점검 · 하루 일정 안내" },
+          { time:"09:30 – 10:00", title:"오전 간식", sub:"수분 보충 · 가벼운 간식 · 컨디션 유지" },
+          { time:"10:00 – 10:30", title:"생활 체조", sub:"스트레칭 · 균형 감각 · 근력 유지 운동" },
+          { time:"10:30 – 12:00", title:"인지 · 소그룹 활동", sub:"인지 훈련 · 게임 · 회상 활동 · 만들기 프로그램" },
+          { time:"12:00 – 12:30", title:"점심 식사", sub:"개인별 식사 보조 · 천천히 안전한 식사 진행" },
+          { time:"12:30 – 13:50", title:"오침 · 마사지", sub:"충분한 휴식 · 혈액 순환을 돕는 가벼운 케어" },
+          { time:"13:50 – 14:10", title:"오후 간식", sub:"에너지 보충 · 수분 섭취 · 휴식 후 컨디션 조절" },
+          { time:"14:10 – 14:30", title:"오후 걷기 운동", sub:"실내·외 보행 연습 · 균형 감각 유지" },
+          { time:"14:30 – 15:30", title:"취미 · 여가 프로그램", sub:"미술 · 음악 · 원예 활동 · 정서적 안정 지원" },
+          { time:"16:00 – 16:20", title:"저녁 식사", sub:"귀가 전 가벼운 식사 · 복약 및 컨디션 확인" },
+          { time:"16:20 – 17:00", title:"하원 준비", sub:"수분 보충 · 개인 물품 정리 · 안전 귀가 지원" }
+        ]
+      };
+
+      var descEl = document.querySelector(".dsw-program__desc");
+      var noteEl = document.getElementById("dswNote");
+      var blogBtn = document.getElementById("dswBlogBtn");
+
+      if (descEl) descEl.textContent = cfg.PAGE_DESC || "";
+      if (noteEl) noteEl.textContent = cfg.NOTE_TEXT || "";
+      if (blogBtn && cfg.BLOG_URL) blogBtn.href = cfg.BLOG_URL;
+
+      function escapeHtml(str){
+        return String(str)
+          .replace(/&/g,"&amp;")
+          .replace(/</g,"&lt;")
+          .replace(/>/g,"&gt;")
+          .replace(/"/g,"&quot;")
+          .replace(/'/g,"&#039;");
+      }
+
+      function renderTimeline(list, mountEl){
+        if (!mountEl) return;
+
+        mountEl.innerHTML = list.map(function(it){
+          return ''
+            + '<article class="dsw-item">'
+            + '  <div class="dsw-dotWrap" aria-hidden="true">'
+            + '    <div class="dsw-dot"></div>'
+            + '    <div class="dsw-line"></div>'
+            + '  </div>'
+            + '  <div class="dsw-time">' + escapeHtml(it.time) + '</div>'
+            + '  <div class="dsw-content">'
+            + '    <h3 class="dsw-title">' + escapeHtml(it.title) + '</h3>'
+            + '    <div class="dsw-sub">' + escapeHtml(it.sub) + '</div>'
+            + '  </div>'
+            + '</article>';
+        }).join("");
+      }
+
+      renderTimeline(DATA.nursing, document.getElementById("dswTimelineNursing"));
+      renderTimeline(DATA.daycare, document.getElementById("dswTimelineDaycare"));
+
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".dsw-tab"));
+      var panels = Array.prototype.slice.call(document.querySelectorAll(".dsw-panel"));
+      var pill = document.querySelector(".dsw-tabs__pill");
+
+      function setTab(key, focus){
+        tabs.forEach(function(btn){
+          var active = btn.dataset.tab === key;
+          btn.classList.toggle("is-active", active);
+          btn.setAttribute("aria-selected", active ? "true" : "false");
+
+          if (active && focus) {
+            btn.focus({ preventScroll:true });
+          }
+        });
+
+        panels.forEach(function(panel){
+          panel.classList.toggle("is-active", panel.dataset.panel === key);
+        });
+
+        if (pill) {
+          pill.style.transform = key === "daycare" ? "translateX(100%)" : "translateX(0%)";
+        }
+      }
+
+      tabs.forEach(function(btn){
+        btn.addEventListener("click", function(){
+          setTab(btn.dataset.tab, false);
+        });
+
+        btn.addEventListener("keydown", function(e){
+          if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+
+          e.preventDefault();
+
+          var idx = tabs.indexOf(btn);
+          var next = e.key === "ArrowRight"
+            ? tabs[(idx + 1) % tabs.length]
+            : tabs[(idx - 1 + tabs.length) % tabs.length];
+
+          setTab(next.dataset.tab, true);
+        });
+      });
+
+      setTab("nursing", false);
+    })();
+  </script>
+</section>
+
+<div id="site-footer"></div>
+<script src="layout.js"></script>
