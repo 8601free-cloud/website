@@ -1,0 +1,512 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="layout.css">
+
+<div id="site-header"></div>
+
+<section class="dsw-fee" id="dswFeeDesktop" aria-label="주간보호 · 요양원 비용 안내">
+  <script>
+    window.DSW_COST_PAGE = {
+      BRAND: "더수원",
+      TEL: "1666-8853"
+    };
+  </script>
+
+  <style>
+    .dsw-fee{
+      --deep:#173d29;
+      --green:#2f5a3e;
+      --green2:#4f8b63;
+      --gold:#c9872d;
+      --cream:#fbf5e8;
+      --line:rgba(31,64,47,.16);
+      --shadow:0 24px 60px rgba(23,61,41,.16);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      padding:72px 18px 82px;
+      color:#1d2d22;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(79,139,99,.18), transparent 34%),
+        radial-gradient(circle at 84% 12%, rgba(201,135,45,.18), transparent 34%),
+        linear-gradient(180deg,#fffaf0 0%,#f4ead5 48%,#fffaf0 100%);
+      overflow:hidden;
+    }
+
+    .dsw-fee__wrap{
+      max-width:1080px;
+      margin:0 auto;
+    }
+
+    .dsw-fee__eyebrow{
+      width:max-content;
+      margin:0 auto 14px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .dsw-fee__mainTitle{
+      margin:0 0 12px;
+      text-align:center;
+      font-size:clamp(30px,4vw,48px);
+      line-height:1.16;
+      font-weight:900;
+      letter-spacing:-1.4px;
+      color:var(--deep);
+    }
+
+    .dsw-fee__mainTitle strong{
+      background:linear-gradient(180deg,#4f8b63 0%,#24563a 60%,#173d29 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .dsw-fee__desc{
+      margin:0 auto 28px;
+      max-width:720px;
+      text-align:center;
+      font-size:16px;
+      line-height:1.75;
+      color:rgba(29,45,34,.72);
+      font-weight:700;
+    }
+
+    .dsw-fee__tabs{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .dsw-fee__tab{
+      border:1px solid rgba(47,90,62,.18);
+      background:rgba(255,255,255,.72);
+      color:var(--deep);
+      padding:13px 22px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:
+        0 12px 24px rgba(23,61,41,.08),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      transition:.22s ease;
+    }
+
+    .dsw-fee__tab:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 34px rgba(23,61,41,.14);
+    }
+
+    .dsw-fee__tab[aria-selected="true"]{
+      color:#fff;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      border-color:rgba(47,90,62,.45);
+      box-shadow:0 18px 38px rgba(47,90,62,.26);
+    }
+
+    .dsw-fee__panel{
+      animation:dswFade .25s ease both;
+    }
+
+    @keyframes dswFade{
+      from{opacity:0; transform:translateY(8px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .dsw-fee__hidden{
+      display:none !important;
+    }
+
+    .dsw-fee__ribbon{
+      position:relative;
+      padding:24px;
+      border-radius:30px 30px 0 0;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.58)),
+        radial-gradient(circle at 12% 0%,rgba(201,135,45,.18),transparent 36%);
+      border:1px solid var(--line);
+      border-bottom:0;
+      box-shadow:0 18px 42px rgba(23,61,41,.1);
+      overflow:hidden;
+    }
+
+    .dsw-fee__brandRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .dsw-fee__brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color:var(--deep);
+    }
+
+    .dsw-fee__logo{
+      width:42px;
+      height:42px;
+      border-radius:15px;
+      background:
+        radial-gradient(circle at 32% 25%,#f4c16d,transparent 32%),
+        linear-gradient(135deg,#315f42,#173d29);
+      box-shadow:0 12px 24px rgba(23,61,41,.22);
+    }
+
+    .dsw-fee__call{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 16px;
+      border-radius:999px;
+      color:#fff;
+      font-weight:900;
+      background:linear-gradient(135deg,#c9872d,#e0a34b);
+      box-shadow:0 16px 28px rgba(201,135,45,.26);
+      white-space:nowrap;
+      transition:.22s ease;
+    }
+
+    .dsw-fee__call:hover{
+      transform:translateY(-3px);
+      box-shadow:0 22px 38px rgba(201,135,45,.34);
+    }
+
+    .dsw-fee__title{
+      margin:0;
+      text-align:center;
+      font-size:clamp(26px,3vw,38px);
+      font-weight:900;
+      letter-spacing:-1px;
+      color:var(--deep);
+    }
+
+    .dsw-fee__title .accent{
+      color:var(--gold);
+    }
+
+    .dsw-fee__subtitleWrap{
+      text-align:center;
+      margin-top:12px;
+    }
+
+    .dsw-fee__subtitle{
+      display:inline-flex;
+      padding:9px 15px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .dsw-fee__card{
+      background:rgba(255,255,255,.82);
+      border:1px solid var(--line);
+      border-radius:0 0 30px 30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transform-style:preserve-3d;
+    }
+
+    .dsw-fee__table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-weight:800;
+    }
+
+    .dsw-fee__thead th{
+      padding:17px 10px;
+      color:#fff;
+      font-size:15px;
+      text-align:center;
+      border-right:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+    }
+
+    .dsw-fee__thead th.th-a,
+    .dsw-fee__thead th.th-c{
+      background:linear-gradient(135deg,#bd7928,#e0a34b);
+    }
+
+    .dsw-fee__tbody td{
+      padding:18px 10px;
+      text-align:center;
+      font-size:18px;
+      color:#243228;
+      background:rgba(255,255,255,.64);
+      border-bottom:1px solid rgba(31,64,47,.09);
+      border-right:1px solid rgba(31,64,47,.07);
+      transition:.18s ease;
+    }
+
+    .dsw-fee__tbody tr:hover td{
+      background:#fffaf0;
+      transform:translateZ(8px);
+    }
+
+    .dsw-fee__tbody tr:last-child td{
+      border-bottom:0;
+    }
+
+    .dsw-fee__tbody td:last-child,
+    .dsw-fee__thead th:last-child{
+      border-right:0;
+    }
+
+    .dsw-fee__tbody td.col-grade{
+      font-size:21px;
+      font-weight:900;
+      color:var(--green);
+      background:rgba(47,90,62,.07);
+    }
+
+    .dsw-fee__tbody td.col-fee{
+      font-weight:900;
+      color:var(--deep);
+      background:rgba(201,135,45,.09);
+    }
+
+    .dsw-fee__note{
+      padding:18px 22px;
+      background:linear-gradient(135deg,rgba(47,90,62,.08),rgba(201,135,45,.08));
+      color:rgba(29,45,34,.76);
+      font-size:14px;
+      line-height:1.75;
+      font-weight:700;
+      border-top:1px solid rgba(31,64,47,.09);
+    }
+
+    @media(max-width:767px){
+      .dsw-fee{
+        padding:52px 14px 64px;
+      }
+
+      .dsw-fee__brandRow{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .dsw-fee__call{
+        width:100%;
+      }
+
+      .dsw-fee__table{
+        min-width:680px;
+      }
+
+      .dsw-fee__card{
+        overflow-x:auto;
+      }
+    }
+  </style>
+
+  <div class="dsw-fee__wrap">
+    <div class="dsw-fee__eyebrow">THE SUWON CARE GUIDE</div>
+    <h1 class="dsw-fee__mainTitle">
+      <strong>더수원</strong> 비용 안내
+    </h1>
+    <p class="dsw-fee__desc">
+      보호자분들이 가장 궁금해하시는 요양원·주간보호 비용을 한눈에 확인하실 수 있도록 정리했습니다.
+      실제 부담금은 감경 여부와 이용 조건에 따라 달라질 수 있습니다.
+    </p>
+
+    <div class="dsw-fee__tabs" role="tablist" aria-label="비용 안내 탭">
+      <button type="button" class="dsw-fee__tab" id="dswTabNursing" aria-selected="true">
+        요양원 비용
+      </button>
+      <button type="button" class="dsw-fee__tab" id="dswTabDaycare" aria-selected="false">
+        주간보호 비용
+      </button>
+    </div>
+
+    <article class="dsw-fee__panel" id="dswPanelNursing" role="tabpanel">
+      <header class="dsw-fee__ribbon">
+        <div class="dsw-fee__brandRow">
+          <div class="dsw-fee__brand">
+            <span class="dsw-fee__logo" aria-hidden="true"></span>
+            <span class="brandText">더수원</span>
+          </div>
+          <a class="dsw-fee__call callBtn" href="#">📞 전화 상담</a>
+        </div>
+
+        <h2 class="dsw-fee__title">
+          <span>2026년</span> <span class="accent">요양원</span> 수가표
+        </h2>
+        <div class="dsw-fee__subtitleWrap">
+          <span class="dsw-fee__subtitle">등급별 수가 · 본인부담금 안내</span>
+        </div>
+      </header>
+
+      <div class="dsw-fee__card">
+        <table class="dsw-fee__table" aria-label="2026년 요양원 수가표">
+          <thead class="dsw-fee__thead">
+            <tr>
+              <th class="th-grade">등급</th>
+              <th class="th-fee">2026년<br>수가</th>
+              <th class="th-a">본인부담금<br>(20%)</th>
+              <th class="th-b">본인부담금<br>(12%)</th>
+              <th class="th-c">본인부담금<br>(8%)</th>
+            </tr>
+          </thead>
+          <tbody class="dsw-fee__tbody">
+            <tr>
+              <td class="col-grade">1등급</td>
+              <td class="col-fee">93,070원</td>
+              <td>18,614원</td>
+              <td>11,168원</td>
+              <td>7,446원</td>
+            </tr>
+            <tr>
+              <td class="col-grade">2등급</td>
+              <td class="col-fee">86,340원</td>
+              <td>17,268원</td>
+              <td>10,361원</td>
+              <td>6,907원</td>
+            </tr>
+            <tr>
+              <td class="col-grade">3·4·5등급</td>
+              <td class="col-fee">81,540원</td>
+              <td>16,308원</td>
+              <td>9,785원</td>
+              <td>6,523원</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="dsw-fee__note">
+          💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다. 감경·의료급여 등 대상 여부에 따라 실제 비용은 달라질 수 있습니다.
+        </div>
+      </div>
+    </article>
+
+    <article class="dsw-fee__panel dsw-fee__hidden" id="dswPanelDaycare" role="tabpanel">
+      <header class="dsw-fee__ribbon">
+        <div class="dsw-fee__brandRow">
+          <div class="dsw-fee__brand">
+            <span class="dsw-fee__logo" aria-hidden="true"></span>
+            <span class="brandText">더수원</span>
+          </div>
+          <a class="dsw-fee__call callBtn" href="#">📞 전화 상담</a>
+        </div>
+
+        <h2 class="dsw-fee__title">
+          <span>2026년</span> <span class="accent">주간보호</span> 수가표
+        </h2>
+        <div class="dsw-fee__subtitleWrap">
+          <span class="dsw-fee__subtitle">8시간 이상 ~ 10시간 미만 기준</span>
+        </div>
+      </header>
+
+      <div class="dsw-fee__card">
+        <table class="dsw-fee__table" aria-label="2026년 주간보호 수가표">
+          <thead class="dsw-fee__thead">
+            <tr>
+              <th class="th-grade">등급</th>
+              <th class="th-fee">2026년<br>수가</th>
+              <th class="th-a">본인부담금<br>(15%)</th>
+              <th class="th-b">본인부담금<br>(9%)</th>
+              <th class="th-c">본인부담금<br>(6%)</th>
+            </tr>
+          </thead>
+          <tbody class="dsw-fee__tbody">
+            <tr>
+              <td class="col-grade">2등급</td>
+              <td class="col-fee">64,590원</td>
+              <td>9,689원</td>
+              <td>5,813원</td>
+              <td>3,875원</td>
+            </tr>
+            <tr>
+              <td class="col-grade">3등급</td>
+              <td class="col-fee">59,640원</td>
+              <td>8,946원</td>
+              <td>5,368원</td>
+              <td>3,578원</td>
+            </tr>
+            <tr>
+              <td class="col-grade">4등급</td>
+              <td class="col-fee">58,010원</td>
+              <td>8,702원</td>
+              <td>5,221원</td>
+              <td>3,481원</td>
+            </tr>
+            <tr>
+              <td class="col-grade">5등급</td>
+              <td class="col-fee">56,360원</td>
+              <td>8,454원</td>
+              <td>5,072원</td>
+              <td>3,382원</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="dsw-fee__note">
+          💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다. 실제 비용은 이용 시간, 등급, 감경 여부에 따라 달라질 수 있습니다.
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    (function(){
+      var root = document.getElementById("dswFeeDesktop");
+      if (!root) return;
+
+      var cfg = window.DSW_COST_PAGE || {};
+      var brandNodes = root.querySelectorAll(".brandText");
+      var callNodes = root.querySelectorAll(".callBtn");
+
+      brandNodes.forEach(function(node){
+        node.textContent = cfg.BRAND || "더수원";
+      });
+
+      var tel = (cfg.TEL || "").replace(/[^0-9]/g, "");
+      var telHref = tel ? "tel:" + tel : "#";
+
+      callNodes.forEach(function(node){
+        node.href = telHref;
+      });
+
+      var tabN = document.getElementById("dswTabNursing");
+      var tabD = document.getElementById("dswTabDaycare");
+      var panelN = document.getElementById("dswPanelNursing");
+      var panelD = document.getElementById("dswPanelDaycare");
+
+      function activate(target){
+        var isNursing = target === "nursing";
+
+        tabN.setAttribute("aria-selected", isNursing ? "true" : "false");
+        tabD.setAttribute("aria-selected", isNursing ? "false" : "true");
+
+        panelN.classList.toggle("dsw-fee__hidden", !isNursing);
+        panelD.classList.toggle("dsw-fee__hidden", isNursing);
+      }
+
+      tabN.addEventListener("click", function(){
+        activate("nursing");
+      });
+
+      tabD.addEventListener("click", function(){
+        activate("daycare");
+      });
+    })();
+  </script>
+</section>
+
+<div id="site-footer"></div>
+<script src="layout.js"></script>
