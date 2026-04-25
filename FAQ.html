@@ -1,0 +1,442 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="layout.css">
+
+<div id="site-header"></div>
+
+<section class="dsw-faq" aria-label="자주 묻는 질문">
+  <script>
+    window.DSW_FAQ_CONFIG = {
+      BRAND_NAME: "더수원",
+      TITLE: "자주 묻는 질문",
+      SUBTITLE: "입소·이용·비용·서류 등 보호자분들이 자주 궁금해하시는 내용을 정리했습니다."
+    };
+  </script>
+
+  <style>
+    .dsw-faq{
+      --deep:#173d29;
+      --green:#2f5a3e;
+      --green2:#4f8b63;
+      --gold:#c9872d;
+      --cream:#fffaf0;
+      --line:rgba(31,64,47,.15);
+      --text:#1d2d22;
+      --muted:rgba(29,45,34,.72);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      padding:72px 18px 84px;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 6%, rgba(79,139,99,.18), transparent 35%),
+        radial-gradient(circle at 86% 12%, rgba(201,135,45,.18), transparent 34%),
+        linear-gradient(180deg,#fffaf0 0%,#f4ead5 48%,#fffaf0 100%);
+      overflow:hidden;
+    }
+
+    .dsw-faq__wrap{
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    .dsw-faq__header{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .dsw-faq__eyebrow{
+      display:inline-flex;
+      margin-bottom:14px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .dsw-faq__title{
+      margin:0;
+      font-size:clamp(32px,4vw,52px);
+      line-height:1.16;
+      font-weight:900;
+      letter-spacing:-1.3px;
+      color:var(--deep);
+    }
+
+    .dsw-faq__title strong{
+      background:linear-gradient(180deg,#4f8b63 0%,#24563a 58%,#173d29 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .dsw-faq__subtitle{
+      max-width:680px;
+      margin:14px auto 0;
+      font-size:16px;
+      line-height:1.75;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .dsw-faqCard{
+      position:relative;
+      max-width:860px;
+      margin:0 auto;
+      border-radius:30px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.62)),
+        radial-gradient(circle at 16% 0%,rgba(201,135,45,.13),transparent 35%);
+      border:1px solid var(--line);
+      box-shadow:
+        0 26px 64px rgba(23,61,41,.16),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      overflow:hidden;
+      backdrop-filter:blur(10px);
+    }
+
+    .dsw-faqCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(160px 110px at 8% 18%, rgba(201,135,45,.11), transparent 70%),
+        radial-gradient(180px 130px at 92% 28%, rgba(47,90,62,.09), transparent 70%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0px, rgba(0,0,0,.018) 1px, transparent 1px, transparent 7px);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .dsw-acc{
+      position:relative;
+      z-index:1;
+      padding:10px;
+    }
+
+    .dsw-item{
+      border-radius:22px;
+      overflow:hidden;
+      margin:10px;
+      border:1px solid rgba(31,64,47,.11);
+      background:rgba(255,255,255,.66);
+      box-shadow:0 10px 24px rgba(23,61,41,.07);
+      transition:.22s ease;
+    }
+
+    .dsw-item:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 36px rgba(23,61,41,.13);
+    }
+
+    .dsw-q{
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr 44px;
+      gap:14px;
+      align-items:center;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      text-align:left;
+      padding:20px 22px;
+      font-family:inherit;
+    }
+
+    .dsw-qText{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .dsw-qMark{
+      width:30px;
+      height:30px;
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:10px;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      color:#fff;
+      font-size:15px;
+      font-weight:900;
+      box-shadow:0 10px 20px rgba(47,90,62,.2);
+    }
+
+    .dsw-qTitle{
+      padding-top:2px;
+      font-size:18px;
+      line-height:1.45;
+      font-weight:900;
+      letter-spacing:-.35px;
+      color:var(--deep);
+    }
+
+    .dsw-plus{
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(47,90,62,.22);
+      background:rgba(255,255,255,.78);
+      box-shadow:0 10px 22px rgba(23,61,41,.08);
+      transition:.22s ease;
+    }
+
+    .dsw-plus svg{
+      width:19px;
+      height:19px;
+      stroke:var(--green);
+      stroke-width:2.5;
+    }
+
+    .dsw-q:hover .dsw-plus{
+      transform:translateY(-2px);
+      background:rgba(47,90,62,.09);
+    }
+
+    .dsw-q:focus-visible{
+      outline:3px solid rgba(201,135,45,.45);
+      outline-offset:3px;
+      border-radius:18px;
+    }
+
+    .dsw-a{
+      display:grid;
+      grid-template-rows:0fr;
+      transition:grid-template-rows .28s ease;
+    }
+
+    .dsw-aInner{
+      overflow:hidden;
+    }
+
+    .dsw-aContent{
+      margin:0 22px 22px 64px;
+      padding:17px 18px;
+      border-radius:18px;
+      border:1px solid rgba(47,90,62,.14);
+      background:
+        linear-gradient(135deg,rgba(47,90,62,.075),rgba(201,135,45,.07));
+      color:rgba(29,45,34,.78);
+      font-size:15px;
+      line-height:1.78;
+      font-weight:700;
+    }
+
+    .dsw-item.is-open{
+      background:rgba(255,255,255,.86);
+      box-shadow:0 20px 46px rgba(23,61,41,.15);
+    }
+
+    .dsw-item.is-open .dsw-a{
+      grid-template-rows:1fr;
+    }
+
+    .dsw-item.is-open .dsw-plus{
+      transform:rotate(45deg);
+      background:linear-gradient(135deg,#fff7e6,#edf6ef);
+      border-color:rgba(47,90,62,.35);
+    }
+
+    .dsw-sr-only{
+      position:absolute !important;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media(max-width:680px){
+      .dsw-faq{
+        padding:54px 14px 64px;
+      }
+
+      .dsw-faqCard{
+        border-radius:24px;
+      }
+
+      .dsw-acc{
+        padding:6px;
+      }
+
+      .dsw-item{
+        margin:8px;
+        border-radius:18px;
+      }
+
+      .dsw-q{
+        padding:17px 16px;
+        grid-template-columns:1fr 40px;
+      }
+
+      .dsw-qTitle{
+        font-size:16px;
+      }
+
+      .dsw-qMark{
+        width:28px;
+        height:28px;
+      }
+
+      .dsw-plus{
+        width:38px;
+        height:38px;
+      }
+
+      .dsw-aContent{
+        margin:0 16px 16px 56px;
+        padding:15px;
+        font-size:14px;
+      }
+    }
+  </style>
+
+  <div class="dsw-faq__wrap">
+    <header class="dsw-faq__header">
+      <div class="dsw-faq__eyebrow">THE SUWON FAQ</div>
+      <h1 class="dsw-faq__title" id="dswFaqTitle">
+        <strong>더수원</strong> 자주 묻는 질문
+      </h1>
+      <p class="dsw-faq__subtitle" id="dswFaqSubtitle"></p>
+    </header>
+
+    <div class="dsw-faqCard" role="region" aria-labelledby="dswFaqTitle">
+      <p class="dsw-sr-only">
+        요양원 입소 절차, 주간보호 이용 방법, 비용, 등급, 준비 서류, 차량, 프로그램, 면회, 상담 문의 등 자주 묻는 질문을 안내합니다.
+      </p>
+
+      <div class="dsw-acc" id="dswAcc"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var cfg = window.DSW_FAQ_CONFIG || {};
+      var titleEl = document.getElementById("dswFaqTitle");
+      var subEl = document.getElementById("dswFaqSubtitle");
+      var acc = document.getElementById("dswAcc");
+
+      if (titleEl) {
+        titleEl.innerHTML = "<strong>" + (cfg.BRAND_NAME || "더수원") + "</strong> " + (cfg.TITLE || "자주 묻는 질문");
+      }
+
+      if (subEl) {
+        subEl.textContent = cfg.SUBTITLE || "";
+      }
+
+      var FAQ = [
+        {
+          q: "어르신 입소 또는 이용은 어떻게 진행되나요?",
+          a: "먼저 어르신의 건강 상태와 돌봄 필요도를 상담드립니다. 상담 내용을 바탕으로 준비 서류와 절차를 안내해 드리며, 일정 조율 후 시설 안내와 이용 또는 입소를 진행합니다."
+        },
+        {
+          q: "비용은 어떻게 안내받을 수 있나요?",
+          a: "장기요양등급, 이용 형태, 이용 시간, 감경 여부에 따라 비용이 달라집니다. 상담 시 기준과 예상 본인부담금을 투명하게 안내해 드립니다."
+        },
+        {
+          q: "준비해야 할 서류는 무엇인가요?",
+          a: "기본적으로 장기요양인정서, 표준장기요양이용계획서, 신분증 사본, 복용 약 정보 등이 필요합니다. 어르신 상황에 따라 추가 서류가 있을 수 있어 상담 시 체크리스트로 안내드립니다."
+        },
+        {
+          q: "주간보호는 차량 송영이 가능한가요?",
+          a: "네, 등원과 하원 동선을 고려하여 송영을 지원합니다. 거주지 위치와 시간대에 따라 조정될 수 있으니 상담 시 정확히 안내드립니다."
+        },
+        {
+          q: "면회나 방문 상담은 어떻게 하나요?",
+          a: "어르신의 일상 리듬과 안전을 우선으로 운영합니다. 방문 상담이나 면회는 사전 연락 후 일정 조율을 권장드립니다."
+        },
+        {
+          q: "프로그램은 어떻게 운영되나요?",
+          a: "기본 시간표를 바탕으로 운영하되, 어르신의 컨디션과 건강 상태에 따라 탄력적으로 조정합니다. 무리하지 않도록 개인별 페이스를 중요하게 봅니다."
+        }
+      ];
+
+      if (!acc) return;
+
+      function escapeHtml(str){
+        return String(str)
+          .replace(/&/g,"&amp;")
+          .replace(/</g,"&lt;")
+          .replace(/>/g,"&gt;")
+          .replace(/"/g,"&quot;")
+          .replace(/'/g,"&#039;");
+      }
+
+      acc.innerHTML = FAQ.map(function(item, idx){
+        var id = "dswFaqItem" + idx;
+        var btnId = "dswFaqBtn" + idx;
+        var panelId = "dswFaqPanel" + idx;
+
+        return ''
+          + '<div class="dsw-item" id="' + id + '">'
+          + '  <button class="dsw-q" type="button" id="' + btnId + '" aria-expanded="false" aria-controls="' + panelId + '">'
+          + '    <div class="dsw-qText">'
+          + '      <span class="dsw-qMark" aria-hidden="true">Q</span>'
+          + '      <span class="dsw-qTitle">' + escapeHtml(item.q) + '</span>'
+          + '    </div>'
+          + '    <span class="dsw-plus" aria-hidden="true">'
+          + '      <svg viewBox="0 0 24 24" fill="none">'
+          + '        <path d="M12 5v14M5 12h14" stroke-linecap="round"></path>'
+          + '      </svg>'
+          + '    </span>'
+          + '  </button>'
+          + '  <div class="dsw-a" id="' + panelId + '" role="region" aria-labelledby="' + btnId + '">'
+          + '    <div class="dsw-aInner">'
+          + '      <div class="dsw-aContent">' + escapeHtml(item.a) + '</div>'
+          + '    </div>'
+          + '  </div>'
+          + '</div>';
+      }).join("");
+
+      var items = Array.prototype.slice.call(acc.querySelectorAll(".dsw-item"));
+
+      function setOpen(itemEl, open){
+        var btn = itemEl.querySelector(".dsw-q");
+        if (!btn) return;
+        itemEl.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      function closeAll(exceptId){
+        items.forEach(function(el){
+          if (exceptId && el.id === exceptId) return;
+          setOpen(el, false);
+        });
+      }
+
+      items.forEach(function(el){
+        var btn = el.querySelector(".dsw-q");
+
+        btn.addEventListener("click", function(){
+          var isOpen = el.classList.contains("is-open");
+          closeAll(el.id);
+          setOpen(el, !isOpen);
+        });
+
+        btn.addEventListener("keydown", function(e){
+          if (e.key === "Escape") {
+            closeAll();
+            btn.focus();
+          }
+        });
+      });
+
+      if (items[0]) {
+        setOpen(items[0], true);
+      }
+    })();
+  </script>
+</section>
+
+<div id="site-footer"></div>
+<script src="layout.js"></script>
