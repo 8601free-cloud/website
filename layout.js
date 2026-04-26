@@ -361,23 +361,86 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // JSON-LD 구조화 데이터
-  if (!document.querySelector('script[type="application/ld+json"]')) {
-    const schema = document.createElement("script");
-    schema.type = "application/ld+json";
-    schema.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "더수원 어르신 통합케어",
-      "url": "https://thesuwon.com",
-      "telephone": "1666-8853",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "수원",
-        "addressRegion": "경기",
-        "addressCountry": "KR"
+ // JSON-LD 구조화 데이터
+if (!document.querySelector('script[type="application/ld+json"]')) {
+  const schema = document.createElement("script");
+  schema.type = "application/ld+json";
+
+  schema.text = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "더수원 어르신 통합케어",
+    "alternateName": [
+      "더수원 주간보호",
+      "더수원주간보호",
+      "더수원 요양원",
+      "더수원요양원",
+      "수원 주간보호",
+      "팔달구 주간보호",
+      "수원 요양원",
+      "팔달구 요양원"
+    ],
+    "url": "https://thesuwon.com",
+    "telephone": "1666-8853",
+
+    "areaServed": [
+      "수원시",
+      "수원 팔달구",
+      "팔달구",
+      "지동",
+      "행궁동",
+      "인계동",
+      "우만동",
+      "매교동",
+      "화서동"
+    ],
+
+    "knowsAbout": [
+      "수원 주간보호",
+      "팔달구 주간보호",
+      "수원 주간보호센터",
+      "노인 주간보호",
+      "수원 요양원",
+      "팔달구 요양원",
+      "장기요양보험",
+      "치매 어르신 케어"
+    ],
+
+    "department": [
+      {
+        "@type": "LocalBusiness",
+        "name": "더수원 주간보호",
+        "telephone": "1666-8853",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "정조로 804 5층",
+          "addressLocality": "수원시 팔달구",
+          "addressRegion": "경기도",
+          "addressCountry": "KR"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "더수원 요양원",
+        "telephone": "1666-8853",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "중부대로125번길 14",
+          "addressLocality": "수원시 팔달구 지동",
+          "addressRegion": "경기도",
+          "addressCountry": "KR"
+        }
       }
-    });
-    head.appendChild(schema);
-  }
-})();
+    ],
+
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "수원시 팔달구",
+      "addressRegion": "경기도",
+      "addressCountry": "KR"
+    }
+  });
+
+  head.appendChild(schema);
+}}
+)();
