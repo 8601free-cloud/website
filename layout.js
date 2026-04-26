@@ -324,3 +324,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initLayout();
 });
+(function injectSEO() {
+  const head = document.head;
+
+  // canonical
+  if (!document.querySelector('link[rel="canonical"]')) {
+    const canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    canonical.href = window.location.origin + window.location.pathname;
+    head.appendChild(canonical);
+  }
+
+  // robots
+  if (!document.querySelector('meta[name="robots"]')) {
+    const robots = document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "index, follow";
+    head.appendChild(robots);
+  }
+
+  // Open Graph 기본값
+  const ogDefaults = {
+    "og:type": "website",
+    "og:site_name": "더수원 어르신 통합케어",
+    "og:image": "https://thesuwon.com/og-image.jpg",
+    "twitter:card": "summary_large_image"
+  };
+
+  Object.entries(ogDefaults).forEach(([property, content]) => {
+    const attr = property.startsWith("og:") ? "property" : "name";
+    if (!document.querySelector(`meta[${attr}="${property}"]`)) {
+      const meta = document.createElement("meta");
+      meta.setAttribute(attr, property);
+      meta.content = content;
+      head.appendChild(meta);
+    }
+  });
+
+  // JSON-LD 구조화 데이터
+  if (!document.querySelector('script[type="application/ld+json"]')) {
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "더수원 어르신 통합케어",
+      "url": "https://thesuwon.com",
+      "telephone": "1666-8853",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "수원",
+        "addressRegion": "경기",
+        "addressCountry": "KR"
+      }
+    });
+    head.appendChild(schema);
+  }
+})();
