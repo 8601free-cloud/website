@@ -346,3 +346,92 @@
     height: 54px;
   }
 }
+/* ===== 모바일 공통 최적화 ===== */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  section {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(30px, 8vw, 42px) !important;
+    line-height: 1.22 !important;
+    word-break: keep-all;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.28 !important;
+    word-break: keep-all;
+  }
+
+  p {
+    word-break: keep-all;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  [class*="__grid"],
+  [class*="-grid"],
+  .dsw-grid,
+  .ops-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  [class*="__heroCard"],
+  [class*="-hero-grid"],
+  .dsw-hero-grid,
+  .ops-two {
+    grid-template-columns: 1fr !important;
+  }
+
+  [class*="__card"],
+  [class*="-card"],
+  .dsw-card {
+    border-radius: 22px !important;
+  }
+}
+@media (max-width: 768px) {
+  .floating-buttons {
+    right: 14px !important;
+    bottom: 14px !important;
+    gap: 8px !important;
+  }
+
+  .floating-btn {
+    min-height: 42px !important;
+    padding: 10px 13px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+  }
+
+  .floating-btn__icon {
+    font-size: 15px !important;
+  }
+
+  .care-location-menu {
+    right: 0 !important;
+    bottom: 148px !important;
+    width: min(260px, calc(100vw - 28px)) !important;
+  }
+}
