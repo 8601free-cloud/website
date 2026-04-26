@@ -121,7 +121,7 @@
     }
 
     .dsw-health__heroText,
-    .dsw-health__visual{
+    .dsw-health__slider{
       position:relative;
       z-index:1;
     }
@@ -164,41 +164,138 @@
       font-weight:900;
     }
 
-    .dsw-health__visual{
-      min-height:250px;
+    .dsw-health__slider{
+      min-height:300px;
       border-radius:28px;
-      background:
-        linear-gradient(135deg,rgba(47,90,62,.88),rgba(23,61,41,.96)),
-        radial-gradient(circle at 25% 20%,rgba(255,255,255,.22),transparent 28%);
-      box-shadow:0 24px 48px rgba(23,61,41,.22);
-      display:grid;
-      place-items:center;
       overflow:hidden;
+      background:#244f35;
+      box-shadow:0 24px 48px rgba(23,61,41,.22);
+      perspective:1200px;
+      isolation:isolate;
     }
 
-    .dsw-health__visual::before{
+    .dsw-health__slide{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      opacity:0;
+      transform:translateX(54px) rotateY(-12deg) scale(.96);
+      transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.22,1,.36,1);
+      will-change:opacity, transform;
+    }
+
+    .dsw-health__slide::before{
       content:"";
       position:absolute;
-      width:190px;
-      height:190px;
-      border-radius:50%;
-      background:rgba(255,255,255,.1);
-      top:-54px;
-      right:-42px;
+      inset:0;
+      background:
+        linear-gradient(135deg,rgba(23,61,41,.18),rgba(23,61,41,.54)),
+        radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 34%);
+      z-index:1;
     }
 
-    .dsw-health__visualIcon{
-      position:relative;
-      z-index:1;
-      width:150px;
-      height:150px;
-      border-radius:42px;
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.25);
-      display:grid;
-      place-items:center;
-      font-size:76px;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+    .dsw-health__slide::after{
+      content:"";
+      position:absolute;
+      inset:16px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.22);
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .dsw-health__slide.is-active{
+      opacity:1;
+      transform:translateX(0) rotateY(0) scale(1);
+      z-index:3;
+    }
+
+    .dsw-health__keywordCard{
+      position:absolute;
+      top:18px;
+      right:18px;
+      z-index:5;
+      padding:10px 15px;
+      border-radius:999px;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(255,255,255,.5);
+      color:#173d29;
+      font-size:13px;
+      font-weight:900;
+      box-shadow:0 12px 26px rgba(0,0,0,.16);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .dsw-health__slideText{
+      position:absolute;
+      left:22px;
+      bottom:24px;
+      z-index:5;
+      max-width:78%;
+      color:#fff;
+      text-align:left;
+    }
+
+    .dsw-health__slideText strong{
+      display:block;
+      font-size:22px;
+      line-height:1.25;
+      font-weight:900;
+      letter-spacing:-.5px;
+      text-shadow:0 4px 16px rgba(0,0,0,.28);
+    }
+
+    .dsw-health__slideText span{
+      display:block;
+      margin-top:7px;
+      font-size:13px;
+      line-height:1.55;
+      font-weight:800;
+      color:rgba(255,255,255,.88);
+    }
+
+    .dsw-health__controls{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      z-index:8;
+      display:flex;
+      gap:8px;
+      padding:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.24);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.32);
+      box-shadow:0 12px 26px rgba(0,0,0,.14);
+    }
+
+    .dsw-health__dot{
+      width:34px;
+      height:34px;
+      border:0;
+      border-radius:999px;
+      cursor:pointer;
+      background:rgba(255,255,255,.82);
+      color:#24563a;
+      font-size:13px;
+      font-weight:900;
+      box-shadow:0 8px 18px rgba(0,0,0,.14);
+      transition:.22s ease;
+    }
+
+    .dsw-health__dot:hover{
+      transform:translateY(-2px);
+      background:#fff;
+    }
+
+    .dsw-health__dot.is-active{
+      color:#fff;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
     }
 
     .dsw-health__grid{
@@ -421,8 +518,24 @@
         justify-content:center;
       }
 
-      .dsw-health__visual{
-        min-height:210px;
+      .dsw-health__slider{
+        min-height:250px;
+      }
+
+      .dsw-health__slideText{
+        left:18px;
+        bottom:72px;
+        max-width:82%;
+      }
+
+      .dsw-health__slideText strong{
+        font-size:19px;
+      }
+
+      .dsw-health__controls{
+        right:50%;
+        transform:translateX(50%);
+        bottom:18px;
       }
 
       .dsw-health__grid,
@@ -468,8 +581,45 @@
           </div>
         </div>
 
-        <div class="dsw-health__visual" aria-hidden="true">
-          <div class="dsw-health__visualIcon">🩺</div>
+        <div class="dsw-health__slider" aria-label="건강관리 이미지 슬라이드">
+          <div class="dsw-health__slide is-active" style="background-image:url('health-slide-01.jpg');">
+            <div class="dsw-health__keywordCard">건강 체크</div>
+            <div class="dsw-health__slideText">
+              <strong>매일 살피는 건강 상태</strong>
+              <span>혈압, 체온, 컨디션 변화를 꼼꼼하게 확인합니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-health__slide" style="background-image:url('health-slide-02.jpg');">
+            <div class="dsw-health__keywordCard">복약 관리</div>
+            <div class="dsw-health__slideText">
+              <strong>정해진 시간에 맞춘 복약 확인</strong>
+              <span>어르신별 복약 상황과 특이사항을 세심하게 관리합니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-health__slide" style="background-image:url('health-slide-03.jpg');">
+            <div class="dsw-health__keywordCard">영양 관리</div>
+            <div class="dsw-health__slideText">
+              <strong>식사와 수분 섭취 관찰</strong>
+              <span>하루 식사량과 생활 리듬을 함께 살핍니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-health__slide" style="background-image:url('health-slide-04.jpg');">
+            <div class="dsw-health__keywordCard">안심 돌봄</div>
+            <div class="dsw-health__slideText">
+              <strong>필요할 때 빠른 보호자 연계</strong>
+              <span>작은 변화도 놓치지 않고 신속하게 공유합니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-health__controls" aria-label="슬라이드 선택">
+            <button type="button" class="dsw-health__dot is-active" data-slide="0" aria-label="1번 슬라이드 보기">1</button>
+            <button type="button" class="dsw-health__dot" data-slide="1" aria-label="2번 슬라이드 보기">2</button>
+            <button type="button" class="dsw-health__dot" data-slide="2" aria-label="3번 슬라이드 보기">3</button>
+            <button type="button" class="dsw-health__dot" data-slide="3" aria-label="4번 슬라이드 보기">4</button>
+          </div>
         </div>
       </div>
     </header>
@@ -574,5 +724,63 @@
 
 <div id="site-footer"></div>
 <script src="layout.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".dsw-health__slider");
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll(".dsw-health__slide");
+    const dots = slider.querySelectorAll(".dsw-health__dot");
+
+    if (!slides.length || !dots.length) return;
+
+    let current = 0;
+    let timer = null;
+
+    function showSlide(index) {
+      slides[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+
+      current = index;
+
+      slides[current].classList.add("is-active");
+      dots[current].classList.add("is-active");
+    }
+
+    function nextSlide() {
+      const next = (current + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function startAutoSlide() {
+      timer = setInterval(nextSlide, 2000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(timer);
+      startAutoSlide();
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        const index = Number(dot.dataset.slide);
+        showSlide(index);
+        resetAutoSlide();
+      });
+    });
+
+    slider.addEventListener("mouseenter", function () {
+      clearInterval(timer);
+    });
+
+    slider.addEventListener("mouseleave", function () {
+      resetAutoSlide();
+    });
+
+    startAutoSlide();
+  });
+</script>
+
 </body>
 </html>

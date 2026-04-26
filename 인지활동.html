@@ -89,6 +89,7 @@
     }
 
     .dsw-cognitive__heroCard{
+      position:relative;
       margin:34px auto 0;
       max-width:980px;
       display:grid;
@@ -104,6 +105,29 @@
       box-shadow:
         0 26px 64px rgba(23,61,41,.16),
         inset 0 1px 0 rgba(255,255,255,.75);
+      overflow:hidden;
+    }
+
+    .dsw-cognitive__heroCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(160px 110px at 8% 18%, rgba(201,135,45,.1), transparent 70%),
+        radial-gradient(180px 130px at 92% 28%, rgba(47,90,62,.09), transparent 70%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0px, rgba(0,0,0,.018) 1px, transparent 1px, transparent 7px);
+      opacity:.48;
+      pointer-events:none;
+    }
+
+    .dsw-cognitive__heroText,
+    .dsw-cognitive__slider{
+      position:relative;
+      z-index:1;
+    }
+
+    .dsw-cognitive__heroText{
+      text-align:left;
     }
 
     .dsw-cognitive__heroText h2{
@@ -112,6 +136,7 @@
       font-size:clamp(24px,3vw,36px);
       line-height:1.28;
       font-weight:900;
+      letter-spacing:-.9px;
     }
 
     .dsw-cognitive__heroText p{
@@ -139,18 +164,138 @@
       font-weight:900;
     }
 
-    .dsw-cognitive__visual{
-      min-height:250px;
+    .dsw-cognitive__slider{
+      min-height:300px;
       border-radius:28px;
-      background:
-        linear-gradient(135deg,rgba(47,90,62,.88),rgba(23,61,41,.96));
+      overflow:hidden;
+      background:#244f35;
       box-shadow:0 24px 48px rgba(23,61,41,.22);
-      display:grid;
-      place-items:center;
+      perspective:1200px;
+      isolation:isolate;
     }
 
-    .dsw-cognitive__visualIcon{
-      font-size:76px;
+    .dsw-cognitive__slide{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      opacity:0;
+      transform:translateX(54px) rotateY(-12deg) scale(.96);
+      transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.22,1,.36,1);
+      will-change:opacity, transform;
+    }
+
+    .dsw-cognitive__slide::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(135deg,rgba(23,61,41,.18),rgba(23,61,41,.54)),
+        radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 34%);
+      z-index:1;
+    }
+
+    .dsw-cognitive__slide::after{
+      content:"";
+      position:absolute;
+      inset:16px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.22);
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .dsw-cognitive__slide.is-active{
+      opacity:1;
+      transform:translateX(0) rotateY(0) scale(1);
+      z-index:3;
+    }
+
+    .dsw-cognitive__keywordCard{
+      position:absolute;
+      top:18px;
+      right:18px;
+      z-index:5;
+      padding:10px 15px;
+      border-radius:999px;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(255,255,255,.5);
+      color:#173d29;
+      font-size:13px;
+      font-weight:900;
+      box-shadow:0 12px 26px rgba(0,0,0,.16);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .dsw-cognitive__slideText{
+      position:absolute;
+      left:22px;
+      bottom:24px;
+      z-index:5;
+      max-width:78%;
+      color:#fff;
+      text-align:left;
+    }
+
+    .dsw-cognitive__slideText strong{
+      display:block;
+      font-size:22px;
+      line-height:1.25;
+      font-weight:900;
+      letter-spacing:-.5px;
+      text-shadow:0 4px 16px rgba(0,0,0,.28);
+    }
+
+    .dsw-cognitive__slideText span{
+      display:block;
+      margin-top:7px;
+      font-size:13px;
+      line-height:1.55;
+      font-weight:800;
+      color:rgba(255,255,255,.88);
+    }
+
+    .dsw-cognitive__controls{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      z-index:8;
+      display:flex;
+      gap:8px;
+      padding:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.24);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.32);
+      box-shadow:0 12px 26px rgba(0,0,0,.14);
+    }
+
+    .dsw-cognitive__dot{
+      width:34px;
+      height:34px;
+      border:0;
+      border-radius:999px;
+      cursor:pointer;
+      background:rgba(255,255,255,.82);
+      color:#24563a;
+      font-size:13px;
+      font-weight:900;
+      box-shadow:0 8px 18px rgba(0,0,0,.14);
+      transition:.22s ease;
+    }
+
+    .dsw-cognitive__dot:hover{
+      transform:translateY(-2px);
+      background:#fff;
+    }
+
+    .dsw-cognitive__dot.is-active{
+      color:#fff;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
     }
 
     .dsw-cognitive__grid{
@@ -161,17 +306,36 @@
     }
 
     .dsw-cognitive__card{
+      position:relative;
       padding:24px 22px;
       border-radius:26px;
       background:rgba(255,255,255,.72);
       border:1px solid rgba(31,64,47,.12);
       box-shadow:0 14px 30px rgba(23,61,41,.08);
       transition:.22s ease;
+      overflow:hidden;
+    }
+
+    .dsw-cognitive__card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 18% 0%,rgba(201,135,45,.12),transparent 34%);
+      opacity:.9;
+      pointer-events:none;
     }
 
     .dsw-cognitive__card:hover{
       transform:translateY(-5px);
       box-shadow:0 24px 48px rgba(23,61,41,.15);
+      background:rgba(255,255,255,.9);
+    }
+
+    .dsw-cognitive__icon,
+    .dsw-cognitive__card h3,
+    .dsw-cognitive__card p{
+      position:relative;
+      z-index:1;
     }
 
     .dsw-cognitive__icon{
@@ -184,6 +348,7 @@
       color:#fff;
       font-size:24px;
       margin-bottom:16px;
+      box-shadow:0 14px 26px rgba(47,90,62,.22);
     }
 
     .dsw-cognitive__card h3{
@@ -191,6 +356,7 @@
       color:var(--deep);
       font-size:20px;
       font-weight:900;
+      letter-spacing:-.45px;
     }
 
     .dsw-cognitive__card p{
@@ -213,6 +379,7 @@
       font-size:15px;
       line-height:1.75;
       font-weight:800;
+      box-shadow:0 12px 26px rgba(23,61,41,.07);
     }
 
     @media(max-width:900px){
@@ -230,8 +397,9 @@
         padding:54px 14px 68px;
       }
 
-      .dsw-cognitive__grid{
-        grid-template-columns:1fr;
+      .dsw-cognitive__heroCard{
+        padding:22px;
+        border-radius:26px;
       }
 
       .dsw-cognitive__heroText{
@@ -240,6 +408,30 @@
 
       .dsw-cognitive__badges{
         justify-content:center;
+      }
+
+      .dsw-cognitive__slider{
+        min-height:250px;
+      }
+
+      .dsw-cognitive__slideText{
+        left:18px;
+        bottom:72px;
+        max-width:82%;
+      }
+
+      .dsw-cognitive__slideText strong{
+        font-size:19px;
+      }
+
+      .dsw-cognitive__controls{
+        right:50%;
+        transform:translateX(50%);
+        bottom:18px;
+      }
+
+      .dsw-cognitive__grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
@@ -272,8 +464,45 @@
           </div>
         </div>
 
-        <div class="dsw-cognitive__visual" aria-hidden="true">
-          <div class="dsw-cognitive__visualIcon">🧩</div>
+        <div class="dsw-cognitive__slider" aria-label="인지활동 이미지 슬라이드">
+          <div class="dsw-cognitive__slide is-active" style="background-image:url('cognitive-slide-01.jpg');">
+            <div class="dsw-cognitive__keywordCard">회상 훈련</div>
+            <div class="dsw-cognitive__slideText">
+              <strong>기억을 자연스럽게 깨우는 시간</strong>
+              <span>사진, 단어, 이야기 활동으로 어르신의 기억을 부드럽게 자극합니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-cognitive__slide" style="background-image:url('cognitive-slide-02.jpg');">
+            <div class="dsw-cognitive__keywordCard">미술 활동</div>
+            <div class="dsw-cognitive__slideText">
+              <strong>손끝으로 표현하는 즐거움</strong>
+              <span>색칠, 만들기, 꾸미기 활동으로 집중력과 소근육 사용을 돕습니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-cognitive__slide" style="background-image:url('cognitive-slide-03.jpg');">
+            <div class="dsw-cognitive__keywordCard">음악 활동</div>
+            <div class="dsw-cognitive__slideText">
+              <strong>노래와 리듬으로 채우는 활력</strong>
+              <span>익숙한 노래와 율동을 통해 정서 안정과 즐거운 참여를 이끕니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-cognitive__slide" style="background-image:url('cognitive-slide-04.jpg');">
+            <div class="dsw-cognitive__keywordCard">정서 안정</div>
+            <div class="dsw-cognitive__slideText">
+              <strong>성취감과 자신감을 느끼는 활동</strong>
+              <span>무리 없는 난이도로 참여 경험과 만족감을 높입니다.</span>
+            </div>
+          </div>
+
+          <div class="dsw-cognitive__controls" aria-label="슬라이드 선택">
+            <button type="button" class="dsw-cognitive__dot is-active" data-slide="0" aria-label="1번 슬라이드 보기">1</button>
+            <button type="button" class="dsw-cognitive__dot" data-slide="1" aria-label="2번 슬라이드 보기">2</button>
+            <button type="button" class="dsw-cognitive__dot" data-slide="2" aria-label="3번 슬라이드 보기">3</button>
+            <button type="button" class="dsw-cognitive__dot" data-slide="3" aria-label="4번 슬라이드 보기">4</button>
+          </div>
         </div>
       </div>
     </header>
@@ -325,5 +554,63 @@
 
 <div id="site-footer"></div>
 <script src="layout.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".dsw-cognitive__slider");
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll(".dsw-cognitive__slide");
+    const dots = slider.querySelectorAll(".dsw-cognitive__dot");
+
+    if (!slides.length || !dots.length) return;
+
+    let current = 0;
+    let timer = null;
+
+    function showSlide(index) {
+      slides[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+
+      current = index;
+
+      slides[current].classList.add("is-active");
+      dots[current].classList.add("is-active");
+    }
+
+    function nextSlide() {
+      const next = (current + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function startAutoSlide() {
+      timer = setInterval(nextSlide, 2000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(timer);
+      startAutoSlide();
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        const index = Number(dot.dataset.slide);
+        showSlide(index);
+        resetAutoSlide();
+      });
+    });
+
+    slider.addEventListener("mouseenter", function () {
+      clearInterval(timer);
+    });
+
+    slider.addEventListener("mouseleave", function () {
+      resetAutoSlide();
+    });
+
+    startAutoSlide();
+  });
+</script>
+
 </body>
 </html>
