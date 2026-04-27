@@ -174,19 +174,37 @@
       isolation:isolate;
     }
 
-    .dsw-health__slide{
-      position:absolute;
-      inset:0;
-      background-size:cover;
-      background-position:center;
-      opacity:0;
-      transform:translateX(54px) rotateY(-12deg) scale(.96);
-      transition:
-        opacity .75s ease,
-        transform .75s cubic-bezier(.22,1,.36,1);
-      will-change:opacity, transform;
-    }
+   .dsw-health__slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:translateX(54px) rotateY(-12deg) scale(.96);
+  transition:
+    opacity .75s ease,
+    transform .75s cubic-bezier(.22,1,.36,1);
+  will-change:opacity, transform;
+}
+.dsw-health__photoFrame{
+  position:absolute;
+  inset:22px;
+  z-index:2;
+  border-radius:24px;
+  padding:10px;
+  background:rgba(255,255,255,.85);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:
+    0 22px 42px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
 
+.dsw-health__photoFrame img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  border-radius:18px;
+}
     .dsw-health__slide::before{
       content:"";
       position:absolute;
