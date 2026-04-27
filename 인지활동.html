@@ -39,15 +39,8 @@
       overflow:hidden;
     }
 
-    .dsw-cognitive__wrap{
-      max-width:1120px;
-      margin:0 auto;
-    }
-
-    .dsw-cognitive__hero{
-      text-align:center;
-      margin-bottom:34px;
-    }
+    .dsw-cognitive__wrap{max-width:1120px;margin:0 auto;}
+    .dsw-cognitive__hero{text-align:center;margin-bottom:34px;}
 
     .dsw-cognitive__eyebrow{
       display:inline-flex;
@@ -126,9 +119,7 @@
       z-index:1;
     }
 
-    .dsw-cognitive__heroText{
-      text-align:left;
-    }
+    .dsw-cognitive__heroText{text-align:left;}
 
     .dsw-cognitive__heroText h2{
       margin:0;
@@ -165,10 +156,10 @@
     }
 
     .dsw-cognitive__slider{
-      min-height:300px;
+      min-height:380px;
       border-radius:28px;
       overflow:hidden;
-      background:#244f35;
+      background:linear-gradient(135deg,#244f35,#173d29);
       box-shadow:0 24px 48px rgba(23,61,41,.22);
       perspective:1200px;
       isolation:isolate;
@@ -177,8 +168,6 @@
     .dsw-cognitive__slide{
       position:absolute;
       inset:0;
-      background-size:cover;
-      background-position:center;
       opacity:0;
       transform:translateX(54px) rotateY(-12deg) scale(.96);
       transition:
@@ -197,20 +186,33 @@
       z-index:1;
     }
 
-    .dsw-cognitive__slide::after{
-      content:"";
-      position:absolute;
-      inset:16px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.22);
-      z-index:2;
-      pointer-events:none;
-    }
-
     .dsw-cognitive__slide.is-active{
       opacity:1;
       transform:translateX(0) rotateY(0) scale(1);
       z-index:3;
+    }
+
+    .dsw-cognitive__photoFrame{
+      position:absolute;
+      inset:22px;
+      z-index:2;
+      border-radius:24px;
+      padding:10px;
+      background:rgba(255,255,255,.9);
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow:
+        0 22px 42px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .dsw-cognitive__photoFrame img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center 15%;
+      border-radius:18px;
+      background:#fff;
     }
 
     .dsw-cognitive__keywordCard{
@@ -228,34 +230,6 @@
       box-shadow:0 12px 26px rgba(0,0,0,.16);
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
-    }
-
-    .dsw-cognitive__slideText{
-      position:absolute;
-      left:22px;
-      bottom:24px;
-      z-index:5;
-      max-width:78%;
-      color:#fff;
-      text-align:left;
-    }
-
-    .dsw-cognitive__slideText strong{
-      display:block;
-      font-size:22px;
-      line-height:1.25;
-      font-weight:900;
-      letter-spacing:-.5px;
-      text-shadow:0 4px 16px rgba(0,0,0,.28);
-    }
-
-    .dsw-cognitive__slideText span{
-      display:block;
-      margin-top:7px;
-      font-size:13px;
-      line-height:1.55;
-      font-weight:800;
-      color:rgba(255,255,255,.88);
     }
 
     .dsw-cognitive__controls{
@@ -411,17 +385,12 @@
       }
 
       .dsw-cognitive__slider{
-        min-height:250px;
+        min-height:390px;
       }
 
-      .dsw-cognitive__slideText{
-        left:18px;
-        bottom:72px;
-        max-width:82%;
-      }
-
-      .dsw-cognitive__slideText strong{
-        font-size:19px;
+      .dsw-cognitive__photoFrame{
+        inset:18px;
+        padding:8px;
       }
 
       .dsw-cognitive__controls{
@@ -465,36 +434,32 @@
         </div>
 
         <div class="dsw-cognitive__slider" aria-label="인지활동 이미지 슬라이드">
-          <div class="dsw-cognitive__slide is-active" style="background-image:url('cognitive-slide-01.jpg');">
+          <div class="dsw-cognitive__slide is-active">
+            <div class="dsw-cognitive__photoFrame">
+              <img src="cognitive-slide-01.jpg" alt="회상 훈련">
+            </div>
             <div class="dsw-cognitive__keywordCard">회상 훈련</div>
-            <div class="dsw-cognitive__slideText">
-              <strong>기억을 자연스럽게 깨우는 시간</strong>
-              <span>사진, 단어, 이야기 활동으로 어르신의 기억을 부드럽게 자극합니다.</span>
-            </div>
           </div>
 
-          <div class="dsw-cognitive__slide" style="background-image:url('cognitive-slide-02.jpg');">
+          <div class="dsw-cognitive__slide">
+            <div class="dsw-cognitive__photoFrame">
+              <img src="cognitive-slide-02.jpg" alt="미술 활동">
+            </div>
             <div class="dsw-cognitive__keywordCard">미술 활동</div>
-            <div class="dsw-cognitive__slideText">
-              <strong>손끝으로 표현하는 즐거움</strong>
-              <span>색칠, 만들기, 꾸미기 활동으로 집중력과 소근육 사용을 돕습니다.</span>
-            </div>
           </div>
 
-          <div class="dsw-cognitive__slide" style="background-image:url('cognitive-slide-03.jpg');">
+          <div class="dsw-cognitive__slide">
+            <div class="dsw-cognitive__photoFrame">
+              <img src="cognitive-slide-03.jpg" alt="음악 활동">
+            </div>
             <div class="dsw-cognitive__keywordCard">음악 활동</div>
-            <div class="dsw-cognitive__slideText">
-              <strong>노래와 리듬으로 채우는 활력</strong>
-              <span>익숙한 노래와 율동을 통해 정서 안정과 즐거운 참여를 이끕니다.</span>
-            </div>
           </div>
 
-          <div class="dsw-cognitive__slide" style="background-image:url('cognitive-slide-04.jpg');">
-            <div class="dsw-cognitive__keywordCard">정서 안정</div>
-            <div class="dsw-cognitive__slideText">
-              <strong>성취감과 자신감을 느끼는 활동</strong>
-              <span>무리 없는 난이도로 참여 경험과 만족감을 높입니다.</span>
+          <div class="dsw-cognitive__slide">
+            <div class="dsw-cognitive__photoFrame">
+              <img src="cognitive-slide-04.jpg" alt="정서 안정">
             </div>
+            <div class="dsw-cognitive__keywordCard">정서 안정</div>
           </div>
 
           <div class="dsw-cognitive__controls" aria-label="슬라이드 선택">
