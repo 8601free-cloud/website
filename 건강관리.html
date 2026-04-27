@@ -39,15 +39,8 @@
       overflow:hidden;
     }
 
-    .dsw-health__wrap{
-      max-width:1120px;
-      margin:0 auto;
-    }
-
-    .dsw-health__hero{
-      text-align:center;
-      margin-bottom:34px;
-    }
+    .dsw-health__wrap{max-width:1120px;margin:0 auto;}
+    .dsw-health__hero{text-align:center;margin-bottom:34px;}
 
     .dsw-health__eyebrow{
       display:inline-flex;
@@ -102,9 +95,7 @@
         linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.62)),
         radial-gradient(circle at 12% 0%,rgba(201,135,45,.14),transparent 36%);
       border:1px solid var(--line);
-      box-shadow:
-        0 26px 64px rgba(23,61,41,.16),
-        inset 0 1px 0 rgba(255,255,255,.75);
+      box-shadow:0 26px 64px rgba(23,61,41,.16), inset 0 1px 0 rgba(255,255,255,.75);
       overflow:hidden;
     }
 
@@ -126,9 +117,7 @@
       z-index:1;
     }
 
-    .dsw-health__heroText{
-      text-align:left;
-    }
+    .dsw-health__heroText{text-align:left;}
 
     .dsw-health__heroText h2{
       margin:0;
@@ -165,70 +154,59 @@
     }
 
     .dsw-health__slider{
-      min-height:300px;
+      min-height:380px;
       border-radius:28px;
       overflow:hidden;
-      background:#244f35;
+      background:linear-gradient(135deg,#244f35,#173d29);
       box-shadow:0 24px 48px rgba(23,61,41,.22);
       perspective:1200px;
       isolation:isolate;
     }
 
-   .dsw-health__slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transform:translateX(54px) rotateY(-12deg) scale(.96);
-  transition:
-    opacity .75s ease,
-    transform .75s cubic-bezier(.22,1,.36,1);
-  will-change:opacity, transform;
-}
-.dsw-health__photoFrame{
-  position:absolute;
-  inset:22px;
-  z-index:2;
-  border-radius:24px;
-  padding:10px;
-  background:rgba(255,255,255,.85);
-  border:1px solid rgba(255,255,255,.7);
-  box-shadow:
-    0 22px 42px rgba(0,0,0,.22),
-    inset 0 1px 0 rgba(255,255,255,.9);
-}
+    .dsw-health__slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transform:translateX(54px) rotateY(-12deg) scale(.96);
+      transition:opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+      will-change:opacity, transform;
+    }
 
-.dsw-health__photoFrame img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center 15%;
-  border-radius:18px;
-}
     .dsw-health__slide::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(135deg,rgba(23,61,41,.18),rgba(23,61,41,.54)),
-        radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 34%);
+        linear-gradient(135deg,rgba(23,61,41,.22),rgba(23,61,41,.5)),
+        radial-gradient(circle at 20% 15%,rgba(255,255,255,.22),transparent 34%);
       z-index:1;
-    }
-
-    .dsw-health__slide::after{
-      content:"";
-      position:absolute;
-      inset:16px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.22);
-      z-index:2;
-      pointer-events:none;
     }
 
     .dsw-health__slide.is-active{
       opacity:1;
       transform:translateX(0) rotateY(0) scale(1);
       z-index:3;
+    }
+
+    .dsw-health__photoFrame{
+      position:absolute;
+      inset:22px;
+      z-index:2;
+      border-radius:24px;
+      padding:10px;
+      background:rgba(255,255,255,.9);
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow:0 22px 42px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .dsw-health__photoFrame img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:contain;
+      object-position:center;
+      border-radius:18px;
+      background:#fff;
     }
 
     .dsw-health__keywordCard{
@@ -238,7 +216,7 @@
       z-index:5;
       padding:10px 15px;
       border-radius:999px;
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.9);
       border:1px solid rgba(255,255,255,.5);
       color:#173d29;
       font-size:13px;
@@ -250,17 +228,22 @@
 
     .dsw-health__slideText{
       position:absolute;
-      left:22px;
-      bottom:24px;
+      left:26px;
+      bottom:76px;
       z-index:5;
       max-width:78%;
       color:#fff;
       text-align:left;
+      padding:12px 14px;
+      border-radius:18px;
+      background:rgba(23,61,41,.48);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
     }
 
     .dsw-health__slideText strong{
       display:block;
-      font-size:22px;
+      font-size:20px;
       line-height:1.25;
       font-weight:900;
       letter-spacing:-.5px;
@@ -273,7 +256,7 @@
       font-size:13px;
       line-height:1.55;
       font-weight:800;
-      color:rgba(255,255,255,.88);
+      color:rgba(255,255,255,.9);
     }
 
     .dsw-health__controls{
@@ -389,9 +372,7 @@
       margin-top:34px;
       padding:28px;
       border-radius:30px;
-      background:
-        linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.6)),
-        radial-gradient(circle at 16% 0%,rgba(47,90,62,.1),transparent 35%);
+      background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.6)), radial-gradient(circle at 16% 0%,rgba(47,90,62,.1),transparent 35%);
       border:1px solid var(--line);
       box-shadow:0 22px 54px rgba(23,61,41,.13);
     }
@@ -537,19 +518,23 @@
       }
 
       .dsw-health__slider{
-        min-height:380px;
+        min-height:390px;
       }
-.dsw-health__photoFrame img{
-  object-fit:contain;
-  background:#fff;}
+
+      .dsw-health__photoFrame{
+        inset:18px;
+        padding:8px;
+      }
+
       .dsw-health__slideText{
         left:18px;
+        right:18px;
         bottom:72px;
-        max-width:82%;
+        max-width:none;
       }
 
       .dsw-health__slideText strong{
-        font-size:19px;
+        font-size:18px;
       }
 
       .dsw-health__controls{
@@ -602,59 +587,57 @@
         </div>
 
         <div class="dsw-health__slider" aria-label="건강관리 이미지 슬라이드">
+          <div class="dsw-health__slide is-active">
+            <div class="dsw-health__photoFrame">
+              <img src="KakaoTalk_20260427_193952369_19.png" alt="건강 체크">
+            </div>
+            <div class="dsw-health__keywordCard">건강 체크</div>
+            <div class="dsw-health__slideText">
+              <strong>매일 살피는 건강 상태</strong>
+              <span>혈압, 체온, 컨디션 변화를 꼼꼼하게 확인합니다.</span>
+            </div>
+          </div>
 
-  <div class="dsw-health__slide is-active">
-    <div class="dsw-health__photoFrame">
-      <img src="KakaoTalk_20260427_193952369_19.png" alt="건강 체크">
-    </div>
-    <div class="dsw-health__keywordCard">건강 체크</div>
-    <div class="dsw-health__slideText">
-      <strong>매일 살피는 건강 상태</strong>
-      <span>혈압, 체온, 컨디션 변화를 꼼꼼하게 확인합니다.</span>
-    </div>
-  </div>
+          <div class="dsw-health__slide">
+            <div class="dsw-health__photoFrame">
+              <img src="https://raw.githubusercontent.com/아이디/레포/main/health2.jpg" alt="복약 관리">
+            </div>
+            <div class="dsw-health__keywordCard">복약 관리</div>
+            <div class="dsw-health__slideText">
+              <strong>정해진 시간에 맞춘 복약 확인</strong>
+              <span>어르신별 복약 상황과 특이사항을 세심하게 관리합니다.</span>
+            </div>
+          </div>
 
-  <div class="dsw-health__slide">
-    <div class="dsw-health__photoFrame">
-      <img src="https://raw.githubusercontent.com/아이디/레포/main/health2.jpg" alt="복약 관리">
-    </div>
-    <div class="dsw-health__keywordCard">복약 관리</div>
-    <div class="dsw-health__slideText">
-      <strong>정해진 시간에 맞춘 복약 확인</strong>
-      <span>어르신별 복약 상황과 특이사항을 세심하게 관리합니다.</span>
-    </div>
-  </div>
+          <div class="dsw-health__slide">
+            <div class="dsw-health__photoFrame">
+              <img src="https://raw.githubusercontent.com/아이디/레포/main/health3.jpg" alt="영양 관리">
+            </div>
+            <div class="dsw-health__keywordCard">영양 관리</div>
+            <div class="dsw-health__slideText">
+              <strong>식사와 수분 섭취 관찰</strong>
+              <span>하루 식사량과 생활 리듬을 함께 살핍니다.</span>
+            </div>
+          </div>
 
-  <div class="dsw-health__slide">
-    <div class="dsw-health__photoFrame">
-      <img src="https://raw.githubusercontent.com/아이디/레포/main/health3.jpg" alt="영양 관리">
-    </div>
-    <div class="dsw-health__keywordCard">영양 관리</div>
-    <div class="dsw-health__slideText">
-      <strong>식사와 수분 섭취 관찰</strong>
-      <span>하루 식사량과 생활 리듬을 함께 살핍니다.</span>
-    </div>
-  </div>
+          <div class="dsw-health__slide">
+            <div class="dsw-health__photoFrame">
+              <img src="https://raw.githubusercontent.com/아이디/레포/main/health4.jpg" alt="안심 돌봄">
+            </div>
+            <div class="dsw-health__keywordCard">안심 돌봄</div>
+            <div class="dsw-health__slideText">
+              <strong>필요할 때 빠른 보호자 연계</strong>
+              <span>작은 변화도 놓치지 않고 신속하게 공유합니다.</span>
+            </div>
+          </div>
 
-  <div class="dsw-health__slide">
-    <div class="dsw-health__photoFrame">
-      <img src="https://raw.githubusercontent.com/아이디/레포/main/health4.jpg" alt="안심 돌봄">
-    </div>
-    <div class="dsw-health__keywordCard">안심 돌봄</div>
-    <div class="dsw-health__slideText">
-      <strong>필요할 때 빠른 보호자 연계</strong>
-      <span>작은 변화도 놓치지 않고 신속하게 공유합니다.</span>
-    </div>
-  </div>
-
-  <div class="dsw-health__controls">
-    <button type="button" class="dsw-health__dot is-active" data-slide="0">1</button>
-    <button type="button" class="dsw-health__dot" data-slide="1">2</button>
-    <button type="button" class="dsw-health__dot" data-slide="2">3</button>
-    <button type="button" class="dsw-health__dot" data-slide="3">4</button>
-  </div>
-
-</div>
+          <div class="dsw-health__controls" aria-label="슬라이드 선택">
+            <button type="button" class="dsw-health__dot is-active" data-slide="0" aria-label="1번 슬라이드 보기">1</button>
+            <button type="button" class="dsw-health__dot" data-slide="1" aria-label="2번 슬라이드 보기">2</button>
+            <button type="button" class="dsw-health__dot" data-slide="2" aria-label="3번 슬라이드 보기">3</button>
+            <button type="button" class="dsw-health__dot" data-slide="3" aria-label="4번 슬라이드 보기">4</button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -662,55 +645,37 @@
       <article class="dsw-health__card">
         <div class="dsw-health__icon">🌡️</div>
         <h3>기본 건강 체크</h3>
-        <p>
-          혈압, 체온, 맥박 등 기본 활력징후와 하루 컨디션을 확인하여
-          평소와 다른 변화를 빠르게 살핍니다.
-        </p>
+        <p>혈압, 체온, 맥박 등 기본 활력징후와 하루 컨디션을 확인하여 평소와 다른 변화를 빠르게 살핍니다.</p>
       </article>
 
       <article class="dsw-health__card">
         <div class="dsw-health__icon">💊</div>
         <h3>복약 관리</h3>
-        <p>
-          정해진 시간에 맞춰 복약 여부를 확인하고,
-          약 복용과 관련된 특이사항을 세심하게 관리합니다.
-        </p>
+        <p>정해진 시간에 맞춰 복약 여부를 확인하고, 약 복용과 관련된 특이사항을 세심하게 관리합니다.</p>
       </article>
 
       <article class="dsw-health__card">
         <div class="dsw-health__icon">🥗</div>
         <h3>영양·수분 관리</h3>
-        <p>
-          식사량과 수분 섭취를 관찰하며 어르신의 상태에 맞는 식사 보조와
-          건강한 생활 리듬을 돕습니다.
-        </p>
+        <p>식사량과 수분 섭취를 관찰하며 어르신의 상태에 맞는 식사 보조와 건강한 생활 리듬을 돕습니다.</p>
       </article>
 
       <article class="dsw-health__card">
         <div class="dsw-health__icon">🚶</div>
         <h3>운동·기능 유지</h3>
-        <p>
-          무리하지 않는 체조, 걷기, 관절 운동 등을 통해 신체 기능 유지와
-          일상생활 동작을 지원합니다.
-        </p>
+        <p>무리하지 않는 체조, 걷기, 관절 운동 등을 통해 신체 기능 유지와 일상생활 동작을 지원합니다.</p>
       </article>
 
       <article class="dsw-health__card">
         <div class="dsw-health__icon">🧼</div>
         <h3>위생·감염관리</h3>
-        <p>
-          손 위생, 환경 정리, 개인 위생관리 등을 통해 어르신이 쾌적하고
-          안전하게 생활하실 수 있도록 돕습니다.
-        </p>
+        <p>손 위생, 환경 정리, 개인 위생관리 등을 통해 어르신이 쾌적하고 안전하게 생활하실 수 있도록 돕습니다.</p>
       </article>
 
       <article class="dsw-health__card">
         <div class="dsw-health__icon">🚑</div>
         <h3>응급상황 대응</h3>
-        <p>
-          갑작스러운 컨디션 변화나 응급상황 발생 시 보호자 연락과 필요한
-          대응이 신속하게 이루어지도록 관리합니다.
-        </p>
+        <p>갑작스러운 컨디션 변화나 응급상황 발생 시 보호자 연락과 필요한 대응이 신속하게 이루어지도록 관리합니다.</p>
       </article>
     </div>
 
