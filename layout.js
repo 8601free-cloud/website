@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
               height="72"
               decoding="async"
             />
-            <span class="site-brand-text">더수원</span>
+            <span class="site-brand-text">더수원TEST</span>
           </a>
 
           <nav class="top-nav" aria-label="주요 메뉴">
