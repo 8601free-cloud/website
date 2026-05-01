@@ -1,62 +1,88 @@
 <div class="top-nav-wrap">
-  <nav class="top-nav">
-    <a href="index.html">홈</a>
+  <div class="top-nav-inner">
+    <a href="index.html" class="site-brand" aria-label="더수원 홈으로 이동">
+      <img src="logo.png" alt="더수원 로고" class="site-brand-logo">
+      <span class="site-brand-text">더수원</span>
+    </a>
 
-    <div class="nav-item has-dropdown">
-      <a href="센터소개.html" class="nav-link">센터소개</a>
-      <div class="dropdown-menu">
-        <a href="운영철학.html">운영철학</a>
-        <a href="시설안내.html">시설 안내</a>
-        <a href="오시는길.html">오시는 길</a>
-      </div>
-    </div>
+    <nav class="top-nav" aria-label="주요 메뉴">
+      <a href="index.html">홈</a>
 
-    <div class="nav-item has-dropdown">
-      <a href="이용안내.html" class="nav-link">이용안내</a>
-      <div class="dropdown-menu">
-        <a href="입소안내.html">입소 안내</a>
-        <a href="비용안내.html">비용 안내</a>
-        <a href="FAQ.html">자주 묻는 질문</a>
+      <div class="nav-item has-dropdown">
+        <a href="운영철학.html" class="nav-link">센터소개</a>
+        <div class="dropdown-menu">
+          <a href="운영철학.html">운영철학</a>
+          <a href="시설안내.html">시설 안내</a>
+          <a href="오시는길.html">오시는 길</a>
+        </div>
       </div>
-    </div>
 
-    <div class="nav-item has-dropdown">
-      <a href="프로그램.html" class="nav-link">프로그램</a>
-      <div class="dropdown-menu">
-        <a href="건강관리.html">건강관리</a>
-        <a href="인지활동.html">인지활동</a>
-        <a href="정서 사회교류.html">정서·사회교류</a>
-        <a href="주간일정표.html">주간 일정표</a>
+      <div class="nav-item has-dropdown">
+        <a href="입소안내.html" class="nav-link">이용안내</a>
+        <div class="dropdown-menu">
+          <a href="입소안내.html">입소 안내</a>
+          <a href="비용안내.html">비용 안내</a>
+          <a href="FAQ.html">자주 묻는 질문</a>
+        </div>
       </div>
-    </div>
 
-    <div class="nav-item has-dropdown">
-      <a href="소식.html" class="nav-link">소식</a>
-      <div class="dropdown-menu">
-        <a href="공지사항.html">공지사항</a>
-        <a href="활동사진.html">활동사진</a>
+      <div class="nav-item has-dropdown">
+        <a href="건강관리.html" class="nav-link">프로그램</a>
+        <div class="dropdown-menu">
+          <a href="건강관리.html">건강관리</a>
+          <a href="인지활동.html">인지활동</a>
+          <a href="정서 사회교류.html">정서·사회교류</a>
+          <a href="주간일정표.html">주간 일정표</a>
+        </div>
       </div>
-    </div>
 
-    <div class="nav-item has-dropdown">
-      <a href="상담안내.html" class="nav-link">상담</a>
-      <div class="dropdown-menu">
-        <a href="상담안내.html">상담 안내</a>
-        <a href="문의하기.html">문의하기</a>
+      <div class="nav-item has-dropdown">
+        <a href="공지사항.html" class="nav-link">소식</a>
+        <div class="dropdown-menu">
+          <a href="공지사항.html">공지사항</a>
+          <a href="활동사진.html">활동사진</a>
+        </div>
       </div>
-    </div>
-  </nav>
+
+      <div class="nav-item has-dropdown">
+        <a href="상담안내.html" class="nav-link">상담</a>
+        <div class="dropdown-menu">
+          <a href="상담안내.html">상담 안내</a>
+          <a href="문의하기.html">문의하기</a>
+        </div>
+      </div>
+    </nav>
+  </div>
 </div>
 
-<div class="floating-buttons">
-  <a href="tel:16668853" class="floating-btn">📞 전화 상담</a>
+<div class="floating-buttons" aria-label="빠른 상담 메뉴">
+  <a href="tel:16668853" class="floating-btn">
+    <span class="floating-btn__icon">📞</span>
+    <span class="floating-btn__text">문의하기</span>
+  </a>
+
+  <a href="https://blog.naver.com/thesuwonsilver" class="floating-btn" target="_blank" rel="noopener noreferrer">
+    <span class="floating-btn__icon">📝</span>
+    <span class="floating-btn__text">블로그</span>
+  </a>
+
   <button id="careOpenLocationMenu" class="floating-btn" type="button" aria-haspopup="true" aria-expanded="false">
-    📍 위치 보기
+    <span class="floating-btn__icon">📍</span>
+    <span class="floating-btn__text">위치 보기</span>
   </button>
 
   <div id="careLocationMenu" class="care-location-menu" role="menu">
-    <a id="linkDaycare" href="https://map.naver.com/p/entry/place/2041796109" role="menuitem" target="_blank">더수원주간보호</a>
-    <a id="linkNursing" href="https://map.naver.com/p/entry/place/1286446205" role="menuitem" target="_blank">더수원요양원</a>
+    <div class="care-location-menu-title">위치 선택</div>
+
+    <a id="linkDaycare" class="care-location-link" href="https://map.naver.com/p/entry/place/2041796109" role="menuitem" target="_blank" rel="noopener noreferrer">
+      더수원주간보호
+      <small>네이버 지도 열기</small>
+    </a>
+
+    <a id="linkNursing" class="care-location-link" href="https://map.naver.com/p/entry/place/1286446205" role="menuitem" target="_blank" rel="noopener noreferrer">
+      더수원요양원
+      <small>네이버 지도 열기</small>
+    </a>
   </div>
 </div>
 
