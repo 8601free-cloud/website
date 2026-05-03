@@ -350,58 +350,96 @@
   }
 
   @media (max-width: 767px){
-    .dsw-map-page{
-      padding:18px 14px 100px;
-    }
-
-    .dsw-map-hero{
-      padding:26px 18px;
-      border-radius:24px;
-    }
-
-    .dsw-map-title{
-      font-size:30px;
-    }
-
-    .dsw-map-desc{
-      font-size:15px;
-      line-height:1.8;
-    }
-
-    .dsw-map-wrap{
-      height:68vh;
-      min-height:460px;
-      border-radius:22px;
-    }
-
-    .map-location-panel{
-      left:12px;
-      right:12px;
-      bottom:12px;
-      width:auto;
-      padding:14px;
-      border-radius:18px;
-    }
-
-    .map-location-card{
-      padding:12px 12px 11px;
-      border-radius:14px;
-    }
-
-    .map-location-card-title{
-      font-size:15px;
-    }
-
-    .map-location-card-address{
-      font-size:12px;
-      padding-left:32px;
-    }
-
-    .marker-label-custom{
-      max-width:220px;
-      white-space:normal;
-    }
+  .dsw-map-page{
+    padding:16px 10px 100px;
   }
+
+  .dsw-map-hero{
+    padding:22px 16px;
+    border-radius:22px;
+  }
+
+  .dsw-map-title{
+    font-size:28px;
+  }
+
+  .dsw-map-desc{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  .dsw-map-wrap{
+    height:68vh;
+    min-height:460px;
+    border-radius:22px;
+  }
+
+  /* 모바일에서도 데스크탑처럼 왼쪽 하단 작은 카드 */
+  .map-location-panel{
+    left:12px;
+    right:auto;
+    bottom:12px;
+    width:260px;
+    max-width:calc(100% - 24px);
+    padding:10px;
+    border-radius:16px;
+  }
+
+  .map-location-panel-title{
+    font-size:13px;
+    margin-bottom:2px;
+  }
+
+  .map-location-panel-sub{
+    font-size:11px;
+    margin-bottom:7px;
+    line-height:1.3;
+  }
+
+  .map-location-list{
+    gap:6px;
+  }
+
+  .map-location-card{
+    padding:8px 9px;
+    border-radius:12px;
+  }
+
+  .map-location-card-num{
+    width:19px;
+    height:19px;
+    font-size:9px;
+    margin-right:5px;
+  }
+
+  .map-location-card-title{
+    font-size:12.5px;
+  }
+
+  .map-location-card-address{
+    margin-top:3px;
+    padding-left:24px;
+    font-size:10.5px;
+    line-height:1.3;
+  }
+
+  .marker-label-custom{
+    max-width:210px;
+    white-space:normal;
+    font-size:12px;
+    padding:9px 11px;
+    border-radius:12px;
+  }
+
+  .marker-title{
+    font-size:13px;
+    margin-bottom:2px;
+  }
+
+  .marker-sub{
+    font-size:10.5px;
+  }
+}
 </style>
 
 <div class="dsw-map-page">
