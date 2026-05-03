@@ -544,7 +544,7 @@
 
     placeObjects.forEach(obj => obj.infowindow.close());
 
-    const offsetLat = window.innerWidth <= 767 ? 0.0036 : 0.0022;
+    const offsetLat = window.innerWidth <= 767 ? 0.0010 : 0.0022;
     const adjustedCenter = new naver.maps.LatLng(
       target.position.lat() + offsetLat,
       target.position.lng()
