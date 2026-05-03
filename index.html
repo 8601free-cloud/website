@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://website-rouge-chi-18.vercel.app/" />
 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/layout.css?v=20260501-4">
+  <link rel="stylesheet" href="/layout.css?v=20260503" />
 
   <style>
     :root{
@@ -33,25 +33,39 @@
         radial-gradient(circle at 85% 80%, rgba(58,106,75,.08), transparent 24%),
         linear-gradient(180deg, #f6f1e8 0%, #efe7dc 100%);
       --dsw-line: rgba(43,43,43,.08);
-      --dsw-glow: 0 24px 60px rgba(0,0,0,.12);
-      --dsw-softshadow: 0 14px 34px rgba(0,0,0,.08);
       --tiltX: 0deg;
       --tiltY: 0deg;
       --floatZ: 0px;
     }
 
-    *{ box-sizing:border-box; }
+    *,
+    *::before,
+    *::after{
+      box-sizing:border-box;
+    }
 
+    html,
     body{
+      width:100%;
+      max-width:100%;
       margin:0;
       padding:0;
+      overflow-x:hidden;
+    }
+
+    body{
       font-family:'Noto Sans KR', sans-serif;
       background:var(--dsw-bg);
       color:var(--dsw-charcoal);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
-      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+      display:block;
     }
 
     .sr-only{
@@ -66,16 +80,19 @@
       border:0 !important;
     }
 
-    /* 메인 히어로 */
     .hero-wrap{
+      width:100%;
       max-width:1200px;
       margin:0 auto;
       padding:42px 20px 28px;
       perspective:1800px;
+      overflow:hidden;
     }
 
     .hero-surface{
       position:relative;
+      width:100%;
+      max-width:100%;
       border-radius:28px;
       padding:36px;
       background:
@@ -155,7 +172,10 @@
       z-index:2;
     }
 
-    .hero-table td{ vertical-align:top; }
+    .hero-table td{
+      vertical-align:top;
+    }
+
     .cell-img{ width:50%; }
     .cell-gap{ width:6%; }
     .cell-text{ width:44%; }
@@ -205,6 +225,7 @@
     }
 
     .base-img{ opacity:1; z-index:1; }
+
     .hover-img{
       opacity:0;
       z-index:2;
@@ -253,6 +274,7 @@
       font-weight:600;
       line-height:1.65;
       color:var(--dsw-gray);
+      word-break:keep-all;
     }
 
     .hero-cta{
@@ -305,6 +327,7 @@
         inset 0 1px 0 rgba(255,255,255,.58);
       position:relative;
       overflow:hidden;
+      word-break:keep-all;
     }
 
     .hero-diffline::before{
@@ -329,6 +352,7 @@
         inset 0 1px 0 rgba(255,255,255,.55);
       backdrop-filter:blur(8px);
       -webkit-backdrop-filter:blur(8px);
+      word-break:keep-all;
     }
 
     .hero-closing-region{
@@ -347,10 +371,12 @@
       letter-spacing:-.01em;
     }
 
-    .hero-closing-text strong{ color:var(--dsw-green); }
+    .hero-closing-text strong{
+      color:var(--dsw-green);
+    }
 
-    /* 안내 카드 */
     .hero-note{
+      width:100%;
       max-width:760px;
       margin:30px auto 0;
       border-radius:26px;
@@ -398,6 +424,7 @@
     .hero-note-badge{
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:8px;
       margin:0 auto 14px;
       padding:8px 13px;
@@ -407,6 +434,7 @@
       position:relative;
       left:50%;
       transform:translateX(-50%);
+      max-width:100%;
     }
 
     .hero-note-badge-icon{
@@ -420,6 +448,7 @@
       color:#fffdf6;
       font-size:11px;
       line-height:1;
+      flex:0 0 auto;
     }
 
     .hero-note-badge-text{
@@ -461,6 +490,7 @@
       line-height:1.7;
       color:rgba(62,54,40,.84);
       font-weight:600;
+      word-break:keep-all;
     }
 
     .hero-note-foot strong{
@@ -499,11 +529,12 @@
       filter:blur(0);
     }
 
-    /* 카드 영역 */
     .section-wrap{
+      width:100%;
       max-width:1200px;
       margin:0 auto;
       padding:30px 20px 56px;
+      overflow:hidden;
     }
 
     .card-row{
@@ -511,6 +542,7 @@
       justify-content:space-between;
       gap:28px;
       width:100%;
+      max-width:100%;
       perspective:1600px;
     }
 
@@ -518,6 +550,7 @@
       width:33.33%;
       height:440px;
       perspective:1400px;
+      min-width:0;
     }
 
     .card-inner{
@@ -528,11 +561,15 @@
       transition:transform .9s cubic-bezier(.4,1.6,.3,1), box-shadow .35s ease;
     }
 
-    .card-cell.flip .card-inner{ transform:rotateY(180deg); }
+    .card-cell.flip .card-inner{
+      transform:rotateY(180deg);
+    }
 
     .card-face{
       position:absolute;
       inset:0;
+      width:100%;
+      max-width:100%;
       backface-visibility:hidden;
       -webkit-backface-visibility:hidden;
       border-radius:24px;
@@ -545,7 +582,9 @@
       flex-direction:column;
     }
 
-    .card-back{ transform:rotateY(180deg); }
+    .card-back{
+      transform:rotateY(180deg);
+    }
 
     .img-wrapper{
       height:72%;
@@ -579,6 +618,7 @@
       display:flex;
       justify-content:center;
       pointer-events:none;
+      max-width:calc(100% - 28px);
     }
 
     .img-title{
@@ -596,6 +636,7 @@
       color:#fff;
       text-align:center;
       text-shadow:0 2px 8px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.30);
+      word-break:keep-all;
     }
 
     .sub-text{
@@ -610,6 +651,7 @@
       color:#4f5559;
       font-weight:600;
       background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,249,247,.98));
+      word-break:keep-all;
     }
 
     @media (hover:hover){
@@ -644,102 +686,259 @@
     }
 
     @media (max-width:900px){
+      html,
+      body{
+        width:100% !important;
+        max-width:100% !important;
+        overflow-x:hidden !important;
+      }
+
       .hero-wrap{
-        padding:26px 16px 18px;
-        perspective:none;
+        width:100% !important;
+        max-width:100% !important;
+        padding:24px 10px 18px !important;
+        perspective:none !important;
+        overflow:hidden !important;
       }
 
       .hero-surface{
-        padding:24px 18px;
-        border-radius:22px;
+        width:100% !important;
+        max-width:100% !important;
+        padding:20px 14px !important;
+        border-radius:22px !important;
         transform:none !important;
+        overflow:hidden !important;
+        backdrop-filter:none !important;
+        -webkit-backdrop-filter:none !important;
+      }
+
+      .hero-surface::after,
+      .visual-shell::before,
+      .hero-orb,
+      .visual-gloss{
+        display:none !important;
       }
 
       .hero-table,
       .hero-table tbody,
       .hero-table tr,
       .hero-table td{
-        display:block;
+        display:block !important;
         width:100% !important;
+        max-width:100% !important;
       }
 
-      .cell-gap{ display:none; }
+      .cell-gap{
+        display:none !important;
+      }
 
       .visual-shell,
       .visual-img-wrap{
+        width:100% !important;
+        max-width:100% !important;
         transform:none !important;
       }
 
-      .base-img, .hover-img{
-        position:relative;
-        inset:auto;
-        width:100%;
-        height:auto;
+      .visual-img-wrap{
+        aspect-ratio:1 / .82;
+        border-radius:18px;
       }
 
-      .hover-img{ display:none; }
+      .base-img{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
 
-      .brand-name{ font-size:54px; margin-bottom:14px; }
-      .hero-h1{ font-size:26px; }
-      .hero-subline{ font-size:14.5px; }
+      .hover-img{
+        display:none !important;
+      }
+
+      .brand-name{
+        font-size:52px !important;
+        margin:18px 0 12px !important;
+      }
+
+      .hero-h1{
+        font-size:25px !important;
+        line-height:1.22 !important;
+      }
+
+      .hero-subline{
+        font-size:14.5px !important;
+      }
+
       .hero-cta a{
-        width:100%;
-        font-size:14px;
+        width:100% !important;
+        font-size:14px !important;
       }
+
       .hero-diffline{
-        font-size:14.8px;
-        padding:14px 14px 14px 16px;
-        border-radius:14px;
+        font-size:14.5px !important;
+        padding:14px 14px 14px 16px !important;
+        border-radius:14px !important;
       }
-      .hero-closing-region{ font-size:14px; }
-      .hero-closing-text{ font-size:16.8px; line-height:1.8; }
+
+      .hero-closing{
+        padding:15px 14px !important;
+        border-radius:14px !important;
+        backdrop-filter:none !important;
+        -webkit-backdrop-filter:none !important;
+      }
+
+      .hero-closing-region{
+        font-size:13.5px !important;
+      }
+
+      .hero-closing-text{
+        font-size:16px !important;
+        line-height:1.75 !important;
+      }
 
       .hero-note{
-        max-width:100%;
-        margin:18px 16px 0;
-        border-radius:20px;
+        width:calc(100% - 20px) !important;
+        max-width:calc(100% - 20px) !important;
+        margin:18px auto 0 !important;
+        border-radius:18px !important;
+      }
+
+      .hero-note::before,
+      .hero-note::after{
+        inset:8px !important;
+        border-radius:14px !important;
       }
 
       .hero-note-inner{
-        padding:22px 18px 20px;
+        padding:20px 14px 18px !important;
+      }
+
+      .hero-note-badge{
+        left:auto !important;
+        transform:none !important;
+        margin:0 auto 12px !important;
+        max-width:100% !important;
+        padding:7px 10px !important;
+      }
+
+      .hero-note-badge-text{
+        white-space:normal !important;
+        font-size:12px !important;
+      }
+
+      .hero-note-eyebrow{
+        font-size:13.5px !important;
       }
 
       .hero-note-text{
-        font-size:15.8px;
-        line-height:1.9;
+        font-size:14.5px !important;
+        line-height:1.8 !important;
       }
 
-      .hero-note-foot{ font-size:14.6px; }
+      .hero-note-foot{
+        font-size:13.5px !important;
+      }
+
+      .hero-note-corner{
+        display:none !important;
+      }
 
       .section-wrap{
-        padding:22px 16px 40px;
+        width:100% !important;
+        max-width:100% !important;
+        padding:22px 10px 40px !important;
+        overflow:hidden !important;
       }
 
       .card-row{
-        flex-direction:column;
+        width:100% !important;
+        max-width:100% !important;
+        flex-direction:column !important;
+        gap:18px !important;
+        overflow:hidden !important;
+        perspective:none !important;
       }
 
       .card-cell{
-        width:100%;
-        height:380px;
+        width:100% !important;
+        max-width:100% !important;
+        height:350px !important;
+        perspective:none !important;
+        overflow:hidden !important;
       }
 
-      .img-wrapper{ height:70%; }
+      .card-inner{
+        width:100% !important;
+        max-width:100% !important;
+      }
+
+      .card-face{
+        width:100% !important;
+        max-width:100% !important;
+        border-radius:20px !important;
+      }
+
+      .img-wrapper{
+        height:70% !important;
+      }
+
+      .img-title-wrap{
+        left:10px !important;
+        right:10px !important;
+        max-width:calc(100% - 20px) !important;
+      }
 
       .img-title{
-        font-size:17px;
-        width:100%;
+        width:auto !important;
+        max-width:100% !important;
+        font-size:15.5px !important;
+        padding:8px 10px !important;
+        border-radius:13px !important;
+        backdrop-filter:none !important;
+        -webkit-backdrop-filter:none !important;
       }
 
       .sub-text{
-        font-size:14.5px;
-        padding:14px 16px 16px;
+        font-size:13.5px !important;
+        line-height:1.6 !important;
+        padding:11px 12px 13px !important;
+      }
+
+      .dsw-reveal{
+        filter:none !important;
+      }
+    }
+
+    @media (max-width:390px){
+      .brand-name{
+        font-size:46px !important;
+      }
+
+      .hero-h1{
+        font-size:23px !important;
+      }
+
+      .hero-note{
+        width:calc(100% - 12px) !important;
+        max-width:calc(100% - 12px) !important;
+      }
+
+      .card-cell{
+        height:330px !important;
+      }
+
+      .img-title{
+        font-size:14.5px !important;
+      }
+
+      .sub-text{
+        font-size:13px !important;
       }
     }
 
     @media (prefers-reduced-motion: reduce){
       .visual-shell,
-      .hero-stack > *,
       .hero-orb,
       .visual-img,
       .visual-img-wrap,
@@ -761,351 +960,348 @@
   </style>
 </head>
 <body>
-  <h1 class="sr-only">수원 팔달구 더수원 어르신 주간보호 및 요양원 통합케어</h1>
 
-  <div id="site-header"></div>
+<h1 class="sr-only">수원 팔달구 더수원 어르신 주간보호 및 요양원 통합케어</h1>
 
-  <div class="hero-wrap">
-    <div class="hero-surface" id="hero3d">
-      <span class="hero-orb orb-1" aria-hidden="true"></span>
-      <span class="hero-orb orb-2" aria-hidden="true"></span>
+<div id="site-header"></div>
 
-      <table class="hero-table">
-        <tbody>
-          <tr>
-            <td class="cell-img">
-              <div class="visual-shell">
-                <div class="visual-img-wrap">
-                  <img
-                    src="https://cdn.imweb.me/upload/S20250616705368ebc899d/885454f620bd2.png"
-                    alt="더수원 어르신 주간보호 요양원 통합케어"
-                    class="visual-img base-img"
-                  />
-                  <img
-                    src="https://cdn.imweb.me/upload/S20250616705368ebc899d/cb5144d219845.png"
-                    alt="더수원 주간보호 직원과 어르신의 돌봄 모습"
-                    class="visual-img hover-img"
-                  />
-                </div>
-                <span class="visual-gloss" aria-hidden="true"></span>
+<div class="hero-wrap">
+  <div class="hero-surface" id="hero3d">
+    <span class="hero-orb orb-1" aria-hidden="true"></span>
+    <span class="hero-orb orb-2" aria-hidden="true"></span>
+
+    <table class="hero-table">
+      <tbody>
+        <tr>
+          <td class="cell-img">
+            <div class="visual-shell">
+              <div class="visual-img-wrap">
+                <img
+                  src="https://cdn.imweb.me/upload/S20250616705368ebc899d/885454f620bd2.png"
+                  alt="더수원 어르신 주간보호 요양원 통합케어"
+                  class="visual-img base-img"
+                />
+                <img
+                  src="https://cdn.imweb.me/upload/S20250616705368ebc899d/cb5144d219845.png"
+                  alt="더수원 주간보호 직원과 어르신의 돌봄 모습"
+                  class="visual-img hover-img"
+                />
               </div>
-            </td>
+              <span class="visual-gloss" aria-hidden="true"></span>
+            </div>
+          </td>
 
-            <td class="cell-gap"></td>
+          <td class="cell-gap"></td>
 
-            <td class="cell-text">
-              <div class="hero-stack">
-                <div class="brand-name">더수원</div>
+          <td class="cell-text">
+            <div class="hero-stack">
+              <div class="brand-name">더수원</div>
 
-                <h2 class="hero-h1">수원 주간보호·요양원 통합케어</h2>
+              <h2 class="hero-h1">수원 주간보호·요양원 통합케어</h2>
 
-                <div class="hero-subline">
-                  치매 어르신을 위한 <strong>세심한 돌봄</strong> · 장기요양보험 적용 · 건강관리 프로그램
-                </div>
-
-                <div class="hero-cta" aria-label="빠른 문의">
-                  <a class="primary" href="tel:16668853">📞 전화 상담하기</a>
-                </div>
-
-                <div class="hero-diffline">
-                  주간보호와 요양원 사이에서 <strong>고민하지 않으셔도</strong> 됩니다.<br>
-                  더수원은 어르신의 상태에 맞춰 <strong>부담 없이 이어지는 돌봄</strong>을
-                  함께 만들어갑니다.
-                </div>
-
-                <div class="hero-closing">
-                  <div class="hero-closing-region">
-                    수원 팔달구·장안구·권선구·영통구 지역
-                  </div>
-
-                  <p class="hero-closing-text">
-                    어르신의 하루를 가까이에서 돌보는<br>
-                    통합 돌봄 공간, <strong>더수원</strong>입니다.
-                  </p>
-                </div>
+              <div class="hero-subline">
+                치매 어르신을 위한 <strong>세심한 돌봄</strong> · 장기요양보험 적용 · 건강관리 프로그램
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+              <div class="hero-cta" aria-label="빠른 문의">
+                <a class="primary" href="tel:16668853">📞 전화 상담하기</a>
+              </div>
+
+              <div class="hero-diffline">
+                주간보호와 요양원 사이에서 <strong>고민하지 않으셔도</strong> 됩니다.<br>
+                더수원은 어르신의 상태에 맞춰 <strong>부담 없이 이어지는 돌봄</strong>을
+                함께 만들어갑니다.
+              </div>
+
+              <div class="hero-closing">
+                <div class="hero-closing-region">
+                  수원 팔달구·장안구·권선구·영통구 지역
+                </div>
+
+                <p class="hero-closing-text">
+                  어르신의 하루를 가까이에서 돌보는<br>
+                  통합 돌봄 공간, <strong>더수원</strong>입니다.
+                </p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section class="hero-note dsw-reveal" aria-label="더수원 돌봄 안내">
+  <div class="hero-note-inner">
+    <div class="hero-note-corner tl" aria-hidden="true">✦</div>
+    <div class="hero-note-corner tr" aria-hidden="true">✦</div>
+    <div class="hero-note-corner bl" aria-hidden="true">✦</div>
+    <div class="hero-note-corner br" aria-hidden="true">✦</div>
+
+    <div class="hero-note-badge" aria-hidden="true">
+      <span class="hero-note-badge-icon">✦</span>
+      <span class="hero-note-badge-text">더수원 케어 안내</span>
+    </div>
+
+    <p class="hero-note-eyebrow">매일의 돌봄이 더 편안해지도록</p>
+
+    <p class="hero-note-text">
+      주간보호센터와 요양원을 함께 운영하며,<br>
+      어르신의 건강 상태와 생활 리듬을 천천히 살펴봅니다.<br><br>
+      보호자와 가족의 마음까지 다정히 헤아리는 돌봄으로,<br>
+      하루가 조금 더 편안해질 수 있도록 정성을 다하고 있습니다.
+    </p>
+
+    <div class="hero-note-divider" aria-hidden="true"></div>
+
+    <p class="hero-note-foot">
+      필요하시면 <strong>상담 → 안내 → 방문</strong>까지 차근차근 도와드릴게요.
+    </p>
+  </div>
+</section>
+
+<div class="section-wrap">
+  <div class="card-row">
+    <div class="card-cell" id="wrap1">
+      <div class="card-inner">
+        <div class="card-face">
+          <div class="img-wrapper">
+            <div class="img-bg" id="front1"></div>
+            <div class="img-title-wrap"><div class="img-title" id="title1"></div></div>
+          </div>
+          <div class="sub-text" id="desc1"></div>
+        </div>
+
+        <div class="card-face card-back">
+          <div class="img-wrapper">
+            <div class="img-bg" id="back1"></div>
+            <div class="img-title-wrap"><div class="img-title" id="title1b"></div></div>
+          </div>
+          <div class="sub-text" id="desc1b"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-cell" id="wrap2">
+      <div class="card-inner">
+        <div class="card-face">
+          <div class="img-wrapper">
+            <div class="img-bg" id="front2"></div>
+            <div class="img-title-wrap"><div class="img-title" id="title2"></div></div>
+          </div>
+          <div class="sub-text" id="desc2"></div>
+        </div>
+
+        <div class="card-face card-back">
+          <div class="img-wrapper">
+            <div class="img-bg" id="back2"></div>
+            <div class="img-title-wrap"><div class="img-title" id="title2b"></div></div>
+          </div>
+          <div class="sub-text" id="desc2b"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-cell" id="wrap3">
+      <div class="card-inner">
+        <div class="card-face">
+          <div class="img-wrapper">
+            <div class="img-bg" id="front3"></div>
+            <div class="img-title-wrap"><div class="img-title" id="title3"></div></div>
+          </div>
+          <div class="sub-text" id="desc3"></div>
+        </div>
+
+        <div class="card-face card-back">
+          <div class="img-wrapper">
+            <div class="img-bg" id="back3"></div>
+            <div class="img-title-wrap"><div class="img-title" id="title3b"></div></div>
+          </div>
+          <div class="sub-text" id="desc3b"></div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <section class="hero-note dsw-reveal" aria-label="더수원 돌봄 안내">
-    <div class="hero-note-inner">
-      <div class="hero-note-corner tl" aria-hidden="true">✦</div>
-      <div class="hero-note-corner tr" aria-hidden="true">✦</div>
-      <div class="hero-note-corner bl" aria-hidden="true">✦</div>
-      <div class="hero-note-corner br" aria-hidden="true">✦</div>
-
-      <div class="hero-note-badge" aria-hidden="true">
-        <span class="hero-note-badge-icon">✦</span>
-        <span class="hero-note-badge-text">더수원 케어 안내</span>
-      </div>
-
-      <p class="hero-note-eyebrow">매일의 돌봄이 더 편안해지도록</p>
-
-      <p class="hero-note-text">
-        주간보호센터와 요양원을 함께 운영하며,<br>
-        어르신의 건강 상태와 생활 리듬을 천천히 살펴봅니다.<br><br>
-        보호자와 가족의 마음까지 다정히 헤아리는 돌봄으로,<br>
-        하루가 조금 더 편안해질 수 있도록 정성을 다하고 있습니다.
-      </p>
-
-      <div class="hero-note-divider" aria-hidden="true"></div>
-
-      <p class="hero-note-foot">
-        필요하시면 <strong>상담 → 안내 → 방문</strong>까지 차근차근 도와드릴게요.
-      </p>
-    </div>
-  </section>
-
-  <div class="section-wrap">
-    <div class="card-row">
-      <div class="card-cell" id="wrap1">
-        <div class="card-inner">
-          <div class="card-face">
-            <div class="img-wrapper">
-              <div class="img-bg" id="front1"></div>
-              <div class="img-title-wrap"><div class="img-title" id="title1"></div></div>
-            </div>
-            <div class="sub-text" id="desc1"></div>
-          </div>
-
-          <div class="card-face card-back">
-            <div class="img-wrapper">
-              <div class="img-bg" id="back1"></div>
-              <div class="img-title-wrap"><div class="img-title" id="title1b"></div></div>
-            </div>
-            <div class="sub-text" id="desc1b"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-cell" id="wrap2">
-        <div class="card-inner">
-          <div class="card-face">
-            <div class="img-wrapper">
-              <div class="img-bg" id="front2"></div>
-              <div class="img-title-wrap"><div class="img-title" id="title2"></div></div>
-            </div>
-            <div class="sub-text" id="desc2"></div>
-          </div>
-
-          <div class="card-face card-back">
-            <div class="img-wrapper">
-              <div class="img-bg" id="back2"></div>
-              <div class="img-title-wrap"><div class="img-title" id="title2b"></div></div>
-            </div>
-            <div class="sub-text" id="desc2b"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-cell" id="wrap3">
-        <div class="card-inner">
-          <div class="card-face">
-            <div class="img-wrapper">
-              <div class="img-bg" id="front3"></div>
-              <div class="img-title-wrap"><div class="img-title" id="title3"></div></div>
-            </div>
-            <div class="sub-text" id="desc3"></div>
-          </div>
-
-          <div class="card-face card-back">
-            <div class="img-wrapper">
-              <div class="img-bg" id="back3"></div>
-              <div class="img-title-wrap"><div class="img-title" id="title3b"></div></div>
-            </div>
-            <div class="sub-text" id="desc3b"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    (function () {
-      const hero = document.getElementById('hero3d');
-      if (!hero) return;
-
-      const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-
-      if (isReducedMotion || isTouchDevice) return;
-
-      let rafId = null;
-
-      hero.addEventListener('mousemove', function (e) {
-        const rect = hero.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateY = ((x - centerX) / centerX) * 4.5;
-        const rotateX = ((centerY - y) / centerY) * 4.5;
-
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-          hero.style.setProperty('--tiltX', rotateX.toFixed(2) + 'deg');
-          hero.style.setProperty('--tiltY', rotateY.toFixed(2) + 'deg');
-          hero.style.setProperty('--floatZ', '4px');
-        });
-      });
-
-      hero.addEventListener('mouseleave', function () {
-        if (rafId) cancelAnimationFrame(rafId);
-        hero.style.setProperty('--tiltX', '0deg');
-        hero.style.setProperty('--tiltY', '0deg');
-        hero.style.setProperty('--floatZ', '0px');
-      });
-    })();
-
-    (function(){
-      const targets = document.querySelectorAll('.dsw-reveal');
-      if(!targets.length) return;
-
-      if('IntersectionObserver' in window){
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if(entry.isIntersecting){
-              entry.target.classList.add('is-in');
-            } else {
-              entry.target.classList.remove('is-in');
-            }
-          });
-        }, { threshold:0.18, rootMargin:"0px 0px -6% 0px" });
-
-        targets.forEach(el => io.observe(el));
-      } else {
-        targets.forEach(el => el.classList.add('is-in'));
-      }
-    })();
-
-    const cardData = [
-      [
-        {
-          title: "체계적인 맞춤 건강관리",
-          desc: "정기 건강 체크, 식사·영양 관리, 만성질환 모니터링",
-          bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/0ee42b7ef8a6f.png"
-        },
-        {
-          title: "전문 간호 인력 상주",
-          desc: "응급 대응, 투약 관리, 상처 처치 등 전문 간호 서비스 제공",
-          bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/079cf5c21c067.png"
-        }
-      ],
-      [
-        {
-          title: "개별 맞춤 인지 자극 활동",
-          desc: "그림 그리기, 회상치료, 놀이 치료 등",
-          bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/37b58603932fd.png"
-        },
-        {
-          title: "정서 안정과 사회적 교류 프로그램",
-          desc: "생신잔치, 음악치료, 원예치료 등",
-          bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/da5ef3bd374d0.png"
-        }
-      ],
-      [
-        {
-          title: "병원 연계 진료 지원",
-          desc: "진료 동행, 정기 검진, 응급 상황 신속 대응",
-          bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/ac825af59c00b.png"
-        },
-        {
-          title: "가족과의 소통 강화",
-          desc: "보호자 간담회, 가정통신문, 실시간 사진 공유",
-          bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/148ab3b5e2d9d.png"
-        }
-      ]
-    ];
-
-    let index = 0;
-
-    function initCards() {
-      for (let i = 0; i < 3; i++) {
-        document.getElementById(`front${i + 1}`).style.backgroundImage =
-          `url('${cardData[i][0].bg}')`;
-        document.getElementById(`title${i + 1}`).innerText =
-          cardData[i][0].title;
-        document.getElementById(`desc${i + 1}`).innerText =
-          cardData[i][0].desc;
-      }
-    }
-
-    function flipCards() {
-      index = (index + 1) % 2;
-
-      for (let i = 0; i < 3; i++) {
-        const wrap = document.getElementById(`wrap${i + 1}`);
-        const isFlipped = wrap.classList.contains("flip");
-
-        const target = isFlipped ? "front" : "back";
-        const title = isFlipped ? `title${i + 1}` : `title${i + 1}b`;
-        const desc = isFlipped ? `desc${i + 1}` : `desc${i + 1}b`;
-
-        document.getElementById(`${target}${i + 1}`).style.backgroundImage =
-          `url('${cardData[i][index].bg}')`;
-
-        document.getElementById(title).innerText = cardData[i][index].title;
-        document.getElementById(desc).innerText = cardData[i][index].desc;
-
-        wrap.classList.toggle("flip");
-      }
-    }
-
-    initCards();
-    setInterval(flipCards, 4000);
-
-    (function () {
-      const cards = document.querySelectorAll('.card-cell');
-      const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (isTouch || reduced) return;
-
-      cards.forEach((card) => {
-        const inner = card.querySelector('.card-inner');
-
-        card.addEventListener('mousemove', (e) => {
-          if (card.classList.contains('flip')) return;
-
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateY = ((x - centerX) / centerX) * 8;
-          const rotateX = ((centerY - y) / centerY) * 8;
-
-          inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          if (card.classList.contains('flip')) {
-            inner.style.transform = 'rotateY(180deg)';
-          } else {
-            inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
-          }
-        });
-      });
-
-      setInterval(() => {
-        cards.forEach((card) => {
-          const inner = card.querySelector('.card-inner');
-          if (card.matches(':hover')) return;
-          inner.style.transform = card.classList.contains('flip')
-            ? 'rotateY(180deg)'
-            : 'rotateX(0deg) rotateY(0deg)';
-        });
-      }, 4050);
-    })();
-  </script>
+</div>
 
 <div id="site-footer"></div>
-<script src="/layout.js?v=20260501-2"></script>
+
+<script src="/layout.js?v=20260503"></script>
+
+<script>
+  (function () {
+    const hero = document.getElementById('hero3d');
+    if (!hero) return;
+
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    if (isReducedMotion || isTouchDevice) return;
+
+    let rafId = null;
+
+    hero.addEventListener('mousemove', function (e) {
+      const rect = hero.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateY = ((x - centerX) / centerX) * 4.5;
+      const rotateX = ((centerY - y) / centerY) * 4.5;
+
+      if (rafId) cancelAnimationFrame(rafId);
+
+      rafId = requestAnimationFrame(() => {
+        hero.style.setProperty('--tiltX', rotateX.toFixed(2) + 'deg');
+        hero.style.setProperty('--tiltY', rotateY.toFixed(2) + 'deg');
+        hero.style.setProperty('--floatZ', '4px');
+      });
+    });
+
+    hero.addEventListener('mouseleave', function () {
+      if (rafId) cancelAnimationFrame(rafId);
+      hero.style.setProperty('--tiltX', '0deg');
+      hero.style.setProperty('--tiltY', '0deg');
+      hero.style.setProperty('--floatZ', '0px');
+    });
+  })();
+
+  (function(){
+    const targets = document.querySelectorAll('.dsw-reveal');
+    if(!targets.length) return;
+
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-in');
+          } else {
+            entry.target.classList.remove('is-in');
+          }
+        });
+      }, { threshold:0.18, rootMargin:"0px 0px -6% 0px" });
+
+      targets.forEach(el => io.observe(el));
+    } else {
+      targets.forEach(el => el.classList.add('is-in'));
+    }
+  })();
+
+  const cardData = [
+    [
+      {
+        title: "체계적인 맞춤 건강관리",
+        desc: "정기 건강 체크, 식사·영양 관리, 만성질환 모니터링",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/0ee42b7ef8a6f.png"
+      },
+      {
+        title: "전문 간호 인력 상주",
+        desc: "응급 대응, 투약 관리, 상처 처치 등 전문 간호 서비스 제공",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/079cf5c21c067.png"
+      }
+    ],
+    [
+      {
+        title: "개별 맞춤 인지 자극 활동",
+        desc: "그림 그리기, 회상치료, 놀이 치료 등",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/37b58603932fd.png"
+      },
+      {
+        title: "정서 안정과 사회적 교류 프로그램",
+        desc: "생신잔치, 음악치료, 원예치료 등",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/da5ef3bd374d0.png"
+      }
+    ],
+    [
+      {
+        title: "병원 연계 진료 지원",
+        desc: "진료 동행, 정기 검진, 응급 상황 신속 대응",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/ac825af59c00b.png"
+      },
+      {
+        title: "가족과의 소통 강화",
+        desc: "보호자 간담회, 가정통신문, 실시간 사진 공유",
+        bg: "https://cdn.imweb.me/upload/S20250616705368ebc899d/148ab3b5e2d9d.png"
+      }
+    ]
+  ];
+
+  let index = 0;
+
+  function initCards() {
+    for (let i = 0; i < 3; i++) {
+      document.getElementById(`front${i + 1}`).style.backgroundImage = `url('${cardData[i][0].bg}')`;
+      document.getElementById(`title${i + 1}`).innerText = cardData[i][0].title;
+      document.getElementById(`desc${i + 1}`).innerText = cardData[i][0].desc;
+    }
+  }
+
+  function flipCards() {
+    index = (index + 1) % 2;
+
+    for (let i = 0; i < 3; i++) {
+      const wrap = document.getElementById(`wrap${i + 1}`);
+      const isFlipped = wrap.classList.contains("flip");
+
+      const target = isFlipped ? "front" : "back";
+      const title = isFlipped ? `title${i + 1}` : `title${i + 1}b`;
+      const desc = isFlipped ? `desc${i + 1}` : `desc${i + 1}b`;
+
+      document.getElementById(`${target}${i + 1}`).style.backgroundImage = `url('${cardData[i][index].bg}')`;
+      document.getElementById(title).innerText = cardData[i][index].title;
+      document.getElementById(desc).innerText = cardData[i][index].desc;
+
+      wrap.classList.toggle("flip");
+    }
+  }
+
+  initCards();
+  setInterval(flipCards, 4000);
+
+  (function () {
+    const cards = document.querySelectorAll('.card-cell');
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isTouch || reduced) return;
+
+    cards.forEach((card) => {
+      const inner = card.querySelector('.card-inner');
+
+      card.addEventListener('mousemove', (e) => {
+        if (card.classList.contains('flip')) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        const rotateX = ((centerY - y) / centerY) * 8;
+
+        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (card.classList.contains('flip')) {
+          inner.style.transform = 'rotateY(180deg)';
+        } else {
+          inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        }
+      });
+    });
+
+    setInterval(() => {
+      cards.forEach((card) => {
+        const inner = card.querySelector('.card-inner');
+        if (card.matches(':hover')) return;
+        inner.style.transform = card.classList.contains('flip')
+          ? 'rotateY(180deg)'
+          : 'rotateX(0deg) rotateY(0deg)';
+      });
+    }, 4050);
+  })();
+</script>
+
 </body>
 </html>
