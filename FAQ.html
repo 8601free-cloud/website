@@ -29,7 +29,6 @@
       --green:#2f5a3e;
       --green2:#4f8b63;
       --gold:#c9872d;
-      --cream:#fffaf0;
       --line:rgba(31,64,47,.15);
       --text:#1d2d22;
       --muted:rgba(29,45,34,.72);
@@ -105,7 +104,7 @@
       box-shadow:
         0 26px 64px rgba(23,61,41,.16),
         inset 0 1px 0 rgba(255,255,255,.75);
-      overflow:visible;
+      overflow:hidden;
       backdrop-filter:blur(10px);
     }
 
@@ -126,7 +125,6 @@
       position:relative;
       z-index:1;
       padding:10px;
-      overflow:visible;
     }
 
     .dsw-item{
@@ -220,10 +218,12 @@
     }
 
     .dsw-a{
-      display:grid;
-      grid-template-rows:0fr;
-      transition:grid-template-rows .28s ease;
+      display:none;
       overflow:hidden;
+    }
+
+    .dsw-item.is-open .dsw-a{
+      display:block;
     }
 
     .dsw-aInner{
@@ -247,10 +247,6 @@
       background:rgba(255,255,255,.9);
       box-shadow:0 20px 46px rgba(23,61,41,.15);
       z-index:5;
-    }
-
-    .dsw-item.is-open .dsw-a{
-      grid-template-rows:1fr;
     }
 
     .dsw-item.is-open .dsw-plus{
@@ -300,7 +296,7 @@
 
       .dsw-faqCard{
         border-radius:22px;
-        overflow:visible !important;
+        overflow:hidden !important;
       }
 
       .dsw-faqCard::before{
@@ -309,7 +305,6 @@
 
       .dsw-acc{
         padding:6px;
-        overflow:visible !important;
       }
 
       .dsw-item{
@@ -358,14 +353,6 @@
       .dsw-plus svg{
         width:16px;
         height:16px;
-      }
-
-      .dsw-a{
-        overflow:hidden !important;
-      }
-
-      .dsw-aInner{
-        overflow:hidden !important;
       }
 
       .dsw-aContent{
