@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="layout.css?v=20260501">
+  <link rel="stylesheet" href="layout.css?v=20260503">
 </head>
 <body>
 
@@ -106,6 +106,7 @@
         inset 0 1px 0 rgba(255,255,255,.75);
       overflow:hidden;
       backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
     }
 
     .dsw-faqCard::before{
@@ -235,8 +236,7 @@
       padding:17px 18px;
       border-radius:18px;
       border:1px solid rgba(47,90,62,.14);
-      background:
-        linear-gradient(135deg,rgba(47,90,62,.075),rgba(201,135,45,.07));
+      background:linear-gradient(135deg,rgba(47,90,62,.075),rgba(201,135,45,.07));
       color:rgba(29,45,34,.78);
       font-size:15px;
       line-height:1.78;
@@ -269,8 +269,9 @@
 
     @media(max-width:680px){
       .dsw-faq{
-        padding:46px 12px 120px !important;
+        padding:46px 12px 130px !important;
         overflow:visible !important;
+        background:linear-gradient(180deg,#fffaf0 0%,#f4ead5 52%,#fffaf0 100%) !important;
       }
 
       .dsw-faq__header{
@@ -297,10 +298,17 @@
       .dsw-faqCard{
         border-radius:22px;
         overflow:hidden !important;
+        background:#fffdf8 !important;
+        backdrop-filter:none !important;
+        -webkit-backdrop-filter:none !important;
+        box-shadow:
+          0 14px 34px rgba(23,61,41,.12),
+          inset 0 1px 0 rgba(255,255,255,.8) !important;
       }
 
       .dsw-faqCard::before{
-        border-radius:22px;
+        display:none !important;
+        content:none !important;
       }
 
       .dsw-acc{
@@ -311,16 +319,22 @@
         margin:8px 6px 12px;
         border-radius:18px;
         overflow:hidden;
+        background:#ffffff !important;
+        transition:none !important;
+        box-shadow:0 8px 18px rgba(23,61,41,.08);
       }
 
       .dsw-item:hover{
-        transform:none;
+        transform:none !important;
+        box-shadow:0 8px 18px rgba(23,61,41,.08);
       }
 
       .dsw-item.is-open{
         position:relative;
         z-index:10;
         margin-bottom:16px;
+        background:#ffffff !important;
+        box-shadow:0 10px 22px rgba(23,61,41,.10);
       }
 
       .dsw-q{
@@ -343,16 +357,42 @@
         height:26px;
         font-size:13px;
         border-radius:9px;
+        box-shadow:none;
       }
 
       .dsw-plus{
         width:34px;
         height:34px;
+        transition:none !important;
+        box-shadow:none;
       }
 
       .dsw-plus svg{
         width:16px;
         height:16px;
+      }
+
+      .dsw-q:hover .dsw-plus{
+        transform:none !important;
+      }
+
+      .dsw-item.is-open .dsw-plus{
+        transform:rotate(45deg) !important;
+        background:#f4faf4 !important;
+      }
+
+      .dsw-a{
+        display:none !important;
+        transition:none !important;
+        overflow:hidden !important;
+      }
+
+      .dsw-item.is-open .dsw-a{
+        display:block !important;
+      }
+
+      .dsw-aInner{
+        overflow:hidden !important;
       }
 
       .dsw-aContent{
@@ -361,6 +401,7 @@
         border-radius:14px;
         font-size:13.5px;
         line-height:1.7;
+        background:#f7fbf7 !important;
       }
     }
 
