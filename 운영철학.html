@@ -9,7 +9,7 @@
   <meta property="og:title" content="운영철학 | 존엄과 안전을 지키는 돌봄 | 더수원 어르신 통합케어">
   <meta property="og:description" content="더수원이 생각하는 돌봄의 기준과 운영 원칙을 소개합니다.">
 
-<link rel="stylesheet" href="layout.css?v=20260501">
+  <link rel="stylesheet" href="layout.css?v=20260501">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
@@ -63,7 +63,6 @@
       <div class="ops-grid">
         <article class="ops-card">
           <div class="ops-card-topline"></div>
-          
           <div class="ops-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img" focusable="false">
               <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -80,7 +79,6 @@
 
         <article class="ops-card">
           <div class="ops-card-topline"></div>
-          
           <div class="ops-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img" focusable="false">
               <path d="M12 2.6l7.2 3.5v6.1c0 4.8-3.1 8.3-7.2 9.8-4.1-1.5-7.2-5-7.2-9.8V6.1L12 2.6z" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -96,7 +94,6 @@
 
         <article class="ops-card">
           <div class="ops-card-topline"></div>
-          
           <div class="ops-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img" focusable="false">
               <rect x="5" y="3.5" width="14" height="17" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -113,7 +110,6 @@
 
         <article class="ops-card">
           <div class="ops-card-topline"></div>
-          
           <div class="ops-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img" focusable="false">
               <path d="M7 3.5h7l3 3V20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -131,7 +127,6 @@
 
         <article class="ops-card">
           <div class="ops-card-topline"></div>
-         
           <div class="ops-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img" focusable="false">
               <circle cx="6.5" cy="12" r="2.9" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -151,7 +146,7 @@
   </section>
 
   <section class="ops-sec ops-reveal" aria-label="운영 방식">
-    <div class="ops-wrap">
+    <div class="ops-wrap ops-practice-wrap">
       <div class="ops-panel">
         <div class="ops-two">
           <div class="ops-two-left">
@@ -275,6 +270,7 @@
       radial-gradient(circle at 10% 4%, rgba(129,199,132,0.10), transparent 24%),
       radial-gradient(circle at 92% 10%, rgba(171,125,54,0.08), transparent 20%),
       linear-gradient(180deg, #fbf7f0 0%, #f5efe5 55%, #eef3ed 100%);
+    overflow-x: hidden;
   }
 
   .ops-wrap{
@@ -330,16 +326,15 @@
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
   }
 
-  /* 시설안내와 동일 톤 */
   .ops-hero-title .ops-title-brand{
-  display:inline-block;
-  background:linear-gradient(180deg, #3f7a55 0%, #24563a 58%, #173d29 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  color:transparent;
-  text-shadow:none;
-}
+    display:inline-block;
+    background:linear-gradient(180deg, #3f7a55 0%, #24563a 58%, #173d29 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    color:transparent;
+    text-shadow:none;
+  }
 
   .ops-lead{
     margin: 16px auto 0;
@@ -484,7 +479,6 @@
     margin-top: 30px;
   }
 
-  /* 세부설명 카드 퀄리티 업 */
   .ops-card{
     position:relative;
     overflow:hidden;
@@ -514,36 +508,6 @@
     width:100%;
     height:6px;
     background:linear-gradient(90deg, #2f6b46 0%, #7cab8b 52%, #d0aa63 100%);
-  }
-
-  .ops-card-badge{
-    position:absolute;
-    top:16px;
-    right:16px;
-    min-width:42px;
-    height:42px;
-    padding:0 10px;
-    border-radius:999px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(180deg, #fcf7ef 0%, #e9dbc1 100%);
-    border:1px solid rgba(117,90,37,.14);
-    color:#876228;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:.08em;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.76),
-      0 8px 16px rgba(70,55,28,.08);
-    transition: transform .22s ease, box-shadow .22s ease;
-  }
-
-  .ops-card:hover .ops-card-badge{
-    transform: translateY(-2px);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.82),
-      0 12px 22px rgba(70,55,28,.12);
   }
 
   .ops-icon{
@@ -611,10 +575,15 @@
     align-items: start;
   }
 
+  .ops-two-right{
+    margin: 0;
+  }
+
   .ops-photo{
     width: 100%;
     height: 440px;
     object-fit: cover;
+    object-position: center center;
     border-radius: 24px;
     border: 1px solid var(--ops-line);
     box-shadow:
@@ -836,21 +805,38 @@
       padding-top:24px;
     }
 
-    .ops-card-badge{
-      top:14px;
-      right:14px;
+    .ops-practice-wrap{
+      width: calc(100% - 16px);
     }
 
     .ops-panel{
-      padding: 18px;
+      padding: 18px 10px 20px;
       border-radius: 22px;
     }
 
- .ops-photo{
-  height: 380px;
-  border-radius: 18px;
-  object-position: center center;
-}
+    .ops-two{
+      gap: 18px;
+    }
+
+    .ops-two-left{
+      padding: 0 6px;
+    }
+
+    .ops-two-right{
+      margin: 0 -4px;
+    }
+
+    .ops-photo{
+      width: 100%;
+      height: 340px;
+      border-radius: 18px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .ops-cap{
+      margin: 12px 6px 0;
+    }
 
     .ops-promise{
       padding: 34px 18px;
@@ -863,11 +849,34 @@
     }
   }
 
+  @media (max-width: 430px){
+    .ops-practice-wrap{
+      width: calc(100% - 10px);
+    }
+
+    .ops-panel{
+      padding: 16px 8px 18px;
+    }
+
+    .ops-two-left{
+      padding: 0 8px;
+    }
+
+    .ops-two-right{
+      margin: 0 -6px;
+    }
+
+    .ops-photo{
+      height: 330px;
+      border-radius: 17px;
+      object-position: center center;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce){
     .ops-hero-shell,
     .ops-hero-media,
     .ops-card,
-    .ops-card-badge,
     .ops-icon,
     .ops-panel,
     .ops-photo,
