@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="layout.css?v=20260501">
+  <link rel="stylesheet" href="layout.css?v=20260501">
 </head>
 <body>
 
@@ -45,6 +45,12 @@
       overflow:hidden;
     }
 
+    .dsw-fee *,
+    .dsw-fee *::before,
+    .dsw-fee *::after{
+      box-sizing:border-box;
+    }
+
     .dsw-fee__wrap{
       max-width:1080px;
       margin:0 auto;
@@ -52,6 +58,7 @@
 
     .dsw-fee__eyebrow{
       width:max-content;
+      max-width:100%;
       margin:0 auto 14px;
       padding:9px 16px;
       border-radius:999px;
@@ -88,6 +95,7 @@
       line-height:1.75;
       color:rgba(29,45,34,.72);
       font-weight:700;
+      word-break:keep-all;
     }
 
     .dsw-fee__tabs{
@@ -227,12 +235,18 @@
     }
 
     .dsw-fee__card{
+      position:relative;
       background:rgba(255,255,255,.82);
       border:1px solid var(--line);
       border-radius:0 0 30px 30px;
       box-shadow:var(--shadow);
       overflow:hidden;
       transform-style:preserve-3d;
+    }
+
+    .dsw-fee__scroll{
+      width:100%;
+      overflow:visible;
     }
 
     .dsw-fee__table{
@@ -249,6 +263,7 @@
       text-align:center;
       border-right:1px solid rgba(255,255,255,.18);
       background:linear-gradient(135deg,#244f35,#4f8b63);
+      white-space:nowrap;
     }
 
     .dsw-fee__thead th.th-a,
@@ -265,6 +280,7 @@
       border-bottom:1px solid rgba(31,64,47,.09);
       border-right:1px solid rgba(31,64,47,.07);
       transition:.18s ease;
+      white-space:nowrap;
     }
 
     .dsw-fee__tbody tr:hover td{
@@ -302,11 +318,22 @@
       line-height:1.75;
       font-weight:700;
       border-top:1px solid rgba(31,64,47,.09);
+      word-break:keep-all;
+    }
+
+    .dsw-fee__scrollHint{
+      display:none;
     }
 
     @media(max-width:767px){
       .dsw-fee{
         padding:52px 14px 64px;
+        overflow:hidden;
+      }
+
+      .dsw-fee__wrap{
+        width:100%;
+        max-width:100%;
       }
 
       .dsw-fee__brandRow{
@@ -318,12 +345,96 @@
         width:100%;
       }
 
-      .dsw-fee__table{
-        min-width:680px;
+      .dsw-fee__ribbon{
+        padding:20px 16px;
+        border-radius:24px 24px 0 0;
       }
 
       .dsw-fee__card{
+        overflow:hidden;
+        border-radius:0 0 24px 24px;
+      }
+
+      .dsw-fee__scroll{
+        width:100%;
         overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+        overscroll-behavior-x:contain;
+        padding-bottom:34px;
+        background:rgba(255,255,255,.82);
+      }
+
+      .dsw-fee__scroll::-webkit-scrollbar{
+        height:6px;
+      }
+
+      .dsw-fee__scroll::-webkit-scrollbar-track{
+        background:rgba(47,90,62,.08);
+        border-radius:999px;
+      }
+
+      .dsw-fee__scroll::-webkit-scrollbar-thumb{
+        background:linear-gradient(90deg,#4f8b63,#c9872d);
+        border-radius:999px;
+      }
+
+      .dsw-fee__table{
+        width:680px;
+        min-width:680px;
+        table-layout:fixed;
+      }
+
+      .dsw-fee__thead th{
+        font-size:13px;
+        padding:14px 8px;
+      }
+
+      .dsw-fee__tbody td{
+        font-size:15px;
+        padding:15px 8px;
+      }
+
+      .dsw-fee__tbody td.col-grade{
+        font-size:17px;
+      }
+
+      .dsw-fee__note{
+        min-width:680px;
+        padding:16px 18px;
+        font-size:13px;
+      }
+
+      .dsw-fee__scrollHint{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:7px;
+        position:absolute;
+        left:50%;
+        bottom:10px;
+        transform:translateX(-50%);
+        z-index:3;
+        padding:7px 12px;
+        border-radius:999px;
+        background:rgba(23,61,41,.88);
+        color:#fff;
+        font-size:11.5px;
+        font-weight:900;
+        letter-spacing:-.01em;
+        box-shadow:0 10px 20px rgba(23,61,41,.18);
+        pointer-events:none;
+        white-space:nowrap;
+      }
+
+      .dsw-fee__scrollHint::before{
+        content:"←";
+        font-size:13px;
+      }
+
+      .dsw-fee__scrollHint::after{
+        content:"→";
+        font-size:13px;
       }
     }
   </style>
@@ -366,44 +477,48 @@
       </header>
 
       <div class="dsw-fee__card">
-        <table class="dsw-fee__table" aria-label="2026년 요양원 수가표">
-          <thead class="dsw-fee__thead">
-            <tr>
-              <th class="th-grade">등급</th>
-              <th class="th-fee">2026년<br>수가</th>
-              <th class="th-a">본인부담금<br>(20%)</th>
-              <th class="th-b">본인부담금<br>(12%)</th>
-              <th class="th-c">본인부담금<br>(8%)</th>
-            </tr>
-          </thead>
-          <tbody class="dsw-fee__tbody">
-            <tr>
-              <td class="col-grade">1등급</td>
-              <td class="col-fee">93,070원</td>
-              <td>18,614원</td>
-              <td>11,168원</td>
-              <td>7,446원</td>
-            </tr>
-            <tr>
-              <td class="col-grade">2등급</td>
-              <td class="col-fee">86,340원</td>
-              <td>17,268원</td>
-              <td>10,361원</td>
-              <td>6,907원</td>
-            </tr>
-            <tr>
-              <td class="col-grade">3·4·5등급</td>
-              <td class="col-fee">81,540원</td>
-              <td>16,308원</td>
-              <td>9,785원</td>
-              <td>6,523원</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="dsw-fee__scroll">
+          <table class="dsw-fee__table" aria-label="2026년 요양원 수가표">
+            <thead class="dsw-fee__thead">
+              <tr>
+                <th class="th-grade">등급</th>
+                <th class="th-fee">2026년<br>수가</th>
+                <th class="th-a">본인부담금<br>(20%)</th>
+                <th class="th-b">본인부담금<br>(12%)</th>
+                <th class="th-c">본인부담금<br>(8%)</th>
+              </tr>
+            </thead>
+            <tbody class="dsw-fee__tbody">
+              <tr>
+                <td class="col-grade">1등급</td>
+                <td class="col-fee">93,070원</td>
+                <td>18,614원</td>
+                <td>11,168원</td>
+                <td>7,446원</td>
+              </tr>
+              <tr>
+                <td class="col-grade">2등급</td>
+                <td class="col-fee">86,340원</td>
+                <td>17,268원</td>
+                <td>10,361원</td>
+                <td>6,907원</td>
+              </tr>
+              <tr>
+                <td class="col-grade">3·4·5등급</td>
+                <td class="col-fee">81,540원</td>
+                <td>16,308원</td>
+                <td>9,785원</td>
+                <td>6,523원</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <div class="dsw-fee__note">
-          💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다. 감경·의료급여 등 대상 여부에 따라 실제 비용은 달라질 수 있습니다.
+          <div class="dsw-fee__note">
+            💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다. 감경·의료급여 등 대상 여부에 따라 실제 비용은 달라질 수 있습니다.
+          </div>
         </div>
+
+        <div class="dsw-fee__scrollHint">좌우로 넘겨보세요</div>
       </div>
     </article>
 
@@ -426,51 +541,55 @@
       </header>
 
       <div class="dsw-fee__card">
-        <table class="dsw-fee__table" aria-label="2026년 주간보호 수가표">
-          <thead class="dsw-fee__thead">
-            <tr>
-              <th class="th-grade">등급</th>
-              <th class="th-fee">2026년<br>수가</th>
-              <th class="th-a">본인부담금<br>(15%)</th>
-              <th class="th-b">본인부담금<br>(9%)</th>
-              <th class="th-c">본인부담금<br>(6%)</th>
-            </tr>
-          </thead>
-          <tbody class="dsw-fee__tbody">
-            <tr>
-              <td class="col-grade">2등급</td>
-              <td class="col-fee">64,590원</td>
-              <td>9,689원</td>
-              <td>5,813원</td>
-              <td>3,875원</td>
-            </tr>
-            <tr>
-              <td class="col-grade">3등급</td>
-              <td class="col-fee">59,640원</td>
-              <td>8,946원</td>
-              <td>5,368원</td>
-              <td>3,578원</td>
-            </tr>
-            <tr>
-              <td class="col-grade">4등급</td>
-              <td class="col-fee">58,010원</td>
-              <td>8,702원</td>
-              <td>5,221원</td>
-              <td>3,481원</td>
-            </tr>
-            <tr>
-              <td class="col-grade">5등급</td>
-              <td class="col-fee">56,360원</td>
-              <td>8,454원</td>
-              <td>5,072원</td>
-              <td>3,382원</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="dsw-fee__scroll">
+          <table class="dsw-fee__table" aria-label="2026년 주간보호 수가표">
+            <thead class="dsw-fee__thead">
+              <tr>
+                <th class="th-grade">등급</th>
+                <th class="th-fee">2026년<br>수가</th>
+                <th class="th-a">본인부담금<br>(15%)</th>
+                <th class="th-b">본인부담금<br>(9%)</th>
+                <th class="th-c">본인부담금<br>(6%)</th>
+              </tr>
+            </thead>
+            <tbody class="dsw-fee__tbody">
+              <tr>
+                <td class="col-grade">2등급</td>
+                <td class="col-fee">64,590원</td>
+                <td>9,689원</td>
+                <td>5,813원</td>
+                <td>3,875원</td>
+              </tr>
+              <tr>
+                <td class="col-grade">3등급</td>
+                <td class="col-fee">59,640원</td>
+                <td>8,946원</td>
+                <td>5,368원</td>
+                <td>3,578원</td>
+              </tr>
+              <tr>
+                <td class="col-grade">4등급</td>
+                <td class="col-fee">58,010원</td>
+                <td>8,702원</td>
+                <td>5,221원</td>
+                <td>3,481원</td>
+              </tr>
+              <tr>
+                <td class="col-grade">5등급</td>
+                <td class="col-fee">56,360원</td>
+                <td>8,454원</td>
+                <td>5,072원</td>
+                <td>3,382원</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <div class="dsw-fee__note">
-          💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다. 실제 비용은 이용 시간, 등급, 감경 여부에 따라 달라질 수 있습니다.
+          <div class="dsw-fee__note">
+            💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다. 실제 비용은 이용 시간, 등급, 감경 여부에 따라 달라질 수 있습니다.
+          </div>
         </div>
+
+        <div class="dsw-fee__scrollHint">좌우로 넘겨보세요</div>
       </div>
     </article>
   </div>
