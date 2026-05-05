@@ -157,7 +157,7 @@
       padding:24px;
       border-radius:30px 30px 0 0;
       background:
-        linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.58)),
+        linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.64)),
         radial-gradient(circle at 12% 0%,rgba(201,135,45,.18),transparent 36%);
       border:1px solid var(--line);
       border-bottom:0;
@@ -334,7 +334,7 @@
       white-space:normal;
     }
 
-    .dsw-fee__scrollHint{
+    .mobile-only-help{
       display:none;
     }
 
@@ -382,6 +382,7 @@
         flex-direction:column;
         align-items:flex-start;
         gap:12px;
+        margin-bottom:14px;
       }
 
       .dsw-fee__call{
@@ -389,8 +390,12 @@
       }
 
       .dsw-fee__ribbon{
-        padding:20px 14px;
+        padding:20px 14px 18px;
         border-radius:24px 24px 0 0;
+        background:
+          linear-gradient(145deg,rgba(255,255,255,.96),rgba(247,250,246,.88)),
+          radial-gradient(circle at 12% 0%,rgba(201,135,45,.16),transparent 36%),
+          radial-gradient(circle at 88% 20%,rgba(79,139,99,.12),transparent 35%);
       }
 
       .dsw-fee__title{
@@ -401,17 +406,32 @@
       .dsw-fee__subtitle{
         font-size:12.5px;
         padding:8px 12px;
+        background:rgba(47,90,62,.09);
+      }
+
+      .mobile-only-help{
+        display:block;
+        margin:12px 0 0;
+        text-align:center;
+        font-size:12px;
+        line-height:1.45;
+        color:rgba(29,45,34,.62);
+        font-weight:800;
       }
 
       .dsw-fee__card{
         overflow:hidden;
         border-radius:0 0 24px 24px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.9), rgba(247,250,246,.86));
+        border-top:0;
       }
 
       .dsw-fee__scroll{
         overflow:visible !important;
-        padding:14px 10px 4px !important;
-        background:rgba(255,255,255,.58);
+        padding:14px 10px 6px !important;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.36), rgba(237,246,239,.46));
       }
 
       .dsw-fee__table,
@@ -431,17 +451,63 @@
       }
 
       .dsw-fee__tbody tr{
-        margin:0 0 14px;
-        border:1px solid rgba(31,64,47,.13);
-        border-radius:18px;
+        position:relative;
+        margin:0 0 12px;
+        border:1px solid rgba(47,90,62,.14);
+        border-radius:20px;
         overflow:hidden;
-        background:#fff;
+        background:linear-gradient(180deg,#ffffff 0%,#fbf8f0 100%);
         box-shadow:
-          0 10px 22px rgba(23,61,41,.08),
-          inset 0 1px 0 rgba(255,255,255,.82);
+          0 12px 24px rgba(23,61,41,.09),
+          inset 0 1px 0 rgba(255,255,255,.9);
+        cursor:pointer;
+        transition:
+          transform .22s ease,
+          box-shadow .22s ease,
+          border-color .22s ease,
+          background .22s ease;
       }
 
-      .dsw-fee__tbody tr:hover td{
+      .dsw-fee__tbody tr::after{
+        content:"펼치기 +";
+        position:absolute;
+        top:14px;
+        right:14px;
+        z-index:2;
+        padding:5px 9px;
+        border-radius:999px;
+        background:rgba(255,255,255,.88);
+        border:1px solid rgba(47,90,62,.14);
+        color:#2f5a3e;
+        font-size:11px;
+        font-weight:900;
+        box-shadow:0 6px 12px rgba(23,61,41,.08);
+      }
+
+      .dsw-fee__tbody tr.is-open{
+        border-color:rgba(47,90,62,.32);
+        background:
+          linear-gradient(180deg,#ffffff 0%,#f4fbf5 72%,#fff8ec 100%);
+        box-shadow:
+          0 16px 30px rgba(23,61,41,.13),
+          inset 0 1px 0 rgba(255,255,255,.9);
+      }
+
+      .dsw-fee__tbody tr.is-open::after{
+        content:"접기 −";
+        background:#2f5a3e;
+        color:#fff;
+      }
+
+      .dsw-fee__tbody tr:hover,
+      .dsw-fee__tbody tr:active{
+        transform:none;
+      }
+
+      .dsw-fee__tbody tr:hover td,
+      .dsw-fee__tbody tr:active td{
+        background:inherit;
+        color:inherit;
         transform:none;
       }
 
@@ -461,6 +527,15 @@
         border-right:0 !important;
         border-bottom:1px solid rgba(31,64,47,.08);
         background:rgba(255,255,255,.76);
+        color:#243228 !important;
+      }
+
+      .dsw-fee__tbody td:not(.col-grade){
+        display:none !important;
+      }
+
+      .dsw-fee__tbody tr.is-open td:not(.col-grade){
+        display:flex !important;
       }
 
       .dsw-fee__tbody td:last-child{
@@ -470,7 +545,7 @@
       .dsw-fee__tbody td::before{
         content:attr(data-label);
         flex:0 0 auto;
-        max-width:50%;
+        max-width:52%;
         font-size:13px;
         font-weight:900;
         color:#2f5a3e;
@@ -479,12 +554,23 @@
       }
 
       .dsw-fee__tbody td.col-grade{
-        justify-content:center;
-        text-align:center !important;
-        font-size:18px !important;
-        color:#fff;
-        background:linear-gradient(135deg,#244f35,#4f8b63);
+        justify-content:flex-start;
+        min-height:58px;
+        padding:16px 96px 16px 16px !important;
+        text-align:left !important;
+        font-size:19px !important;
+        color:#173d29 !important;
+        background:
+          linear-gradient(135deg,rgba(79,139,99,.13),rgba(201,135,45,.11)),
+          #fff;
         border-bottom:0;
+      }
+
+      .dsw-fee__tbody tr.is-open td.col-grade{
+        border-bottom:1px solid rgba(31,64,47,.08);
+        background:
+          linear-gradient(135deg,rgba(47,90,62,.17),rgba(201,135,45,.14)),
+          #fff;
       }
 
       .dsw-fee__tbody td.col-grade::before{
@@ -492,12 +578,8 @@
       }
 
       .dsw-fee__tbody td.col-fee{
-        color:var(--deep);
-        background:rgba(201,135,45,.10);
-      }
-
-      .dsw-fee__scrollHint{
-        display:none !important;
+        color:#173d29 !important;
+        background:rgba(201,135,45,.10) !important;
       }
 
       .dsw-fee__note{
@@ -549,6 +631,7 @@
         <div class="dsw-fee__subtitleWrap">
           <span class="dsw-fee__subtitle">등급별 수가 · 본인부담금 안내</span>
         </div>
+        <p class="mobile-only-help">등급 카드를 누르면 상세 금액이 펼쳐집니다.</p>
       </header>
 
       <div class="dsw-fee__card">
@@ -612,6 +695,7 @@
         <div class="dsw-fee__subtitleWrap">
           <span class="dsw-fee__subtitle">8시간 이상 ~ 10시간 미만 기준</span>
         </div>
+        <p class="mobile-only-help">등급 카드를 누르면 상세 금액이 펼쳐집니다.</p>
       </header>
 
       <div class="dsw-fee__card">
@@ -708,6 +792,38 @@
 
       tabD.addEventListener("click", function(){
         activate("daycare");
+      });
+
+      root.querySelectorAll(".dsw-fee__tbody tr").forEach(function(row){
+        row.setAttribute("tabindex", "0");
+        row.setAttribute("role", "button");
+        row.setAttribute("aria-expanded", "false");
+
+        row.addEventListener("click", function(){
+          if (window.innerWidth > 767) return;
+
+          var tbody = row.closest(".dsw-fee__tbody");
+          var isOpen = row.classList.contains("is-open");
+
+          tbody.querySelectorAll("tr").forEach(function(other){
+            other.classList.remove("is-open");
+            other.setAttribute("aria-expanded", "false");
+          });
+
+          if (!isOpen) {
+            row.classList.add("is-open");
+            row.setAttribute("aria-expanded", "true");
+          }
+        });
+
+        row.addEventListener("keydown", function(e){
+          if (window.innerWidth > 767) return;
+
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            row.click();
+          }
+        });
       });
     })();
   </script>
