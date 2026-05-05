@@ -311,6 +311,9 @@
     }
 
     .dsw-fee__note{
+      width:100%;
+      min-width:0;
+      max-width:100%;
       padding:18px 22px;
       background:linear-gradient(135deg,rgba(47,90,62,.08),rgba(201,135,45,.08));
       color:rgba(29,45,34,.76);
@@ -319,6 +322,8 @@
       font-weight:700;
       border-top:1px solid rgba(31,64,47,.09);
       word-break:keep-all;
+      overflow-wrap:break-word;
+      white-space:normal;
     }
 
     .dsw-fee__scrollHint{
@@ -326,6 +331,11 @@
     }
 
     @media(max-width:767px){
+      html,
+      body{
+        overflow-x:hidden;
+      }
+
       .dsw-fee{
         padding:52px 14px 64px;
         overflow:hidden;
@@ -334,6 +344,12 @@
       .dsw-fee__wrap{
         width:100%;
         max-width:100%;
+        overflow:hidden;
+      }
+
+      .dsw-fee__desc{
+        font-size:14px;
+        line-height:1.65;
       }
 
       .dsw-fee__brandRow{
@@ -357,6 +373,7 @@
 
       .dsw-fee__scroll{
         width:100%;
+        max-width:100%;
         overflow-x:auto;
         overflow-y:hidden;
         -webkit-overflow-scrolling:touch;
@@ -382,6 +399,7 @@
       .dsw-fee__table{
         width:680px;
         min-width:680px;
+        max-width:680px;
         table-layout:fixed;
       }
 
@@ -400,14 +418,16 @@
       }
 
       .dsw-fee__note{
-  min-width:680px;
-  width:680px;
-  padding:16px 18px;
-  font-size:13px;
-  line-height:1.6;
-  white-space:normal;
-  word-break:keep-all;
-}
+        width:100%;
+        min-width:0 !important;
+        max-width:100%;
+        padding:15px 16px 18px;
+        font-size:12.5px;
+        line-height:1.6;
+        white-space:normal;
+        word-break:keep-all;
+        overflow-wrap:break-word;
+      }
 
       .dsw-fee__scrollHint{
         display:flex;
@@ -416,7 +436,7 @@
         gap:7px;
         position:absolute;
         left:50%;
-        bottom:10px;
+        bottom:92px;
         transform:translateX(-50%);
         z-index:3;
         padding:7px 12px;
@@ -516,13 +536,14 @@
               </tr>
             </tbody>
           </table>
-
-          <div class="dsw-fee__note">
-            💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다. 감경·의료급여 등 대상 여부에 따라 실제 비용은 달라질 수 있습니다.
-          </div>
         </div>
 
         <div class="dsw-fee__scrollHint">좌우로 넘겨보세요</div>
+
+        <div class="dsw-fee__note">
+          💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다.<br>
+          감경·의료급여 등 대상 여부에 따라 실제 비용은 달라질 수 있습니다.
+        </div>
       </div>
     </article>
 
@@ -587,13 +608,14 @@
               </tr>
             </tbody>
           </table>
-
-          <div class="dsw-fee__note">
-            💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다. 실제 비용은 이용 시간, 등급, 감경 여부에 따라 달라질 수 있습니다.
-          </div>
         </div>
 
         <div class="dsw-fee__scrollHint">좌우로 넘겨보세요</div>
+
+        <div class="dsw-fee__note">
+          💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다.<br>
+          실제 비용은 이용 시간, 등급, 감경 여부에 따라 달라질 수 있습니다.
+        </div>
       </div>
     </article>
   </div>
