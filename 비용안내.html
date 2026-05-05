@@ -27,6 +27,12 @@
   </script>
 
   <style>
+    html, body{
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+    }
+
     .dsw-fee{
       --deep:#173d29;
       --green:#2f5a3e;
@@ -183,6 +189,7 @@
         radial-gradient(circle at 32% 25%,#f4c16d,transparent 32%),
         linear-gradient(135deg,#315f42,#173d29);
       box-shadow:0 12px 24px rgba(23,61,41,.22);
+      flex:0 0 auto;
     }
 
     .dsw-fee__call{
@@ -212,6 +219,7 @@
       font-weight:900;
       letter-spacing:-1px;
       color:var(--deep);
+      word-break:keep-all;
     }
 
     .dsw-fee__title .accent{
@@ -331,13 +339,8 @@
     }
 
     @media(max-width:767px){
-      html,
-      body{
-        overflow-x:hidden;
-      }
-
       .dsw-fee{
-        padding:52px 14px 64px;
+        padding:44px 10px 58px;
         overflow:hidden;
       }
 
@@ -347,14 +350,38 @@
         overflow:hidden;
       }
 
+      .dsw-fee__eyebrow{
+        font-size:12px;
+        padding:8px 12px;
+      }
+
+      .dsw-fee__mainTitle{
+        font-size:32px;
+        letter-spacing:-1px;
+      }
+
       .dsw-fee__desc{
         font-size:14px;
         line-height:1.65;
+        margin-bottom:22px;
+      }
+
+      .dsw-fee__tabs{
+        gap:8px;
+        margin-bottom:18px;
+      }
+
+      .dsw-fee__tab{
+        flex:1 1 0;
+        min-width:0;
+        padding:12px 10px;
+        font-size:14px;
       }
 
       .dsw-fee__brandRow{
         flex-direction:column;
         align-items:flex-start;
+        gap:12px;
       }
 
       .dsw-fee__call{
@@ -362,8 +389,18 @@
       }
 
       .dsw-fee__ribbon{
-        padding:20px 16px;
+        padding:20px 14px;
         border-radius:24px 24px 0 0;
+      }
+
+      .dsw-fee__title{
+        font-size:26px;
+        line-height:1.25;
+      }
+
+      .dsw-fee__subtitle{
+        font-size:12.5px;
+        padding:8px 12px;
       }
 
       .dsw-fee__card{
@@ -372,93 +409,107 @@
       }
 
       .dsw-fee__scroll{
-        width:100%;
-        max-width:100%;
-        overflow-x:auto;
-        overflow-y:hidden;
-        -webkit-overflow-scrolling:touch;
-        overscroll-behavior-x:contain;
-        padding-bottom:34px;
-        background:rgba(255,255,255,.82);
+        overflow:visible !important;
+        padding:14px 10px 4px !important;
+        background:rgba(255,255,255,.58);
       }
 
-      .dsw-fee__scroll::-webkit-scrollbar{
-        height:6px;
+      .dsw-fee__table,
+      .dsw-fee__thead,
+      .dsw-fee__tbody,
+      .dsw-fee__table tr,
+      .dsw-fee__table th,
+      .dsw-fee__table td{
+        display:block !important;
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
       }
 
-      .dsw-fee__scroll::-webkit-scrollbar-track{
-        background:rgba(47,90,62,.08);
-        border-radius:999px;
+      .dsw-fee__thead{
+        display:none !important;
       }
 
-      .dsw-fee__scroll::-webkit-scrollbar-thumb{
-        background:linear-gradient(90deg,#4f8b63,#c9872d);
-        border-radius:999px;
+      .dsw-fee__tbody tr{
+        margin:0 0 14px;
+        border:1px solid rgba(31,64,47,.13);
+        border-radius:18px;
+        overflow:hidden;
+        background:#fff;
+        box-shadow:
+          0 10px 22px rgba(23,61,41,.08),
+          inset 0 1px 0 rgba(255,255,255,.82);
       }
 
-      .dsw-fee__table{
-        width:680px;
-        min-width:680px;
-        max-width:680px;
-        table-layout:fixed;
-      }
-
-      .dsw-fee__thead th{
-        font-size:13px;
-        padding:14px 8px;
+      .dsw-fee__tbody tr:hover td{
+        transform:none;
       }
 
       .dsw-fee__tbody td{
-        font-size:15px;
-        padding:15px 8px;
+        position:relative;
+        display:flex !important;
+        justify-content:space-between;
+        align-items:center;
+        gap:12px;
+        padding:12px 14px !important;
+        font-size:14px !important;
+        line-height:1.45;
+        text-align:right !important;
+        white-space:normal !important;
+        word-break:keep-all;
+        overflow-wrap:break-word;
+        border-right:0 !important;
+        border-bottom:1px solid rgba(31,64,47,.08);
+        background:rgba(255,255,255,.76);
+      }
+
+      .dsw-fee__tbody td:last-child{
+        border-bottom:0;
+      }
+
+      .dsw-fee__tbody td::before{
+        content:attr(data-label);
+        flex:0 0 auto;
+        max-width:50%;
+        font-size:13px;
+        font-weight:900;
+        color:#2f5a3e;
+        text-align:left;
+        line-height:1.35;
       }
 
       .dsw-fee__tbody td.col-grade{
-        font-size:17px;
+        justify-content:center;
+        text-align:center !important;
+        font-size:18px !important;
+        color:#fff;
+        background:linear-gradient(135deg,#244f35,#4f8b63);
+        border-bottom:0;
+      }
+
+      .dsw-fee__tbody td.col-grade::before{
+        display:none;
+      }
+
+      .dsw-fee__tbody td.col-fee{
+        color:var(--deep);
+        background:rgba(201,135,45,.10);
+      }
+
+      .dsw-fee__scrollHint{
+        display:none !important;
       }
 
       .dsw-fee__note{
-        width:100%;
+        width:100% !important;
         min-width:0 !important;
-        max-width:100%;
+        max-width:100% !important;
         padding:15px 16px 18px;
         font-size:12.5px;
         line-height:1.6;
         white-space:normal;
         word-break:keep-all;
         overflow-wrap:break-word;
-      }
-
-      .dsw-fee__scrollHint{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:7px;
-        position:absolute;
-        left:50%;
-        bottom:92px;
-        transform:translateX(-50%);
-        z-index:3;
-        padding:7px 12px;
-        border-radius:999px;
-        background:rgba(23,61,41,.88);
-        color:#fff;
-        font-size:11.5px;
-        font-weight:900;
-        letter-spacing:-.01em;
-        box-shadow:0 10px 20px rgba(23,61,41,.18);
-        pointer-events:none;
-        white-space:nowrap;
-      }
-
-      .dsw-fee__scrollHint::before{
-        content:"←";
-        font-size:13px;
-      }
-
-      .dsw-fee__scrollHint::after{
-        content:"→";
-        font-size:13px;
       }
     }
   </style>
@@ -514,31 +565,29 @@
             </thead>
             <tbody class="dsw-fee__tbody">
               <tr>
-                <td class="col-grade">1등급</td>
-                <td class="col-fee">93,070원</td>
-                <td>18,614원</td>
-                <td>11,168원</td>
-                <td>7,446원</td>
+                <td class="col-grade" data-label="등급">1등급</td>
+                <td class="col-fee" data-label="2026년 수가">93,070원</td>
+                <td data-label="본인부담금 20%">18,614원</td>
+                <td data-label="본인부담금 12%">11,168원</td>
+                <td data-label="본인부담금 8%">7,446원</td>
               </tr>
               <tr>
-                <td class="col-grade">2등급</td>
-                <td class="col-fee">86,340원</td>
-                <td>17,268원</td>
-                <td>10,361원</td>
-                <td>6,907원</td>
+                <td class="col-grade" data-label="등급">2등급</td>
+                <td class="col-fee" data-label="2026년 수가">86,340원</td>
+                <td data-label="본인부담금 20%">17,268원</td>
+                <td data-label="본인부담금 12%">10,361원</td>
+                <td data-label="본인부담금 8%">6,907원</td>
               </tr>
               <tr>
-                <td class="col-grade">3·4·5등급</td>
-                <td class="col-fee">81,540원</td>
-                <td>16,308원</td>
-                <td>9,785원</td>
-                <td>6,523원</td>
+                <td class="col-grade" data-label="등급">3·4·5등급</td>
+                <td class="col-fee" data-label="2026년 수가">81,540원</td>
+                <td data-label="본인부담금 20%">16,308원</td>
+                <td data-label="본인부담금 12%">9,785원</td>
+                <td data-label="본인부담금 8%">6,523원</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <div class="dsw-fee__scrollHint">좌우로 넘겨보세요</div>
 
         <div class="dsw-fee__note">
           💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다.<br>
@@ -579,38 +628,36 @@
             </thead>
             <tbody class="dsw-fee__tbody">
               <tr>
-                <td class="col-grade">2등급</td>
-                <td class="col-fee">64,590원</td>
-                <td>9,689원</td>
-                <td>5,813원</td>
-                <td>3,875원</td>
+                <td class="col-grade" data-label="등급">2등급</td>
+                <td class="col-fee" data-label="2026년 수가">64,590원</td>
+                <td data-label="본인부담금 15%">9,689원</td>
+                <td data-label="본인부담금 9%">5,813원</td>
+                <td data-label="본인부담금 6%">3,875원</td>
               </tr>
               <tr>
-                <td class="col-grade">3등급</td>
-                <td class="col-fee">59,640원</td>
-                <td>8,946원</td>
-                <td>5,368원</td>
-                <td>3,578원</td>
+                <td class="col-grade" data-label="등급">3등급</td>
+                <td class="col-fee" data-label="2026년 수가">59,640원</td>
+                <td data-label="본인부담금 15%">8,946원</td>
+                <td data-label="본인부담금 9%">5,368원</td>
+                <td data-label="본인부담금 6%">3,578원</td>
               </tr>
               <tr>
-                <td class="col-grade">4등급</td>
-                <td class="col-fee">58,010원</td>
-                <td>8,702원</td>
-                <td>5,221원</td>
-                <td>3,481원</td>
+                <td class="col-grade" data-label="등급">4등급</td>
+                <td class="col-fee" data-label="2026년 수가">58,010원</td>
+                <td data-label="본인부담금 15%">8,702원</td>
+                <td data-label="본인부담금 9%">5,221원</td>
+                <td data-label="본인부담금 6%">3,481원</td>
               </tr>
               <tr>
-                <td class="col-grade">5등급</td>
-                <td class="col-fee">56,360원</td>
-                <td>8,454원</td>
-                <td>5,072원</td>
-                <td>3,382원</td>
+                <td class="col-grade" data-label="등급">5등급</td>
+                <td class="col-fee" data-label="2026년 수가">56,360원</td>
+                <td data-label="본인부담금 15%">8,454원</td>
+                <td data-label="본인부담금 9%">5,072원</td>
+                <td data-label="본인부담금 6%">3,382원</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <div class="dsw-fee__scrollHint">좌우로 넘겨보세요</div>
 
         <div class="dsw-fee__note">
           💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다.<br>
