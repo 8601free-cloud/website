@@ -419,6 +419,7 @@
 
     .dsw-fee__miniList span{
       color:var(--green);
+      text-align:right;
     }
 
     .dsw-fee__calculator{
@@ -501,7 +502,7 @@
 
     .dsw-fee__checks{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(5,1fr);
       gap:10px;
     }
 
@@ -516,6 +517,7 @@
       font-weight:900;
       color:#243228;
       cursor:pointer;
+      word-break:keep-all;
     }
 
     .dsw-fee__checks input{
@@ -844,7 +846,7 @@
       </div>
       <div class="dsw-fee__summaryCard">
         <strong>예상 계산기</strong>
-        <p>등급, 감경비율, 주 이용일자를 선택하면 월 예상 본인부담금을 확인할 수 있습니다.</p>
+        <p>등급과 감경비율을 선택하면 월 예상 본인부담금을 확인할 수 있습니다.</p>
       </div>
     </div>
 
@@ -994,29 +996,24 @@
 
     <div class="dsw-fee__extra">
       <section class="dsw-fee__infoBox">
-        <h3>비급여 항목 안내</h3>
-        <p>
-          식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다.
+        <h3 id="nonpayTitle">요양원 비급여 항목 안내</h3>
+        <p id="nonpayDesc">
+          요양원 식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다.
           실제 이용한 횟수에 따라 별도 청구됩니다.
         </p>
-        <ul class="dsw-fee__miniList">
-          <li>오전 간식 <span>1,000원</span></li>
-          <li>오후 간식 <span>1,000원</span></li>
-          <li>점심 식사 <span>3,500원</span></li>
-          <li>저녁 식사 <span>4,000원</span></li>
-        </ul>
+        <ul class="dsw-fee__miniList" id="nonpayGuideList"></ul>
       </section>
 
       <section class="dsw-fee__infoBox">
         <h3>비용 확인 시 참고사항</h3>
         <p>
-          월 비용은 등급, 감경비율, 주 이용일자, 식사·간식 이용 여부에 따라 달라집니다.
+          월 비용은 등급, 감경비율, 식사·간식 이용 여부에 따라 달라집니다.
           아래 계산기는 보호자님이 대략적인 월 예상 비용을 확인하기 위한 참고용입니다.
         </p>
         <ul class="dsw-fee__miniList">
-          <li>일반 본인부담 <span>요양원 20% / 주간보호 15%</span></li>
-          <li>감경 대상 <span>12%·8% / 9%·6%</span></li>
-          <li>월 계산 기준 <span>주 이용일 × 4주</span></li>
+          <li>요양원 일반 본인부담 <span>20%</span></li>
+          <li>주간보호 일반 본인부담 <span>15%</span></li>
+          <li>계산 기준 <span>요양원 7일 / 주간보호 선택일</span></li>
         </ul>
       </section>
     </div>
@@ -1025,7 +1022,7 @@
       <div class="dsw-fee__calculatorHead">
         <h2>월 예상 본인부담금 계산기</h2>
         <p>
-          서비스 종류, 등급, 감경비율, 주 이용일자와 비급여 이용 여부를 선택하면 예상 금액이 자동 계산됩니다.
+          서비스 종류, 등급, 감경비율과 비급여 이용 여부를 선택하면 예상 금액이 자동 계산됩니다.
         </p>
       </div>
 
@@ -1033,8 +1030,8 @@
         <div class="dsw-fee__field">
           <label for="calcService">서비스 종류</label>
           <select id="calcService">
-            <option value="daycare">주간보호</option>
             <option value="nursing">요양원</option>
+            <option value="daycare">주간보호</option>
           </select>
         </div>
 
@@ -1048,7 +1045,7 @@
           <select id="calcRate"></select>
         </div>
 
-        <div class="dsw-fee__field">
+        <div class="dsw-fee__field" id="calcDaysField">
           <label for="calcDays">주 이용일자</label>
           <select id="calcDays">
             <option value="1">주 1일</option>
@@ -1057,7 +1054,7 @@
             <option value="4">주 4일</option>
             <option value="5" selected>주 5일</option>
             <option value="6">주 6일</option>
-            <option value="7">주 7일</option>
+          
           </select>
         </div>
       </div>
@@ -1065,10 +1062,11 @@
       <div class="dsw-fee__nonpay">
         <p class="dsw-fee__nonpayTitle">비급여 이용 항목</p>
         <div class="dsw-fee__checks">
-          <label><input type="checkbox" id="snackAm" checked> 오전 간식 1,000원</label>
-          <label><input type="checkbox" id="snackPm" checked> 오후 간식 1,000원</label>
-          <label><input type="checkbox" id="lunch" checked> 점심 3,500원</label>
-          <label><input type="checkbox" id="dinner"> 저녁 4,000원</label>
+          <label id="breakfastLabel"><input type="checkbox" id="breakfast"> <span id="breakfastText">아침 3,500원</span></label>
+          <label id="snackAmLabel"><input type="checkbox" id="snackAm"> <span id="snackAmText">오전 간식 1,000원</span></label>
+          <label id="snackPmLabel"><input type="checkbox" id="snackPm"> <span id="snackPmText">오후 간식 1,000원</span></label>
+          <label id="lunchLabel"><input type="checkbox" id="lunch"> <span id="lunchText">점심 3,500원</span></label>
+          <label id="dinnerLabel"><input type="checkbox" id="dinner"> <span id="dinnerText">저녁 3,500원</span></label>
         </div>
       </div>
 
@@ -1089,8 +1087,8 @@
         </div>
       </div>
 
-      <p class="dsw-fee__calcNote">
-        ※ 계산기는 주 이용일 × 4주 기준의 단순 예상 금액입니다. 실제 청구 금액은 이용일수, 이용시간, 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.
+      <p class="dsw-fee__calcNote" id="calcNote">
+        ※ 계산기는 요양원 7일 상주 기준의 단순 예상 금액입니다. 실제 청구 금액은 이용일수, 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.
       </p>
     </section>
   </div>
@@ -1120,6 +1118,232 @@
       var panelN = document.getElementById("dswPanelNursing");
       var panelD = document.getElementById("dswPanelDaycare");
 
+      var calcService = document.getElementById("calcService");
+      var calcGrade = document.getElementById("calcGrade");
+      var calcRate = document.getElementById("calcRate");
+      var calcDays = document.getElementById("calcDays");
+      var calcDaysField = document.getElementById("calcDaysField");
+
+      var breakfast = document.getElementById("breakfast");
+      var snackAm = document.getElementById("snackAm");
+      var snackPm = document.getElementById("snackPm");
+      var lunch = document.getElementById("lunch");
+      var dinner = document.getElementById("dinner");
+
+      var breakfastLabel = document.getElementById("breakfastLabel");
+      var snackAmLabel = document.getElementById("snackAmLabel");
+      var snackPmLabel = document.getElementById("snackPmLabel");
+      var lunchLabel = document.getElementById("lunchLabel");
+      var dinnerLabel = document.getElementById("dinnerLabel");
+
+      var breakfastText = document.getElementById("breakfastText");
+      var snackAmText = document.getElementById("snackAmText");
+      var snackPmText = document.getElementById("snackPmText");
+      var lunchText = document.getElementById("lunchText");
+      var dinnerText = document.getElementById("dinnerText");
+
+      var nonpayTitle = document.getElementById("nonpayTitle");
+      var nonpayDesc = document.getElementById("nonpayDesc");
+      var nonpayGuideList = document.getElementById("nonpayGuideList");
+      var calcNote = document.getElementById("calcNote");
+
+      var resultCare = document.getElementById("resultCare");
+      var resultNonpay = document.getElementById("resultNonpay");
+      var resultTotal = document.getElementById("resultTotal");
+
+      var rateData = {
+        daycare: {
+          grades: {
+            "2등급": 64590,
+            "3등급": 59640,
+            "4등급": 58010,
+            "5등급": 56360
+          },
+          rates: {
+            "일반 15%": 0.15,
+            "감경 9%": 0.09,
+            "감경 6%": 0.06
+          }
+        },
+        nursing: {
+          grades: {
+            "1등급": 93070,
+            "2등급": 86340,
+            "3·4·5등급": 81540
+          },
+          rates: {
+            "일반 20%": 0.20,
+            "감경 12%": 0.12,
+            "감경 8%": 0.08
+          }
+        }
+      };
+
+      var nonpayData = {
+        nursing: {
+          breakfast: 3500,
+          snackAm: 1000,
+          snackPm: 1000,
+          lunch: 3500,
+          dinner: 3500
+        },
+        daycare: {
+          breakfast: 0,
+          snackAm: 1000,
+          snackPm: 1000,
+          lunch: 3500,
+          dinner: 4000
+        }
+      };
+
+      var nonpayGuideData = {
+        nursing: {
+          title: "요양원 비급여 항목 안내",
+          desc: "요양원 식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다. 실제 이용한 횟수에 따라 별도 청구됩니다.",
+          items: [
+            ["아침 식사", "3,500원"],
+            ["오전 간식", "1,000원"],
+            ["점심 식사", "3,500원"],
+            ["오후 간식", "1,000원"],
+            ["저녁 식사", "3,500원"]
+          ]
+        },
+        daycare: {
+          title: "주간보호 비급여 항목 안내",
+          desc: "주간보호 식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다. 실제 이용한 횟수에 따라 별도 청구됩니다.",
+          items: [
+            ["오전 간식", "1,000원"],
+            ["오후 간식", "1,000원"],
+            ["점심 식사", "3,500원"],
+            ["저녁 식사", "4,000원"]
+          ]
+        }
+      };
+
+      function money(value){
+        return Math.round(value).toLocaleString("ko-KR") + "원";
+      }
+
+      function fillSelect(select, items){
+        select.innerHTML = "";
+
+        items.forEach(function(item){
+          var option = document.createElement("option");
+          option.value = item;
+          option.textContent = item;
+          select.appendChild(option);
+        });
+      }
+
+      function setVisible(el, visible){
+        el.style.display = visible ? "flex" : "none";
+      }
+
+      function renderNonpayGuide(service){
+        var guide = nonpayGuideData[service];
+
+        nonpayTitle.textContent = guide.title;
+        nonpayDesc.textContent = guide.desc;
+        nonpayGuideList.innerHTML = "";
+
+        guide.items.forEach(function(item){
+          var li = document.createElement("li");
+          li.innerHTML = item[0] + " <span>" + item[1] + "</span>";
+          nonpayGuideList.appendChild(li);
+        });
+      }
+
+      function updateNonpayOptions(service){
+        if (service === "nursing") {
+          calcDaysField.style.display = "none";
+          calcDays.value = "7";
+
+          breakfastText.textContent = "아침 3,500원";
+          snackAmText.textContent = "오전 간식 1,000원";
+          snackPmText.textContent = "오후 간식 1,000원";
+          lunchText.textContent = "점심 3,500원";
+          dinnerText.textContent = "저녁 3,500원";
+
+          setVisible(breakfastLabel, true);
+          setVisible(snackAmLabel, true);
+          setVisible(snackPmLabel, true);
+          setVisible(lunchLabel, true);
+          setVisible(dinnerLabel, true);
+
+          breakfast.checked = true;
+          snackAm.checked = true;
+          snackPm.checked = true;
+          lunch.checked = true;
+          dinner.checked = true;
+
+          calcNote.textContent = "※ 계산기는 요양원 7일 상주 기준의 단순 예상 금액입니다. 실제 청구 금액은 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.";
+        } else {
+          calcDaysField.style.display = "flex";
+          calcDays.value = "5";
+
+          breakfastText.textContent = "아침 3,500원";
+          snackAmText.textContent = "오전 간식 1,000원";
+          snackPmText.textContent = "오후 간식 1,000원";
+          lunchText.textContent = "점심 3,500원";
+          dinnerText.textContent = "저녁 4,000원";
+
+          setVisible(breakfastLabel, false);
+          setVisible(snackAmLabel, true);
+          setVisible(snackPmLabel, true);
+          setVisible(lunchLabel, true);
+          setVisible(dinnerLabel, true);
+
+          breakfast.checked = false;
+          snackAm.checked = true;
+          snackPm.checked = true;
+          lunch.checked = true;
+          dinner.checked = false;
+
+          calcNote.textContent = "※ 계산기는 주 이용일 × 4주 기준의 단순 예상 금액입니다. 실제 청구 금액은 이용일수, 이용시간, 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.";
+        }
+      }
+
+      function updateCalculatorOptions(){
+        var service = calcService.value;
+        var data = rateData[service];
+
+        fillSelect(calcGrade, Object.keys(data.grades));
+        fillSelect(calcRate, Object.keys(data.rates));
+
+        updateNonpayOptions(service);
+        renderNonpayGuide(service);
+        calculate();
+      }
+
+      function calculate(){
+        var service = calcService.value;
+        var grade = calcGrade.value;
+        var rate = calcRate.value;
+        var days = service === "nursing" ? 7 : Number(calcDays.value || 0);
+        var monthDays = days * 4;
+
+        var dailyFee = rateData[service].grades[grade] || 0;
+        var rateValue = rateData[service].rates[rate] || 0;
+
+        var monthlyCare = dailyFee * rateValue * monthDays;
+
+        var dailyNonpay = 0;
+        var nonpay = nonpayData[service];
+
+        if (breakfast.checked) dailyNonpay += nonpay.breakfast;
+        if (snackAm.checked) dailyNonpay += nonpay.snackAm;
+        if (snackPm.checked) dailyNonpay += nonpay.snackPm;
+        if (lunch.checked) dailyNonpay += nonpay.lunch;
+        if (dinner.checked) dailyNonpay += nonpay.dinner;
+
+        var monthlyNonpay = dailyNonpay * monthDays;
+        var total = monthlyCare + monthlyNonpay;
+
+        resultCare.textContent = money(monthlyCare);
+        resultNonpay.textContent = money(monthlyNonpay);
+        resultTotal.textContent = money(total);
+      }
+
       function activate(target){
         var isNursing = target === "nursing";
 
@@ -1129,11 +1353,8 @@
         panelN.classList.toggle("dsw-fee__hidden", !isNursing);
         panelD.classList.toggle("dsw-fee__hidden", isNursing);
 
-        var service = document.getElementById("calcService");
-        if (service) {
-          service.value = isNursing ? "nursing" : "daycare";
-          updateCalculatorOptions();
-        }
+        calcService.value = isNursing ? "nursing" : "daycare";
+        updateCalculatorOptions();
       }
 
       tabN.addEventListener("click", function(){
@@ -1176,118 +1397,12 @@
         });
       });
 
-      var rateData = {
-        daycare: {
-          grades: {
-            "2등급": 64590,
-            "3등급": 59640,
-            "4등급": 58010,
-            "5등급": 56360
-          },
-          rates: {
-            "일반 15%": 0.15,
-            "감경 9%": 0.09,
-            "감경 6%": 0.06
-          }
-        },
-        nursing: {
-          grades: {
-            "1등급": 93070,
-            "2등급": 86340,
-            "3·4·5등급": 81540
-          },
-          rates: {
-            "일반 20%": 0.20,
-            "감경 12%": 0.12,
-            "감경 8%": 0.08
-          }
-        }
-      };
-
-      var nonpay = {
-        snackAm: 1000,
-        snackPm: 1000,
-        lunch: 3500,
-        dinner: 4000
-      };
-
-      var calcService = document.getElementById("calcService");
-      var calcGrade = document.getElementById("calcGrade");
-      var calcRate = document.getElementById("calcRate");
-      var calcDays = document.getElementById("calcDays");
-
-      var snackAm = document.getElementById("snackAm");
-      var snackPm = document.getElementById("snackPm");
-      var lunch = document.getElementById("lunch");
-      var dinner = document.getElementById("dinner");
-
-      var resultCare = document.getElementById("resultCare");
-      var resultNonpay = document.getElementById("resultNonpay");
-      var resultTotal = document.getElementById("resultTotal");
-
-      function money(value){
-        return Math.round(value).toLocaleString("ko-KR") + "원";
-      }
-
-      function fillSelect(select, items){
-        select.innerHTML = "";
-        items.forEach(function(item){
-          var option = document.createElement("option");
-          option.value = item;
-          option.textContent = item;
-          select.appendChild(option);
-        });
-      }
-
-      function updateCalculatorOptions(){
-        var service = calcService.value;
-        var data = rateData[service];
-
-        fillSelect(calcGrade, Object.keys(data.grades));
-        fillSelect(calcRate, Object.keys(data.rates));
-
-        if (service === "nursing") {
-          calcDays.value = "7";
-          dinner.checked = true;
-        } else {
-          calcDays.value = "5";
-          dinner.checked = false;
-        }
-
-        calculate();
-      }
-
-      function calculate(){
-        var service = calcService.value;
-        var grade = calcGrade.value;
-        var rate = calcRate.value;
-        var days = Number(calcDays.value || 0);
-        var monthDays = days * 4;
-
-        var dailyFee = rateData[service].grades[grade] || 0;
-        var rateValue = rateData[service].rates[rate] || 0;
-
-        var monthlyCare = dailyFee * rateValue * monthDays;
-
-        var dailyNonpay = 0;
-        if (snackAm.checked) dailyNonpay += nonpay.snackAm;
-        if (snackPm.checked) dailyNonpay += nonpay.snackPm;
-        if (lunch.checked) dailyNonpay += nonpay.lunch;
-        if (dinner.checked) dailyNonpay += nonpay.dinner;
-
-        var monthlyNonpay = dailyNonpay * monthDays;
-        var total = monthlyCare + monthlyNonpay;
-
-        resultCare.textContent = money(monthlyCare);
-        resultNonpay.textContent = money(monthlyNonpay);
-        resultTotal.textContent = money(total);
-      }
-
       [
         calcService,
         calcGrade,
         calcRate,
         calcDays,
+        breakfast,
         snackAm,
         snackPm,
         lunch,
@@ -1295,14 +1410,15 @@
       ].forEach(function(el){
         el.addEventListener("change", function(){
           if (el === calcService) {
-            updateCalculatorOptions();
+            var target = calcService.value;
+            activate(target);
           } else {
             calculate();
           }
         });
       });
 
-      updateCalculatorOptions();
+      activate("nursing");
     })();
   </script>
 </section>
