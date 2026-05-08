@@ -95,11 +95,45 @@
 
     .dsw-fee__desc{
       margin:0 auto 28px;
-      max-width:720px;
+      max-width:760px;
       text-align:center;
       font-size:16px;
       line-height:1.75;
       color:rgba(29,45,34,.72);
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__summary{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:0 0 26px;
+    }
+
+    .dsw-fee__summaryCard{
+      padding:22px 20px;
+      border-radius:24px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      box-shadow:
+        0 18px 38px rgba(23,61,41,.10),
+        inset 0 1px 0 rgba(255,255,255,.82);
+    }
+
+    .dsw-fee__summaryCard strong{
+      display:block;
+      margin-bottom:8px;
+      color:var(--deep);
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .dsw-fee__summaryCard p{
+      margin:0;
+      color:rgba(29,45,34,.7);
+      font-size:14px;
+      line-height:1.65;
       font-weight:700;
       word-break:keep-all;
     }
@@ -320,8 +354,6 @@
 
     .dsw-fee__note{
       width:100%;
-      min-width:0;
-      max-width:100%;
       padding:18px 22px;
       background:linear-gradient(135deg,rgba(47,90,62,.08),rgba(201,135,45,.08));
       color:rgba(29,45,34,.76);
@@ -330,8 +362,213 @@
       font-weight:700;
       border-top:1px solid rgba(31,64,47,.09);
       word-break:keep-all;
-      overflow-wrap:break-word;
-      white-space:normal;
+    }
+
+    .dsw-fee__extra{
+      margin:28px 0 0;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .dsw-fee__infoBox{
+      padding:24px;
+      border-radius:26px;
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      box-shadow:
+        0 18px 42px rgba(23,61,41,.10),
+        inset 0 1px 0 rgba(255,255,255,.86);
+    }
+
+    .dsw-fee__infoBox h3{
+      margin:0 0 12px;
+      color:var(--deep);
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-.5px;
+    }
+
+    .dsw-fee__infoBox p{
+      margin:0 0 14px;
+      color:rgba(29,45,34,.72);
+      font-weight:700;
+      line-height:1.7;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__miniList{
+      display:grid;
+      gap:10px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .dsw-fee__miniList li{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:13px 14px;
+      border-radius:16px;
+      background:linear-gradient(135deg,rgba(47,90,62,.08),rgba(201,135,45,.08));
+      border:1px solid rgba(31,64,47,.10);
+      font-weight:900;
+      color:#243228;
+    }
+
+    .dsw-fee__miniList span{
+      color:var(--green);
+    }
+
+    .dsw-fee__calculator{
+      margin:32px 0 0;
+      padding:28px;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(201,135,45,.13), transparent 34%),
+        linear-gradient(180deg,rgba(255,255,255,.86),rgba(248,251,249,.80));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .dsw-fee__calculatorHead{
+      text-align:center;
+      margin-bottom:22px;
+    }
+
+    .dsw-fee__calculatorHead h2{
+      margin:0 0 8px;
+      color:var(--deep);
+      font-size:clamp(24px,3vw,34px);
+      font-weight:900;
+      letter-spacing:-.8px;
+    }
+
+    .dsw-fee__calculatorHead p{
+      margin:0;
+      color:rgba(29,45,34,.68);
+      font-weight:700;
+      line-height:1.6;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__calcGrid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .dsw-fee__field{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .dsw-fee__field label{
+      color:var(--deep);
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .dsw-fee__field select{
+      width:100%;
+      border:1px solid rgba(47,90,62,.18);
+      border-radius:16px;
+      padding:13px 12px;
+      background:#fff;
+      color:#1d2d22;
+      font-size:15px;
+      font-weight:800;
+      outline:none;
+    }
+
+    .dsw-fee__nonpay{
+      margin-top:14px;
+      padding:18px;
+      border-radius:22px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(31,64,47,.12);
+    }
+
+    .dsw-fee__nonpayTitle{
+      margin:0 0 12px;
+      color:var(--deep);
+      font-size:17px;
+      font-weight:900;
+    }
+
+    .dsw-fee__checks{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+    }
+
+    .dsw-fee__checks label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:12px;
+      border-radius:15px;
+      background:linear-gradient(135deg,rgba(47,90,62,.07),rgba(201,135,45,.08));
+      border:1px solid rgba(31,64,47,.10);
+      font-weight:900;
+      color:#243228;
+      cursor:pointer;
+    }
+
+    .dsw-fee__checks input{
+      accent-color:var(--green);
+    }
+
+    .dsw-fee__result{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .dsw-fee__resultBox{
+      padding:20px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(31,64,47,.12);
+      box-shadow:0 12px 28px rgba(23,61,41,.08);
+    }
+
+    .dsw-fee__resultBox span{
+      display:block;
+      margin-bottom:8px;
+      color:rgba(29,45,34,.62);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .dsw-fee__resultBox strong{
+      color:var(--deep);
+      font-size:25px;
+      font-weight:900;
+      letter-spacing:-.6px;
+    }
+
+    .dsw-fee__resultBox.total{
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      color:#fff;
+    }
+
+    .dsw-fee__resultBox.total span,
+    .dsw-fee__resultBox.total strong{
+      color:#fff;
+    }
+
+    .dsw-fee__calcNote{
+      margin:14px 0 0;
+      color:rgba(29,45,34,.62);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.6;
+      word-break:keep-all;
     }
 
     .mobile-only-help{
@@ -343,9 +580,11 @@
         padding:44px 10px 58px;
         overflow:hidden;
       }
-.dsw-fee__call{
-  display:none !important;
-}
+
+      .dsw-fee__call{
+        display:none !important;
+      }
+
       .dsw-fee__wrap{
         width:100%;
         max-width:100%;
@@ -368,6 +607,16 @@
         margin-bottom:22px;
       }
 
+      .dsw-fee__summary{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .dsw-fee__summaryCard{
+        padding:18px;
+        border-radius:20px;
+      }
+
       .dsw-fee__tabs{
         gap:8px;
         margin-bottom:18px;
@@ -387,17 +636,9 @@
         margin-bottom:14px;
       }
 
-      .dsw-fee__call{
-        width:100%;
-      }
-
       .dsw-fee__ribbon{
         padding:20px 14px 18px;
         border-radius:24px 24px 0 0;
-        background:
-          linear-gradient(145deg,rgba(255,255,255,.96),rgba(247,250,246,.88)),
-          radial-gradient(circle at 12% 0%,rgba(201,135,45,.16),transparent 36%),
-          radial-gradient(circle at 88% 20%,rgba(79,139,99,.12),transparent 35%);
       }
 
       .dsw-fee__title{
@@ -408,7 +649,6 @@
       .dsw-fee__subtitle{
         font-size:12.5px;
         padding:8px 12px;
-        background:rgba(47,90,62,.09);
       }
 
       .mobile-only-help{
@@ -432,8 +672,6 @@
       .dsw-fee__scroll{
         overflow:visible !important;
         padding:14px 10px 6px !important;
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.36), rgba(237,246,239,.46));
       }
 
       .dsw-fee__table,
@@ -463,11 +701,7 @@
           0 12px 24px rgba(23,61,41,.09),
           inset 0 1px 0 rgba(255,255,255,.9);
         cursor:pointer;
-        transition:
-          transform .22s ease,
-          box-shadow .22s ease,
-          border-color .22s ease,
-          background .22s ease;
+        transition:.22s ease;
       }
 
       .dsw-fee__tbody tr::after{
@@ -483,34 +717,12 @@
         color:#2f5a3e;
         font-size:11px;
         font-weight:900;
-        box-shadow:0 6px 12px rgba(23,61,41,.08);
-      }
-
-      .dsw-fee__tbody tr.is-open{
-        border-color:rgba(47,90,62,.32);
-        background:
-          linear-gradient(180deg,#ffffff 0%,#f4fbf5 72%,#fff8ec 100%);
-        box-shadow:
-          0 16px 30px rgba(23,61,41,.13),
-          inset 0 1px 0 rgba(255,255,255,.9);
       }
 
       .dsw-fee__tbody tr.is-open::after{
         content:"접기 −";
         background:#2f5a3e;
         color:#fff;
-      }
-
-      .dsw-fee__tbody tr:hover,
-      .dsw-fee__tbody tr:active{
-        transform:none;
-      }
-
-      .dsw-fee__tbody tr:hover td,
-      .dsw-fee__tbody tr:active td{
-        background:inherit;
-        color:inherit;
-        transform:none;
       }
 
       .dsw-fee__tbody td{
@@ -525,7 +737,6 @@
         text-align:right !important;
         white-space:normal !important;
         word-break:keep-all;
-        overflow-wrap:break-word;
         border-right:0 !important;
         border-bottom:1px solid rgba(31,64,47,.08);
         background:rgba(255,255,255,.76);
@@ -540,10 +751,6 @@
         display:flex !important;
       }
 
-      .dsw-fee__tbody td:last-child{
-        border-bottom:0;
-      }
-
       .dsw-fee__tbody td::before{
         content:attr(data-label);
         flex:0 0 auto;
@@ -552,7 +759,6 @@
         font-weight:900;
         color:#2f5a3e;
         text-align:left;
-        line-height:1.35;
       }
 
       .dsw-fee__tbody td.col-grade{
@@ -568,45 +774,79 @@
         border-bottom:0;
       }
 
-      .dsw-fee__tbody tr.is-open td.col-grade{
-        border-bottom:1px solid rgba(31,64,47,.08);
-        background:
-          linear-gradient(135deg,rgba(47,90,62,.17),rgba(201,135,45,.14)),
-          #fff;
-      }
-
       .dsw-fee__tbody td.col-grade::before{
         display:none;
       }
 
-      .dsw-fee__tbody td.col-fee{
-        color:#173d29 !important;
-        background:rgba(201,135,45,.10) !important;
-      }
-
       .dsw-fee__note{
-        width:100% !important;
-        min-width:0 !important;
-        max-width:100% !important;
         padding:15px 16px 18px;
         font-size:12.5px;
         line-height:1.6;
-        white-space:normal;
-        word-break:keep-all;
-        overflow-wrap:break-word;
+      }
+
+      .dsw-fee__extra{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .dsw-fee__infoBox{
+        padding:20px;
+        border-radius:22px;
+      }
+
+      .dsw-fee__miniList li{
+        font-size:14px;
+      }
+
+      .dsw-fee__calculator{
+        padding:22px 14px;
+        border-radius:24px;
+      }
+
+      .dsw-fee__calcGrid{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-fee__checks{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-fee__result{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-fee__resultBox strong{
+        font-size:23px;
       }
     }
   </style>
 
   <div class="dsw-fee__wrap">
     <div class="dsw-fee__eyebrow">THE SUWON CARE GUIDE</div>
+
     <h1 class="dsw-fee__mainTitle">
       <strong>더수원</strong> 비용 안내
     </h1>
+
     <p class="dsw-fee__desc">
       보호자분들이 가장 궁금해하시는 요양원·주간보호 비용을 한눈에 확인하실 수 있도록 정리했습니다.
-      실제 부담금은 감경 여부와 이용 조건에 따라 달라질 수 있습니다.
+      장기요양보험 급여 본인부담금과 비급여 항목을 함께 확인하실 수 있습니다.
     </p>
+
+    <div class="dsw-fee__summary">
+      <div class="dsw-fee__summaryCard">
+        <strong>급여 비용</strong>
+        <p>장기요양등급과 이용 시간에 따라 정해지는 수가입니다. 감경 여부에 따라 본인부담률이 달라집니다.</p>
+      </div>
+      <div class="dsw-fee__summaryCard">
+        <strong>비급여 비용</strong>
+        <p>식사비와 간식비처럼 장기요양보험 급여에 포함되지 않는 항목입니다.</p>
+      </div>
+      <div class="dsw-fee__summaryCard">
+        <strong>예상 계산기</strong>
+        <p>등급, 감경비율, 주 이용일자를 선택하면 월 예상 본인부담금을 확인할 수 있습니다.</p>
+      </div>
+    </div>
 
     <div class="dsw-fee__tabs" role="tablist" aria-label="비용 안내 탭">
       <button type="button" class="dsw-fee__tab" id="dswTabNursing" aria-selected="true">
@@ -751,6 +991,108 @@
         </div>
       </div>
     </article>
+
+    <div class="dsw-fee__extra">
+      <section class="dsw-fee__infoBox">
+        <h3>비급여 항목 안내</h3>
+        <p>
+          식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다.
+          실제 이용한 횟수에 따라 별도 청구됩니다.
+        </p>
+        <ul class="dsw-fee__miniList">
+          <li>오전 간식 <span>1,000원</span></li>
+          <li>오후 간식 <span>1,000원</span></li>
+          <li>점심 식사 <span>3,500원</span></li>
+          <li>저녁 식사 <span>4,000원</span></li>
+        </ul>
+      </section>
+
+      <section class="dsw-fee__infoBox">
+        <h3>비용 확인 시 참고사항</h3>
+        <p>
+          월 비용은 등급, 감경비율, 주 이용일자, 식사·간식 이용 여부에 따라 달라집니다.
+          아래 계산기는 보호자님이 대략적인 월 예상 비용을 확인하기 위한 참고용입니다.
+        </p>
+        <ul class="dsw-fee__miniList">
+          <li>일반 본인부담 <span>요양원 20% / 주간보호 15%</span></li>
+          <li>감경 대상 <span>12%·8% / 9%·6%</span></li>
+          <li>월 계산 기준 <span>주 이용일 × 4주</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="dsw-fee__calculator" aria-label="본인부담금 계산기">
+      <div class="dsw-fee__calculatorHead">
+        <h2>월 예상 본인부담금 계산기</h2>
+        <p>
+          서비스 종류, 등급, 감경비율, 주 이용일자와 비급여 이용 여부를 선택하면 예상 금액이 자동 계산됩니다.
+        </p>
+      </div>
+
+      <div class="dsw-fee__calcGrid">
+        <div class="dsw-fee__field">
+          <label for="calcService">서비스 종류</label>
+          <select id="calcService">
+            <option value="daycare">주간보호</option>
+            <option value="nursing">요양원</option>
+          </select>
+        </div>
+
+        <div class="dsw-fee__field">
+          <label for="calcGrade">장기요양등급</label>
+          <select id="calcGrade"></select>
+        </div>
+
+        <div class="dsw-fee__field">
+          <label for="calcRate">감경비율</label>
+          <select id="calcRate"></select>
+        </div>
+
+        <div class="dsw-fee__field">
+          <label for="calcDays">주 이용일자</label>
+          <select id="calcDays">
+            <option value="1">주 1일</option>
+            <option value="2">주 2일</option>
+            <option value="3">주 3일</option>
+            <option value="4">주 4일</option>
+            <option value="5" selected>주 5일</option>
+            <option value="6">주 6일</option>
+            <option value="7">주 7일</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="dsw-fee__nonpay">
+        <p class="dsw-fee__nonpayTitle">비급여 이용 항목</p>
+        <div class="dsw-fee__checks">
+          <label><input type="checkbox" id="snackAm" checked> 오전 간식 1,000원</label>
+          <label><input type="checkbox" id="snackPm" checked> 오후 간식 1,000원</label>
+          <label><input type="checkbox" id="lunch" checked> 점심 3,500원</label>
+          <label><input type="checkbox" id="dinner"> 저녁 4,000원</label>
+        </div>
+      </div>
+
+      <div class="dsw-fee__result">
+        <div class="dsw-fee__resultBox">
+          <span>월 급여 본인부담금</span>
+          <strong id="resultCare">0원</strong>
+        </div>
+
+        <div class="dsw-fee__resultBox">
+          <span>월 비급여 예상액</span>
+          <strong id="resultNonpay">0원</strong>
+        </div>
+
+        <div class="dsw-fee__resultBox total">
+          <span>월 예상 총액</span>
+          <strong id="resultTotal">0원</strong>
+        </div>
+      </div>
+
+      <p class="dsw-fee__calcNote">
+        ※ 계산기는 주 이용일 × 4주 기준의 단순 예상 금액입니다. 실제 청구 금액은 이용일수, 이용시간, 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.
+      </p>
+    </section>
   </div>
 
   <script>
@@ -786,6 +1128,12 @@
 
         panelN.classList.toggle("dsw-fee__hidden", !isNursing);
         panelD.classList.toggle("dsw-fee__hidden", isNursing);
+
+        var service = document.getElementById("calcService");
+        if (service) {
+          service.value = isNursing ? "nursing" : "daycare";
+          updateCalculatorOptions();
+        }
       }
 
       tabN.addEventListener("click", function(){
@@ -827,6 +1175,134 @@
           }
         });
       });
+
+      var rateData = {
+        daycare: {
+          grades: {
+            "2등급": 64590,
+            "3등급": 59640,
+            "4등급": 58010,
+            "5등급": 56360
+          },
+          rates: {
+            "일반 15%": 0.15,
+            "감경 9%": 0.09,
+            "감경 6%": 0.06
+          }
+        },
+        nursing: {
+          grades: {
+            "1등급": 93070,
+            "2등급": 86340,
+            "3·4·5등급": 81540
+          },
+          rates: {
+            "일반 20%": 0.20,
+            "감경 12%": 0.12,
+            "감경 8%": 0.08
+          }
+        }
+      };
+
+      var nonpay = {
+        snackAm: 1000,
+        snackPm: 1000,
+        lunch: 3500,
+        dinner: 4000
+      };
+
+      var calcService = document.getElementById("calcService");
+      var calcGrade = document.getElementById("calcGrade");
+      var calcRate = document.getElementById("calcRate");
+      var calcDays = document.getElementById("calcDays");
+
+      var snackAm = document.getElementById("snackAm");
+      var snackPm = document.getElementById("snackPm");
+      var lunch = document.getElementById("lunch");
+      var dinner = document.getElementById("dinner");
+
+      var resultCare = document.getElementById("resultCare");
+      var resultNonpay = document.getElementById("resultNonpay");
+      var resultTotal = document.getElementById("resultTotal");
+
+      function money(value){
+        return Math.round(value).toLocaleString("ko-KR") + "원";
+      }
+
+      function fillSelect(select, items){
+        select.innerHTML = "";
+        items.forEach(function(item){
+          var option = document.createElement("option");
+          option.value = item;
+          option.textContent = item;
+          select.appendChild(option);
+        });
+      }
+
+      function updateCalculatorOptions(){
+        var service = calcService.value;
+        var data = rateData[service];
+
+        fillSelect(calcGrade, Object.keys(data.grades));
+        fillSelect(calcRate, Object.keys(data.rates));
+
+        if (service === "nursing") {
+          calcDays.value = "7";
+          dinner.checked = true;
+        } else {
+          calcDays.value = "5";
+          dinner.checked = false;
+        }
+
+        calculate();
+      }
+
+      function calculate(){
+        var service = calcService.value;
+        var grade = calcGrade.value;
+        var rate = calcRate.value;
+        var days = Number(calcDays.value || 0);
+        var monthDays = days * 4;
+
+        var dailyFee = rateData[service].grades[grade] || 0;
+        var rateValue = rateData[service].rates[rate] || 0;
+
+        var monthlyCare = dailyFee * rateValue * monthDays;
+
+        var dailyNonpay = 0;
+        if (snackAm.checked) dailyNonpay += nonpay.snackAm;
+        if (snackPm.checked) dailyNonpay += nonpay.snackPm;
+        if (lunch.checked) dailyNonpay += nonpay.lunch;
+        if (dinner.checked) dailyNonpay += nonpay.dinner;
+
+        var monthlyNonpay = dailyNonpay * monthDays;
+        var total = monthlyCare + monthlyNonpay;
+
+        resultCare.textContent = money(monthlyCare);
+        resultNonpay.textContent = money(monthlyNonpay);
+        resultTotal.textContent = money(total);
+      }
+
+      [
+        calcService,
+        calcGrade,
+        calcRate,
+        calcDays,
+        snackAm,
+        snackPm,
+        lunch,
+        dinner
+      ].forEach(function(el){
+        el.addEventListener("change", function(){
+          if (el === calcService) {
+            updateCalculatorOptions();
+          } else {
+            calculate();
+          }
+        });
+      });
+
+      updateCalculatorOptions();
     })();
   </script>
 </section>
