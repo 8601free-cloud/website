@@ -141,7 +141,49 @@ function initLayout() {
   });
 }
 
+function injectFavicon() {
+  const head = document.head;
+
+  if (!head) return;
+
+  const faviconPNG = '/favicon.png';
+  
+
+  document.querySelectorAll('link[rel*="icon"]').forEach(function (el) {
+    el.remove();
+  });
+
+  const ico = document.createElement('link');
+  ico.rel = 'shortcut icon';
+  ico.href = faviconICO;
+  ico.type = 'image/x-icon';
+  head.appendChild(ico);
+
+  const png = document.createElement('link');
+  png.rel = 'icon';
+  png.href = faviconPNG;
+  png.type = 'image/png';
+  head.appendChild(png);
+
+  const apple = document.createElement('link');
+  apple.rel = 'apple-touch-icon';
+  apple.href = faviconPNG;
+  head.appendChild(apple);
+
+  let themeColor = document.querySelector('meta[name="theme-color"]');
+
+  if (!themeColor) {
+    themeColor = document.createElement('meta');
+    themeColor.name = 'theme-color';
+    head.appendChild(themeColor);
+  }
+
+  themeColor.content = '#2e7d32';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+  injectFavicon();
+
   const headerRoot = document.getElementById('site-header');
   const footerRoot = document.getElementById('site-footer');
 
@@ -314,6 +356,8 @@ document.addEventListener('DOMContentLoaded', function () {
 (function injectSEO() {
   const head = document.head;
   const cleanPath = window.location.pathname.replace(/\/index\.html$/, '/');
+
+  injectFavicon();
 
   if (!document.querySelector('link[rel="canonical"]')) {
     const canonical = document.createElement('link');
