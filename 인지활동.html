@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="layout.css?v=20260501">
+  <link rel="stylesheet" href="layout.css?v=20260501">
 </head>
 <body>
 
@@ -341,6 +341,70 @@
       font-weight:700;
     }
 
+    .dsw-cognitive__process{
+      margin-top:34px;
+      padding:28px;
+      border-radius:30px;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.6)),
+        radial-gradient(circle at 16% 0%,rgba(47,90,62,.1),transparent 35%);
+      border:1px solid var(--line);
+      box-shadow:0 22px 54px rgba(23,61,41,.13);
+    }
+
+    .dsw-cognitive__sectionTitle{
+      margin:0 0 20px;
+      text-align:center;
+      color:var(--deep);
+      font-size:clamp(24px,3vw,34px);
+      font-weight:900;
+      letter-spacing:-.8px;
+    }
+
+    .dsw-cognitive__steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .dsw-cognitive__step{
+      position:relative;
+      padding:22px 18px;
+      border-radius:24px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(31,64,47,.11);
+      box-shadow:0 10px 24px rgba(23,61,41,.07);
+      text-align:center;
+    }
+
+    .dsw-cognitive__stepNo{
+      width:38px;
+      height:38px;
+      margin:0 auto 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#c9872d,#e0a34b);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      box-shadow:0 12px 24px rgba(201,135,45,.24);
+    }
+
+    .dsw-cognitive__step h3{
+      margin:0;
+      color:var(--deep);
+      font-size:17px;
+      font-weight:900;
+    }
+
+    .dsw-cognitive__step p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.65;
+      font-weight:700;
+    }
+
     .dsw-cognitive__notice{
       margin:28px auto 0;
       max-width:900px;
@@ -356,12 +420,56 @@
       box-shadow:0 12px 26px rgba(23,61,41,.07);
     }
 
+    .dsw-cognitive__cta{
+      margin:18px auto 0;
+      max-width:900px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .dsw-cognitive__btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:190px;
+      padding:15px 22px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:900;
+      transition:.22s ease;
+    }
+
+    .dsw-cognitive__btn--primary{
+      color:#fff;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      box-shadow:0 18px 34px rgba(47,90,62,.24);
+    }
+
+    .dsw-cognitive__btn--sub{
+      color:var(--green);
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(47,90,62,.18);
+      box-shadow:0 12px 26px rgba(23,61,41,.08);
+    }
+
+    .dsw-cognitive__btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 24px 44px rgba(23,61,41,.16);
+    }
+
     @media(max-width:900px){
       .dsw-cognitive__heroCard{
         grid-template-columns:1fr;
       }
 
       .dsw-cognitive__grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .dsw-cognitive__steps{
         grid-template-columns:repeat(2,1fr);
       }
     }
@@ -399,8 +507,17 @@
         bottom:18px;
       }
 
-      .dsw-cognitive__grid{
+      .dsw-cognitive__grid,
+      .dsw-cognitive__steps{
         grid-template-columns:1fr;
+      }
+
+      .dsw-cognitive__process{
+        padding:22px 16px;
+      }
+
+      .dsw-cognitive__btn{
+        width:100%;
       }
     }
   </style>
@@ -443,21 +560,21 @@
 
           <div class="dsw-cognitive__slide">
             <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_22.png" alt="미술 활동">
+              <img src="KakaoTalk_20260427_193952369_22.png" alt="참여형 보드게임 프로그램">
             </div>
             <div class="dsw-cognitive__keywordCard">참여형 보드게임 프로그램</div>
           </div>
 
           <div class="dsw-cognitive__slide">
             <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_11.png" alt="음악 활동">
+              <img src="KakaoTalk_20260427_193952369_11.png" alt="음악 기반 인지 자극 프로그램">
             </div>
             <div class="dsw-cognitive__keywordCard">음악 기반 인지 자극 프로그램</div>
           </div>
 
           <div class="dsw-cognitive__slide">
             <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_03.png" alt="정서 안정">
+              <img src="KakaoTalk_20260427_193952369_03.png" alt="참여형 인지 자극 활동">
             </div>
             <div class="dsw-cognitive__keywordCard">참여형 인지 자극 활동</div>
           </div>
@@ -510,10 +627,45 @@
       </article>
     </div>
 
+    <section class="dsw-cognitive__process" aria-label="인지활동 진행 흐름">
+      <h2 class="dsw-cognitive__sectionTitle">더수원의 인지활동 흐름</h2>
+
+      <div class="dsw-cognitive__steps">
+        <article class="dsw-cognitive__step">
+          <div class="dsw-cognitive__stepNo">1</div>
+          <h3>상태 확인</h3>
+          <p>활동 전 어르신의 컨디션과 참여 가능 상태를 먼저 살핍니다.</p>
+        </article>
+
+        <article class="dsw-cognitive__step">
+          <div class="dsw-cognitive__stepNo">2</div>
+          <h3>맞춤 활동</h3>
+          <p>기억력, 집중력, 손 사용 능력에 맞춰 무리 없는 활동을 진행합니다.</p>
+        </article>
+
+        <article class="dsw-cognitive__step">
+          <div class="dsw-cognitive__stepNo">3</div>
+          <h3>참여 관찰</h3>
+          <p>표정, 반응, 대화, 수행 정도를 살피며 즐겁게 참여하실 수 있도록 돕습니다.</p>
+        </article>
+
+        <article class="dsw-cognitive__step">
+          <div class="dsw-cognitive__stepNo">4</div>
+          <h3>기록·연계</h3>
+          <p>활동 내용과 특이사항을 확인하고 보호자 상담 시 이해하기 쉽게 안내합니다.</p>
+        </article>
+      </div>
+    </section>
+
     <p class="dsw-cognitive__notice">
       ※ 인지활동은 어르신의 상태에 따라 난이도와 참여 방식이 조정되며,
       즐거움과 성취감을 느끼실 수 있도록 무리 없이 진행됩니다.
     </p>
+
+    <div class="dsw-cognitive__cta">
+      <a href="tel:16668853" class="dsw-cognitive__btn dsw-cognitive__btn--primary">전화 상담하기</a>
+      <a href="https://blog.naver.com/thesuwonsilver" target="_blank" rel="noopener" class="dsw-cognitive__btn dsw-cognitive__btn--sub">블로그 보기</a>
+    </div>
   </div>
 </section>
 
