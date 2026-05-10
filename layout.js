@@ -143,27 +143,25 @@ function initLayout() {
 
 function injectFavicon() {
   const head = document.head;
-
   if (!head) return;
 
-  const faviconPNG = '/favicon.png';
-  
+  const faviconPNG = '/favicon.png?v=5';
 
   document.querySelectorAll('link[rel*="icon"]').forEach(function (el) {
     el.remove();
   });
-
-  const ico = document.createElement('link');
-  ico.rel = 'shortcut icon';
-  ico.href = faviconICO;
-  ico.type = 'image/x-icon';
-  head.appendChild(ico);
 
   const png = document.createElement('link');
   png.rel = 'icon';
   png.href = faviconPNG;
   png.type = 'image/png';
   head.appendChild(png);
+
+  const shortcut = document.createElement('link');
+  shortcut.rel = 'shortcut icon';
+  shortcut.href = faviconPNG;
+  shortcut.type = 'image/png';
+  head.appendChild(shortcut);
 
   const apple = document.createElement('link');
   apple.rel = 'apple-touch-icon';
@@ -355,6 +353,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 (function injectSEO() {
   const head = document.head;
+  if (!head) return;
+
   const cleanPath = window.location.pathname.replace(/\/index\.html$/, '/');
 
   injectFavicon();
