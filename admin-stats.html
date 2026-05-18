@@ -55,6 +55,62 @@
       white-space: nowrap;
     }
 
+    .filter-box {
+      background: #fff;
+      border: 1px solid #e5ddcf;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 26px rgba(60, 50, 35, 0.06);
+    }
+
+    .filter-title {
+      margin: 0 0 12px;
+      font-size: 17px;
+      font-weight: 900;
+      color: #263325;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .date-input {
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid #d8d0c2;
+      border-radius: 12px;
+      font-size: 14px;
+      background: #fffdf8;
+    }
+
+    .filter-btn {
+      height: 42px;
+      padding: 0 14px;
+      border: 1px solid #d8d0c2;
+      border-radius: 999px;
+      background: #fff;
+      color: #444;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #2e7d32;
+      border-color: #2e7d32;
+      color: #fff;
+    }
+
+    .selected-period {
+      margin: 12px 0 0;
+      color: #777;
+      font-size: 14px;
+    }
+
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -203,6 +259,11 @@
       .admin-head h1 {
         font-size: 26px;
       }
+
+      .date-input,
+      .filter-btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -214,7 +275,7 @@
     <section class="admin-head">
       <div>
         <h1>방문자 통계</h1>
-        <p>더수원 홈페이지 방문 기록과 상담 버튼 클릭 현황입니다.</p>
+        <p>날짜별로 방문 기록과 상담 버튼 클릭 현황을 확인합니다.</p>
       </div>
 
       <button id="logoutBtn" class="logout-btn" type="button">
@@ -222,10 +283,29 @@
       </button>
     </section>
 
+    <section class="filter-box">
+      <p class="filter-title">조회 기간 선택</p>
+
+      <div class="filter-row">
+        <button class="filter-btn active" type="button" data-range="today">오늘</button>
+        <button class="filter-btn" type="button" data-range="yesterday">어제</button>
+        <button class="filter-btn" type="button" data-range="7days">최근 7일</button>
+        <button class="filter-btn" type="button" data-range="30days">최근 30일</button>
+
+        <input id="startDate" class="date-input" type="date" />
+        <span>~</span>
+        <input id="endDate" class="date-input" type="date" />
+
+        <button id="applyDateBtn" class="filter-btn" type="button">조회</button>
+      </div>
+
+      <p id="selectedPeriod" class="selected-period">오늘 통계를 보고 있습니다.</p>
+    </section>
+
     <section class="stats-grid">
       <div class="stat-card">
-        <p class="stat-label">오늘 방문</p>
-        <p id="todayVisits" class="stat-value">-</p>
+        <p class="stat-label">선택 기간 방문</p>
+        <p id="periodVisits" class="stat-value">-</p>
       </div>
 
       <div class="stat-card">
@@ -234,12 +314,12 @@
       </div>
 
       <div class="stat-card">
-        <p class="stat-label">전화 클릭</p>
+        <p class="stat-label">선택 기간 전화 클릭</p>
         <p id="phoneClicks" class="stat-value">-</p>
       </div>
 
       <div class="stat-card">
-        <p class="stat-label">전체 클릭</p>
+        <p class="stat-label">선택 기간 전체 클릭</p>
         <p id="totalClicks" class="stat-value">-</p>
       </div>
     </section>
@@ -275,7 +355,7 @@
     </section>
 
     <section class="panel" style="margin-top:18px;">
-      <h2>최근 방문 기록</h2>
+      <h2>선택 기간 방문 기록</h2>
       <div class="table-wrap">
         <table>
           <thead>
@@ -308,7 +388,7 @@
 
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    const todayVisitsEl = document.getElementById("todayVisits");
+    const periodVisitsEl = document.getElementById("periodVisits");
     const totalVisitsEl = document.getElementById("totalVisits");
     const phoneClicksEl = document.getElementById("phoneClicks");
     const totalClicksEl = document.getElementById("totalClicks");
@@ -318,12 +398,73 @@
     const deviceListEl = document.getElementById("deviceList");
     const browserListEl = document.getElementById("browserList");
     const recentVisitsEl = document.getElementById("recentVisits");
-    const logoutBtn = document.getElementById("logoutBtn");
 
-    function getTodayStartISO() {
-      const now = new Date();
-      const start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
-      return start.toISOString();
+    const logoutBtn = document.getElementById("logoutBtn");
+    const startDateInput = document.getElementById("startDate");
+    const endDateInput = document.getElementById("endDate");
+    const applyDateBtn = document.getElementById("applyDateBtn");
+    const selectedPeriodEl = document.getElementById("selectedPeriod");
+    const rangeButtons = document.querySelectorAll("[data-range]");
+
+    function toDateInputValue(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    function getDayStart(dateValue) {
+      return new Date(`${dateValue}T00:00:00`);
+    }
+
+    function getNextDayStart(dateValue) {
+      const date = getDayStart(dateValue);
+      date.setDate(date.getDate() + 1);
+      return date;
+    }
+
+    function setDateRange(type) {
+      const today = new Date();
+      let start = new Date(today);
+      let end = new Date(today);
+
+      if (type === "yesterday") {
+        start.setDate(today.getDate() - 1);
+        end.setDate(today.getDate() - 1);
+        selectedPeriodEl.textContent = "어제 통계를 보고 있습니다.";
+      }
+
+      if (type === "today") {
+        selectedPeriodEl.textContent = "오늘 통계를 보고 있습니다.";
+      }
+
+      if (type === "7days") {
+        start.setDate(today.getDate() - 6);
+        selectedPeriodEl.textContent = "최근 7일 통계를 보고 있습니다.";
+      }
+
+      if (type === "30days") {
+        start.setDate(today.getDate() - 29);
+        selectedPeriodEl.textContent = "최근 30일 통계를 보고 있습니다.";
+      }
+
+      startDateInput.value = toDateInputValue(start);
+      endDateInput.value = toDateInputValue(end);
+
+      loadStats();
+    }
+
+    function getSelectedRangeISO() {
+      const startValue = startDateInput.value;
+      const endValue = endDateInput.value;
+
+      const start = getDayStart(startValue);
+      const endExclusive = getNextDayStart(endValue);
+
+      return {
+        startISO: start.toISOString(),
+        endISO: endExclusive.toISOString()
+      };
     }
 
     function formatDate(value) {
@@ -339,14 +480,33 @@
     }
 
     function getSourceLabel(row) {
-      if (row.utm_source) return row.utm_source;
+      if (row.utm_source) {
+        const sourceMap = {
+          instagram: "인스타그램",
+          daangn: "당근",
+          kakao: "카카오톡",
+          naverblog: "네이버 블로그",
+          navermap: "네이버 지도",
+          kakaomap: "카카오맵",
+          google: "구글",
+          naver: "네이버"
+        };
+
+        return sourceMap[row.utm_source] || row.utm_source;
+      }
+
       if (row.referrer) {
         try {
           const host = new URL(row.referrer).hostname;
-          if (host.includes("naver")) return "네이버";
-          if (host.includes("google")) return "구글";
+
           if (host.includes("instagram")) return "인스타그램";
           if (host.includes("daangn")) return "당근";
+          if (host.includes("kakao")) return "카카오";
+          if (host.includes("map.naver")) return "네이버 지도";
+          if (host.includes("blog.naver")) return "네이버 블로그";
+          if (host.includes("naver")) return "네이버";
+          if (host.includes("google")) return "구글";
+
           return host;
         } catch {
           return "외부 유입";
@@ -364,19 +524,18 @@
         map[key] = (map[key] || 0) + 1;
       });
 
-      return Object.entries(map)
-        .sort(function (a, b) {
-          return b[1] - a[1];
-        });
+      return Object.entries(map).sort(function (a, b) {
+        return b[1] - a[1];
+      });
     }
 
     function renderList(el, entries) {
       if (!entries.length) {
-        el.innerHTML = `<div class="muted">데이터가 없습니다.</div>`;
+        el.innerHTML = `<div class="muted">선택한 기간의 데이터가 없습니다.</div>`;
         return;
       }
 
-      el.innerHTML = entries.slice(0, 8).map(function ([name, count]) {
+      el.innerHTML = entries.slice(0, 10).map(function ([name, count]) {
         return `
           <div class="list-row">
             <div class="list-main">${name}</div>
@@ -390,7 +549,7 @@
       if (!rows.length) {
         recentVisitsEl.innerHTML = `
           <tr>
-            <td colspan="5" class="muted">방문 기록이 없습니다.</td>
+            <td colspan="5" class="muted">선택한 기간의 방문 기록이 없습니다.</td>
           </tr>
         `;
         return;
@@ -446,34 +605,45 @@
       const isLoggedIn = await requireLogin();
       if (!isLoggedIn) return;
 
-      const todayStart = getTodayStartISO();
+      const { startISO, endISO } = getSelectedRangeISO();
 
       const totalVisits = await getCount("visits");
-      const todayVisits = await getCount("visits", function (query) {
-        return query.gte("created_at", todayStart);
+
+      const periodVisits = await getCount("visits", function (query) {
+        return query.gte("created_at", startISO).lt("created_at", endISO);
       });
 
-      const totalClicks = await getCount("click_events");
+      const totalClicks = await getCount("click_events", function (query) {
+        return query.gte("created_at", startISO).lt("created_at", endISO);
+      });
+
       const phoneClicks = await getCount("click_events", function (query) {
-        return query.in("event_type", ["phone_click", "footer_phone_click"]);
+        return query
+          .gte("created_at", startISO)
+          .lt("created_at", endISO)
+          .in("event_type", ["phone_click", "footer_phone_click"]);
       });
 
       totalVisitsEl.textContent = totalVisits;
-      todayVisitsEl.textContent = todayVisits;
+      periodVisitsEl.textContent = periodVisits;
       totalClicksEl.textContent = totalClicks;
       phoneClicksEl.textContent = phoneClicks;
 
       const { data: visits, error: visitsError } = await supabaseClient
         .from("visits")
         .select("*")
+        .gte("created_at", startISO)
+        .lt("created_at", endISO)
         .order("created_at", { ascending: false })
-        .limit(200);
+        .limit(500);
 
       const { data: clicks, error: clicksError } = await supabaseClient
         .from("click_events")
         .select("*")
+        .gte("created_at", startISO)
+        .lt("created_at", endISO)
         .order("created_at", { ascending: false })
-        .limit(200);
+        .limit(500);
 
       if (visitsError || clicksError) {
         sourceListEl.innerHTML = `<div class="muted">통계를 불러오지 못했습니다. SELECT 정책을 확인해주세요.</div>`;
@@ -484,25 +654,48 @@
       }
 
       renderList(sourceListEl, countBy(visits || [], getSourceLabel));
+
       renderList(deviceListEl, countBy(visits || [], function (row) {
         return row.device_type;
       }));
+
       renderList(browserListEl, countBy(visits || [], function (row) {
         return row.browser;
       }));
+
       renderList(clickListEl, countBy(clicks || [], function (row) {
         return row.event_type;
       }));
 
-      renderRecentVisits((visits || []).slice(0, 30));
+      renderRecentVisits((visits || []).slice(0, 50));
     }
+
+    rangeButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        rangeButtons.forEach(function (btn) {
+          btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        setDateRange(button.dataset.range);
+      });
+    });
+
+    applyDateBtn.addEventListener("click", function () {
+      rangeButtons.forEach(function (btn) {
+        btn.classList.remove("active");
+      });
+
+      selectedPeriodEl.textContent = `${startDateInput.value} ~ ${endDateInput.value} 통계를 보고 있습니다.`;
+      loadStats();
+    });
 
     logoutBtn.addEventListener("click", async function () {
       await supabaseClient.auth.signOut();
       window.location.href = "/admin-login.html";
     });
 
-    loadStats();
+    setDateRange("today");
   </script>
 </body>
 </html>
