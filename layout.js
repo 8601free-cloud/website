@@ -179,6 +179,17 @@ function injectFavicon() {
   themeColor.content = '#2e7d32';
 }
 
+function injectTrackingScript() {
+  if (document.querySelector('script[data-thesuwon-tracking="true"]')) return;
+
+  const trackingScript = document.createElement('script');
+  trackingScript.src = '/tracking.js?v=1';
+  trackingScript.defer = true;
+  trackingScript.dataset.thesuwonTracking = 'true';
+
+  document.body.appendChild(trackingScript);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   injectFavicon();
 
@@ -252,7 +263,12 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
 
       <div class="floating-buttons" aria-label="빠른 상담 메뉴">
-        <a href="tel:16668853" class="floating-btn" aria-label="1666-8853 전화 문의하기">
+        <a
+          href="tel:16668853"
+          class="floating-btn"
+          aria-label="1666-8853 전화 문의하기"
+          data-track-click="phone_click"
+        >
           <span class="floating-btn__icon" aria-hidden="true">📞</span>
           <span class="floating-btn__text">문의하기</span>
         </a>
@@ -263,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="더수원 블로그 새 창으로 열기"
+          data-track-click="blog_click"
         >
           <span class="floating-btn__icon" aria-hidden="true">📝</span>
           <span class="floating-btn__text">블로그</span>
@@ -275,6 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
           aria-haspopup="true"
           aria-expanded="false"
           aria-label="더수원 위치 선택 메뉴 열기"
+          data-track-click="location_menu_open"
         >
           <span class="floating-btn__icon" aria-hidden="true">📍</span>
           <span class="floating-btn__text">위치 보기</span>
@@ -290,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
             role="menuitem"
             target="_blank"
             rel="noopener noreferrer"
+            data-track-click="daycare_map_click"
           >
             더수원주간보호
             <small>네이버 지도 열기</small>
@@ -302,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
             role="menuitem"
             target="_blank"
             rel="noopener noreferrer"
+            data-track-click="nursing_map_click"
           >
             더수원요양원
             <small>네이버 지도 열기</small>
@@ -335,7 +355,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         <p style="margin:0;">
           <strong style="color:#444;">대표번호</strong><br>
-          <a href="tel:16668853" style="color:#2e7d32; text-decoration:none; font-weight:700;">
+          <a
+            href="tel:16668853"
+            style="color:#2e7d32; text-decoration:none; font-weight:700;"
+            data-track-click="footer_phone_click"
+          >
             1666-8853
           </a>
         </p>
@@ -349,6 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   initLayout();
+  injectTrackingScript();
 });
 
 (function injectSEO() {
