@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>관리자 로그인 | 더수원</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="/layout.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Pretendard, "Noto Sans KR", sans-serif;
+      background: #f7f4ed;
+      color: #2f332d;
+    }
+
+    .admin-login-page {
+      min-height: calc(100vh - 220px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 80px;
+      box-sizing: border-box;
+    }
+
+    .admin-login-card {
+      width: 100%;
+      max-width: 430px;
+      background: #fff;
+      border: 1px solid #e5ddcf;
+      border-radius: 24px;
+      padding: 34px 28px;
+      box-shadow: 0 16px 40px rgba(60, 50, 35, 0.08);
+    }
+
+    .admin-login-eyebrow {
+      margin: 0 0 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #6b8f47;
+      letter-spacing: 0.04em;
+    }
+
+    .admin-login-card h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.3;
+      color: #263325;
+    }
+
+    .admin-login-desc {
+      margin: 0 0 26px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    .admin-login-label {
+      display: block;
+      margin: 14px 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #444;
+    }
+
+    .admin-login-input {
+      width: 100%;
+      height: 52px;
+      padding: 0 16px;
+      border: 1px solid #d8d0c2;
+      border-radius: 14px;
+      font-size: 16px;
+      box-sizing: border-box;
+      outline: none;
+      background: #fffdf8;
+    }
+
+    .admin-login-input:focus {
+      border-color: #6b8f47;
+      box-shadow: 0 0 0 4px rgba(107, 143, 71, 0.12);
+    }
+
+    .admin-login-button {
+      width: 100%;
+      height: 52px;
+      margin-top: 18px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #81c784, #388e3c);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(56, 142, 60, 0.22);
+    }
+
+    .admin-login-button:hover {
+      background: linear-gradient(135deg, #66bb6a, #2e7d32);
+      transform: translateY(-1px);
+    }
+
+    .admin-login-button:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .admin-login-error {
+      display: none;
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #fff1f1;
+      color: #c62828;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .admin-login-note {
+      margin: 18px 0 0;
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #888;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .admin-login-page {
+        padding: 100px 16px 60px;
+      }
+
+      .admin-login-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+      }
+
+      .admin-login-card h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="admin-login-page">
+    <section class="admin-login-card" aria-labelledby="adminLoginTitle">
+      <p class="admin-login-eyebrow">ADMIN ONLY</p>
+      <h1 id="adminLoginTitle">관리자 로그인</h1>
+
+      <p class="admin-login-desc">
+        Supabase Auth로 로그인한 관리자만 방문자 통계를 확인할 수 있습니다.
+      </p>
+
+      <form id="adminLoginForm">
+        <label for="adminEmail" class="admin-login-label">이메일</label>
+        <input
+          id="adminEmail"
+          class="admin-login-input"
+          type="email"
+          placeholder="관리자 이메일"
+          autocomplete="email"
+          required
+        />
+
+        <label for="adminPassword" class="admin-login-label">비밀번호</label>
+        <input
+          id="adminPassword"
+          class="admin-login-input"
+          type="password"
+          placeholder="비밀번호"
+          autocomplete="current-password"
+          required
+        />
+
+        <button id="loginButton" type="submit" class="admin-login-button">
+          통계 페이지 들어가기
+        </button>
+
+        <p id="loginError" class="admin-login-error">
+          로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.
+        </p>
+      </form>
+
+      <p class="admin-login-note">
+        공용 PC에서는 사용 후 로그아웃해주세요.
+      </p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://lfnreutlwezdkpzqgqfi.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_teQk9TxtVO_LNoA4Kww9ZA_9MBi3eSV";
+
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const form = document.getElementById("adminLoginForm");
+    const emailInput = document.getElementById("adminEmail");
+    const passwordInput = document.getElementById("adminPassword");
+    const errorBox = document.getElementById("loginError");
+    const loginButton = document.getElementById("loginButton");
+
+    async function checkAlreadyLoggedIn() {
+      const { data } = await supabaseClient.auth.getSession();
+
+      if (data && data.session) {
+        window.location.href = "/admin-stats.html";
+      }
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      errorBox.style.display = "none";
+      loginButton.disabled = true;
+      loginButton.textContent = "로그인 중...";
+
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+      if (error || !data.session) {
+        errorBox.style.display = "block";
+        passwordInput.value = "";
+        passwordInput.focus();
+        loginButton.disabled = false;
+        loginButton.textContent = "통계 페이지 들어가기";
+        return;
+      }
+
+      window.location.href = "/admin-stats.html";
+    });
+
+    checkAlreadyLoggedIn();
+  </script>
+</body>
+</html>
