@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="top-nav-inner">
           <a href="/index.html" class="site-brand" aria-label="더수원 홈으로 이동">
             <img
-              src="/logo.png"
+              src="/logo2.png"
               alt="더수원 로고"
               class="site-brand-logo"
               width="72"
