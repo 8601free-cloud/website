@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="layout.css?v=20260501">
+  <link rel="stylesheet" href="layout.css?v=20260719-5">
 </head>
 <body>
 
@@ -670,7 +670,64 @@
 </section>
 
 <div id="site-footer"></div>
-<script src="layout.js"></script>
+<style id="cognitive-care-theme-overrides">
+  body.theme-day .dsw-cognitive{--deep:#3b2c32;--green:#a95050;--green2:#b95f55;--gold:#d88a35;--line:rgba(109,70,75,.16);--text:#3b2c32;--muted:#785d65;background:transparent!important;}
+  body.theme-night .dsw-cognitive{--deep:#ffe7c1;--green:#f1b66d;--green2:#d97891;--gold:#f1b66d;--line:rgba(255,225,211,.17);--text:#f7edf1;--muted:#cfc1d4;background:transparent!important;}
+  body.theme-day .dsw-cognitive__heroCard,
+  body.theme-day .dsw-cognitive__card,
+  body.theme-day .dsw-cognitive__process,
+  body.theme-day .dsw-cognitive__step,
+  body.theme-day .dsw-cognitive__notice,
+  body.theme-day .dsw-cognitive__btn--sub{
+    background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.74))!important;
+    border-color:var(--dsw-border)!important;box-shadow:0 20px 54px rgba(98,59,65,.15),inset 0 1px 0 rgba(255,255,255,.86)!important;
+  }
+  body.theme-night .dsw-cognitive__heroCard,
+  body.theme-night .dsw-cognitive__card,
+  body.theme-night .dsw-cognitive__process,
+  body.theme-night .dsw-cognitive__step,
+  body.theme-night .dsw-cognitive__notice,
+  body.theme-night .dsw-cognitive__btn--sub{
+    background:linear-gradient(145deg,rgba(54,43,82,.91),rgba(25,22,54,.87))!important;
+    border-color:var(--dsw-border)!important;box-shadow:0 24px 64px rgba(5,4,18,.36),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  }
+  body.theme-day .dsw-cognitive__eyebrow,
+  body.theme-day .dsw-cognitive__badge{background:rgba(245,211,174,.56)!important;color:#503748!important;border-color:var(--dsw-border)!important;}
+  body.theme-night .dsw-cognitive__eyebrow,
+  body.theme-night .dsw-cognitive__badge{background:rgba(117,57,91,.48)!important;color:#ffe7c1!important;border-color:var(--dsw-border)!important;}
+  body.theme-day .dsw-cognitive__title,
+  body.theme-day .dsw-cognitive__heroText h2,
+  body.theme-day .dsw-cognitive__card h3,
+  body.theme-day .dsw-cognitive__sectionTitle,
+  body.theme-day .dsw-cognitive__step h3{color:#3b2c32!important;}
+  body.theme-night .dsw-cognitive__title,
+  body.theme-night .dsw-cognitive__heroText h2,
+  body.theme-night .dsw-cognitive__card h3,
+  body.theme-night .dsw-cognitive__sectionTitle,
+  body.theme-night .dsw-cognitive__step h3{color:#ffe7c1!important;}
+  body.theme-day .dsw-cognitive__desc,
+  body.theme-day .dsw-cognitive__heroText p,
+  body.theme-day .dsw-cognitive__card p,
+  body.theme-day .dsw-cognitive__step p,
+  body.theme-day .dsw-cognitive__notice{color:#785d65!important;}
+  body.theme-night .dsw-cognitive__desc,
+  body.theme-night .dsw-cognitive__heroText p,
+  body.theme-night .dsw-cognitive__card p,
+  body.theme-night .dsw-cognitive__step p,
+  body.theme-night .dsw-cognitive__notice{color:#cfc1d4!important;}
+  body.theme-day .dsw-cognitive__icon,
+  body.theme-day .dsw-cognitive__dot.is-active,
+  body.theme-day .dsw-cognitive__btn--primary{background:linear-gradient(145deg,#e8a456,#b95f55)!important;}
+  body.theme-night .dsw-cognitive__icon,
+  body.theme-night .dsw-cognitive__dot.is-active,
+  body.theme-night .dsw-cognitive__btn--primary{background:linear-gradient(145deg,#f1b66d,#d97891 58%,#8f466f)!important;color:#2d1830!important;}
+  body.theme-day .dsw-cognitive__slider{background:linear-gradient(145deg,#6b465b,#b86660)!important;}
+  body.theme-night .dsw-cognitive__slider{background:linear-gradient(145deg,#171532,#4a2d55 58%,#713851)!important;}
+  body.theme-night .dsw-cognitive__photoFrame,
+  body.theme-night .dsw-cognitive__keywordCard{background:rgba(37,32,67,.88)!important;color:#ffe7c1!important;border-color:var(--dsw-border)!important;}
+</style>
+
+<script src="layout.js?v=20260719-4"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
