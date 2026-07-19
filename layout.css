@@ -2,6 +2,63 @@
    THE SUWON COMMON LAYOUT CSS
    =============================== */
 
+/*
+   CARE THEME TOKENS
+   기본값은 주간보호(낮) 테마입니다.
+   공통 JS가 body에 theme-day 또는 theme-night 클래스를 추가하면
+   헤더·메뉴·플로팅 CTA·평가 팝업의 색상이 함께 전환됩니다.
+*/
+:root,
+body.theme-day{
+  color-scheme:light;
+  --dsw-page-bg:#fffaf0;
+  --dsw-surface:#ffffff;
+  --dsw-surface-soft:#f6f1e8;
+  --dsw-surface-tint:#edf7f0;
+  --dsw-header-bg:rgba(246,241,232,.90);
+  --dsw-nav-bg:rgba(255,255,255,.82);
+  --dsw-menu-bg:rgba(255,251,245,.98);
+  --dsw-text:#1d2d22;
+  --dsw-text-strong:#173629;
+  --dsw-text-soft:#5d7862;
+  --dsw-brand:#17472c;
+  --dsw-brand-2:#225d55;
+  --dsw-accent:#eca124;
+  --dsw-accent-contrast:#173629;
+  --dsw-border:rgba(23,71,44,.13);
+  --dsw-shadow:rgba(25,45,30,.16);
+  --dsw-cta-start:#81c784;
+  --dsw-cta-end:#388e3c;
+  --dsw-cta-hover-start:#66bb6a;
+  --dsw-cta-hover-end:#2e7d32;
+  --dsw-overlay:rgba(16,36,25,.58);
+}
+
+body.theme-night{
+  color-scheme:dark;
+  --dsw-page-bg:#0f291f;
+  --dsw-surface:#17472c;
+  --dsw-surface-soft:#1b5139;
+  --dsw-surface-tint:#225d55;
+  --dsw-header-bg:rgba(15,41,31,.92);
+  --dsw-nav-bg:rgba(23,71,44,.90);
+  --dsw-menu-bg:rgba(23,71,44,.98);
+  --dsw-text:#f8f4e9;
+  --dsw-text-strong:#ffffff;
+  --dsw-text-soft:#c9ddcf;
+  --dsw-brand:#f8f4e9;
+  --dsw-brand-2:#a9c96a;
+  --dsw-accent:#eca124;
+  --dsw-accent-contrast:#173629;
+  --dsw-border:rgba(255,255,255,.16);
+  --dsw-shadow:rgba(0,0,0,.34);
+  --dsw-cta-start:#eca124;
+  --dsw-cta-end:#c97b12;
+  --dsw-cta-hover-start:#f6b63d;
+  --dsw-cta-hover-end:#d78a1c;
+  --dsw-overlay:rgba(4,17,12,.76);
+}
+
 *,
 *::before,
 *::after{
@@ -20,8 +77,9 @@ body{
 body{
   font-family:"Pretendard","Noto Sans KR",sans-serif;
   word-break:keep-all;
-  color:#1d2d22;
-  background:#fffaf0;
+  color:var(--dsw-text);
+  background:var(--dsw-page-bg);
+  transition:background-color .45s ease,color .35s ease;
 }
 
 img,
@@ -52,11 +110,11 @@ button,
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(246,241,232,.88);
+  background:var(--dsw-header-bg);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(0,0,0,.06);
-  box-shadow:0 8px 24px rgba(0,0,0,.05);
+  border-bottom:1px solid var(--dsw-border);
+  box-shadow:0 8px 24px var(--dsw-shadow);
 }
 
 .top-nav-inner{
@@ -87,7 +145,7 @@ button,
   font-size:32px;
   font-weight:900;
   letter-spacing:-1px;
-  color:#234b34;
+  color:var(--dsw-brand);
   line-height:1;
 }
 
@@ -149,8 +207,8 @@ button,
   min-width:200px;
   padding:18px 10px 10px;
   border-radius:18px;
-  background:rgba(255,251,245,.96);
-  border:1px solid rgba(0,0,0,.06);
+  background:var(--dsw-menu-bg);
+  border:1px solid var(--dsw-border);
   box-shadow:0 18px 36px rgba(0,0,0,.14);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
@@ -166,15 +224,15 @@ button,
   padding:11px 12px;
   border-radius:12px;
   text-decoration:none;
-  color:#333;
+  color:var(--dsw-text);
   font-size:14px;
   font-weight:700;
   line-height:1.35;
 }
 
 .dropdown-menu a:hover{
-  background:#edf7f0;
-  color:#2f5a40;
+  background:var(--dsw-surface-tint);
+  color:var(--dsw-text-strong);
 }
 
 @media (hover:hover) and (pointer:fine){
@@ -214,7 +272,7 @@ button,
 }
 
 .floating-btn{
-  background:linear-gradient(135deg,#81c784 0%,#388e3c 100%);
+  background:linear-gradient(135deg,var(--dsw-cta-start) 0%,var(--dsw-cta-end) 100%);
   color:#fff;
   min-width:138px;
   min-height:48px;
@@ -238,7 +296,7 @@ button,
 }
 
 .floating-btn:hover{
-  background:linear-gradient(135deg,#66bb6a 0%,#2e7d32 100%);
+  background:linear-gradient(135deg,var(--dsw-cta-hover-start) 0%,var(--dsw-cta-hover-end) 100%);
   transform:translateY(-3px) scale(1.03);
 }
 
@@ -256,8 +314,8 @@ button,
   right:0;
   bottom:72px;
   width:248px;
-  background:rgba(255,255,255,.97);
-  border:1px solid rgba(46,125,50,.10);
+  background:var(--dsw-menu-bg);
+  border:1px solid var(--dsw-border);
   border-radius:18px;
   box-shadow:0 18px 38px rgba(30,54,37,.18);
   padding:10px;
@@ -273,15 +331,15 @@ button,
 .care-location-menu-title{
   font-size:13px;
   font-weight:800;
-  color:#2d5a33;
+  color:var(--dsw-brand);
   padding:8px 10px 6px;
 }
 
 .care-location-link{
   display:block;
   text-decoration:none;
-  background:#f4faf4;
-  color:#1f4b27;
+  background:var(--dsw-surface-tint);
+  color:var(--dsw-text-strong);
   padding:12px 14px;
   border-radius:12px;
   margin:6px 0;
@@ -294,7 +352,7 @@ button,
   margin-top:4px;
   font-size:12px;
   font-weight:600;
-  color:#5d7862;
+  color:var(--dsw-text-soft);
 }
 
 /* ===============================
@@ -702,5 +760,402 @@ button,
 
   .floating-btn__icon{
     font-size:15px !important;
+  }
+}
+
+/* ===============================
+   CARE THEME — COMMON OVERRIDES
+   모바일 구간의 기존 !important 색상도 아래에서 안전하게 재정의합니다.
+   =============================== */
+
+body.theme-day,
+body.theme-night{
+  background:var(--dsw-page-bg) !important;
+  color:var(--dsw-text) !important;
+}
+
+body.theme-day .top-nav-wrap,
+body.theme-night .top-nav-wrap{
+  background:var(--dsw-header-bg) !important;
+  border-color:var(--dsw-border) !important;
+  box-shadow:0 8px 24px var(--dsw-shadow) !important;
+}
+
+body.theme-day .site-brand-text,
+body.theme-night .site-brand-text{
+  color:var(--dsw-brand) !important;
+}
+
+body.theme-day .top-nav,
+body.theme-night .top-nav{
+  background:var(--dsw-nav-bg) !important;
+  border-color:var(--dsw-border) !important;
+}
+
+body.theme-day .top-nav > a,
+body.theme-day .top-nav .nav-link,
+body.theme-night .top-nav > a,
+body.theme-night .top-nav .nav-link{
+  color:var(--dsw-text-strong) !important;
+}
+
+body.theme-day .top-nav > a:hover,
+body.theme-day .top-nav .nav-link:hover,
+body.theme-day .top-nav .nav-item.open .nav-link,
+body.theme-night .top-nav > a:hover,
+body.theme-night .top-nav .nav-link:hover,
+body.theme-night .top-nav .nav-item.open .nav-link{
+  background:var(--dsw-surface-tint) !important;
+  color:var(--dsw-text-strong) !important;
+}
+
+body.theme-day .dropdown-menu,
+body.theme-night .dropdown-menu,
+body.theme-day .care-location-menu,
+body.theme-night .care-location-menu{
+  background:var(--dsw-menu-bg) !important;
+  border-color:var(--dsw-border) !important;
+  box-shadow:0 18px 38px var(--dsw-shadow) !important;
+}
+
+body.theme-day .dropdown-menu a,
+body.theme-day .care-location-link,
+body.theme-night .dropdown-menu a,
+body.theme-night .care-location-link{
+  background:var(--dsw-surface-tint) !important;
+  color:var(--dsw-text-strong) !important;
+}
+
+body.theme-day .dropdown-menu a:hover,
+body.theme-day .care-location-link:hover,
+body.theme-night .dropdown-menu a:hover,
+body.theme-night .care-location-link:hover{
+  filter:brightness(1.08);
+}
+
+body.theme-day .care-location-menu-title,
+body.theme-night .care-location-menu-title{
+  color:var(--dsw-brand) !important;
+}
+
+body.theme-day .care-location-link small,
+body.theme-night .care-location-link small{
+  color:var(--dsw-text-soft) !important;
+}
+
+body.theme-day .floating-buttons,
+body.theme-night .floating-buttons{
+  background:var(--dsw-nav-bg) !important;
+  border-color:var(--dsw-border) !important;
+  box-shadow:0 14px 34px var(--dsw-shadow) !important;
+}
+
+body.theme-day .floating-btn,
+body.theme-night .floating-btn{
+  background:linear-gradient(135deg,var(--dsw-cta-start),var(--dsw-cta-end)) !important;
+  color:#fff !important;
+}
+
+body.theme-night .floating-btn{
+  color:var(--dsw-accent-contrast) !important;
+}
+
+body.theme-day .floating-btn:hover,
+body.theme-night .floating-btn:hover{
+  background:linear-gradient(135deg,var(--dsw-cta-hover-start),var(--dsw-cta-hover-end)) !important;
+}
+
+/*
+   본문 전용 코드가 아래 토큰을 사용하면 모든 페이지도 자동 전환됩니다.
+   기존 본문에 dsw-theme-surface / dsw-theme-card / dsw-theme-title 클래스를
+   선택적으로 추가할 수도 있습니다.
+*/
+.dsw-theme-surface{
+  background:var(--dsw-page-bg) !important;
+  color:var(--dsw-text) !important;
+}
+
+.dsw-theme-card{
+  background:var(--dsw-surface) !important;
+  color:var(--dsw-text) !important;
+  border-color:var(--dsw-border) !important;
+  box-shadow:0 16px 38px var(--dsw-shadow) !important;
+}
+
+.dsw-theme-title{
+  color:var(--dsw-text-strong) !important;
+}
+
+.dsw-theme-muted{
+  color:var(--dsw-text-soft) !important;
+}
+
+.dsw-theme-accent{
+  color:var(--dsw-accent) !important;
+}
+
+.dsw-theme-cta{
+  background:var(--dsw-accent) !important;
+  color:var(--dsw-accent-contrast) !important;
+  border-color:transparent !important;
+}
+
+/* ===============================
+   CARE CHECK POPUP
+   HTML/JS에서 dsw-care-* 클래스명을 그대로 사용합니다.
+   =============================== */
+
+body.dsw-care-modal-open{
+  overflow:hidden !important;
+}
+
+.dsw-care-modal[hidden]{
+  display:none !important;
+}
+
+.dsw-care-modal{
+  position:fixed;
+  inset:0;
+  z-index:20000;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+
+.dsw-care-backdrop{
+  position:absolute;
+  inset:0;
+  background:var(--dsw-overlay);
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+}
+
+.dsw-care-dialog{
+  position:relative;
+  z-index:1;
+  width:min(100%,620px);
+  max-height:min(820px,calc(100dvh - 48px));
+  overflow:auto;
+  padding:34px;
+  border:1px solid var(--dsw-border);
+  border-radius:30px;
+  background:var(--dsw-surface);
+  color:var(--dsw-text);
+  box-shadow:0 28px 80px rgba(0,0,0,.32);
+  scrollbar-width:thin;
+}
+
+.dsw-care-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:50%;
+  background:var(--dsw-surface-tint);
+  color:var(--dsw-text-strong);
+  font-size:25px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.dsw-care-eyebrow{
+  margin:0 48px 10px 0;
+  color:var(--dsw-accent);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+
+.dsw-care-title{
+  margin:0;
+  color:var(--dsw-text-strong);
+  font-size:clamp(28px,5vw,42px);
+  line-height:1.2;
+  letter-spacing:-.045em;
+}
+
+.dsw-care-description{
+  margin:14px 0 0;
+  color:var(--dsw-text-soft);
+  font-size:16px;
+  line-height:1.75;
+}
+
+.dsw-care-progress{
+  height:9px;
+  margin:26px 0 22px;
+  overflow:hidden;
+  border-radius:999px;
+  background:var(--dsw-surface-tint);
+}
+
+.dsw-care-progress > span{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--dsw-brand-2),var(--dsw-accent));
+  transition:width .3s ease;
+}
+
+.dsw-care-step-label{
+  margin:0 0 10px;
+  color:var(--dsw-text-soft);
+  font-size:13px;
+  font-weight:800;
+}
+
+.dsw-care-question{
+  margin:0 0 20px;
+  color:var(--dsw-text-strong);
+  font-size:clamp(22px,4vw,30px);
+  line-height:1.38;
+  letter-spacing:-.025em;
+}
+
+.dsw-care-options{
+  display:grid;
+  gap:11px;
+}
+
+.dsw-care-option{
+  width:100%;
+  min-height:58px;
+  padding:14px 18px;
+  border:1px solid var(--dsw-border);
+  border-radius:17px;
+  background:var(--dsw-surface-soft);
+  color:var(--dsw-text-strong);
+  font:inherit;
+  font-size:16px;
+  font-weight:800;
+  text-align:left;
+  cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,filter .18s ease;
+}
+
+.dsw-care-option:hover,
+.dsw-care-option:focus-visible,
+.dsw-care-option.is-selected{
+  transform:translateY(-2px);
+  border-color:var(--dsw-accent);
+  filter:brightness(1.05);
+  outline:none;
+}
+
+.dsw-care-actions{
+  display:flex;
+  gap:10px;
+  margin-top:24px;
+}
+
+.dsw-care-button{
+  flex:1 1 0;
+  min-height:54px;
+  padding:13px 18px;
+  border:1px solid var(--dsw-border);
+  border-radius:16px;
+  background:var(--dsw-surface-tint);
+  color:var(--dsw-text-strong);
+  font:inherit;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.dsw-care-button--primary{
+  border-color:transparent;
+  background:var(--dsw-accent);
+  color:var(--dsw-accent-contrast);
+}
+
+.dsw-care-result{
+  padding:22px;
+  border:1px solid var(--dsw-border);
+  border-radius:22px;
+  background:var(--dsw-surface-soft);
+  text-align:center;
+}
+
+.dsw-care-result-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:6px 13px;
+  border-radius:999px;
+  background:var(--dsw-accent);
+  color:var(--dsw-accent-contrast);
+  font-size:13px;
+  font-weight:900;
+}
+
+.dsw-care-result-title{
+  margin:14px 0 8px;
+  color:var(--dsw-text-strong);
+  font-size:clamp(26px,5vw,38px);
+  line-height:1.25;
+}
+
+.dsw-care-result-copy,
+.dsw-care-disclaimer{
+  color:var(--dsw-text-soft);
+  line-height:1.7;
+}
+
+.dsw-care-disclaimer{
+  margin:18px 0 0;
+  font-size:12px;
+}
+
+.dsw-care-reset{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:9998;
+  min-height:42px;
+  padding:10px 15px;
+  border:1px solid var(--dsw-border);
+  border-radius:999px;
+  background:var(--dsw-menu-bg);
+  color:var(--dsw-text-strong);
+  box-shadow:0 8px 24px var(--dsw-shadow);
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+@media screen and (max-width:768px){
+  .dsw-care-modal{
+    align-items:end;
+    padding:10px;
+  }
+
+  .dsw-care-dialog{
+    width:100%;
+    max-height:calc(100dvh - 20px);
+    padding:28px 18px 22px;
+    border-radius:26px;
+  }
+
+  .dsw-care-actions{
+    flex-direction:column;
+  }
+
+  .dsw-care-reset{
+    left:10px;
+    bottom:calc(86px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
   }
 }
