@@ -1,3 +1,16 @@
+<!-- 저장된 돌봄 유형을 본문 표시 전에 적용해 테마 깜빡임을 줄입니다. -->
+<script>
+  (function () {
+    try {
+      var savedCareType = localStorage.getItem('dswCareType');
+      document.body.classList.remove('theme-day', 'theme-night');
+      document.body.classList.add(savedCareType === 'nursing' ? 'theme-night' : 'theme-day');
+    } catch (error) {
+      document.body.classList.add('theme-day');
+    }
+  }());
+</script>
+
 <div class="top-nav-wrap">
   <div class="top-nav-inner">
     <a href="index.html" class="site-brand" aria-label="더수원 홈으로 이동">
@@ -54,6 +67,82 @@
     </nav>
   </div>
 </div>
+
+<!-- 어르신 돌봄 유형 간단 평가 -->
+<div
+  id="dswCareModal"
+  class="dsw-care-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="dswCareTitle"
+  aria-describedby="dswCareDescription"
+  hidden
+>
+  <div class="dsw-care-backdrop" data-care-close></div>
+
+  <div class="dsw-care-dialog" tabindex="-1">
+    <button class="dsw-care-close" type="button" aria-label="평가 닫기" data-care-close>×</button>
+
+    <!-- 시작 화면 -->
+    <section id="dswCareIntro">
+      <p class="dsw-care-eyebrow">더수원 1분 돌봄 안내</p>
+      <h2 id="dswCareTitle" class="dsw-care-title">우리 어르신께 어떤 돌봄이 적합할까요?</h2>
+      <p id="dswCareDescription" class="dsw-care-description">
+        간단한 질문을 통해 주간보호와 요양원 중 더 적합해 보이는 상담 방향을 안내해드립니다.
+      </p>
+
+      <div class="dsw-care-actions">
+        <button id="dswCareStart" class="dsw-care-button dsw-care-button--primary" type="button">
+          간단 평가 시작
+        </button>
+        <button class="dsw-care-button" type="button" data-care-close>
+          평가 없이 둘러보기
+        </button>
+      </div>
+
+      <p class="dsw-care-disclaimer">
+        이 결과는 의료적 진단이나 장기요양등급 판정이 아닌 상담 방향 안내용입니다.
+      </p>
+    </section>
+
+    <!-- 문항 화면: 문항과 선택지는 layout.js가 채웁니다. -->
+    <section id="dswCareQuiz" hidden>
+      <div class="dsw-care-progress" aria-hidden="true">
+        <span id="dswCareProgressBar"></span>
+      </div>
+      <p id="dswCareStepLabel" class="dsw-care-step-label" aria-live="polite"></p>
+      <h2 id="dswCareQuestion" class="dsw-care-question"></h2>
+      <div id="dswCareOptions" class="dsw-care-options"></div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="dswCareResult" hidden aria-live="polite">
+      <div class="dsw-care-result">
+        <span id="dswCareResultBadge" class="dsw-care-result-badge"></span>
+        <h2 id="dswCareResultTitle" class="dsw-care-result-title"></h2>
+        <p id="dswCareResultCopy" class="dsw-care-result-copy"></p>
+
+        <div class="dsw-care-actions">
+          <a id="dswCareResultLink" class="dsw-care-button dsw-care-button--primary" href="상담안내.html">
+            상담 안내 보기
+          </a>
+          <button id="dswCareRestart" class="dsw-care-button" type="button">
+            다시 평가하기
+          </button>
+        </div>
+      </div>
+
+      <p class="dsw-care-disclaimer">
+        어르신의 건강 상태와 가족의 돌봄 환경에 따라 실제 상담 결과는 달라질 수 있습니다.
+      </p>
+    </section>
+  </div>
+</div>
+
+<!-- 평가를 완료하거나 닫은 뒤에도 다시 열 수 있습니다. -->
+<button id="dswCareReset" class="dsw-care-reset" type="button">
+  돌봄 유형 다시 확인
+</button>
 
 <div class="floating-buttons" aria-label="빠른 상담 메뉴">
   <a href="tel:16668853" class="floating-btn">
