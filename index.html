@@ -1480,7 +1480,7 @@
 </script>
 
 <style id="home-care-theme-polish">
-  /* 메인 두 번째 안내 카드와 중앙 서비스 카드의 낮/밤 테마 연결 */
+  /* 메인 안내 영역과 하단 3개 서비스 카드의 낮/밤 테마 연결 */
   body.theme-day .hero-note{
     background:
       radial-gradient(720px 230px at 12% 18%,rgba(255,255,255,.78),transparent 64%),
@@ -1552,21 +1552,33 @@
   body.theme-night .hero-closing-region{color:#cfc1d4!important;}
   body.theme-night .hero-closing-text{color:#ffe7c1!important;}
 
-  body.theme-day #wrap2 .card-face{
+  body.theme-day .card-row .card-face{
     background:linear-gradient(145deg,rgba(255,253,246,.98),rgba(247,218,194,.94))!important;
     border:1px solid rgba(109,70,75,.15)!important;
+    box-shadow:0 22px 52px rgba(98,59,65,.16),inset 0 1px 0 rgba(255,255,255,.88)!important;
   }
-  body.theme-night #wrap2 .card-face{
+  body.theme-night .card-row .card-face{
     background:linear-gradient(145deg,rgba(61,45,84,.97),rgba(26,23,56,.96))!important;
     border:1px solid rgba(255,225,211,.15)!important;
     box-shadow:0 24px 58px rgba(5,4,18,.38),inset 0 1px 0 rgba(255,255,255,.07)!important;
   }
-  body.theme-day #wrap2 .sub-text{
+  body.theme-day .card-row .img-title{
+    background:linear-gradient(145deg,rgba(116,61,65,.78),rgba(184,95,85,.70))!important;
+    border-color:rgba(255,238,220,.30)!important;
+    color:#fffaf2!important;
+  }
+  body.theme-night .card-row .img-title{
+    background:linear-gradient(145deg,rgba(34,28,63,.86),rgba(112,55,86,.78))!important;
+    border-color:rgba(241,182,109,.28)!important;
+    color:#fff1dc!important;
+  }
+  body.theme-day .card-row .sub-text{
     background:linear-gradient(180deg,rgba(255,252,245,.98),rgba(247,218,194,.94))!important;
     color:#503748!important;
     border-top:1px solid rgba(109,70,75,.12)!important;
+    text-shadow:none!important;
   }
-  body.theme-night #wrap2 .sub-text{
+  body.theme-night .card-row .sub-text{
     background:linear-gradient(180deg,rgba(57,42,79,.98),rgba(31,27,61,.98))!important;
     color:#f7edf1!important;
     border-top:1px solid rgba(255,225,211,.12)!important;
