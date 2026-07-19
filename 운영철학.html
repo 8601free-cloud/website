@@ -9,7 +9,7 @@
   <meta property="og:title" content="운영철학 | 존엄과 안전을 지키는 돌봄 | 더수원 어르신 통합케어">
   <meta property="og:description" content="더수원이 생각하는 돌봄의 기준과 운영 원칙을 소개합니다.">
 
-  <link rel="stylesheet" href="layout.css?v=20260501">
+  <link rel="stylesheet" href="layout.css?v=20260719-5">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
@@ -896,6 +896,180 @@
   }
 </style>
 
+<style id="ops-care-theme-overrides">
+  /* 운영철학 페이지를 공통 낮/밤 테마에 연결 */
+  body.theme-day{
+    --ops-bg:transparent;
+    --ops-surface:rgba(255,252,245,.88);
+    --ops-surface-2:rgba(255,239,218,.74);
+    --ops-line:rgba(109,70,75,.15);
+    --ops-line-strong:rgba(109,70,75,.25);
+    --ops-text:#3b2c32;
+    --ops-text-soft:#785d65;
+    --ops-green:#5a3f58;
+    --ops-green-deep:#4b344b;
+    --ops-green-soft:rgba(244,211,171,.44);
+    --ops-gold:#d88a35;
+    --ops-gold-soft:#f0c98c;
+    --ops-shadow:0 18px 44px rgba(98,59,65,.14);
+    --ops-shadow-strong:0 28px 65px rgba(98,59,65,.21);
+  }
+
+  body.theme-night{
+    --ops-bg:transparent;
+    --ops-surface:rgba(37,32,67,.86);
+    --ops-surface-2:rgba(57,42,79,.76);
+    --ops-line:rgba(255,225,211,.15);
+    --ops-line-strong:rgba(255,225,211,.27);
+    --ops-text:#f7edf1;
+    --ops-text-soft:#cfc1d4;
+    --ops-green:#f1b66d;
+    --ops-green-deep:#ffe7c1;
+    --ops-green-soft:rgba(117,57,91,.48);
+    --ops-gold:#f1b66d;
+    --ops-gold-soft:#d97891;
+    --ops-shadow:0 20px 48px rgba(5,4,18,.34);
+    --ops-shadow-strong:0 30px 75px rgba(5,4,18,.52);
+  }
+
+  body.theme-day .ops-page,
+  body.theme-night .ops-page{
+    background:transparent !important;
+    color:var(--ops-text) !important;
+  }
+
+  body.theme-day .ops-card,
+  body.theme-day .ops-panel,
+  body.theme-day .ops-acc,
+  body.theme-day .ops-promise,
+  body.theme-day .ops-hero-shell{
+    background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.74)) !important;
+    border-color:var(--ops-line) !important;
+    box-shadow:var(--ops-shadow),inset 0 1px 0 rgba(255,255,255,.88) !important;
+  }
+
+  body.theme-night .ops-card,
+  body.theme-night .ops-panel,
+  body.theme-night .ops-acc,
+  body.theme-night .ops-promise,
+  body.theme-night .ops-hero-shell{
+    background:linear-gradient(145deg,rgba(54,43,82,.90),rgba(25,22,54,.86)) !important;
+    border-color:var(--ops-line) !important;
+    box-shadow:var(--ops-shadow),inset 0 1px 0 rgba(255,255,255,.08) !important;
+  }
+
+  body.theme-day .ops-title,
+  body.theme-day .ops-card-title,
+  body.theme-day .ops-acc__btn,
+  body.theme-day .ops-promise-text,
+  body.theme-night .ops-title,
+  body.theme-night .ops-card-title,
+  body.theme-night .ops-acc__btn,
+  body.theme-night .ops-promise-text{
+    color:var(--ops-text) !important;
+  }
+
+  body.theme-day .ops-lead,
+  body.theme-day .ops-card-text,
+  body.theme-day .ops-cap,
+  body.theme-day .ops-bullets,
+  body.theme-night .ops-lead,
+  body.theme-night .ops-card-text,
+  body.theme-night .ops-cap,
+  body.theme-night .ops-bullets{
+    color:var(--ops-text-soft) !important;
+  }
+
+  body.theme-day .ops-eyebrow,
+  body.theme-day .ops-kicker{
+    color:#5a3f58 !important;
+    background:linear-gradient(145deg,rgba(255,252,241,.90),rgba(245,211,174,.67)) !important;
+    border-color:rgba(109,70,75,.18) !important;
+  }
+
+  body.theme-night .ops-eyebrow,
+  body.theme-night .ops-kicker{
+    color:#ffe7c1 !important;
+    background:linear-gradient(145deg,rgba(94,57,91,.72),rgba(42,31,70,.82)) !important;
+    border-color:rgba(255,225,211,.17) !important;
+  }
+
+  body.theme-day .ops-eyebrow::before,
+  body.theme-day .ops-kicker::before{
+    background:linear-gradient(180deg,#e8a456,#b95f55) !important;
+  }
+
+  body.theme-night .ops-eyebrow::before,
+  body.theme-night .ops-kicker::before{
+    background:linear-gradient(180deg,#f1b66d,#d97891) !important;
+    box-shadow:0 0 14px rgba(241,182,109,.35) !important;
+  }
+
+  body.theme-day .ops-icon{
+    color:#5a3f58 !important;
+    background:linear-gradient(145deg,#fff9ed,#f1d5b6) !important;
+  }
+
+  body.theme-night .ops-icon{
+    color:#f1b66d !important;
+    background:linear-gradient(145deg,rgba(117,57,91,.66),rgba(45,34,76,.82)) !important;
+  }
+
+  body.theme-day .ops-card-topline{
+    background:linear-gradient(90deg,#b95f55,#e8a456,#f0c98c) !important;
+  }
+
+  body.theme-night .ops-card-topline{
+    background:linear-gradient(90deg,#72436f,#d97891,#f1b66d) !important;
+  }
+
+  body.theme-day .ops-hero-dim{
+    background:linear-gradient(90deg,rgba(255,247,229,.91),rgba(255,238,211,.62) 55%,rgba(255,230,204,.18)) !important;
+  }
+
+  body.theme-night .ops-hero-dim{
+    background:linear-gradient(90deg,rgba(17,14,42,.94),rgba(43,31,69,.76) 55%,rgba(111,48,78,.24)) !important;
+  }
+
+  body.theme-day .ops-hero-title,
+  body.theme-day .ops-hero-text{
+    color:#3b2c32 !important;
+  }
+
+  body.theme-night .ops-hero-title{
+    color:#fff !important;
+    text-shadow:0 8px 25px rgba(5,4,18,.34);
+  }
+
+  body.theme-night .ops-hero-text{
+    color:#e2d5df !important;
+  }
+
+  body.theme-day .ops-title-brand{
+    background:linear-gradient(180deg,#a95050,#d88a35) !important;
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+  }
+
+  body.theme-night .ops-title-brand{
+    background:linear-gradient(180deg,#ffe7c1,#f1b66d 52%,#d97891) !important;
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+  }
+
+  body.theme-day .ops-hero-tag{
+    color:#503748 !important;
+    background:linear-gradient(145deg,rgba(255,252,241,.88),rgba(245,211,174,.68)) !important;
+    border-color:rgba(109,70,75,.16) !important;
+  }
+
+  body.theme-night .ops-hero-tag{
+    color:#ffe7c1 !important;
+    background:linear-gradient(145deg,rgba(104,58,91,.76),rgba(42,31,70,.84)) !important;
+    border-color:rgba(255,225,211,.16) !important;
+  }
+</style>
+
 <script>
 (function(){
   const root = document.querySelector('.ops-page');
@@ -952,6 +1126,6 @@
 })();
 </script>
 
-<script src="layout.js"></script>
+<script src="layout.js?v=20260719-4"></script>
 </body>
 </html>

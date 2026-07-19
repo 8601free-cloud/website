@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="layout.css?v=20260719-5">
 </head>
 <body>
 
@@ -820,6 +820,161 @@
   }
 </style>
 
+<style id="facility-care-theme-overrides">
+  /* 시설안내 페이지의 고정 흰색·연녹색을 공통 낮/밤 테마로 전환 */
+  body.theme-day .dsw-page,
+  body.theme-night .dsw-page{
+    background:transparent !important;
+    color:var(--dsw-text) !important;
+  }
+
+  body.theme-day .dsw-card,
+  body.theme-day .dsw-hero,
+  body.theme-day .dsw-hero-mini-card,
+  body.theme-day .dsw-mid-copy,
+  body.theme-day .dsw-facility-card,
+  body.theme-day .dsw-info-card{
+    background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.74)) !important;
+    border-color:var(--dsw-border) !important;
+    box-shadow:0 22px 58px var(--dsw-shadow),inset 0 1px 0 rgba(255,255,255,.88) !important;
+  }
+
+  body.theme-night .dsw-card,
+  body.theme-night .dsw-hero,
+  body.theme-night .dsw-hero-mini-card,
+  body.theme-night .dsw-mid-copy,
+  body.theme-night .dsw-facility-card,
+  body.theme-night .dsw-info-card{
+    background:linear-gradient(145deg,rgba(54,43,82,.90),rgba(25,22,54,.86)) !important;
+    border-color:var(--dsw-border) !important;
+    box-shadow:0 26px 68px var(--dsw-shadow),inset 0 1px 0 rgba(255,255,255,.08) !important;
+  }
+
+  body.theme-day .dsw-title,
+  body.theme-day .dsw-hero-mini-title,
+  body.theme-day .dsw-section-title,
+  body.theme-day .dsw-info-title,
+  body.theme-night .dsw-title,
+  body.theme-night .dsw-hero-mini-title,
+  body.theme-night .dsw-section-title,
+  body.theme-night .dsw-info-title{
+    color:var(--dsw-text-strong) !important;
+  }
+
+  body.theme-day .dsw-desc,
+  body.theme-day .dsw-hero-mini-text,
+  body.theme-day .dsw-section-sub,
+  body.theme-day .dsw-info-sub,
+  body.theme-night .dsw-desc,
+  body.theme-night .dsw-hero-mini-text,
+  body.theme-night .dsw-section-sub,
+  body.theme-night .dsw-info-sub{
+    color:var(--dsw-text-soft) !important;
+  }
+
+  body.theme-day .dsw-title-brand{
+    background:linear-gradient(180deg,#a95050,#d88a35) !important;
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+  }
+
+  body.theme-night .dsw-title-brand{
+    background:linear-gradient(180deg,#ffe7c1,#f1b66d 52%,#d97891) !important;
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+  }
+
+  body.theme-day .dsw-kicker,
+  body.theme-day .dsw-hero-tag,
+  body.theme-day .dsw-chip{
+    color:#503748 !important;
+    background:linear-gradient(145deg,rgba(255,252,241,.90),rgba(245,211,174,.67)) !important;
+    border-color:rgba(109,70,75,.17) !important;
+  }
+
+  body.theme-night .dsw-kicker,
+  body.theme-night .dsw-hero-tag,
+  body.theme-night .dsw-chip{
+    color:#ffe7c1 !important;
+    background:linear-gradient(145deg,rgba(104,58,91,.76),rgba(42,31,70,.84)) !important;
+    border-color:rgba(255,225,211,.16) !important;
+  }
+
+  body.theme-day .dsw-kicker::before,
+  body.theme-day .dsw-label::before{
+    background:linear-gradient(180deg,#e8a456,#b95f55) !important;
+  }
+
+  body.theme-night .dsw-kicker::before,
+  body.theme-night .dsw-label::before{
+    background:linear-gradient(180deg,#f1b66d,#d97891) !important;
+    box-shadow:0 0 14px rgba(241,182,109,.35) !important;
+  }
+
+  body.theme-day .dsw-label,
+  body.theme-day .dsw-highlight{
+    color:#a95050 !important;
+  }
+
+  body.theme-night .dsw-label,
+  body.theme-night .dsw-highlight{
+    color:#f1b66d !important;
+  }
+
+  body.theme-day .dsw-highlight.gold,
+  body.theme-night .dsw-highlight.gold{
+    color:var(--dsw-accent) !important;
+  }
+
+  body.theme-day .dsw-hero-mini-card::before,
+  body.theme-day .dsw-facility-card::before{
+    background:linear-gradient(90deg,#b95f55,#e8a456,#f0c98c) !important;
+  }
+
+  body.theme-night .dsw-hero-mini-card::before,
+  body.theme-night .dsw-facility-card::before{
+    background:linear-gradient(90deg,#72436f,#d97891,#f1b66d) !important;
+  }
+
+  body.theme-day .dsw-info-table,
+  body.theme-night .dsw-info-table{
+    background:var(--dsw-surface-soft) !important;
+    border-color:var(--dsw-border) !important;
+  }
+
+  body.theme-day .dsw-info-table td,
+  body.theme-night .dsw-info-table td{
+    color:var(--dsw-text) !important;
+    border-color:var(--dsw-border) !important;
+  }
+
+  body.theme-day .dsw-info-table td:first-child{
+    background:rgba(245,211,174,.55) !important;
+    color:#503748 !important;
+  }
+
+  body.theme-night .dsw-info-table td:first-child{
+    background:rgba(117,57,91,.48) !important;
+    color:#ffe7c1 !important;
+  }
+
+  body.theme-day .dsw-info-note{
+    background:rgba(245,211,174,.46) !important;
+    color:#634953 !important;
+  }
+
+  body.theme-night .dsw-info-note{
+    background:rgba(117,57,91,.42) !important;
+    color:#e2d5df !important;
+  }
+
+  body.theme-night .dsw-slider-wrap{
+    background:#1c1938 !important;
+    border-color:var(--dsw-border) !important;
+    box-shadow:0 24px 60px var(--dsw-shadow) !important;
+  }
+</style>
+
 <div class="dsw-page">
   <div class="dsw-container">
 
@@ -986,7 +1141,7 @@
 
 <div id="site-footer"></div>
 
-<script src="layout.js"></script>
+<script src="layout.js?v=20260719-4"></script>
 
 <script>
 (function(){

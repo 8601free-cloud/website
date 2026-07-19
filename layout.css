@@ -1311,3 +1311,29 @@ body.dsw-care-modal-open{
     transition-duration:.01ms !important;
   }
 }
+
+/* ===============================
+   PC CLEANUP — 긴 배경 막대 제거
+   모바일에서는 메뉴 조작성을 위해 기존 배경판을 유지합니다.
+   =============================== */
+
+@media screen and (min-width:901px){
+  body.theme-day .top-nav,
+  body.theme-night .top-nav{
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+
+  body.theme-day .floating-buttons,
+  body.theme-night .floating-buttons{
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    padding:0 !important;
+  }
+}
