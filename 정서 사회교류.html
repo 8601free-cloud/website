@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>인지활동 프로그램 | 치매 예방·인지 자극 | 더수원 어르신 통합케어</title>
-  <meta name="description" content="더수원 인지활동 프로그램을 소개합니다. 기억력 자극, 회상훈련, 소근육 활동, 정서 안정 프로그램으로 어르신의 인지 기능 유지를 돕습니다.">
-  <meta property="og:title" content="인지활동 프로그램 | 더수원 어르신 통합케어">
-  <meta property="og:description" content="기억력 자극, 회상훈련, 소근육 활동 등 더수원의 인지활동 프로그램 안내">
+  <title>정서·사회교류 프로그램 | 어르신 정서 케어 | 더수원 어르신 통합케어</title>
+  <meta name="description" content="더수원 정서·사회교류 프로그램을 소개합니다. 말벗, 그룹 활동, 음악, 회상 활동 등을 통해 어르신의 정서 안정과 사회적 교류를 돕습니다.">
+  <meta property="og:title" content="정서·사회교류 프로그램 | 더수원 어르신 통합케어">
+  <meta property="og:description" content="정서 안정과 사회적 교류를 위한 더수원 프로그램 안내">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="layout.css?v=20260719-5">
+<link rel="stylesheet" href="layout.css?v=20260501">
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<section class="dsw-cognitive" aria-label="인지활동">
+<section class="dsw-emotion" aria-label="정서 · 사회 교류">
   <style>
-    .dsw-cognitive{
+    .dsw-emotion{
       --deep:#173d29;
       --green:#2f5a3e;
       --green2:#4f8b63;
@@ -39,10 +39,17 @@
       overflow:hidden;
     }
 
-    .dsw-cognitive__wrap{max-width:1120px;margin:0 auto;}
-    .dsw-cognitive__hero{text-align:center;margin-bottom:34px;}
+    .dsw-emotion__wrap{
+      max-width:1120px;
+      margin:0 auto;
+    }
 
-    .dsw-cognitive__eyebrow{
+    .dsw-emotion__hero{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .dsw-emotion__eyebrow{
       display:inline-flex;
       margin-bottom:14px;
       padding:9px 16px;
@@ -52,10 +59,9 @@
       color:var(--green);
       font-size:14px;
       font-weight:900;
-      letter-spacing:.02em;
     }
 
-    .dsw-cognitive__title{
+    .dsw-emotion__title{
       margin:0;
       font-size:clamp(34px,4.4vw,56px);
       line-height:1.14;
@@ -64,7 +70,7 @@
       color:var(--deep);
     }
 
-    .dsw-cognitive__title strong{
+    .dsw-emotion__title strong{
       background:linear-gradient(180deg,#4f8b63 0%,#24563a 58%,#173d29 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
@@ -72,7 +78,7 @@
       color:transparent;
     }
 
-    .dsw-cognitive__desc{
+    .dsw-emotion__desc{
       max-width:760px;
       margin:16px auto 0;
       font-size:16px;
@@ -81,7 +87,7 @@
       font-weight:700;
     }
 
-    .dsw-cognitive__heroCard{
+    .dsw-emotion__heroCard{
       position:relative;
       margin:34px auto 0;
       max-width:980px;
@@ -101,7 +107,7 @@
       overflow:hidden;
     }
 
-    .dsw-cognitive__heroCard::before{
+    .dsw-emotion__heroCard::before{
       content:"";
       position:absolute;
       inset:0;
@@ -113,15 +119,17 @@
       pointer-events:none;
     }
 
-    .dsw-cognitive__heroText,
-    .dsw-cognitive__slider{
+    .dsw-emotion__heroText,
+    .dsw-emotion__slider{
       position:relative;
       z-index:1;
     }
 
-    .dsw-cognitive__heroText{text-align:left;}
+    .dsw-emotion__heroText{
+      text-align:left;
+    }
 
-    .dsw-cognitive__heroText h2{
+    .dsw-emotion__heroText h2{
       margin:0;
       color:var(--deep);
       font-size:clamp(24px,3vw,36px);
@@ -130,7 +138,7 @@
       letter-spacing:-.9px;
     }
 
-    .dsw-cognitive__heroText p{
+    .dsw-emotion__heroText p{
       margin:14px 0 0;
       color:var(--muted);
       font-size:15px;
@@ -138,14 +146,14 @@
       font-weight:700;
     }
 
-    .dsw-cognitive__badges{
+    .dsw-emotion__badges{
       display:flex;
       flex-wrap:wrap;
       gap:9px;
       margin-top:20px;
     }
 
-    .dsw-cognitive__badge{
+    .dsw-emotion__badge{
       padding:9px 13px;
       border-radius:999px;
       background:rgba(47,90,62,.09);
@@ -155,7 +163,7 @@
       font-weight:900;
     }
 
-    .dsw-cognitive__slider{
+    .dsw-emotion__slider{
       min-height:380px;
       border-radius:28px;
       overflow:hidden;
@@ -165,7 +173,7 @@
       isolation:isolate;
     }
 
-    .dsw-cognitive__slide{
+    .dsw-emotion__slide{
       position:absolute;
       inset:0;
       opacity:0;
@@ -176,7 +184,7 @@
       will-change:opacity, transform;
     }
 
-    .dsw-cognitive__slide::before{
+    .dsw-emotion__slide::before{
       content:"";
       position:absolute;
       inset:0;
@@ -186,13 +194,13 @@
       z-index:1;
     }
 
-    .dsw-cognitive__slide.is-active{
+    .dsw-emotion__slide.is-active{
       opacity:1;
       transform:translateX(0) rotateY(0) scale(1);
       z-index:3;
     }
 
-    .dsw-cognitive__photoFrame{
+    .dsw-emotion__photoFrame{
       position:absolute;
       inset:22px;
       z-index:2;
@@ -205,7 +213,7 @@
         inset 0 1px 0 rgba(255,255,255,.9);
     }
 
-    .dsw-cognitive__photoFrame img{
+    .dsw-emotion__photoFrame img{
       width:100%;
       height:100%;
       display:block;
@@ -215,7 +223,7 @@
       background:#fff;
     }
 
-    .dsw-cognitive__keywordCard{
+    .dsw-emotion__keywordCard{
       position:absolute;
       top:18px;
       right:18px;
@@ -232,7 +240,7 @@
       -webkit-backdrop-filter:blur(10px);
     }
 
-    .dsw-cognitive__controls{
+    .dsw-emotion__controls{
       position:absolute;
       right:18px;
       bottom:18px;
@@ -248,7 +256,7 @@
       box-shadow:0 12px 26px rgba(0,0,0,.14);
     }
 
-    .dsw-cognitive__dot{
+    .dsw-emotion__dot{
       width:34px;
       height:34px;
       border:0;
@@ -262,24 +270,24 @@
       transition:.22s ease;
     }
 
-    .dsw-cognitive__dot:hover{
+    .dsw-emotion__dot:hover{
       transform:translateY(-2px);
       background:#fff;
     }
 
-    .dsw-cognitive__dot.is-active{
+    .dsw-emotion__dot.is-active{
       color:#fff;
       background:linear-gradient(135deg,#244f35,#4f8b63);
     }
 
-    .dsw-cognitive__grid{
+    .dsw-emotion__grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
       margin-top:26px;
     }
 
-    .dsw-cognitive__card{
+    .dsw-emotion__card{
       position:relative;
       padding:24px 22px;
       border-radius:26px;
@@ -290,7 +298,7 @@
       overflow:hidden;
     }
 
-    .dsw-cognitive__card::before{
+    .dsw-emotion__card::before{
       content:"";
       position:absolute;
       inset:0;
@@ -299,20 +307,20 @@
       pointer-events:none;
     }
 
-    .dsw-cognitive__card:hover{
+    .dsw-emotion__card:hover{
       transform:translateY(-5px);
       box-shadow:0 24px 48px rgba(23,61,41,.15);
       background:rgba(255,255,255,.9);
     }
 
-    .dsw-cognitive__icon,
-    .dsw-cognitive__card h3,
-    .dsw-cognitive__card p{
+    .dsw-emotion__icon,
+    .dsw-emotion__card h3,
+    .dsw-emotion__card p{
       position:relative;
       z-index:1;
     }
 
-    .dsw-cognitive__icon{
+    .dsw-emotion__icon{
       width:48px;
       height:48px;
       border-radius:17px;
@@ -325,15 +333,14 @@
       box-shadow:0 14px 26px rgba(47,90,62,.22);
     }
 
-    .dsw-cognitive__card h3{
+    .dsw-emotion__card h3{
       margin:0;
       color:var(--deep);
       font-size:20px;
       font-weight:900;
-      letter-spacing:-.45px;
     }
 
-    .dsw-cognitive__card p{
+    .dsw-emotion__card p{
       margin:10px 0 0;
       color:var(--muted);
       font-size:14px;
@@ -341,7 +348,7 @@
       font-weight:700;
     }
 
-    .dsw-cognitive__process{
+    .dsw-emotion__process{
       margin-top:34px;
       padding:28px;
       border-radius:30px;
@@ -352,23 +359,21 @@
       box-shadow:0 22px 54px rgba(23,61,41,.13);
     }
 
-    .dsw-cognitive__sectionTitle{
+    .dsw-emotion__sectionTitle{
       margin:0 0 20px;
       text-align:center;
       color:var(--deep);
       font-size:clamp(24px,3vw,34px);
       font-weight:900;
-      letter-spacing:-.8px;
     }
 
-    .dsw-cognitive__steps{
+    .dsw-emotion__steps{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:14px;
     }
 
-    .dsw-cognitive__step{
-      position:relative;
+    .dsw-emotion__step{
       padding:22px 18px;
       border-radius:24px;
       background:rgba(255,255,255,.72);
@@ -377,7 +382,7 @@
       text-align:center;
     }
 
-    .dsw-cognitive__stepNo{
+    .dsw-emotion__stepNo{
       width:38px;
       height:38px;
       margin:0 auto 12px;
@@ -390,14 +395,14 @@
       box-shadow:0 12px 24px rgba(201,135,45,.24);
     }
 
-    .dsw-cognitive__step h3{
+    .dsw-emotion__step h3{
       margin:0;
       color:var(--deep);
       font-size:17px;
       font-weight:900;
     }
 
-    .dsw-cognitive__step p{
+    .dsw-emotion__step p{
       margin:8px 0 0;
       color:var(--muted);
       font-size:13.5px;
@@ -405,337 +410,284 @@
       font-weight:700;
     }
 
-    .dsw-cognitive__notice{
-      margin:28px auto 0;
+    .dsw-emotion__notice{
+      margin:26px auto 0;
       max-width:900px;
       padding:18px 20px;
       border-radius:22px;
       background:rgba(255,255,255,.7);
       border:1px solid rgba(47,90,62,.13);
+      box-shadow:0 12px 26px rgba(23,61,41,.07);
       text-align:center;
       color:var(--muted);
       font-size:15px;
       line-height:1.75;
       font-weight:800;
-      box-shadow:0 12px 26px rgba(23,61,41,.07);
-    }
-
-    .dsw-cognitive__cta{
-      margin:18px auto 0;
-      max-width:900px;
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .dsw-cognitive__btn{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:190px;
-      padding:15px 22px;
-      border-radius:999px;
-      font-size:16px;
-      font-weight:900;
-      transition:.22s ease;
-    }
-
-    .dsw-cognitive__btn--primary{
-      color:#fff;
-      background:linear-gradient(135deg,#244f35,#4f8b63);
-      box-shadow:0 18px 34px rgba(47,90,62,.24);
-    }
-
-    .dsw-cognitive__btn--sub{
-      color:var(--green);
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(47,90,62,.18);
-      box-shadow:0 12px 26px rgba(23,61,41,.08);
-    }
-
-    .dsw-cognitive__btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 24px 44px rgba(23,61,41,.16);
     }
 
     @media(max-width:900px){
-      .dsw-cognitive__heroCard{
+      .dsw-emotion__heroCard{
         grid-template-columns:1fr;
       }
 
-      .dsw-cognitive__grid{
+      .dsw-emotion__grid{
         grid-template-columns:repeat(2,1fr);
       }
 
-      .dsw-cognitive__steps{
+      .dsw-emotion__steps{
         grid-template-columns:repeat(2,1fr);
       }
     }
 
     @media(max-width:620px){
-      .dsw-cognitive{
+      .dsw-emotion{
         padding:54px 14px 68px;
       }
 
-      .dsw-cognitive__heroCard{
+      .dsw-emotion__heroCard{
         padding:22px;
         border-radius:26px;
       }
 
-      .dsw-cognitive__heroText{
+      .dsw-emotion__heroText{
         text-align:center;
       }
 
-      .dsw-cognitive__badges{
+      .dsw-emotion__badges{
         justify-content:center;
       }
 
-      .dsw-cognitive__slider{
+      .dsw-emotion__slider{
         min-height:390px;
       }
 
-      .dsw-cognitive__photoFrame{
+      .dsw-emotion__photoFrame{
         inset:18px;
         padding:8px;
       }
 
-      .dsw-cognitive__controls{
+      .dsw-emotion__controls{
         right:50%;
         transform:translateX(50%);
         bottom:18px;
       }
 
-      .dsw-cognitive__grid,
-      .dsw-cognitive__steps{
+      .dsw-emotion__grid,
+      .dsw-emotion__steps{
         grid-template-columns:1fr;
       }
 
-      .dsw-cognitive__process{
+      .dsw-emotion__process{
         padding:22px 16px;
-      }
-
-      .dsw-cognitive__btn{
-        width:100%;
       }
     }
   </style>
 
-  <div class="dsw-cognitive__wrap">
-    <header class="dsw-cognitive__hero">
-      <div class="dsw-cognitive__eyebrow">THE SUWON COGNITIVE CARE</div>
-      <h1 class="dsw-cognitive__title">
-        즐겁게 참여하는<br>
-        <strong>더수원 인지활동</strong>
+  <div class="dsw-emotion__wrap">
+    <header class="dsw-emotion__hero">
+      <div class="dsw-emotion__eyebrow">THE SUWON EMOTIONAL CARE</div>
+      <h1 class="dsw-emotion__title">
+        마음이 편안해지는<br>
+        <strong>정서 · 사회 교류</strong>
       </h1>
-      <p class="dsw-cognitive__desc">
-        단순한 시간을 보내는 활동이 아니라, 기억력과 집중력, 정서적 안정까지 고려한
-        의미 있는 인지 프로그램을 운영합니다.
+      <p class="dsw-emotion__desc">
+        더수원은 어르신이 혼자가 아니라는 안정감을 느끼실 수 있도록
+        대화, 관계, 웃음, 참여가 있는 따뜻한 하루를 만들어갑니다.
       </p>
 
-      <div class="dsw-cognitive__heroCard">
-        <div class="dsw-cognitive__heroText">
-          <h2>어르신의 마음과 기억을 함께 깨우는 시간</h2>
+      <div class="dsw-emotion__heroCard">
+        <div class="dsw-emotion__heroText">
+          <h2>함께 웃고, 이야기하고, 서로를 알아가는 시간</h2>
           <p>
-            더수원은 어르신의 현재 인지 상태와 컨디션에 맞추어
-            무리 없이 참여하실 수 있는 맞춤형 활동을 제공합니다.
+            정서적 안정은 어르신의 생활 만족도와 밀접하게 연결됩니다.
+            더수원은 자연스러운 교류와 참여를 통해 어르신의 마음 건강을 함께 살핍니다.
           </p>
 
-          <div class="dsw-cognitive__badges">
-            <span class="dsw-cognitive__badge">회상 훈련</span>
-            <span class="dsw-cognitive__badge">소근육 활동</span>
-            <span class="dsw-cognitive__badge">집중력 향상</span>
-            <span class="dsw-cognitive__badge">정서 안정</span>
+          <div class="dsw-emotion__badges">
+            <span class="dsw-emotion__badge">말벗 지원</span>
+            <span class="dsw-emotion__badge">그룹 활동</span>
+            <span class="dsw-emotion__badge">생신 잔치</span>
+            <span class="dsw-emotion__badge">정서 안정</span>
           </div>
         </div>
 
-        <div class="dsw-cognitive__slider" aria-label="인지활동 이미지 슬라이드">
-          <div class="dsw-cognitive__slide is-active">
-            <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_15.png" alt="음악 회상 인지활동">
+        <div class="dsw-emotion__slider" aria-label="정서 사회 교류 이미지 슬라이드">
+          <div class="dsw-emotion__slide is-active">
+            <div class="dsw-emotion__photoFrame">
+              <img src="KakaoTalk_20260427_193952369_21.png" alt="말벗 지원">
             </div>
-            <div class="dsw-cognitive__keywordCard">음악 회상 인지활동</div>
+            <div class="dsw-emotion__keywordCard">정서 교류</div>
           </div>
 
-          <div class="dsw-cognitive__slide">
-            <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_22.png" alt="참여형 보드게임 프로그램">
+          <div class="dsw-emotion__slide">
+            <div class="dsw-emotion__photoFrame">
+              <img src="KakaoTalk_20260427_193952369_08.png" alt="그룹 활동">
             </div>
-            <div class="dsw-cognitive__keywordCard">참여형 보드게임 프로그램</div>
+            <div class="dsw-emotion__keywordCard">미술 활동</div>
+          </div>  
+
+          <div class="dsw-emotion__slide">
+            <div class="dsw-emotion__photoFrame">
+              <img src="KakaoTalk_20260427_220340236.png" alt="생신 잔치">
+            </div>
+            <div class="dsw-emotion__keywordCard">생신 잔치</div>
           </div>
 
-          <div class="dsw-cognitive__slide">
-            <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_11.png" alt="음악 기반 인지 자극 프로그램">
+          <div class="dsw-emotion__slide">
+            <div class="dsw-emotion__photoFrame">
+              <img src="KakaoTalk_20260427_193952369_06.png" alt="정서 안정">
             </div>
-            <div class="dsw-cognitive__keywordCard">음악 기반 인지 자극 프로그램</div>
+            <div class="dsw-emotion__keywordCard">원예 활동</div>
           </div>
 
-          <div class="dsw-cognitive__slide">
-            <div class="dsw-cognitive__photoFrame">
-              <img src="KakaoTalk_20260427_193952369_03.png" alt="참여형 인지 자극 활동">
-            </div>
-            <div class="dsw-cognitive__keywordCard">참여형 인지 자극 활동</div>
-          </div>
-
-          <div class="dsw-cognitive__controls" aria-label="슬라이드 선택">
-            <button type="button" class="dsw-cognitive__dot is-active" data-slide="0" aria-label="1번 슬라이드 보기">1</button>
-            <button type="button" class="dsw-cognitive__dot" data-slide="1" aria-label="2번 슬라이드 보기">2</button>
-            <button type="button" class="dsw-cognitive__dot" data-slide="2" aria-label="3번 슬라이드 보기">3</button>
-            <button type="button" class="dsw-cognitive__dot" data-slide="3" aria-label="4번 슬라이드 보기">4</button>
+          <div class="dsw-emotion__controls" aria-label="슬라이드 선택">
+            <button type="button" class="dsw-emotion__dot is-active" data-slide="0" aria-label="1번 슬라이드 보기">1</button>
+            <button type="button" class="dsw-emotion__dot" data-slide="1" aria-label="2번 슬라이드 보기">2</button>
+            <button type="button" class="dsw-emotion__dot" data-slide="2" aria-label="3번 슬라이드 보기">3</button>
+            <button type="button" class="dsw-emotion__dot" data-slide="3" aria-label="4번 슬라이드 보기">4</button>
           </div>
         </div>
       </div>
     </header>
 
-    <div class="dsw-cognitive__grid">
-      <article class="dsw-cognitive__card">
-        <div class="dsw-cognitive__icon">🧠</div>
-        <h3>기억력 자극 활동</h3>
-        <p>회상 훈련, 단어 맞추기, 기억 게임 등을 통해 자연스럽게 기억력을 자극합니다.</p>
+    <div class="dsw-emotion__grid">
+      <article class="dsw-emotion__card">
+        <div class="dsw-emotion__icon">💬</div>
+        <h3>따뜻한 말벗</h3>
+        <p>일상 대화와 안부 확인을 통해 어르신이 정서적으로 안정감을 느끼실 수 있도록 돕습니다.</p>
       </article>
 
-      <article class="dsw-cognitive__card">
-        <div class="dsw-cognitive__icon">🎨</div>
-        <h3>미술·창작 활동</h3>
-        <p>색칠하기, 만들기, 꾸미기 활동을 통해 창의성과 소근육을 함께 자극합니다.</p>
+      <article class="dsw-emotion__card">
+        <div class="dsw-emotion__icon">👥</div>
+        <h3>소그룹 교류</h3>
+        <p>비슷한 관심사를 가진 어르신들이 자연스럽게 어울릴 수 있는 활동을 운영합니다.</p>
       </article>
 
-      <article class="dsw-cognitive__card">
-        <div class="dsw-cognitive__icon">🎵</div>
-        <h3>음악 활동</h3>
-        <p>노래, 율동, 악기 활동을 통해 즐거움과 정서적 안정을 제공합니다.</p>
+      <article class="dsw-emotion__card">
+        <div class="dsw-emotion__icon">🎂</div>
+        <h3>생신·기념일</h3>
+        <p>생신과 특별한 날을 함께 축하하며 소중한 존재로 존중받는 경험을 드립니다.</p>
       </article>
 
-      <article class="dsw-cognitive__card">
-        <div class="dsw-cognitive__icon">🗣️</div>
-        <h3>소통 프로그램</h3>
-        <p>대화, 발표, 그룹 활동을 통해 사회성과 표현 능력을 유지합니다.</p>
+      <article class="dsw-emotion__card">
+        <div class="dsw-emotion__icon">🎶</div>
+        <h3>음악·놀이 활동</h3>
+        <p>노래, 율동, 게임 등 즐거운 활동을 통해 웃음과 활력을 높입니다.</p>
       </article>
 
-      <article class="dsw-cognitive__card">
-        <div class="dsw-cognitive__icon">✋</div>
-        <h3>소근육 훈련</h3>
-        <p>손 사용 활동을 통해 일상생활 기능 유지와 집중력 향상을 돕습니다.</p>
+      <article class="dsw-emotion__card">
+        <div class="dsw-emotion__icon">🌿</div>
+        <h3>회상·공감 활동</h3>
+        <p>어르신의 삶과 추억을 존중하며 자연스럽게 이야기를 나누는 시간을 마련합니다.</p>
       </article>
 
-      <article class="dsw-cognitive__card">
-        <div class="dsw-cognitive__icon">😊</div>
-        <h3>정서 안정 활동</h3>
-        <p>즐거운 참여 경험을 통해 자존감과 정서적 만족감을 높입니다.</p>
+      <article class="dsw-emotion__card">
+        <div class="dsw-emotion__icon">😊</div>
+        <h3>자존감 회복</h3>
+        <p>작은 참여와 성취를 통해 어르신이 자신감을 느끼고 하루를 긍정적으로 보내시도록 돕습니다.</p>
       </article>
     </div>
 
-    <section class="dsw-cognitive__process" aria-label="인지활동 진행 흐름">
-      <h2 class="dsw-cognitive__sectionTitle">더수원의 인지활동 흐름</h2>
+    <section class="dsw-emotion__process" aria-label="정서 사회 교류 흐름">
+      <h2 class="dsw-emotion__sectionTitle">정서 교류 프로그램 흐름</h2>
 
-      <div class="dsw-cognitive__steps">
-        <article class="dsw-cognitive__step">
-          <div class="dsw-cognitive__stepNo">1</div>
-          <h3>상태 확인</h3>
-          <p>활동 전 어르신의 컨디션과 참여 가능 상태를 먼저 살핍니다.</p>
+      <div class="dsw-emotion__steps">
+        <article class="dsw-emotion__step">
+          <div class="dsw-emotion__stepNo">1</div>
+          <h3>관심 확인</h3>
+          <p>어르신의 성향, 취향, 컨디션을 먼저 살핍니다.</p>
         </article>
 
-        <article class="dsw-cognitive__step">
-          <div class="dsw-cognitive__stepNo">2</div>
-          <h3>맞춤 활동</h3>
-          <p>기억력, 집중력, 손 사용 능력에 맞춰 무리 없는 활동을 진행합니다.</p>
+        <article class="dsw-emotion__step">
+          <div class="dsw-emotion__stepNo">2</div>
+          <h3>참여 유도</h3>
+          <p>부담 없이 함께하실 수 있도록 자연스럽게 안내합니다.</p>
         </article>
 
-        <article class="dsw-cognitive__step">
-          <div class="dsw-cognitive__stepNo">3</div>
-          <h3>참여 관찰</h3>
-          <p>표정, 반응, 대화, 수행 정도를 살피며 즐겁게 참여하실 수 있도록 돕습니다.</p>
+        <article class="dsw-emotion__step">
+          <div class="dsw-emotion__stepNo">3</div>
+          <h3>관계 형성</h3>
+          <p>어르신 간 대화와 교류가 이어질 수 있도록 돕습니다.</p>
         </article>
 
-        <article class="dsw-cognitive__step">
-          <div class="dsw-cognitive__stepNo">4</div>
-          <h3>기록·연계</h3>
-          <p>활동 내용과 특이사항을 확인하고 보호자 상담 시 이해하기 쉽게 안내합니다.</p>
+        <article class="dsw-emotion__step">
+          <div class="dsw-emotion__stepNo">4</div>
+          <h3>정서 안정</h3>
+          <p>즐거움과 소속감을 통해 편안한 하루를 지원합니다.</p>
         </article>
       </div>
     </section>
 
-    <p class="dsw-cognitive__notice">
-      ※ 인지활동은 어르신의 상태에 따라 난이도와 참여 방식이 조정되며,
-      즐거움과 성취감을 느끼실 수 있도록 무리 없이 진행됩니다.
+    <p class="dsw-emotion__notice">
+      ※ 모든 정서·사회 교류 활동은 어르신의 성향과 컨디션을 우선으로 하며,
+      강요하지 않고 편안하게 참여하실 수 있도록 운영합니다.
     </p>
-
-    <div class="dsw-cognitive__cta">
-      <a href="tel:16668853" class="dsw-cognitive__btn dsw-cognitive__btn--primary">전화 상담하기</a>
-      <a href="https://blog.naver.com/thesuwonsilver" target="_blank" rel="noopener" class="dsw-cognitive__btn dsw-cognitive__btn--sub">블로그 보기</a>
-    </div>
   </div>
 </section>
 
 <div id="site-footer"></div>
-<style id="cognitive-care-theme-overrides">
-  body.theme-day .dsw-cognitive{--deep:#3b2c32;--green:#a95050;--green2:#b95f55;--gold:#d88a35;--line:rgba(109,70,75,.16);--text:#3b2c32;--muted:#785d65;background:transparent!important;}
-  body.theme-night .dsw-cognitive{--deep:#ffe7c1;--green:#f1b66d;--green2:#d97891;--gold:#f1b66d;--line:rgba(255,225,211,.17);--text:#f7edf1;--muted:#cfc1d4;background:transparent!important;}
-  body.theme-day .dsw-cognitive__heroCard,
-  body.theme-day .dsw-cognitive__card,
-  body.theme-day .dsw-cognitive__process,
-  body.theme-day .dsw-cognitive__step,
-  body.theme-day .dsw-cognitive__notice,
-  body.theme-day .dsw-cognitive__btn--sub{
-    background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.74))!important;
-    border-color:var(--dsw-border)!important;box-shadow:0 20px 54px rgba(98,59,65,.15),inset 0 1px 0 rgba(255,255,255,.86)!important;
-  }
-  body.theme-night .dsw-cognitive__heroCard,
-  body.theme-night .dsw-cognitive__card,
-  body.theme-night .dsw-cognitive__process,
-  body.theme-night .dsw-cognitive__step,
-  body.theme-night .dsw-cognitive__notice,
-  body.theme-night .dsw-cognitive__btn--sub{
-    background:linear-gradient(145deg,rgba(54,43,82,.91),rgba(25,22,54,.87))!important;
-    border-color:var(--dsw-border)!important;box-shadow:0 24px 64px rgba(5,4,18,.36),inset 0 1px 0 rgba(255,255,255,.08)!important;
-  }
-  body.theme-day .dsw-cognitive__eyebrow,
-  body.theme-day .dsw-cognitive__badge{background:rgba(245,211,174,.56)!important;color:#503748!important;border-color:var(--dsw-border)!important;}
-  body.theme-night .dsw-cognitive__eyebrow,
-  body.theme-night .dsw-cognitive__badge{background:rgba(117,57,91,.48)!important;color:#ffe7c1!important;border-color:var(--dsw-border)!important;}
-  body.theme-day .dsw-cognitive__title,
-  body.theme-day .dsw-cognitive__heroText h2,
-  body.theme-day .dsw-cognitive__card h3,
-  body.theme-day .dsw-cognitive__sectionTitle,
-  body.theme-day .dsw-cognitive__step h3{color:#3b2c32!important;}
-  body.theme-night .dsw-cognitive__title,
-  body.theme-night .dsw-cognitive__heroText h2,
-  body.theme-night .dsw-cognitive__card h3,
-  body.theme-night .dsw-cognitive__sectionTitle,
-  body.theme-night .dsw-cognitive__step h3{color:#ffe7c1!important;}
-  body.theme-day .dsw-cognitive__desc,
-  body.theme-day .dsw-cognitive__heroText p,
-  body.theme-day .dsw-cognitive__card p,
-  body.theme-day .dsw-cognitive__step p,
-  body.theme-day .dsw-cognitive__notice{color:#785d65!important;}
-  body.theme-night .dsw-cognitive__desc,
-  body.theme-night .dsw-cognitive__heroText p,
-  body.theme-night .dsw-cognitive__card p,
-  body.theme-night .dsw-cognitive__step p,
-  body.theme-night .dsw-cognitive__notice{color:#cfc1d4!important;}
-  body.theme-day .dsw-cognitive__icon,
-  body.theme-day .dsw-cognitive__dot.is-active,
-  body.theme-day .dsw-cognitive__btn--primary{background:linear-gradient(145deg,#e8a456,#b95f55)!important;}
-  body.theme-night .dsw-cognitive__icon,
-  body.theme-night .dsw-cognitive__dot.is-active,
-  body.theme-night .dsw-cognitive__btn--primary{background:linear-gradient(145deg,#f1b66d,#d97891 58%,#8f466f)!important;color:#2d1830!important;}
-  body.theme-day .dsw-cognitive__slider{background:linear-gradient(145deg,#6b465b,#b86660)!important;}
-  body.theme-night .dsw-cognitive__slider{background:linear-gradient(145deg,#171532,#4a2d55 58%,#713851)!important;}
-  body.theme-night .dsw-cognitive__photoFrame,
-  body.theme-night .dsw-cognitive__keywordCard{background:rgba(37,32,67,.88)!important;color:#ffe7c1!important;border-color:var(--dsw-border)!important;}
+<style id="emotion-care-theme-overrides">
+  body.theme-day .dsw-emotion{--deep:#3b2c32;--green:#a95050;--green2:#b95f55;--gold:#d88a35;--line:rgba(109,70,75,.16);--text:#3b2c32;--muted:#785d65;background:transparent!important;color:var(--text)!important;}
+  body.theme-night .dsw-emotion{--deep:#ffe7c1;--green:#f1b66d;--green2:#d97891;--gold:#f1b66d;--line:rgba(255,225,211,.17);--text:#f7edf1;--muted:#cfc1d4;background:transparent!important;color:var(--text)!important;}
+  body.theme-day .dsw-emotion__heroCard,
+  body.theme-day .dsw-emotion__card,
+  body.theme-day .dsw-emotion__process,
+  body.theme-day .dsw-emotion__step,
+  body.theme-day .dsw-emotion__notice{background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.74))!important;border-color:var(--dsw-border)!important;box-shadow:0 20px 54px rgba(98,59,65,.15),inset 0 1px 0 rgba(255,255,255,.86)!important;}
+  body.theme-night .dsw-emotion__heroCard,
+  body.theme-night .dsw-emotion__card,
+  body.theme-night .dsw-emotion__process,
+  body.theme-night .dsw-emotion__step,
+  body.theme-night .dsw-emotion__notice{background:linear-gradient(145deg,rgba(54,43,82,.91),rgba(25,22,54,.87))!important;border-color:var(--dsw-border)!important;box-shadow:0 24px 64px rgba(5,4,18,.36),inset 0 1px 0 rgba(255,255,255,.08)!important;}
+  body.theme-day .dsw-emotion__eyebrow,
+  body.theme-day .dsw-emotion__badge{background:rgba(245,211,174,.56)!important;color:#503748!important;border-color:var(--dsw-border)!important;}
+  body.theme-night .dsw-emotion__eyebrow,
+  body.theme-night .dsw-emotion__badge{background:rgba(117,57,91,.48)!important;color:#ffe7c1!important;border-color:var(--dsw-border)!important;}
+  body.theme-day .dsw-emotion__title,
+  body.theme-day .dsw-emotion__heroText h2,
+  body.theme-day .dsw-emotion__card h3,
+  body.theme-day .dsw-emotion__sectionTitle,
+  body.theme-day .dsw-emotion__step h3{color:#3b2c32!important;}
+  body.theme-night .dsw-emotion__title,
+  body.theme-night .dsw-emotion__heroText h2,
+  body.theme-night .dsw-emotion__card h3,
+  body.theme-night .dsw-emotion__sectionTitle,
+  body.theme-night .dsw-emotion__step h3{color:#ffe7c1!important;}
+  body.theme-day .dsw-emotion__desc,
+  body.theme-day .dsw-emotion__heroText p,
+  body.theme-day .dsw-emotion__card p,
+  body.theme-day .dsw-emotion__step p,
+  body.theme-day .dsw-emotion__notice{color:#785d65!important;}
+  body.theme-night .dsw-emotion__desc,
+  body.theme-night .dsw-emotion__heroText p,
+  body.theme-night .dsw-emotion__card p,
+  body.theme-night .dsw-emotion__step p,
+  body.theme-night .dsw-emotion__notice{color:#cfc1d4!important;}
+  body.theme-day .dsw-emotion__title strong{background:linear-gradient(180deg,#a95050,#d88a35)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:#a95050!important;}
+  body.theme-night .dsw-emotion__title strong{background:linear-gradient(180deg,#ffe7c1,#f1b66d 55%,#d97891)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:#f1b66d!important;}
+  body.theme-day .dsw-emotion__icon,
+  body.theme-day .dsw-emotion__dot.is-active{background:linear-gradient(145deg,#e8a456,#b95f55)!important;}
+  body.theme-night .dsw-emotion__icon,
+  body.theme-night .dsw-emotion__dot.is-active{background:linear-gradient(145deg,#f1b66d,#d97891 58%,#8f466f)!important;color:#2d1830!important;}
+  body.theme-day .dsw-emotion__slider{background:linear-gradient(145deg,#6b465b,#b86660)!important;}
+  body.theme-night .dsw-emotion__slider{background:linear-gradient(145deg,#171532,#4a2d55 58%,#713851)!important;}
+  body.theme-day .dsw-emotion__keywordCard{color:#70414a!important;background:rgba(255,250,240,.90)!important;border-color:rgba(109,70,75,.14)!important;}
+  body.theme-night .dsw-emotion__photoFrame,
+  body.theme-night .dsw-emotion__keywordCard{background:rgba(37,32,67,.88)!important;color:#ffe7c1!important;border-color:var(--dsw-border)!important;}
+  body.theme-day .dsw-emotion__dot:not(.is-active){color:#a95050!important;background:rgba(255,250,240,.82)!important;}
+  body.theme-night .dsw-emotion__dot:not(.is-active){color:#f1b66d!important;background:rgba(54,43,82,.86)!important;}
+  body.theme-day .dsw-emotion__stepNo{background:linear-gradient(145deg,#e8a456,#b95f55)!important;}
+  body.theme-night .dsw-emotion__stepNo{background:linear-gradient(145deg,#f1b66d,#d97891)!important;color:#2d1830!important;}
 </style>
-
-<script src="layout.js?v=20260719-4"></script>
+<script src="layout.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".dsw-cognitive__slider");
+    const slider = document.querySelector(".dsw-emotion__slider");
     if (!slider) return;
 
-    const slides = slider.querySelectorAll(".dsw-cognitive__slide");
-    const dots = slider.querySelectorAll(".dsw-cognitive__dot");
+    const slides = slider.querySelectorAll(".dsw-emotion__slide");
+    const dots = slider.querySelectorAll(".dsw-emotion__dot");
 
     if (!slides.length || !dots.length) return;
 
@@ -786,5 +738,13 @@
   });
 </script>
 
+<style id="dsw-theme-brand-style">
+  .dsw-theme-brand{font-weight:900!important;}
+  body.theme-day .dsw-theme-brand{color:#a95050!important;background:linear-gradient(180deg,#a95050,#d88a35);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;}
+  body.theme-night .dsw-theme-brand{color:#f1b66d!important;background:linear-gradient(180deg,#ffe7c1,#f1b66d 55%,#d97891);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;}
+</style>
+<script id="dsw-theme-brand-script">
+(()=>{const skip='SCRIPT,STYLE,TITLE,TEXTAREA,OPTION,NOSCRIPT,.dsw-theme-brand';const paint=root=>{if(!root||root.nodeType!==1||root.matches(skip))return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(w.nextNode())if(w.currentNode.nodeValue.includes('더수원')&&!w.currentNode.parentElement.closest(skip))nodes.push(w.currentNode);nodes.forEach(n=>{const p=n.nodeValue.split('더수원'),f=document.createDocumentFragment();p.forEach((v,i)=>{if(i){const s=document.createElement('span');s.className='dsw-theme-brand';s.textContent='더수원';f.append(s)}if(v)f.append(document.createTextNode(v))});n.replaceWith(f)})};paint(document.body);new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)paint(n);else if(n.nodeType===3&&n.parentElement)paint(n.parentElement)}))).observe(document.body,{childList:true,subtree:true})})();
+</script>
 </body>
 </html>
