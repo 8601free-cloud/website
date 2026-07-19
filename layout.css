@@ -11,52 +11,52 @@
 :root,
 body.theme-day{
   color-scheme:light;
-  --dsw-page-bg:#fffaf0;
-  --dsw-surface:#ffffff;
-  --dsw-surface-soft:#f6f1e8;
-  --dsw-surface-tint:#edf7f0;
-  --dsw-header-bg:rgba(246,241,232,.90);
-  --dsw-nav-bg:rgba(255,255,255,.82);
-  --dsw-menu-bg:rgba(255,251,245,.98);
-  --dsw-text:#1d2d22;
-  --dsw-text-strong:#173629;
-  --dsw-text-soft:#5d7862;
-  --dsw-brand:#17472c;
-  --dsw-brand-2:#225d55;
-  --dsw-accent:#eca124;
-  --dsw-accent-contrast:#173629;
-  --dsw-border:rgba(23,71,44,.13);
-  --dsw-shadow:rgba(25,45,30,.16);
-  --dsw-cta-start:#81c784;
-  --dsw-cta-end:#388e3c;
-  --dsw-cta-hover-start:#66bb6a;
-  --dsw-cta-hover-end:#2e7d32;
-  --dsw-overlay:rgba(16,36,25,.58);
+  --dsw-page-bg:#fff7e9;
+  --dsw-surface:rgba(255,252,245,.88);
+  --dsw-surface-soft:rgba(255,239,218,.76);
+  --dsw-surface-tint:rgba(244,211,171,.48);
+  --dsw-header-bg:rgba(255,244,225,.78);
+  --dsw-nav-bg:rgba(255,249,238,.74);
+  --dsw-menu-bg:rgba(255,250,240,.94);
+  --dsw-text:#3b2c32;
+  --dsw-text-strong:#2c2028;
+  --dsw-text-soft:#785d65;
+  --dsw-brand:#5a3f58;
+  --dsw-brand-2:#b45f61;
+  --dsw-accent:#d88a35;
+  --dsw-accent-contrast:#2f2023;
+  --dsw-border:rgba(109,70,75,.16);
+  --dsw-shadow:rgba(98,59,65,.18);
+  --dsw-cta-start:#e8a456;
+  --dsw-cta-end:#b95f55;
+  --dsw-cta-hover-start:#f1b86f;
+  --dsw-cta-hover-end:#a95050;
+  --dsw-overlay:rgba(57,35,48,.48);
 }
 
 body.theme-night{
   color-scheme:dark;
-  --dsw-page-bg:#0f291f;
-  --dsw-surface:#17472c;
-  --dsw-surface-soft:#1b5139;
-  --dsw-surface-tint:#225d55;
-  --dsw-header-bg:rgba(15,41,31,.92);
-  --dsw-nav-bg:rgba(23,71,44,.90);
-  --dsw-menu-bg:rgba(23,71,44,.98);
-  --dsw-text:#f8f4e9;
+  --dsw-page-bg:#121229;
+  --dsw-surface:rgba(37,32,67,.86);
+  --dsw-surface-soft:rgba(57,42,79,.76);
+  --dsw-surface-tint:rgba(117,57,91,.48);
+  --dsw-header-bg:rgba(18,17,43,.80);
+  --dsw-nav-bg:rgba(31,28,61,.72);
+  --dsw-menu-bg:rgba(31,27,61,.94);
+  --dsw-text:#f7edf1;
   --dsw-text-strong:#ffffff;
-  --dsw-text-soft:#c9ddcf;
-  --dsw-brand:#f8f4e9;
-  --dsw-brand-2:#a9c96a;
-  --dsw-accent:#eca124;
-  --dsw-accent-contrast:#173629;
-  --dsw-border:rgba(255,255,255,.16);
-  --dsw-shadow:rgba(0,0,0,.34);
-  --dsw-cta-start:#eca124;
-  --dsw-cta-end:#c97b12;
-  --dsw-cta-hover-start:#f6b63d;
-  --dsw-cta-hover-end:#d78a1c;
-  --dsw-overlay:rgba(4,17,12,.76);
+  --dsw-text-soft:#cfc1d4;
+  --dsw-brand:#ffe7c1;
+  --dsw-brand-2:#d97891;
+  --dsw-accent:#f1b66d;
+  --dsw-accent-contrast:#2d1830;
+  --dsw-border:rgba(255,225,211,.17);
+  --dsw-shadow:rgba(5,4,18,.46);
+  --dsw-cta-start:#e58a78;
+  --dsw-cta-end:#8f466f;
+  --dsw-cta-hover-start:#f2aa84;
+  --dsw-cta-hover-end:#a94f78;
+  --dsw-overlay:rgba(8,7,28,.78);
 }
 
 *,
@@ -764,13 +764,165 @@ button,
 }
 
 /* ===============================
+   CINEMATIC DAY / NIGHT ATMOSPHERE
+   낮은 노을 직전의 따뜻한 햇살, 밤은 남보라 숲과 일식의 광원을 표현합니다.
+   =============================== */
+
+body.theme-day,
+body.theme-night{
+  position:relative;
+  isolation:isolate;
+  min-height:100vh;
+  background-attachment:fixed !important;
+  transition:background .75s ease,color .45s ease;
+}
+
+body.theme-day{
+  background:
+    radial-gradient(circle at 84% 7%,rgba(255,244,201,.98) 0 2.5%,rgba(247,185,108,.42) 7%,transparent 24%),
+    radial-gradient(ellipse at 18% 24%,rgba(255,232,199,.72),transparent 34%),
+    radial-gradient(ellipse at 76% 72%,rgba(191,93,88,.18),transparent 40%),
+    linear-gradient(155deg,#fff9ec 0%,#f6dcc0 38%,#d99a85 70%,#8f6077 118%) !important;
+}
+
+body.theme-night{
+  background:
+    radial-gradient(circle at 82% 11%,#27162d 0 33px,#ffe2d0 34px 38px,rgba(226,120,151,.38) 39px 72px,transparent 125px),
+    radial-gradient(ellipse at 78% 49%,rgba(187,75,110,.30),transparent 35%),
+    radial-gradient(ellipse at 14% 78%,rgba(19,101,108,.30),transparent 42%),
+    linear-gradient(155deg,#090a21 0%,#171633 33%,#302445 61%,#65334f 100%) !important;
+}
+
+body.theme-day::before,
+body.theme-night::before,
+body.theme-day::after,
+body.theme-night::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+}
+
+body.theme-day::before{
+  opacity:.58;
+  background:
+    radial-gradient(ellipse at 50% 108%,rgba(109,48,57,.28) 0 17%,transparent 53%),
+    linear-gradient(115deg,transparent 0 44%,rgba(255,243,213,.17) 44.5% 46%,transparent 47% 100%);
+}
+
+body.theme-night::before{
+  opacity:.74;
+  background-image:
+    radial-gradient(circle at 9% 14%,rgba(255,228,193,.78) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 22% 31%,rgba(228,171,189,.60) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 38% 9%,rgba(255,219,169,.66) 0 1.2px,transparent 2px),
+    radial-gradient(circle at 56% 25%,rgba(232,187,203,.52) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 71% 35%,rgba(255,224,184,.58) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 92% 20%,rgba(232,178,203,.62) 0 1.1px,transparent 1.9px);
+  background-size:310px 280px,390px 330px,460px 360px,520px 430px,610px 500px,720px 550px;
+}
+
+body.theme-day::after{
+  background:
+    linear-gradient(180deg,transparent 45%,rgba(113,50,64,.12) 100%),
+    radial-gradient(ellipse at 52% 100%,rgba(246,177,105,.20),transparent 58%);
+}
+
+body.theme-night::after{
+  background:
+    linear-gradient(180deg,transparent 48%,rgba(83,25,53,.26) 100%),
+    radial-gradient(ellipse at 58% 108%,rgba(215,91,121,.27),transparent 55%),
+    radial-gradient(ellipse at 0% 78%,rgba(5,50,64,.25),transparent 42%);
+}
+
+body.theme-day .top-nav-wrap,
+body.theme-night .top-nav-wrap,
+body.theme-day .dsw-care-dialog,
+body.theme-night .dsw-care-dialog,
+body.theme-day .dropdown-menu,
+body.theme-night .dropdown-menu,
+body.theme-day .care-location-menu,
+body.theme-night .care-location-menu{
+  backdrop-filter:blur(22px) saturate(128%);
+  -webkit-backdrop-filter:blur(22px) saturate(128%);
+}
+
+body.theme-day .top-nav > a,
+body.theme-day .top-nav .nav-link{
+  background:linear-gradient(145deg,rgba(255,252,241,.82),rgba(245,211,174,.54)) !important;
+  border-color:rgba(112,71,75,.13) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 8px 22px rgba(105,57,63,.11) !important;
+}
+
+body.theme-night .top-nav > a,
+body.theme-night .top-nav .nav-link{
+  background:linear-gradient(145deg,rgba(65,50,91,.72),rgba(37,31,70,.74)) !important;
+  border-color:rgba(255,221,210,.14) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 26px rgba(4,3,16,.25) !important;
+}
+
+body.theme-day .site-brand-logo{
+  filter:drop-shadow(0 10px 22px rgba(194,111,72,.24));
+}
+
+body.theme-night .site-brand-logo{
+  filter:drop-shadow(0 0 14px rgba(239,177,126,.22)) drop-shadow(0 12px 24px rgba(0,0,0,.34));
+}
+
+body.theme-day .dsw-theme-card,
+body.theme-day .dsw-care-dialog,
+body.theme-day .dsw-care-result{
+  background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.76)) !important;
+  box-shadow:0 24px 65px rgba(102,56,62,.18),inset 0 1px 0 rgba(255,255,255,.90) !important;
+}
+
+body.theme-night .dsw-theme-card,
+body.theme-night .dsw-care-dialog,
+body.theme-night .dsw-care-result{
+  background:linear-gradient(145deg,rgba(54,43,82,.91),rgba(25,22,54,.88)) !important;
+  border-color:rgba(255,219,207,.17) !important;
+  box-shadow:0 28px 80px rgba(5,3,19,.52),inset 0 1px 0 rgba(255,255,255,.09),0 0 42px rgba(190,73,116,.09) !important;
+}
+
+body.theme-night .dsw-care-progress > span{
+  background:linear-gradient(90deg,#8f577f,#e07988 58%,#f5c078) !important;
+  box-shadow:0 0 18px rgba(224,121,136,.38);
+}
+
+body.theme-day .dsw-care-progress > span{
+  background:linear-gradient(90deg,#b6605d,#e49a55 58%,#f4cf7d) !important;
+}
+
+body.theme-night .dsw-care-option:hover,
+body.theme-night .dsw-care-option:focus-visible,
+body.theme-night .dsw-care-option.is-selected{
+  box-shadow:0 0 0 1px rgba(245,192,120,.34),0 14px 34px rgba(8,5,24,.28);
+}
+
+body.theme-day .site-footer-inner,
+body.theme-night .site-footer-inner{
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+@media screen and (max-width:900px){
+  body.theme-day .top-nav > a,
+  body.theme-day .top-nav .nav-link,
+  body.theme-night .top-nav > a,
+  body.theme-night .top-nav .nav-link{
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+}
+
+/* ===============================
    CARE THEME — COMMON OVERRIDES
    모바일 구간의 기존 !important 색상도 아래에서 안전하게 재정의합니다.
    =============================== */
 
 body.theme-day,
 body.theme-night{
-  background:var(--dsw-page-bg) !important;
   color:var(--dsw-text) !important;
 }
 
