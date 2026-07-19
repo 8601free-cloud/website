@@ -1164,7 +1164,7 @@
 
               <div class="hero-diffline">
                 주간보호와 요양원 사이에서 <strong>고민하지 않으셔도</strong> 됩니다.<br>
-                더수원은 어르신의 상태에 맞춰 <strong>부담 없이 이어지는 돌봄</strong>을
+                어르신의 상태와 생활에 맞춰 <strong>부담 없이 이어지는 돌봄</strong>을
                 함께 만들어갑니다.
               </div>
 
@@ -1175,7 +1175,7 @@
 
                 <p class="hero-closing-text">
                   어르신의 하루를 가까이에서 돌보는<br>
-                  통합 돌봄 공간, <strong>더수원</strong>입니다.
+                  주간보호·요양원 통합 돌봄 공간입니다.
                 </p>
               </div>
             </div>
@@ -1524,6 +1524,34 @@
   body.theme-day .hero-note-pill-icon{background:rgba(185,95,85,.12)!important;color:#a95050!important;}
   body.theme-night .hero-note-pill-icon{background:rgba(241,182,109,.14)!important;color:#f1b66d!important;}
 
+  body.theme-day .hero-diffline{
+    background:linear-gradient(145deg,rgba(255,250,240,.94),rgba(245,211,174,.72))!important;
+    border-color:rgba(109,70,75,.16)!important;
+    color:#503748!important;
+  }
+  body.theme-day .hero-diffline::before{background:linear-gradient(180deg,#e8a456,#b95f55)!important;}
+  body.theme-day .hero-closing{
+    background:rgba(255,252,245,.76)!important;
+    border-color:rgba(109,70,75,.14)!important;
+  }
+  body.theme-day .hero-closing-region{color:#785d65!important;}
+  body.theme-day .hero-closing-text{color:#3b2c32!important;}
+
+  body.theme-night .hero-diffline{
+    background:linear-gradient(145deg,rgba(57,42,79,.94),rgba(31,27,61,.93))!important;
+    border-color:rgba(255,225,211,.16)!important;
+    color:#f7edf1!important;
+    box-shadow:0 18px 38px rgba(5,4,18,.30),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  }
+  body.theme-night .hero-diffline::before{background:linear-gradient(180deg,#f1b66d,#d97891)!important;}
+  body.theme-night .hero-closing{
+    background:linear-gradient(145deg,rgba(54,43,82,.90),rgba(25,22,54,.88))!important;
+    border-color:rgba(255,225,211,.15)!important;
+    box-shadow:0 16px 34px rgba(5,4,18,.28),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  }
+  body.theme-night .hero-closing-region{color:#cfc1d4!important;}
+  body.theme-night .hero-closing-text{color:#ffe7c1!important;}
+
   body.theme-day #wrap2 .card-face{
     background:linear-gradient(145deg,rgba(255,253,246,.98),rgba(247,218,194,.94))!important;
     border:1px solid rgba(109,70,75,.15)!important;
@@ -1533,8 +1561,17 @@
     border:1px solid rgba(255,225,211,.15)!important;
     box-shadow:0 24px 58px rgba(5,4,18,.38),inset 0 1px 0 rgba(255,255,255,.07)!important;
   }
-  body.theme-day #wrap2 .sub-text{color:#503748!important;}
-  body.theme-night #wrap2 .sub-text{color:#f7edf1!important;}
+  body.theme-day #wrap2 .sub-text{
+    background:linear-gradient(180deg,rgba(255,252,245,.98),rgba(247,218,194,.94))!important;
+    color:#503748!important;
+    border-top:1px solid rgba(109,70,75,.12)!important;
+  }
+  body.theme-night #wrap2 .sub-text{
+    background:linear-gradient(180deg,rgba(57,42,79,.98),rgba(31,27,61,.98))!important;
+    color:#f7edf1!important;
+    border-top:1px solid rgba(255,225,211,.12)!important;
+    text-shadow:none!important;
+  }
 </style>
 
 <style id="dsw-theme-brand-style">
