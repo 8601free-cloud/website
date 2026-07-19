@@ -1479,5 +1479,87 @@
   })();
 </script>
 
+<style id="home-care-theme-polish">
+  /* 메인 두 번째 안내 카드와 중앙 서비스 카드의 낮/밤 테마 연결 */
+  body.theme-day .hero-note{
+    background:
+      radial-gradient(720px 230px at 12% 18%,rgba(255,255,255,.78),transparent 64%),
+      radial-gradient(580px 220px at 92% 88%,rgba(185,95,85,.10),transparent 62%),
+      linear-gradient(145deg,rgba(255,253,246,.96),rgba(251,226,201,.88))!important;
+    border-color:rgba(109,70,75,.18)!important;
+    box-shadow:0 24px 58px rgba(98,59,65,.16),inset 0 1px 0 rgba(255,255,255,.88)!important;
+  }
+  body.theme-night .hero-note{
+    background:
+      radial-gradient(720px 230px at 12% 18%,rgba(241,182,109,.12),transparent 64%),
+      radial-gradient(580px 220px at 92% 88%,rgba(217,120,145,.14),transparent 62%),
+      linear-gradient(145deg,rgba(54,43,82,.94),rgba(25,22,54,.92))!important;
+    border-color:rgba(255,225,211,.17)!important;
+    box-shadow:0 28px 68px rgba(5,4,18,.40),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  }
+  body.theme-day .hero-note::before{border-color:rgba(109,70,75,.14)!important;}
+  body.theme-night .hero-note::before{border-color:rgba(255,225,211,.13)!important;}
+  body.theme-day .hero-note-title,
+  body.theme-day .hero-note-pill-title,
+  body.theme-day .hero-note-foot{color:#3b2c32!important;}
+  body.theme-day .hero-note-text,
+  body.theme-day .hero-note-pill-sub{color:#785d65!important;}
+  body.theme-night .hero-note-title,
+  body.theme-night .hero-note-pill-title,
+  body.theme-night .hero-note-foot{color:#ffe7c1!important;}
+  body.theme-night .hero-note-text,
+  body.theme-night .hero-note-pill-sub{color:#d8cbd8!important;}
+  body.theme-day .hero-note-title strong,
+  body.theme-day .hero-note-foot strong{color:#b95f55!important;}
+  body.theme-night .hero-note-title strong,
+  body.theme-night .hero-note-foot strong{color:#f1b66d!important;}
+  body.theme-day .hero-note-badge,
+  body.theme-day .hero-note-pill{background:rgba(255,252,245,.68)!important;border-color:rgba(109,70,75,.15)!important;}
+  body.theme-night .hero-note-badge,
+  body.theme-night .hero-note-pill{background:rgba(37,32,67,.72)!important;border-color:rgba(255,225,211,.14)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important;}
+  body.theme-day .hero-note-badge-text{color:#503748!important;}
+  body.theme-night .hero-note-badge-text{color:#ffe7c1!important;}
+  body.theme-day .hero-note-badge-icon{background:linear-gradient(145deg,#e8a456,#b95f55)!important;}
+  body.theme-night .hero-note-badge-icon{background:linear-gradient(145deg,#f1b66d,#d97891)!important;color:#2d1830!important;}
+  body.theme-day .hero-note-pill-icon{background:rgba(185,95,85,.12)!important;color:#a95050!important;}
+  body.theme-night .hero-note-pill-icon{background:rgba(241,182,109,.14)!important;color:#f1b66d!important;}
+
+  body.theme-day #wrap2 .card-face{
+    background:linear-gradient(145deg,rgba(255,253,246,.98),rgba(247,218,194,.94))!important;
+    border:1px solid rgba(109,70,75,.15)!important;
+  }
+  body.theme-night #wrap2 .card-face{
+    background:linear-gradient(145deg,rgba(61,45,84,.97),rgba(26,23,56,.96))!important;
+    border:1px solid rgba(255,225,211,.15)!important;
+    box-shadow:0 24px 58px rgba(5,4,18,.38),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  }
+  body.theme-day #wrap2 .sub-text{color:#503748!important;}
+  body.theme-night #wrap2 .sub-text{color:#f7edf1!important;}
+</style>
+
+<style id="dsw-theme-brand-style">
+  .dsw-theme-brand{font-weight:900!important;}
+  body.theme-day .dsw-theme-brand{color:#a95050!important;background:linear-gradient(180deg,#a95050,#d88a35);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;}
+  body.theme-night .dsw-theme-brand{color:#f1b66d!important;background:linear-gradient(180deg,#ffe7c1,#f1b66d 55%,#d97891);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;text-shadow:0 0 20px rgba(241,182,109,.12);}
+</style>
+<script id="dsw-theme-brand-script">
+  (()=>{
+    const skip='SCRIPT,STYLE,TITLE,TEXTAREA,OPTION,NOSCRIPT,.dsw-theme-brand';
+    const paint=(root)=>{
+      if(!root||root.nodeType!==1||root.matches(skip)) return;
+      const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+      const nodes=[];
+      while(walker.nextNode()) if(walker.currentNode.nodeValue.includes('더수원')&&!walker.currentNode.parentElement.closest(skip)) nodes.push(walker.currentNode);
+      nodes.forEach(node=>{
+        const parts=node.nodeValue.split('더수원');
+        const frag=document.createDocumentFragment();
+        parts.forEach((part,i)=>{if(i){const span=document.createElement('span');span.className='dsw-theme-brand';span.textContent='더수원';frag.append(span);}if(part)frag.append(document.createTextNode(part));});
+        node.replaceWith(frag);
+      });
+    };
+    paint(document.body);
+    new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)paint(n);else if(n.nodeType===3&&n.parentElement)paint(n.parentElement);}))).observe(document.body,{childList:true,subtree:true});
+  })();
+</script>
 </body>
 </html>

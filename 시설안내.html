@@ -973,6 +973,9 @@
     border-color:var(--dsw-border) !important;
     box-shadow:0 24px 60px var(--dsw-shadow) !important;
   }
+
+  body.theme-day .dsw-mid-copy p{color:#634953 !important;}
+  body.theme-night .dsw-mid-copy p{color:#f3e7ec !important;text-shadow:0 1px 16px rgba(241,182,109,.08);}
 </style>
 
 <div class="dsw-page">
@@ -1232,5 +1235,13 @@
 })();
 </script>
 
+<style id="dsw-theme-brand-style">
+  .dsw-theme-brand{font-weight:900!important;}
+  body.theme-day .dsw-theme-brand{color:#a95050!important;background:linear-gradient(180deg,#a95050,#d88a35);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;}
+  body.theme-night .dsw-theme-brand{color:#f1b66d!important;background:linear-gradient(180deg,#ffe7c1,#f1b66d 55%,#d97891);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;text-shadow:0 0 20px rgba(241,182,109,.12);}
+</style>
+<script id="dsw-theme-brand-script">
+(()=>{const skip='SCRIPT,STYLE,TITLE,TEXTAREA,OPTION,NOSCRIPT,.dsw-theme-brand';const paint=root=>{if(!root||root.nodeType!==1||root.matches(skip))return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(w.nextNode())if(w.currentNode.nodeValue.includes('더수원')&&!w.currentNode.parentElement.closest(skip))nodes.push(w.currentNode);nodes.forEach(n=>{const p=n.nodeValue.split('더수원'),f=document.createDocumentFragment();p.forEach((v,i)=>{if(i){const s=document.createElement('span');s.className='dsw-theme-brand';s.textContent='더수원';f.append(s)}if(v)f.append(document.createTextNode(v))});n.replaceWith(f)})};paint(document.body);new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)paint(n);else if(n.nodeType===3&&n.parentElement)paint(n.parentElement)}))).observe(document.body,{childList:true,subtree:true})})();
+</script>
 </body>
 </html>
