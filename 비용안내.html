@@ -4,776 +4,1511 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>입소안내 | 수원 요양원·주간보호 이용 절차 | 더수원 어르신 통합케어</title>
-  <meta name="description" content="더수원 요양원 및 주간보호 입소 절차, 준비서류, 장기요양등급, 상담 방법을 한 번에 안내드립니다.">
-  <meta property="og:title" content="입소안내 | 더수원 어르신 통합케어">
-  <meta property="og:description" content="입소 절차, 준비서류, 장기요양등급 및 상담 방법 안내">
+  <title>비용안내 | 수원 주간보호·요양원 이용요금 | 더수원 어르신 통합케어</title>
+  <meta name="description" content="더수원 어르신 통합케어의 주간보호 및 요양원 이용 비용을 안내합니다. 장기요양보험 적용, 본인부담금, 비급여 항목 등 실제 이용요금을 확인해보세요.">
+  <meta property="og:title" content="비용안내 | 수원 주간보호·요양원 이용요금 | 더수원 어르신 통합케어">
+  <meta property="og:description" content="장기요양보험 적용 여부와 본인부담금, 비급여 항목까지 더수원 이용 비용을 안내합니다.">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="layout.css?v=20260719-5">
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<section id="dsw-admission-desktop" class="dsw-admission" aria-label="입소 안내">
-  <h1 class="dsw-sr-only">요양원 입소 안내 | 주간보호 이용 안내 | 더수원</h1>
-  <p class="dsw-sr-only">
-    수원 요양원 입소 절차, 주간보호 이용 절차, 준비 서류, 비용 상담, 방문 상담 예약, 어르신 돌봄 서비스 안내.
-  </p>
+<section class="dsw-fee" id="dswFeeDesktop" aria-label="주간보호 · 요양원 비용 안내">
+  <script>
+    window.DSW_COST_PAGE = {
+      BRAND: "더수원",
+      TEL: "1666-8853"
+    };
+  </script>
 
-  <header class="dsw-admission-hero">
-    <div class="dsw-admission-hero__inner">
-      <div class="dsw-admission-hero__copy">
-        <p class="dsw-admission-badge">입소 · 이용 안내</p>
+  <style>
+    html, body{
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+    }
 
-        <h2 class="dsw-admission-title">
-          처음 오시는 보호자님께<br>
-          한 번에 정리해드릴게요
-        </h2>
+    .dsw-fee{
+      --deep:#173d29;
+      --green:#2f5a3e;
+      --green2:#4f8b63;
+      --gold:#c9872d;
+      --cream:#fbf5e8;
+      --line:rgba(31,64,47,.16);
+      --shadow:0 24px 60px rgba(23,61,41,.16);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      padding:72px 18px 82px;
+      color:#1d2d22;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(79,139,99,.18), transparent 34%),
+        radial-gradient(circle at 84% 12%, rgba(201,135,45,.18), transparent 34%),
+        linear-gradient(180deg,#fffaf0 0%,#f4ead5 48%,#fffaf0 100%);
+      overflow:hidden;
+    }
 
-        <p class="dsw-admission-subtitle">
-          요양원 & 주간보호<br>
-          입소/이용 절차, 준비 서류, 상담 방법까지<br>
-          빠르고 정확하게 안내드립니다.
-        </p>
+    .dsw-fee *,
+    .dsw-fee *::before,
+    .dsw-fee *::after{
+      box-sizing:border-box;
+    }
 
-        <div class="dsw-admission-cta">
-          <a class="dsw-admission-btn dsw-admission-btn--primary" href="tel:16668853" aria-label="전화 상담 1666-8853">
-            <span class="dsw-admission-call-ico" aria-hidden="true">📞</span>
-            <span>전화 상담</span>
-            <span class="dsw-admission-call-num">1666-8853</span>
-          </a>
-        </div>
+    .dsw-fee__wrap{
+      max-width:1080px;
+      margin:0 auto;
+    }
 
-        <ul class="dsw-admission-quick">
-          <li><strong>상담</strong><span>전화/방문</span></li>
-          <li><strong>시설 방문</strong><span>시설 라운딩</span></li>
-          <li><strong>서류</strong><span>필요서류 안내</span></li>
-          <li><strong>입소</strong><span>일정 확정</span></li>
-        </ul>
+    .dsw-fee__eyebrow{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 14px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .dsw-fee__mainTitle{
+      margin:0 0 12px;
+      text-align:center;
+      font-size:clamp(30px,4vw,48px);
+      line-height:1.16;
+      font-weight:900;
+      letter-spacing:-1.4px;
+      color:var(--deep);
+    }
+
+    .dsw-fee__mainTitle strong{
+      background:linear-gradient(180deg,#4f8b63 0%,#24563a 60%,#173d29 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .dsw-fee__desc{
+      margin:0 auto 28px;
+      max-width:760px;
+      text-align:center;
+      font-size:16px;
+      line-height:1.75;
+      color:rgba(29,45,34,.72);
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__summary{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:0 0 26px;
+    }
+
+    .dsw-fee__summaryCard{
+      padding:22px 20px;
+      border-radius:24px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      box-shadow:
+        0 18px 38px rgba(23,61,41,.10),
+        inset 0 1px 0 rgba(255,255,255,.82);
+    }
+
+    .dsw-fee__summaryCard strong{
+      display:block;
+      margin-bottom:8px;
+      color:var(--deep);
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .dsw-fee__summaryCard p{
+      margin:0;
+      color:rgba(29,45,34,.7);
+      font-size:14px;
+      line-height:1.65;
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__tabs{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .dsw-fee__tab{
+      border:1px solid rgba(47,90,62,.18);
+      background:rgba(255,255,255,.72);
+      color:var(--deep);
+      padding:13px 22px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:
+        0 12px 24px rgba(23,61,41,.08),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      transition:.22s ease;
+    }
+
+    .dsw-fee__tab:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 34px rgba(23,61,41,.14);
+    }
+
+    .dsw-fee__tab[aria-selected="true"]{
+      color:#fff;
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      border-color:rgba(47,90,62,.45);
+      box-shadow:0 18px 38px rgba(47,90,62,.26);
+    }
+
+    .dsw-fee__panel{
+      animation:dswFade .25s ease both;
+    }
+
+    @keyframes dswFade{
+      from{opacity:0; transform:translateY(8px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .dsw-fee__hidden{
+      display:none !important;
+    }
+
+    .dsw-fee__ribbon{
+      position:relative;
+      padding:24px;
+      border-radius:30px 30px 0 0;
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.64)),
+        radial-gradient(circle at 12% 0%,rgba(201,135,45,.18),transparent 36%);
+      border:1px solid var(--line);
+      border-bottom:0;
+      box-shadow:0 18px 42px rgba(23,61,41,.1);
+      overflow:hidden;
+    }
+
+    .dsw-fee__brandRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .dsw-fee__brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color:var(--deep);
+    }
+
+    .dsw-fee__logo{
+      width:42px;
+      height:42px;
+      border-radius:15px;
+      background:
+        radial-gradient(circle at 32% 25%,#f4c16d,transparent 32%),
+        linear-gradient(135deg,#315f42,#173d29);
+      box-shadow:0 12px 24px rgba(23,61,41,.22);
+      flex:0 0 auto;
+    }
+
+    .dsw-fee__call{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 16px;
+      border-radius:999px;
+      color:#fff;
+      font-weight:900;
+      background:linear-gradient(135deg,#c9872d,#e0a34b);
+      box-shadow:0 16px 28px rgba(201,135,45,.26);
+      white-space:nowrap;
+      transition:.22s ease;
+    }
+
+    .dsw-fee__call:hover{
+      transform:translateY(-3px);
+      box-shadow:0 22px 38px rgba(201,135,45,.34);
+    }
+
+    .dsw-fee__title{
+      margin:0;
+      text-align:center;
+      font-size:clamp(26px,3vw,38px);
+      font-weight:900;
+      letter-spacing:-1px;
+      color:var(--deep);
+      word-break:keep-all;
+    }
+
+    .dsw-fee__title .accent{
+      color:var(--gold);
+    }
+
+    .dsw-fee__subtitleWrap{
+      text-align:center;
+      margin-top:12px;
+    }
+
+    .dsw-fee__subtitle{
+      display:inline-flex;
+      padding:9px 15px;
+      border-radius:999px;
+      background:rgba(47,90,62,.1);
+      border:1px solid rgba(47,90,62,.18);
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .dsw-fee__card{
+      position:relative;
+      background:rgba(255,255,255,.82);
+      border:1px solid var(--line);
+      border-radius:0 0 30px 30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transform-style:preserve-3d;
+    }
+
+    .dsw-fee__scroll{
+      width:100%;
+      overflow:visible;
+    }
+
+    .dsw-fee__table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-weight:800;
+    }
+
+    .dsw-fee__thead th{
+      padding:17px 10px;
+      color:#fff;
+      font-size:15px;
+      text-align:center;
+      border-right:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      white-space:nowrap;
+    }
+
+    .dsw-fee__thead th.th-a,
+    .dsw-fee__thead th.th-c{
+      background:linear-gradient(135deg,#bd7928,#e0a34b);
+    }
+
+    .dsw-fee__tbody td{
+      padding:18px 10px;
+      text-align:center;
+      font-size:18px;
+      color:#243228;
+      background:rgba(255,255,255,.64);
+      border-bottom:1px solid rgba(31,64,47,.09);
+      border-right:1px solid rgba(31,64,47,.07);
+      transition:.18s ease;
+      white-space:nowrap;
+    }
+
+    .dsw-fee__tbody tr:hover td{
+      background:#fffaf0;
+      transform:translateZ(8px);
+    }
+
+    .dsw-fee__tbody tr:last-child td{
+      border-bottom:0;
+    }
+
+    .dsw-fee__tbody td:last-child,
+    .dsw-fee__thead th:last-child{
+      border-right:0;
+    }
+
+    .dsw-fee__tbody td.col-grade{
+      font-size:21px;
+      font-weight:900;
+      color:var(--green);
+      background:rgba(47,90,62,.07);
+    }
+
+    .dsw-fee__tbody td.col-fee{
+      font-weight:900;
+      color:var(--deep);
+      background:rgba(201,135,45,.09);
+    }
+
+    .dsw-fee__note{
+      width:100%;
+      padding:18px 22px;
+      background:linear-gradient(135deg,rgba(47,90,62,.08),rgba(201,135,45,.08));
+      color:rgba(29,45,34,.76);
+      font-size:14px;
+      line-height:1.75;
+      font-weight:700;
+      border-top:1px solid rgba(31,64,47,.09);
+      word-break:keep-all;
+    }
+
+    .dsw-fee__extra{
+      margin:28px 0 0;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .dsw-fee__infoBox{
+      padding:24px;
+      border-radius:26px;
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      box-shadow:
+        0 18px 42px rgba(23,61,41,.10),
+        inset 0 1px 0 rgba(255,255,255,.86);
+    }
+
+    .dsw-fee__infoBox h3{
+      margin:0 0 12px;
+      color:var(--deep);
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-.5px;
+    }
+
+    .dsw-fee__infoBox p{
+      margin:0 0 14px;
+      color:rgba(29,45,34,.72);
+      font-weight:700;
+      line-height:1.7;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__miniList{
+      display:grid;
+      gap:10px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .dsw-fee__miniList li{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:13px 14px;
+      border-radius:16px;
+      background:linear-gradient(135deg,rgba(47,90,62,.08),rgba(201,135,45,.08));
+      border:1px solid rgba(31,64,47,.10);
+      font-weight:900;
+      color:#243228;
+    }
+
+    .dsw-fee__miniList span{
+      color:var(--green);
+      text-align:right;
+    }
+
+    .dsw-fee__calculator{
+      margin:32px 0 0;
+      padding:28px;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(201,135,45,.13), transparent 34%),
+        linear-gradient(180deg,rgba(255,255,255,.86),rgba(248,251,249,.80));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+
+    .dsw-fee__calculatorHead{
+      text-align:center;
+      margin-bottom:22px;
+    }
+
+    .dsw-fee__calculatorHead h2{
+      margin:0 0 8px;
+      color:var(--deep);
+      font-size:clamp(24px,3vw,34px);
+      font-weight:900;
+      letter-spacing:-.8px;
+    }
+
+    .dsw-fee__calculatorHead p{
+      margin:0;
+      color:rgba(29,45,34,.68);
+      font-weight:700;
+      line-height:1.6;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__calcGrid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .dsw-fee__field{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .dsw-fee__field label{
+      color:var(--deep);
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .dsw-fee__field select{
+      width:100%;
+      border:1px solid rgba(47,90,62,.18);
+      border-radius:16px;
+      padding:13px 12px;
+      background:#fff;
+      color:#1d2d22;
+      font-size:15px;
+      font-weight:800;
+      outline:none;
+    }
+
+    .dsw-fee__nonpay{
+      margin-top:14px;
+      padding:18px;
+      border-radius:22px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(31,64,47,.12);
+    }
+
+    .dsw-fee__nonpayTitle{
+      margin:0 0 12px;
+      color:var(--deep);
+      font-size:17px;
+      font-weight:900;
+    }
+
+    .dsw-fee__checks{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+    }
+
+    .dsw-fee__checks label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:12px;
+      border-radius:15px;
+      background:linear-gradient(135deg,rgba(47,90,62,.07),rgba(201,135,45,.08));
+      border:1px solid rgba(31,64,47,.10);
+      font-weight:900;
+      color:#243228;
+      cursor:pointer;
+      word-break:keep-all;
+    }
+
+    .dsw-fee__checks input{
+      accent-color:var(--green);
+    }
+
+    .dsw-fee__result{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .dsw-fee__resultBox{
+      padding:20px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(31,64,47,.12);
+      box-shadow:0 12px 28px rgba(23,61,41,.08);
+    }
+
+    .dsw-fee__resultBox span{
+      display:block;
+      margin-bottom:8px;
+      color:rgba(29,45,34,.62);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .dsw-fee__resultBox strong{
+      color:var(--deep);
+      font-size:25px;
+      font-weight:900;
+      letter-spacing:-.6px;
+    }
+
+    .dsw-fee__resultBox.total{
+      background:linear-gradient(135deg,#244f35,#4f8b63);
+      color:#fff;
+    }
+
+    .dsw-fee__resultBox.total span,
+    .dsw-fee__resultBox.total strong{
+      color:#fff;
+    }
+
+    .dsw-fee__calcNote{
+      margin:14px 0 0;
+      color:rgba(29,45,34,.62);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.6;
+      word-break:keep-all;
+    }
+
+    .mobile-only-help{
+      display:none;
+    }
+
+    @media(max-width:767px){
+      .dsw-fee{
+        padding:44px 10px 58px;
+        overflow:hidden;
+      }
+
+      .dsw-fee__call{
+        display:none !important;
+      }
+
+      .dsw-fee__wrap{
+        width:100%;
+        max-width:100%;
+        overflow:hidden;
+      }
+
+      .dsw-fee__eyebrow{
+        font-size:12px;
+        padding:8px 12px;
+      }
+
+      .dsw-fee__mainTitle{
+        font-size:32px;
+        letter-spacing:-1px;
+      }
+
+      .dsw-fee__desc{
+        font-size:14px;
+        line-height:1.65;
+        margin-bottom:22px;
+      }
+
+      .dsw-fee__summary{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .dsw-fee__summaryCard{
+        padding:18px;
+        border-radius:20px;
+      }
+
+      .dsw-fee__tabs{
+        gap:8px;
+        margin-bottom:18px;
+      }
+
+      .dsw-fee__tab{
+        flex:1 1 0;
+        min-width:0;
+        padding:12px 10px;
+        font-size:14px;
+      }
+
+      .dsw-fee__brandRow{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+        margin-bottom:14px;
+      }
+
+      .dsw-fee__ribbon{
+        padding:20px 14px 18px;
+        border-radius:24px 24px 0 0;
+      }
+
+      .dsw-fee__title{
+        font-size:26px;
+        line-height:1.25;
+      }
+
+      .dsw-fee__subtitle{
+        font-size:12.5px;
+        padding:8px 12px;
+      }
+
+      .mobile-only-help{
+        display:block;
+        margin:12px 0 0;
+        text-align:center;
+        font-size:12px;
+        line-height:1.45;
+        color:rgba(29,45,34,.62);
+        font-weight:800;
+      }
+
+      .dsw-fee__card{
+        overflow:hidden;
+        border-radius:0 0 24px 24px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.9), rgba(247,250,246,.86));
+        border-top:0;
+      }
+
+      .dsw-fee__scroll{
+        overflow:visible !important;
+        padding:14px 10px 6px !important;
+      }
+
+      .dsw-fee__table,
+      .dsw-fee__thead,
+      .dsw-fee__tbody,
+      .dsw-fee__table tr,
+      .dsw-fee__table th,
+      .dsw-fee__table td{
+        display:block !important;
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+      }
+
+      .dsw-fee__thead{
+        display:none !important;
+      }
+
+      .dsw-fee__tbody tr{
+        position:relative;
+        margin:0 0 12px;
+        border:1px solid rgba(47,90,62,.14);
+        border-radius:20px;
+        overflow:hidden;
+        background:linear-gradient(180deg,#ffffff 0%,#fbf8f0 100%);
+        box-shadow:
+          0 12px 24px rgba(23,61,41,.09),
+          inset 0 1px 0 rgba(255,255,255,.9);
+        cursor:pointer;
+        transition:.22s ease;
+      }
+
+      .dsw-fee__tbody tr::after{
+        content:"펼치기 +";
+        position:absolute;
+        top:14px;
+        right:14px;
+        z-index:2;
+        padding:5px 9px;
+        border-radius:999px;
+        background:rgba(255,255,255,.88);
+        border:1px solid rgba(47,90,62,.14);
+        color:#2f5a3e;
+        font-size:11px;
+        font-weight:900;
+      }
+
+      .dsw-fee__tbody tr.is-open::after{
+        content:"접기 −";
+        background:#2f5a3e;
+        color:#fff;
+      }
+
+      .dsw-fee__tbody td{
+        position:relative;
+        display:flex !important;
+        justify-content:space-between;
+        align-items:center;
+        gap:12px;
+        padding:12px 14px !important;
+        font-size:14px !important;
+        line-height:1.45;
+        text-align:right !important;
+        white-space:normal !important;
+        word-break:keep-all;
+        border-right:0 !important;
+        border-bottom:1px solid rgba(31,64,47,.08);
+        background:rgba(255,255,255,.76);
+        color:#243228 !important;
+      }
+
+      .dsw-fee__tbody td:not(.col-grade){
+        display:none !important;
+      }
+
+      .dsw-fee__tbody tr.is-open td:not(.col-grade){
+        display:flex !important;
+      }
+
+      .dsw-fee__tbody td::before{
+        content:attr(data-label);
+        flex:0 0 auto;
+        max-width:52%;
+        font-size:13px;
+        font-weight:900;
+        color:#2f5a3e;
+        text-align:left;
+      }
+
+      .dsw-fee__tbody td.col-grade{
+        justify-content:flex-start;
+        min-height:58px;
+        padding:16px 96px 16px 16px !important;
+        text-align:left !important;
+        font-size:19px !important;
+        color:#173d29 !important;
+        background:
+          linear-gradient(135deg,rgba(79,139,99,.13),rgba(201,135,45,.11)),
+          #fff;
+        border-bottom:0;
+      }
+
+      .dsw-fee__tbody td.col-grade::before{
+        display:none;
+      }
+
+      .dsw-fee__note{
+        padding:15px 16px 18px;
+        font-size:12.5px;
+        line-height:1.6;
+      }
+
+      .dsw-fee__extra{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .dsw-fee__infoBox{
+        padding:20px;
+        border-radius:22px;
+      }
+
+      .dsw-fee__miniList li{
+        font-size:14px;
+      }
+
+      .dsw-fee__calculator{
+        padding:22px 14px;
+        border-radius:24px;
+      }
+
+      .dsw-fee__calcGrid{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-fee__checks{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-fee__result{
+        grid-template-columns:1fr;
+      }
+
+      .dsw-fee__resultBox strong{
+        font-size:23px;
+      }
+    }
+  </style>
+
+  <div class="dsw-fee__wrap">
+    <div class="dsw-fee__eyebrow">THE SUWON CARE GUIDE</div>
+
+    <h1 class="dsw-fee__mainTitle">
+      <strong>더수원</strong> 비용 안내
+    </h1>
+
+    <p class="dsw-fee__desc">
+      보호자분들이 가장 궁금해하시는 요양원·주간보호 비용을 한눈에 확인하실 수 있도록 정리했습니다.
+      장기요양보험 급여 본인부담금과 비급여 항목을 함께 확인하실 수 있습니다.
+    </p>
+
+    <div class="dsw-fee__summary">
+      <div class="dsw-fee__summaryCard">
+        <strong>급여 비용</strong>
+        <p>장기요양등급과 이용 시간에 따라 정해지는 수가입니다. 감경 여부에 따라 본인부담률이 달라집니다.</p>
+      </div>
+      <div class="dsw-fee__summaryCard">
+        <strong>비급여 비용</strong>
+        <p>식사비와 간식비처럼 장기요양보험 급여에 포함되지 않는 항목입니다.</p>
+      </div>
+      <div class="dsw-fee__summaryCard">
+        <strong>예상 계산기</strong>
+        <p>등급과 감경비율을 선택하면 월 예상 본인부담금을 확인할 수 있습니다.</p>
       </div>
     </div>
-  </header>
 
-  <nav class="dsw-admission-tabs" aria-label="입소 안내 탭">
-    <button class="dsw-admission-tab is-active" type="button" data-tab="nursing" aria-controls="dsw-panel-nursing" aria-selected="true">
-      <span class="dsw-admission-tab__ico" aria-hidden="true">🏡</span>
-      <span>요양원 입소 안내</span>
-    </button>
+    <div class="dsw-fee__tabs" role="tablist" aria-label="비용 안내 탭">
+      <button type="button" class="dsw-fee__tab" id="dswTabNursing" aria-selected="true">
+        요양원 비용
+      </button>
+      <button type="button" class="dsw-fee__tab" id="dswTabDaycare" aria-selected="false">
+        주간보호 비용
+      </button>
+    </div>
 
-    <button class="dsw-admission-tab" type="button" data-tab="daycare" aria-controls="dsw-panel-daycare" aria-selected="false">
-      <span class="dsw-admission-tab__ico" aria-hidden="true">☀️</span>
-      <span>주간보호 이용 안내</span>
-    </button>
-  </nav>
-
-  <div class="dsw-admission-panels">
-    <section id="dsw-panel-nursing" class="dsw-admission-panel is-open" data-panel="nursing" aria-label="요양원 입소 안내">
-      <div class="dsw-admission-grid">
-        <article class="dsw-admission-card">
-          <h3 class="dsw-admission-h3">입소 절차</h3>
-          <ol class="dsw-admission-steps">
-            <li><span class="dsw-admission-step-num">1</span><div><strong>전화/방문 상담</strong><p>어르신 상태, 돌봄 필요도, 등급 여부를 확인합니다.</p></div></li>
-            <li><span class="dsw-admission-step-num">2</span><div><strong>시설 방문</strong><p>생활 공간, 프로그램, 식사/위생 동선을 안내드립니다.</p></div></li>
-            <li><span class="dsw-admission-step-num">3</span><div><strong>필요 서류 안내</strong><p>등급, 의사소견, 약 처방 등 상황별 체크리스트를 안내드립니다.</p></div></li>
-            <li><span class="dsw-admission-step-num">4</span><div><strong>입소 일정 확정</strong><p>대기/입소일 조율 후 계약 및 입소 준비를 진행합니다.</p></div></li>
-          </ol>
-        </article>
-
-        <article class="dsw-admission-card">
-          <h3 class="dsw-admission-h3">입소 대상</h3>
-          <ul class="dsw-admission-list">
-            <li>장기요양등급 보유 어르신</li>
-            <li>일상생활 도움이 지속적으로 필요한 어르신</li>
-            <li>보호자 돌봄 공백으로 상시 돌봄이 필요한 경우</li>
-          </ul>
-          <div class="dsw-admission-note">
-            <strong>포인트</strong>
-            <p>등급이 아직 없더라도 상담 가능합니다. 상황에 맞춰 필요한 절차를 안내드려요.</p>
+    <article class="dsw-fee__panel" id="dswPanelNursing" role="tabpanel">
+      <header class="dsw-fee__ribbon">
+        <div class="dsw-fee__brandRow">
+          <div class="dsw-fee__brand">
+            <span class="dsw-fee__logo" aria-hidden="true"></span>
+            <span class="brandText">더수원</span>
           </div>
-        </article>
+          <a class="dsw-fee__call callBtn" href="#">📞 전화 상담</a>
+        </div>
 
-        <article class="dsw-admission-card">
-          <h3 class="dsw-admission-h3">준비 서류</h3>
-          <ul class="dsw-admission-check">
-            <li><label><input type="checkbox"> 장기요양인정서 / 표준장기요양이용계획서</label></li>
-            <li><label><input type="checkbox"> 신분증 사본</label></li>
-            <li><label><input type="checkbox"> 진단서/소견서 또는 최근 진료기록</label></li>
-            <li><label><input type="checkbox"> 복용 약 목록, 처방전</label></li>
-            <li><label><input type="checkbox"> 건강검진/감염 관련 확인서류</label></li>
-          </ul>
-          <p class="dsw-admission-muted">※ 어르신 상태와 기관 기준에 따라 항목이 달라질 수 있어요.</p>
-        </article>
+        <h2 class="dsw-fee__title">
+          <span>2026년</span> <span class="accent">요양원</span> 수가표
+        </h2>
+        <div class="dsw-fee__subtitleWrap">
+          <span class="dsw-fee__subtitle">등급별 수가 · 본인부담금 안내</span>
+        </div>
+        <p class="mobile-only-help">등급 카드를 누르면 상세 금액이 펼쳐집니다.</p>
+      </header>
+
+      <div class="dsw-fee__card">
+        <div class="dsw-fee__scroll">
+          <table class="dsw-fee__table" aria-label="2026년 요양원 수가표">
+            <thead class="dsw-fee__thead">
+              <tr>
+                <th class="th-grade">등급</th>
+                <th class="th-fee">2026년<br>수가</th>
+                <th class="th-a">본인부담금<br>(20%)</th>
+                <th class="th-b">본인부담금<br>(12%)</th>
+                <th class="th-c">본인부담금<br>(8%)</th>
+              </tr>
+            </thead>
+            <tbody class="dsw-fee__tbody">
+              <tr>
+                <td class="col-grade" data-label="등급">1등급</td>
+                <td class="col-fee" data-label="2026년 수가">93,070원</td>
+                <td data-label="본인부담금 20%">18,614원</td>
+                <td data-label="본인부담금 12%">11,168원</td>
+                <td data-label="본인부담금 8%">7,446원</td>
+              </tr>
+              <tr>
+                <td class="col-grade" data-label="등급">2등급</td>
+                <td class="col-fee" data-label="2026년 수가">86,340원</td>
+                <td data-label="본인부담금 20%">17,268원</td>
+                <td data-label="본인부담금 12%">10,361원</td>
+                <td data-label="본인부담금 8%">6,907원</td>
+              </tr>
+              <tr>
+                <td class="col-grade" data-label="등급">3·4·5등급</td>
+                <td class="col-fee" data-label="2026년 수가">81,540원</td>
+                <td data-label="본인부담금 20%">16,308원</td>
+                <td data-label="본인부담금 12%">9,785원</td>
+                <td data-label="본인부담금 8%">6,523원</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dsw-fee__note">
+          💡 본 표는 등급별 급여 수가 및 본인부담금 예시입니다.<br>
+          감경·의료급여 등 대상 여부에 따라 실제 비용은 달라질 수 있습니다.
+        </div>
       </div>
-    </section>
+    </article>
 
-    <section id="dsw-panel-daycare" class="dsw-admission-panel" data-panel="daycare" aria-label="주간보호 이용 안내" hidden>
-      <div class="dsw-admission-grid">
-        <article class="dsw-admission-card">
-          <h3 class="dsw-admission-h3">이용 절차</h3>
-          <ol class="dsw-admission-steps">
-            <li><span class="dsw-admission-step-num">1</span><div><strong>전화 상담</strong><p>어르신 상태, 이동, 희망 요일·시간을 확인합니다.</p></div></li>
-            <li><span class="dsw-admission-step-num">2</span><div><strong>방문 상담</strong><p>프로그램, 식사, 재활, 송영 운영을 안내드립니다.</p></div></li>
-            <li><span class="dsw-admission-step-num">3</span><div><strong>서류 확인</strong><p>등급/이용계획서 및 건강 상태를 확인합니다.</p></div></li>
-            <li><span class="dsw-admission-step-num">4</span><div><strong>이용 시작</strong><p>개별 일정 확정 후 송영/프로그램에 맞춰 진행합니다.</p></div></li>
-          </ol>
-        </article>
-
-        <article class="dsw-admission-card">
-          <h3 class="dsw-admission-h3">주요 서비스</h3>
-          <ul class="dsw-admission-list">
-            <li>인지·여가 프로그램 / 사회성 활동</li>
-            <li>운동·재활 중심 활동</li>
-            <li>식사·간식, 일상생활 지원</li>
-            <li>송영 차량 운영</li>
-          </ul>
-          <div class="dsw-admission-note">
-            <strong>포인트</strong>
-            <p>보호자 출근 시간대나 병원 일정에 맞춘 이용을 최대한 도와드립니다.</p>
+    <article class="dsw-fee__panel dsw-fee__hidden" id="dswPanelDaycare" role="tabpanel">
+      <header class="dsw-fee__ribbon">
+        <div class="dsw-fee__brandRow">
+          <div class="dsw-fee__brand">
+            <span class="dsw-fee__logo" aria-hidden="true"></span>
+            <span class="brandText">더수원</span>
           </div>
-        </article>
+          <a class="dsw-fee__call callBtn" href="#">📞 전화 상담</a>
+        </div>
 
-        <article class="dsw-admission-card">
-          <h3 class="dsw-admission-h3">준비 서류</h3>
-          <ul class="dsw-admission-check">
-            <li><label><input type="checkbox"> 장기요양인정서 / 표준장기요양이용계획서</label></li>
-            <li><label><input type="checkbox"> 복용 약 목록</label></li>
-            <li><label><input type="checkbox"> 식이/낙상/인지 특이사항 메모</label></li>
-          </ul>
-          <p class="dsw-admission-muted">※ 필요한 항목은 상담 시 정확히 안내드립니다.</p>
-        </article>
+        <h2 class="dsw-fee__title">
+          <span>2026년</span> <span class="accent">주간보호</span> 수가표
+        </h2>
+        <div class="dsw-fee__subtitleWrap">
+          <span class="dsw-fee__subtitle">8시간 이상 ~ 10시간 미만 기준</span>
+        </div>
+        <p class="mobile-only-help">등급 카드를 누르면 상세 금액이 펼쳐집니다.</p>
+      </header>
+
+      <div class="dsw-fee__card">
+        <div class="dsw-fee__scroll">
+          <table class="dsw-fee__table" aria-label="2026년 주간보호 수가표">
+            <thead class="dsw-fee__thead">
+              <tr>
+                <th class="th-grade">등급</th>
+                <th class="th-fee">2026년<br>수가</th>
+                <th class="th-a">본인부담금<br>(15%)</th>
+                <th class="th-b">본인부담금<br>(9%)</th>
+                <th class="th-c">본인부담금<br>(6%)</th>
+              </tr>
+            </thead>
+            <tbody class="dsw-fee__tbody">
+              <tr>
+                <td class="col-grade" data-label="등급">2등급</td>
+                <td class="col-fee" data-label="2026년 수가">64,590원</td>
+                <td data-label="본인부담금 15%">9,689원</td>
+                <td data-label="본인부담금 9%">5,813원</td>
+                <td data-label="본인부담금 6%">3,875원</td>
+              </tr>
+              <tr>
+                <td class="col-grade" data-label="등급">3등급</td>
+                <td class="col-fee" data-label="2026년 수가">59,640원</td>
+                <td data-label="본인부담금 15%">8,946원</td>
+                <td data-label="본인부담금 9%">5,368원</td>
+                <td data-label="본인부담금 6%">3,578원</td>
+              </tr>
+              <tr>
+                <td class="col-grade" data-label="등급">4등급</td>
+                <td class="col-fee" data-label="2026년 수가">58,010원</td>
+                <td data-label="본인부담금 15%">8,702원</td>
+                <td data-label="본인부담금 9%">5,221원</td>
+                <td data-label="본인부담금 6%">3,481원</td>
+              </tr>
+              <tr>
+                <td class="col-grade" data-label="등급">5등급</td>
+                <td class="col-fee" data-label="2026년 수가">56,360원</td>
+                <td data-label="본인부담금 15%">8,454원</td>
+                <td data-label="본인부담금 9%">5,072원</td>
+                <td data-label="본인부담금 6%">3,382원</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dsw-fee__note">
+          💡 본 표는 8시간 이상 ~ 10시간 미만 이용 기준의 예시입니다.<br>
+          실제 비용은 이용 시간, 등급, 감경 여부에 따라 달라질 수 있습니다.
+        </div>
       </div>
+    </article>
+
+    <div class="dsw-fee__extra">
+      <section class="dsw-fee__infoBox">
+        <h3 id="nonpayTitle">요양원 비급여 항목 안내</h3>
+        <p id="nonpayDesc">
+          요양원 식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다.
+          실제 이용한 횟수에 따라 별도 청구됩니다.
+        </p>
+        <ul class="dsw-fee__miniList" id="nonpayGuideList"></ul>
+      </section>
+
+      <section class="dsw-fee__infoBox">
+        <h3>비용 확인 시 참고사항</h3>
+        <p>
+          월 비용은 등급, 감경비율, 식사·간식 이용 여부에 따라 달라집니다.
+          아래 계산기는 보호자님이 대략적인 월 예상 비용을 확인하기 위한 참고용입니다.
+        </p>
+        <ul class="dsw-fee__miniList">
+          <li>요양원 일반 본인부담 <span>20%</span></li>
+          <li>주간보호 일반 본인부담 <span>15%</span></li>
+          <li>계산 기준 <span>요양원 7일 / 주간보호 선택일</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="dsw-fee__calculator" aria-label="본인부담금 계산기">
+      <div class="dsw-fee__calculatorHead">
+        <h2>월 예상 본인부담금 계산기</h2>
+        <p>
+          서비스 종류, 등급, 감경비율과 비급여 이용 여부를 선택하면 예상 금액이 자동 계산됩니다.
+        </p>
+      </div>
+
+      <div class="dsw-fee__calcGrid">
+        <div class="dsw-fee__field">
+          <label for="calcService">서비스 종류</label>
+          <select id="calcService">
+            <option value="nursing">요양원</option>
+            <option value="daycare">주간보호</option>
+          </select>
+        </div>
+
+        <div class="dsw-fee__field">
+          <label for="calcGrade">장기요양등급</label>
+          <select id="calcGrade"></select>
+        </div>
+
+        <div class="dsw-fee__field">
+          <label for="calcRate">감경비율</label>
+          <select id="calcRate"></select>
+        </div>
+
+        <div class="dsw-fee__field" id="calcDaysField">
+          <label for="calcDays">주 이용일자</label>
+          <select id="calcDays">
+            <option value="1">주 1일</option>
+            <option value="2">주 2일</option>
+            <option value="3">주 3일</option>
+            <option value="4">주 4일</option>
+            <option value="5" selected>주 5일</option>
+            <option value="6">주 6일</option>
+          
+          </select>
+        </div>
+      </div>
+
+      <div class="dsw-fee__nonpay">
+        <p class="dsw-fee__nonpayTitle">비급여 이용 항목</p>
+        <div class="dsw-fee__checks">
+          <label id="breakfastLabel"><input type="checkbox" id="breakfast"> <span id="breakfastText">아침 3,500원</span></label>
+          <label id="snackAmLabel"><input type="checkbox" id="snackAm"> <span id="snackAmText">오전 간식 1,000원</span></label>
+         
+          <label id="lunchLabel"><input type="checkbox" id="lunch"> <span id="lunchText">점심 3,500원</span></label>
+           <label id="snackPmLabel"><input type="checkbox" id="snackPm"> <span id="snackPmText">오후 간식 1,000원</span></label>
+          <label id="dinnerLabel"><input type="checkbox" id="dinner"> <span id="dinnerText">저녁 3,500원</span></label>
+        </div>
+      </div>
+
+      <div class="dsw-fee__result">
+        <div class="dsw-fee__resultBox">
+          <span>월 급여 본인부담금</span>
+          <strong id="resultCare">0원</strong>
+        </div>
+
+        <div class="dsw-fee__resultBox">
+          <span>월 비급여 예상액</span>
+          <strong id="resultNonpay">0원</strong>
+        </div>
+
+        <div class="dsw-fee__resultBox total">
+          <span>월 예상 총액</span>
+          <strong id="resultTotal">0원</strong>
+        </div>
+      </div>
+
+      <p class="dsw-fee__calcNote" id="calcNote">
+        ※ 계산기는 요양원 7일 상주 기준의 단순 예상 금액입니다. 실제 청구 금액은 이용일수, 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.
+      </p>
     </section>
   </div>
+
+  <script>
+    (function(){
+      var root = document.getElementById("dswFeeDesktop");
+      if (!root) return;
+
+      var cfg = window.DSW_COST_PAGE || {};
+      var brandNodes = root.querySelectorAll(".brandText");
+      var callNodes = root.querySelectorAll(".callBtn");
+
+      brandNodes.forEach(function(node){
+        node.textContent = cfg.BRAND || "더수원";
+      });
+
+      var tel = (cfg.TEL || "").replace(/[^0-9]/g, "");
+      var telHref = tel ? "tel:" + tel : "#";
+
+      callNodes.forEach(function(node){
+        node.href = telHref;
+      });
+
+      var tabN = document.getElementById("dswTabNursing");
+      var tabD = document.getElementById("dswTabDaycare");
+      var panelN = document.getElementById("dswPanelNursing");
+      var panelD = document.getElementById("dswPanelDaycare");
+
+      var calcService = document.getElementById("calcService");
+      var calcGrade = document.getElementById("calcGrade");
+      var calcRate = document.getElementById("calcRate");
+      var calcDays = document.getElementById("calcDays");
+      var calcDaysField = document.getElementById("calcDaysField");
+
+      var breakfast = document.getElementById("breakfast");
+      var snackAm = document.getElementById("snackAm");
+      var snackPm = document.getElementById("snackPm");
+      var lunch = document.getElementById("lunch");
+      var dinner = document.getElementById("dinner");
+
+      var breakfastLabel = document.getElementById("breakfastLabel");
+      var snackAmLabel = document.getElementById("snackAmLabel");
+      var snackPmLabel = document.getElementById("snackPmLabel");
+      var lunchLabel = document.getElementById("lunchLabel");
+      var dinnerLabel = document.getElementById("dinnerLabel");
+
+      var breakfastText = document.getElementById("breakfastText");
+      var snackAmText = document.getElementById("snackAmText");
+      var snackPmText = document.getElementById("snackPmText");
+      var lunchText = document.getElementById("lunchText");
+      var dinnerText = document.getElementById("dinnerText");
+
+      var nonpayTitle = document.getElementById("nonpayTitle");
+      var nonpayDesc = document.getElementById("nonpayDesc");
+      var nonpayGuideList = document.getElementById("nonpayGuideList");
+      var calcNote = document.getElementById("calcNote");
+
+      var resultCare = document.getElementById("resultCare");
+      var resultNonpay = document.getElementById("resultNonpay");
+      var resultTotal = document.getElementById("resultTotal");
+
+      var rateData = {
+        daycare: {
+          grades: {
+            "2등급": 64590,
+            "3등급": 59640,
+            "4등급": 58010,
+            "5등급": 56360
+          },
+          rates: {
+            "일반 15%": 0.15,
+            "감경 9%": 0.09,
+            "감경 6%": 0.06
+          }
+        },
+        nursing: {
+          grades: {
+            "1등급": 93070,
+            "2등급": 86340,
+            "3·4·5등급": 81540
+          },
+          rates: {
+            "일반 20%": 0.20,
+            "감경 12%": 0.12,
+            "감경 8%": 0.08
+          }
+        }
+      };
+
+      var nonpayData = {
+        nursing: {
+          breakfast: 3500,
+          snackAm: 1000,
+          snackPm: 1000,
+          lunch: 3500,
+          dinner: 3500
+        },
+        daycare: {
+          breakfast: 0,
+          snackAm: 1000,
+          snackPm: 1000,
+          lunch: 3500,
+          dinner: 4000
+        }
+      };
+
+      var nonpayGuideData = {
+        nursing: {
+          title: "요양원 비급여 항목 안내",
+          desc: "요양원 식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다. 실제 이용한 횟수에 따라 별도 청구됩니다.",
+          items: [
+            ["아침 식사", "3,500원"],
+            ["오전 간식", "1,000원"],
+            ["점심 식사", "3,500원"],
+            ["오후 간식", "1,000원"],
+            ["저녁 식사", "3,500원"]
+          ]
+        },
+        daycare: {
+          title: "주간보호 비급여 항목 안내",
+          desc: "주간보호 식사비와 간식비는 장기요양보험 급여에 포함되지 않는 비급여 항목입니다. 실제 이용한 횟수에 따라 별도 청구됩니다.",
+          items: [
+            ["오전 간식", "1,000원"],
+            ["오후 간식", "1,000원"],
+            ["점심 식사", "3,500원"],
+            ["저녁 식사", "4,000원"]
+          ]
+        }
+      };
+
+      function money(value){
+        return Math.round(value).toLocaleString("ko-KR") + "원";
+      }
+
+      function fillSelect(select, items){
+        select.innerHTML = "";
+
+        items.forEach(function(item){
+          var option = document.createElement("option");
+          option.value = item;
+          option.textContent = item;
+          select.appendChild(option);
+        });
+      }
+
+      function setVisible(el, visible){
+        el.style.display = visible ? "flex" : "none";
+      }
+
+      function renderNonpayGuide(service){
+        var guide = nonpayGuideData[service];
+
+        nonpayTitle.textContent = guide.title;
+        nonpayDesc.textContent = guide.desc;
+        nonpayGuideList.innerHTML = "";
+
+        guide.items.forEach(function(item){
+          var li = document.createElement("li");
+          li.innerHTML = item[0] + " <span>" + item[1] + "</span>";
+          nonpayGuideList.appendChild(li);
+        });
+      }
+
+      function updateNonpayOptions(service){
+        if (service === "nursing") {
+          calcDaysField.style.display = "none";
+          calcDays.value = "7";
+
+          breakfastText.textContent = "아침 3,500원";
+          snackAmText.textContent = "오전 간식 1,000원";
+          snackPmText.textContent = "오후 간식 1,000원";
+          lunchText.textContent = "점심 3,500원";
+          dinnerText.textContent = "저녁 3,500원";
+
+          setVisible(breakfastLabel, true);
+          setVisible(snackAmLabel, true);
+          setVisible(snackPmLabel, true);
+          setVisible(lunchLabel, true);
+          setVisible(dinnerLabel, true);
+
+          breakfast.checked = true;
+          snackAm.checked = true;
+          snackPm.checked = true;
+          lunch.checked = true;
+          dinner.checked = true;
+
+          calcNote.textContent = "※ 계산기는 요양원 7일 상주 기준의 단순 예상 금액입니다. 실제 청구 금액은 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.";
+        } else {
+          calcDaysField.style.display = "flex";
+          calcDays.value = "5";
+
+          breakfastText.textContent = "아침 3,500원";
+          snackAmText.textContent = "오전 간식 1,000원";
+          snackPmText.textContent = "오후 간식 1,000원";
+          lunchText.textContent = "점심 3,500원";
+          dinnerText.textContent = "저녁 4,000원";
+
+          setVisible(breakfastLabel, false);
+          setVisible(snackAmLabel, true);
+          setVisible(snackPmLabel, true);
+          setVisible(lunchLabel, true);
+          setVisible(dinnerLabel, true);
+
+          breakfast.checked = false;
+          snackAm.checked = true;
+          snackPm.checked = true;
+          lunch.checked = true;
+          dinner.checked = false;
+
+          calcNote.textContent = "※ 계산기는 주 이용일 × 4주 기준의 단순 예상 금액입니다. 실제 청구 금액은 이용일수, 이용시간, 감경 자격, 식사·간식 제공 횟수에 따라 달라질 수 있습니다.";
+        }
+      }
+
+      function updateCalculatorOptions(){
+        var service = calcService.value;
+        var data = rateData[service];
+
+        fillSelect(calcGrade, Object.keys(data.grades));
+        fillSelect(calcRate, Object.keys(data.rates));
+
+        updateNonpayOptions(service);
+        renderNonpayGuide(service);
+        calculate();
+      }
+
+      function calculate(){
+        var service = calcService.value;
+        var grade = calcGrade.value;
+        var rate = calcRate.value;
+        var days = service === "nursing" ? 7 : Number(calcDays.value || 0);
+        var monthDays = days * 4;
+
+        var dailyFee = rateData[service].grades[grade] || 0;
+        var rateValue = rateData[service].rates[rate] || 0;
+
+        var monthlyCare = dailyFee * rateValue * monthDays;
+
+        var dailyNonpay = 0;
+        var nonpay = nonpayData[service];
+
+        if (breakfast.checked) dailyNonpay += nonpay.breakfast;
+        if (snackAm.checked) dailyNonpay += nonpay.snackAm;
+        if (snackPm.checked) dailyNonpay += nonpay.snackPm;
+        if (lunch.checked) dailyNonpay += nonpay.lunch;
+        if (dinner.checked) dailyNonpay += nonpay.dinner;
+
+        var monthlyNonpay = dailyNonpay * monthDays;
+        var total = monthlyCare + monthlyNonpay;
+
+        resultCare.textContent = money(monthlyCare);
+        resultNonpay.textContent = money(monthlyNonpay);
+        resultTotal.textContent = money(total);
+      }
+
+      function activate(target){
+        var isNursing = target === "nursing";
+
+        tabN.setAttribute("aria-selected", isNursing ? "true" : "false");
+        tabD.setAttribute("aria-selected", isNursing ? "false" : "true");
+
+        panelN.classList.toggle("dsw-fee__hidden", !isNursing);
+        panelD.classList.toggle("dsw-fee__hidden", isNursing);
+
+        calcService.value = isNursing ? "nursing" : "daycare";
+        updateCalculatorOptions();
+      }
+
+      tabN.addEventListener("click", function(){
+        activate("nursing");
+      });
+
+      tabD.addEventListener("click", function(){
+        activate("daycare");
+      });
+
+      root.querySelectorAll(".dsw-fee__tbody tr").forEach(function(row){
+        row.setAttribute("tabindex", "0");
+        row.setAttribute("role", "button");
+        row.setAttribute("aria-expanded", "false");
+
+        row.addEventListener("click", function(){
+          if (window.innerWidth > 767) return;
+
+          var tbody = row.closest(".dsw-fee__tbody");
+          var isOpen = row.classList.contains("is-open");
+
+          tbody.querySelectorAll("tr").forEach(function(other){
+            other.classList.remove("is-open");
+            other.setAttribute("aria-expanded", "false");
+          });
+
+          if (!isOpen) {
+            row.classList.add("is-open");
+            row.setAttribute("aria-expanded", "true");
+          }
+        });
+
+        row.addEventListener("keydown", function(e){
+          if (window.innerWidth > 767) return;
+
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            row.click();
+          }
+        });
+      });
+
+      [
+        calcService,
+        calcGrade,
+        calcRate,
+        calcDays,
+        breakfast,
+        snackAm,
+        snackPm,
+        lunch,
+        dinner
+      ].forEach(function(el){
+        el.addEventListener("change", function(){
+          if (el === calcService) {
+            var target = calcService.value;
+            activate(target);
+          } else {
+            calculate();
+          }
+        });
+      });
+
+      activate("nursing");
+    })();
+  </script>
 </section>
 
 <div id="site-footer"></div>
-
-<style>
-#dsw-admission-desktop.dsw-admission{
-  --brand:#24563a;
-  --brand-dark:#173d29;
-  --brand-light:#6fae7f;
-  --brand-soft:#eef7f1;
-  --accent:#d9a441;
-  --accent-light:#f6d37a;
-  --ink:#18251d;
-  --muted:#5c685f;
-
-  font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;
-  color:var(--ink);
-  max-width:1120px;
-  margin:48px auto;
-  padding:38px 26px 96px;
-  border-radius:34px;
-  background:
-    radial-gradient(circle at 8% 0%, rgba(217,164,65,.14), transparent 31%),
-    radial-gradient(circle at 95% 12%, rgba(36,86,58,.10), transparent 28%),
-    linear-gradient(180deg, #ffffff 0%, #f7fbf8 100%);
-  border:1px solid rgba(36,86,58,.14);
-  box-shadow:0 44px 90px rgba(23,61,41,.14);
-}
-
-#dsw-admission-desktop *{ box-sizing:border-box; }
-
-#dsw-admission-desktop .dsw-sr-only{
-  position:absolute!important;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-}
-
-#dsw-admission-desktop .dsw-admission-hero{
-  border-radius:32px;
-  background:linear-gradient(145deg,#ffffff,#eef7f1);
-  border:1px solid rgba(36,86,58,.16);
-  box-shadow:
-    0 34px 70px rgba(23,61,41,.16),
-    0 14px 30px rgba(23,61,41,.08),
-    inset 0 1px 0 rgba(255,255,255,.88);
-  overflow:hidden;
-}
-
-#dsw-admission-desktop .dsw-admission-hero__inner{
-  padding:24px;
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy{
-  position:relative;
-  overflow:hidden;
-  min-height:430px;
-  border-radius:28px;
-  padding:42px 36px;
-  background:rgba(255,255,255,.54);
-  border:1px solid rgba(255,255,255,.50);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.72),
-    inset 0 -18px 32px rgba(36,86,58,.04),
-    0 24px 46px rgba(11,18,32,.10);
-  backdrop-filter:blur(2px);
-  transition:
-    transform .28s ease,
-    box-shadow .28s ease,
-    background .28s ease;
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy:hover{
-  transform:translateY(-2px) scale(1.005);
-  background:rgba(255,255,255,.48);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.68),
-    inset 0 -18px 32px rgba(36,86,58,.035),
-    0 30px 54px rgba(11,18,32,.13);
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background-image:url("https://cdn.imweb.me/upload/S20250616705368ebc899d/5fac2640fe093.png");
-  background-size:cover;
-  background-position:center center;
-  background-repeat:no-repeat;
-  opacity:1;
-  filter:
-    contrast(1.12)
-    saturate(1.16)
-    brightness(.92);
-  transform:scale(1.03);
-  transition:
-    transform .32s ease,
-    filter .32s ease;
-  image-rendering:auto;
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy:hover::before{
-  filter:
-    contrast(1.16)
-    saturate(1.22)
-    brightness(.98);
-  transform:scale(1.045);
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.72) 0%,
-      rgba(255,255,255,.54) 34%,
-      rgba(255,255,255,.16) 62%,
-      rgba(20,40,28,.16) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.01),
-      rgba(0,0,0,.08)
-    );
-  transition:background .32s ease;
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy:hover::after{
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.68) 0%,
-      rgba(255,255,255,.48) 34%,
-      rgba(255,255,255,.12) 62%,
-      rgba(20,40,28,.11) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.02),
-      rgba(0,0,0,.06)
-    );
-}
-
-#dsw-admission-desktop .dsw-admission-hero__copy > *{
-  position:relative;
-  z-index:2;
-}
-
-#dsw-admission-desktop .dsw-admission-badge{
-  display:inline-flex;
-  margin:0 0 16px;
-  padding:9px 14px;
-  border-radius:999px;
-  color:var(--brand-dark);
-  background:linear-gradient(145deg, rgba(255,255,255,.90), rgba(238,247,241,.78));
-  border:1px solid rgba(36,86,58,.18);
-  font-weight:950;
-  box-shadow:0 12px 20px rgba(23,61,41,.10);
-}
-
-#dsw-admission-desktop .dsw-admission-title{
-  position:relative;
-  margin:0;
-  padding-left:16px;
-  color:var(--brand-dark);
-  font-size:clamp(28px,3.3vw,40px);
-  line-height:1.2;
-  letter-spacing:-.048em;
-  font-weight:1000;
-  text-shadow:
-    0 2px 0 rgba(255,255,255,.72),
-    0 10px 18px rgba(23,61,41,.08);
-}
-
-#dsw-admission-desktop .dsw-admission-title::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:.12em;
-  width:6px;
-  height:1.8em;
-  border-radius:999px;
-  background:linear-gradient(180deg,#3f7a55,#d9a441);
-}
-
-#dsw-admission-desktop .dsw-admission-subtitle{
-  margin:16px 0 0;
-  color:var(--muted);
-  line-height:1.82;
-  font-size:17px;
-  font-weight:680;
-}
-
-#dsw-admission-desktop .dsw-admission-cta{
-  display:flex;
-  gap:10px;
-  margin:24px 0 18px;
-}
-
-#dsw-admission-desktop .dsw-admission-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  text-decoration:none;
-  border-radius:999px;
-  padding:14px 20px;
-  font-weight:950;
-  position:relative;
-  overflow:hidden;
-  transition:.18s ease;
-}
-
-#dsw-admission-desktop .dsw-admission-btn--primary{
-  color:#fff!important;
-  background:
-    radial-gradient(120% 150% at 18% 0%, rgba(255,255,255,.28), transparent 42%),
-    linear-gradient(145deg,#6cae7c 0%,#2f7048 42%,#173d29 100%);
-  box-shadow:
-    0 14px 0 rgba(19,62,40,.20),
-    0 24px 38px rgba(23,61,41,.24),
-    inset 0 2px 0 rgba(255,255,255,.28),
-    inset 0 -5px 12px rgba(0,0,0,.18);
-}
-
-#dsw-admission-desktop .dsw-admission-btn--primary:hover{
-  transform:translateY(-3px);
-  filter:saturate(1.04) brightness(1.02);
-}
-
-#dsw-admission-desktop .dsw-admission-call-ico{
-  width:35px;
-  height:35px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  background:rgba(255,255,255,.18);
-}
-
-#dsw-admission-desktop .dsw-admission-call-num{
-  padding-left:10px;
-  margin-left:4px;
-  border-left:1px solid rgba(255,255,255,.28);
-  font-weight:1000;
-}
-
-#dsw-admission-desktop .dsw-admission-quick{
-  list-style:none;
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:13px;
-  padding:0;
-  margin:20px 0 0;
-  max-width:740px;
-}
-
-#dsw-admission-desktop .dsw-admission-quick li,
-#dsw-admission-desktop .dsw-admission-tab,
-#dsw-admission-desktop .dsw-admission-card{
-  position:relative;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.66);
-  background:
-    radial-gradient(120% 120% at 15% 0%, rgba(255,255,255,.92), rgba(255,255,255,.70) 52%, rgba(238,247,241,.90) 100%);
-  box-shadow:
-    0 12px 0 rgba(36,86,58,.07),
-    0 24px 42px rgba(11,18,32,.10),
-    inset 0 1px 0 rgba(255,255,255,.88),
-    inset 0 -12px 24px rgba(36,86,58,.05);
-  transition:.24s ease;
-}
-
-#dsw-admission-desktop .dsw-admission-quick li{
-  border-radius:18px;
-  padding:15px 14px;
-}
-
-#dsw-admission-desktop .dsw-admission-quick li:hover,
-#dsw-admission-desktop .dsw-admission-card:hover{
-  transform:translateY(-4px);
-  filter:saturate(1.02) brightness(1.01);
-  box-shadow:
-    0 16px 0 rgba(36,86,58,.06),
-    0 30px 52px rgba(23,61,41,.14);
-}
-
-#dsw-admission-desktop .dsw-admission-quick strong{
-  display:block;
-  color:var(--brand-dark);
-  font-weight:1000;
-  margin-bottom:5px;
-}
-
-#dsw-admission-desktop .dsw-admission-quick span{
-  color:var(--muted);
-  font-weight:750;
-  font-size:14px;
-}
-
-#dsw-admission-desktop .dsw-admission-tabs{
-  display:flex;
-  gap:14px;
-  margin:22px 0 16px;
-  flex-wrap:wrap;
-}
-
-#dsw-admission-desktop .dsw-admission-tab{
-  flex:1 1 260px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  border-radius:999px;
-  padding:15px 18px;
-  font-weight:1000;
-  color:var(--ink);
-  cursor:pointer;
-}
-
-#dsw-admission-desktop .dsw-admission-tab.is-active{
-  color:var(--brand-dark);
-  border-color:rgba(217,164,65,.36);
-  background:
-    radial-gradient(120% 120% at 20% 0%, rgba(255,255,255,.92), rgba(246,211,122,.18) 45%, rgba(238,247,241,.94) 100%);
-}
-
-#dsw-admission-desktop .dsw-admission-tab__ico{
-  width:36px;
-  height:36px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  background:linear-gradient(145deg, rgba(255,255,255,.90), rgba(238,247,241,.82));
-}
-
-#dsw-admission-desktop .dsw-admission-panel{ display:none; }
-#dsw-admission-desktop .dsw-admission-panel.is-open{ display:block; }
-
-#dsw-admission-desktop .dsw-admission-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:17px;
-}
-
-#dsw-admission-desktop .dsw-admission-card{
-  border-radius:20px;
-  padding:22px;
-}
-
-#dsw-admission-desktop .dsw-admission-card:first-child{
-  grid-row:span 2;
-}
-
-#dsw-admission-desktop .dsw-admission-h3{
-  margin:0 0 13px;
-  font-size:20px;
-  color:var(--brand-dark);
-  font-weight:1000;
-}
-
-#dsw-admission-desktop .dsw-admission-h3::after{
-  content:"";
-  display:block;
-  width:42px;
-  height:4px;
-  margin-top:8px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#24563a,#d9a441);
-}
-
-#dsw-admission-desktop .dsw-admission-steps,
-#dsw-admission-desktop .dsw-admission-check{
-  margin:0;
-  padding:0;
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:11px;
-}
-
-#dsw-admission-desktop .dsw-admission-steps li,
-#dsw-admission-desktop .dsw-admission-check label{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  padding:14px;
-  border:1px solid rgba(36,86,58,.13);
-  border-radius:17px;
-  background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(248,251,249,.84));
-  box-shadow:
-    0 8px 0 rgba(36,86,58,.04),
-    0 14px 24px rgba(11,18,32,.05);
-}
-
-#dsw-admission-desktop .dsw-admission-step-num{
-  width:36px;
-  height:36px;
-  border-radius:999px;
-  background:radial-gradient(circle at 30% 15%, rgba(255,255,255,.88), rgba(246,211,122,.42) 35%, rgba(36,86,58,.16) 100%);
-  color:var(--brand-dark);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:1000;
-  flex:0 0 36px;
-}
-
-#dsw-admission-desktop .dsw-admission-steps p{
-  margin:4px 0 0;
-  color:var(--muted);
-  line-height:1.76;
-  font-weight:580;
-}
-
-#dsw-admission-desktop .dsw-admission-list{
-  margin:0;
-  padding-left:18px;
-  color:var(--muted);
-  line-height:1.9;
-  font-weight:620;
-}
-
-#dsw-admission-desktop .dsw-admission-note{
-  margin-top:15px;
-  border:1px solid rgba(217,164,65,.30);
-  background:linear-gradient(145deg, rgba(255,255,255,.88), rgba(217,164,65,.10));
-  border-radius:17px;
-  padding:14px;
-}
-
-#dsw-admission-desktop .dsw-admission-note strong{
-  color:var(--brand-dark);
-  font-weight:1000;
-}
-
-#dsw-admission-desktop .dsw-admission-note p{
-  margin:6px 0 0;
-  color:var(--muted);
-  line-height:1.75;
-}
-
-#dsw-admission-desktop .dsw-admission-check input{
-  margin-top:5px;
-  accent-color:var(--brand);
-}
-
-#dsw-admission-desktop .dsw-admission-muted{
-  margin:12px 0 0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.75;
-}
-
-@media(max-width:768px){
-  #dsw-admission-desktop.dsw-admission{
-    margin:24px auto;
-    padding:22px 14px 86px;
-    border-radius:24px;
+<style id="fee-care-theme-overrides">
+  body.theme-day .dsw-fee{
+    --deep:#3b2c32;--green:#a95050;--green2:#b95f55;--gold:#d88a35;
+    --cream:#fff7e9;--line:rgba(109,70,75,.16);
+    background:transparent!important;color:#3b2c32!important;
   }
-
-  #dsw-admission-desktop .dsw-admission-hero__inner{
-    padding:14px;
+  body.theme-night .dsw-fee{
+    --deep:#ffe7c1;--green:#f1b66d;--green2:#d97891;--gold:#f1b66d;
+    --cream:#121229;--line:rgba(255,225,211,.17);
+    background:transparent!important;color:#f7edf1!important;
   }
-
-  #dsw-admission-desktop .dsw-admission-hero__copy{
-    min-height:auto;
-    padding:30px 20px;
-    background:rgba(255,255,255,.62);
+  body.theme-day .dsw-fee__summaryCard,
+  body.theme-day .dsw-fee__card,
+  body.theme-day .dsw-fee__infoBox,
+  body.theme-day .dsw-fee__calculator,
+  body.theme-day .dsw-fee__nonpay,
+  body.theme-day .dsw-fee__resultBox,
+  body.theme-day .dsw-fee__tabs{
+    background:linear-gradient(145deg,rgba(255,253,246,.91),rgba(251,226,201,.74))!important;
+    border-color:var(--dsw-border)!important;
+    box-shadow:0 20px 52px rgba(98,59,65,.15),inset 0 1px 0 rgba(255,255,255,.86)!important;
   }
-
-  #dsw-admission-desktop .dsw-admission-hero__copy:hover{
-    background:rgba(255,255,255,.58);
-    transform:translateY(-1px) scale(1.002);
+  body.theme-night .dsw-fee__summaryCard,
+  body.theme-night .dsw-fee__card,
+  body.theme-night .dsw-fee__infoBox,
+  body.theme-night .dsw-fee__calculator,
+  body.theme-night .dsw-fee__nonpay,
+  body.theme-night .dsw-fee__resultBox,
+  body.theme-night .dsw-fee__tabs{
+    background:linear-gradient(145deg,rgba(54,43,82,.90),rgba(25,22,54,.87))!important;
+    border-color:var(--dsw-border)!important;
+    box-shadow:0 24px 62px rgba(5,4,18,.36),inset 0 1px 0 rgba(255,255,255,.08)!important;
   }
-
-  #dsw-admission-desktop .dsw-admission-hero__copy::before{
-    background-position:center;
-    opacity:.52;
-    filter:
-      contrast(1.08)
-      saturate(1.12)
-      brightness(.90);
+  body.theme-day .dsw-fee__mainTitle,
+  body.theme-day .dsw-fee__title,
+  body.theme-day .dsw-fee__summaryCard strong,
+  body.theme-day .dsw-fee__infoBox h3,
+  body.theme-day .dsw-fee__calculatorHead h2,
+  body.theme-day .dsw-fee__field label,
+  body.theme-day .dsw-fee__nonpayTitle,
+  body.theme-night .dsw-fee__mainTitle,
+  body.theme-night .dsw-fee__title,
+  body.theme-night .dsw-fee__summaryCard strong,
+  body.theme-night .dsw-fee__infoBox h3,
+  body.theme-night .dsw-fee__calculatorHead h2,
+  body.theme-night .dsw-fee__field label,
+  body.theme-night .dsw-fee__nonpayTitle{color:var(--deep)!important;}
+  body.theme-day .dsw-fee__desc,
+  body.theme-day .dsw-fee__summaryCard p,
+  body.theme-day .dsw-fee__infoBox p,
+  body.theme-day .dsw-fee__calculatorHead p,
+  body.theme-day .dsw-fee__calcNote{color:#785d65!important;}
+  body.theme-night .dsw-fee__desc,
+  body.theme-night .dsw-fee__summaryCard p,
+  body.theme-night .dsw-fee__infoBox p,
+  body.theme-night .dsw-fee__calculatorHead p,
+  body.theme-night .dsw-fee__calcNote{color:#cfc1d4!important;}
+  body.theme-day .dsw-fee__eyebrow,
+  body.theme-day .dsw-fee__subtitle,
+  body.theme-day .dsw-fee__tab{background:rgba(245,211,174,.58)!important;color:#503748!important;border-color:rgba(109,70,75,.16)!important;}
+  body.theme-night .dsw-fee__eyebrow,
+  body.theme-night .dsw-fee__subtitle,
+  body.theme-night .dsw-fee__tab{background:rgba(117,57,91,.50)!important;color:#ffe7c1!important;border-color:rgba(255,225,211,.16)!important;}
+  body.theme-day .dsw-fee__tab[aria-selected="true"],
+  body.theme-day .dsw-fee__resultBox.total{background:linear-gradient(145deg,#e8a456,#b95f55)!important;color:#fff!important;}
+  body.theme-night .dsw-fee__tab[aria-selected="true"],
+  body.theme-night .dsw-fee__resultBox.total{background:linear-gradient(145deg,#f1b66d,#d97891 58%,#8f466f)!important;color:#2d1830!important;}
+  body.theme-night .dsw-fee__resultBox.total span,
+  body.theme-night .dsw-fee__resultBox.total strong{color:#2d1830!important;}
+  body.theme-day .dsw-fee__tbody td{background:rgba(255,252,245,.80)!important;color:#3b2c32!important;border-color:var(--dsw-border)!important;}
+  body.theme-night .dsw-fee__tbody td{background:rgba(57,42,79,.70)!important;color:#f7edf1!important;border-color:var(--dsw-border)!important;}
+  body.theme-day .dsw-fee__tbody td.col-grade{background:rgba(245,211,174,.55)!important;color:#503748!important;}
+  body.theme-night .dsw-fee__tbody td.col-grade{background:rgba(117,57,91,.52)!important;color:#ffe7c1!important;}
+  body.theme-day .dsw-fee__field select{background:#fffaf0!important;color:#3b2c32!important;border-color:var(--dsw-border)!important;}
+  body.theme-night .dsw-fee__field select{background:#2f274c!important;color:#f7edf1!important;border-color:var(--dsw-border)!important;}
+  body.theme-day .dsw-fee__checks label,
+  body.theme-day .dsw-fee__miniList li{background:rgba(245,211,174,.42)!important;color:#3b2c32!important;}
+  body.theme-night .dsw-fee__checks label,
+  body.theme-night .dsw-fee__miniList li{background:rgba(117,57,91,.38)!important;color:#f7edf1!important;}
+  @media(max-width:760px){
+    body.theme-day .dsw-fee__tbody tr{background:linear-gradient(145deg,#fffaf0,#f7dec2)!important;}
+    body.theme-night .dsw-fee__tbody tr{background:linear-gradient(145deg,#392a4f,#191636)!important;border-color:var(--dsw-border)!important;}
   }
-
-  #dsw-admission-desktop .dsw-admission-hero__copy:hover::before{
-    filter:
-      contrast(1.12)
-      saturate(1.17)
-      brightness(.95);
-    transform:scale(1.035);
-  }
-
-  #dsw-admission-desktop .dsw-admission-hero__copy::after{
-    background:rgba(255,255,255,.72);
-  }
-
-  #dsw-admission-desktop .dsw-admission-hero__copy:hover::after{
-    background:rgba(255,255,255,.66);
-  }
-
-  #dsw-admission-desktop .dsw-admission-quick{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  #dsw-admission-desktop .dsw-admission-grid{
-    grid-template-columns:1fr;
-  }
-
-  #dsw-admission-desktop .dsw-admission-card:first-child{
-    grid-row:auto;
-  }
-}
 </style>
-
-<style id="admission-care-theme-overrides">
-  body.theme-day #dsw-admission-desktop{
-    --brand:#a95050;--brand-dark:#3b2c32;--brand-light:#e8a456;
-    --brand-soft:rgba(245,211,174,.48);--accent:#d88a35;
-    --accent-light:#f0c98c;--ink:#3b2c32;--muted:#785d65;
-  }
-  body.theme-night #dsw-admission-desktop{
-    --brand:#d97891;--brand-dark:#ffe7c1;--brand-light:#f1b66d;
-    --brand-soft:rgba(117,57,91,.48);--accent:#f1b66d;
-    --accent-light:#ffe7c1;--ink:#f7edf1;--muted:#cfc1d4;
-  }
-  body.theme-day #dsw-admission-desktop.dsw-admission{
-    background:linear-gradient(145deg,rgba(255,253,246,.84),rgba(251,226,201,.67))!important;
-    border-color:var(--dsw-border)!important;
-    box-shadow:0 30px 78px var(--dsw-shadow),inset 0 1px 0 rgba(255,255,255,.88)!important;
-  }
-  body.theme-night #dsw-admission-desktop.dsw-admission{
-    background:linear-gradient(145deg,rgba(54,43,82,.82),rgba(25,22,54,.80))!important;
-    border-color:var(--dsw-border)!important;
-    box-shadow:0 34px 90px var(--dsw-shadow),inset 0 1px 0 rgba(255,255,255,.08)!important;
-  }
-  body.theme-day #dsw-admission-desktop .dsw-admission-hero,
-  body.theme-day #dsw-admission-desktop .dsw-admission-quick li,
-  body.theme-day #dsw-admission-desktop .dsw-admission-tab,
-  body.theme-day #dsw-admission-desktop .dsw-admission-card,
-  body.theme-day #dsw-admission-desktop .dsw-admission-steps li,
-  body.theme-day #dsw-admission-desktop .dsw-admission-check label{
-    background:linear-gradient(145deg,rgba(255,253,246,.92),rgba(251,226,201,.76))!important;
-    border-color:var(--dsw-border)!important;
-    box-shadow:0 18px 46px rgba(98,59,65,.14),inset 0 1px 0 rgba(255,255,255,.88)!important;
-  }
-  body.theme-night #dsw-admission-desktop .dsw-admission-hero,
-  body.theme-night #dsw-admission-desktop .dsw-admission-quick li,
-  body.theme-night #dsw-admission-desktop .dsw-admission-tab,
-  body.theme-night #dsw-admission-desktop .dsw-admission-card,
-  body.theme-night #dsw-admission-desktop .dsw-admission-steps li,
-  body.theme-night #dsw-admission-desktop .dsw-admission-check label{
-    background:linear-gradient(145deg,rgba(57,42,79,.90),rgba(28,24,58,.88))!important;
-    border-color:var(--dsw-border)!important;
-    box-shadow:0 20px 52px rgba(5,4,18,.34),inset 0 1px 0 rgba(255,255,255,.08)!important;
-  }
-  body.theme-day #dsw-admission-desktop .dsw-admission-hero__copy::after{
-    background:linear-gradient(90deg,rgba(255,248,232,.88),rgba(255,232,204,.58) 42%,rgba(124,68,74,.12))!important;
-  }
-  body.theme-night #dsw-admission-desktop .dsw-admission-hero__copy::after{
-    background:linear-gradient(90deg,rgba(19,16,45,.94),rgba(48,35,76,.72) 48%,rgba(123,54,84,.25))!important;
-  }
-  body.theme-night #dsw-admission-desktop .dsw-admission-title{
-    color:#fff!important;text-shadow:0 8px 24px rgba(5,4,18,.45)!important;
-  }
-  body.theme-night #dsw-admission-desktop .dsw-admission-subtitle{color:#e2d5df!important;}
-  body.theme-day #dsw-admission-desktop .dsw-admission-badge,
-  body.theme-day #dsw-admission-desktop .dsw-admission-tab__ico{
-    background:linear-gradient(145deg,rgba(255,252,241,.90),rgba(245,211,174,.72))!important;
-    border-color:rgba(109,70,75,.17)!important;
-  }
-  body.theme-night #dsw-admission-desktop .dsw-admission-badge,
-  body.theme-night #dsw-admission-desktop .dsw-admission-tab__ico{
-    background:linear-gradient(145deg,rgba(104,58,91,.78),rgba(42,31,70,.88))!important;
-    border-color:rgba(255,225,211,.16)!important;
-  }
-  body.theme-day #dsw-admission-desktop .dsw-admission-tab.is-active{
-    background:linear-gradient(145deg,rgba(245,211,174,.82),rgba(255,248,234,.94))!important;
-    border-color:#d88a35!important;
-  }
-  body.theme-night #dsw-admission-desktop .dsw-admission-tab.is-active{
-    background:linear-gradient(145deg,rgba(117,57,91,.78),rgba(48,36,79,.94))!important;
-    border-color:#f1b66d!important;
-  }
-  body.theme-day #dsw-admission-desktop .dsw-admission-btn--primary{background:linear-gradient(145deg,#e8a456,#b95f55)!important;}
-  body.theme-night #dsw-admission-desktop .dsw-admission-btn--primary{background:linear-gradient(145deg,#f1b66d,#d97891 58%,#8f466f)!important;color:#2d1830!important;}
-  body.theme-day #dsw-admission-desktop .dsw-admission-note{background:rgba(245,211,174,.48)!important;border-color:rgba(216,138,53,.28)!important;}
-  body.theme-night #dsw-admission-desktop .dsw-admission-note{background:rgba(117,57,91,.42)!important;border-color:rgba(241,182,109,.28)!important;}
-</style>
-
-<script>
-(function(){
-  const root = document.querySelector('#dsw-admission-desktop');
-  if(!root) return;
-
-  const tabs = root.querySelectorAll('.dsw-admission-tab');
-  const panels = root.querySelectorAll('.dsw-admission-panel');
-
-  function openTab(name){
-    tabs.forEach(tab => {
-      const active = tab.dataset.tab === name;
-      tab.classList.toggle('is-active', active);
-      tab.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-
-    panels.forEach(panel => {
-      const open = panel.dataset.panel === name;
-      panel.classList.toggle('is-open', open);
-      panel.hidden = !open;
-    });
-  }
-
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => openTab(btn.dataset.tab));
-  });
-
-  openTab('nursing');
-})();
-</script>
 
 <script src="layout.js?v=20260719-4"></script>
 </body>
