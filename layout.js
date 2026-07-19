@@ -154,6 +154,23 @@ function initLayout() {
   });
 }
 
+function openAdmissionTabFromUrl() {
+  const path = decodeURIComponent(window.location.pathname);
+  const target = window.location.hash.replace('#', '').toLowerCase();
+
+  if (!path.endsWith('/입소안내.html') || target !== 'daycare') {
+    return;
+  }
+
+  const daycareTab = document.querySelector(
+    '#dsw-admission-desktop .dsw-admission-tab[data-tab="daycare"]'
+  );
+
+  if (daycareTab) {
+    daycareTab.click();
+  }
+}
+
 function injectFavicon() {
   const head = document.head;
 
@@ -851,18 +868,18 @@ function initCareAssessment() {
         '요양원 입소 안내 보기';
     } else {
       badge.textContent =
-        '낮 시간 돌봄 상담 권장';
+        '낮 시간 주간보호 이용 권장';
 
       title.textContent =
-        '주간보호 상담이 더 적합해 보입니다';
+        '주간보호 이용이 더 적합해 보입니다';
 
       copy.textContent =
         '집에서의 생활을 유지하면서 낮 시간 동안 식사·인지활동·건강관리와 안전한 돌봄을 받는 방향이 적합해 보입니다.';
 
-      link.href = '/상담안내.html';
+      link.href = '/입소안내.html#daycare';
 
       link.textContent =
-        '주간보호 상담 안내 보기';
+        '주간보호 입소 안내 보기';
     }
 
     setScreen('result');
@@ -1298,6 +1315,7 @@ document.addEventListener(
 
     initCareAssessment();
     initLayout();
+    openAdmissionTabFromUrl();
     injectTrackingScript();
   }
 );
