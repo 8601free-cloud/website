@@ -221,14 +221,14 @@ function injectAdminNavStyle() {
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:38px;
-      margin-left:4px;
-      padding:0 14px;
+      min-height:30px;
+      margin-left:2px;
+      padding:0 9px;
       border:1px solid rgba(58,106,75,.22);
-      border-radius:999px;
+      border-radius:9px;
       background:linear-gradient(145deg,rgba(58,106,75,.12),rgba(58,106,75,.06));
       color:#2f5a40 !important;
-      font-size:13px;
+      font-size:11.5px;
       font-weight:800;
       line-height:1;
       text-decoration:none !important;
@@ -662,9 +662,8 @@ function injectCareAssessmentMarkup() {
 
 function initCareAssessment() {
   if (
-    /\/admin(?:-|\/|$)/i.test(
-      window.location.pathname
-    )
+    /\/admin(?:-|\/|$)/i.test(window.location.pathname) ||
+    /\/관리자로그인\.html$/i.test(decodeURIComponent(window.location.pathname))
   ) {
     return;
   }
@@ -1194,7 +1193,7 @@ document.addEventListener(
               </div>
 
               <a
-                href="/영상소식.html?admin=1&login=1"
+                href="/관리자로그인.html"
                 class="nav-admin-login"
                 aria-label="더수원 영상 관리자 로그인"
               >
