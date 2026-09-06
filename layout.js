@@ -210,6 +210,62 @@ function injectFavicon() {
   themeColor.content = '#fffaf0';
 }
 
+
+function injectAdminNavStyle() {
+  if (document.getElementById('dsw-admin-nav-style')) return;
+
+  const style = document.createElement('style');
+  style.id = 'dsw-admin-nav-style';
+  style.textContent = `
+    .nav-admin-login{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:38px;
+      margin-left:4px;
+      padding:0 14px;
+      border:1px solid rgba(58,106,75,.22);
+      border-radius:999px;
+      background:linear-gradient(145deg,rgba(58,106,75,.12),rgba(58,106,75,.06));
+      color:#2f5a40 !important;
+      font-size:13px;
+      font-weight:800;
+      line-height:1;
+      text-decoration:none !important;
+      white-space:nowrap;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+      transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+    }
+
+    .nav-admin-login:hover{
+      transform:translateY(-1px);
+      background:linear-gradient(145deg,#3a6a4b,#2f5a40);
+      color:#fff !important;
+      box-shadow:0 8px 18px rgba(47,90,64,.18);
+    }
+
+    body.theme-night .nav-admin-login{
+      border-color:rgba(241,182,109,.28);
+      background:rgba(241,182,109,.11);
+      color:#f1b66d !important;
+    }
+
+    body.theme-night .nav-admin-login:hover{
+      background:linear-gradient(145deg,#f1b66d,#d97891);
+      color:#2d1830 !important;
+      box-shadow:0 8px 20px rgba(241,182,109,.18);
+    }
+
+    @media (max-width:900px){
+      .nav-admin-login{
+        margin-left:0;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
+}
+
 function injectTrackingScript() {
   if (
     document.querySelector(
@@ -996,6 +1052,7 @@ document.addEventListener(
   'DOMContentLoaded',
   function () {
     injectFavicon();
+    injectAdminNavStyle();
 
     const headerRoot =
       document.getElementById('site-header');
@@ -1135,6 +1192,14 @@ document.addEventListener(
                   </a>
                 </div>
               </div>
+
+              <a
+                href="/영상소식.html?admin=1&login=1"
+                class="nav-admin-login"
+                aria-label="더수원 영상 관리자 로그인"
+              >
+                관리자 로그인
+              </a>
             </nav>
           </div>
         </div>

@@ -482,7 +482,9 @@
       let isAdmin=false;
       let editingVideoId=null;
       const MAX_VIDEO_BYTES=50*1024*1024;
-      const adminEntryAllowed=new URLSearchParams(window.location.search).get('admin')==='1';
+      const adminParams=new URLSearchParams(window.location.search);
+      const adminEntryAllowed=adminParams.get('admin')==='1';
+      const adminAutoOpen=adminEntryAllowed&&adminParams.get('login')==='1';
 
       const $=(id)=>document.getElementById(id);
       const grid=$('video-grid');
@@ -1042,11 +1044,28 @@
       });
 
       (async()=>{
+        let session=null;
+
         if(db){
-          const {data:{session}}=await db.auth.getSession();
+          const result=await db.auth.getSession();
+          session=result.data.session;
           isAdmin=verifyAdmin(session);
         }
+
         await loadVideos();
+
+        if(adminAutoOpen){
+          if(!configured){
+            alert('video-config.js에 Supabase Project URL, anon key, 관리자 UID를 입력해 주세요.');
+            return;
+          }
+
+          await refreshAdmin(session);
+
+          if(!adminDialog.open){
+            adminDialog.showModal();
+          }
+        }
       })();
     })();
   </script>
