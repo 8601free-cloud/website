@@ -79,6 +79,20 @@
       word-break:keep-all;
     }
 
+    .heading-actions{display:flex;align-items:flex-end;gap:14px}
+    .admin-open{
+      flex:0 0 auto;
+      min-height:42px;
+      padding:0 16px;
+      border:1px solid rgba(58,106,75,.2);
+      border-radius:12px;
+      color:var(--green-deep);
+      background:rgba(255,255,255,.58);
+      font-size:14px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
     .featured{
       display:grid;
       grid-template-columns:minmax(0,1.5fr) minmax(300px,.5fr);
@@ -100,6 +114,7 @@
     }
 
     .featured-media video{width:100%;height:100%;object-fit:cover}
+    .featured-media iframe{width:100%;height:100%;border:0}
 
     .featured-label{
       display:inline-block;
@@ -192,9 +207,46 @@
 
     .video-dialog::backdrop{background:rgba(10,15,12,.78);backdrop-filter:blur(5px)}
     .dialog-video{width:100%;aspect-ratio:16/9;background:#000}
+    .dialog-frame{display:none;width:100%;aspect-ratio:16/9;border:0;background:#000}
     .dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;color:#fff}
     .dialog-title{margin:0;font-size:15px;font-weight:800}
     .dialog-close{min-width:66px;min-height:40px;border:1px solid rgba(255,255,255,.24);border-radius:10px;background:rgba(255,255,255,.10);color:#fff;cursor:pointer}
+
+    .admin-dialog{
+      width:min(700px,calc(100% - 24px));
+      max-height:calc(100vh - 32px);
+      padding:0;
+      border:0;
+      border-radius:22px;
+      color:var(--ink);
+      background:#faf7f1;
+      box-shadow:0 30px 90px rgba(0,0,0,.38);
+      overflow:auto;
+    }
+    .admin-dialog::backdrop{background:rgba(10,15,12,.72);backdrop-filter:blur(4px)}
+    .admin-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-bottom:1px solid var(--line);background:rgba(250,247,241,.96);backdrop-filter:blur(10px)}
+    .admin-head h2{margin:0;font-size:22px;letter-spacing:-.03em}
+    .admin-x{width:40px;height:40px;border:0;border-radius:10px;background:#e9e2d8;color:#333;font-size:24px;cursor:pointer}
+    .admin-panel{padding:22px}
+    .admin-note{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.7;font-weight:600}
+    .field{display:grid;gap:7px;margin-bottom:15px}
+    .field label,.field legend{font-size:14px;font-weight:800}
+    .field input,.field textarea,.field select{width:100%;min-height:46px;padding:10px 12px;border:1px solid #d8d0c5;border-radius:10px;background:#fff;color:#222;font:inherit}
+    .field textarea{min-height:92px;resize:vertical}
+    .upload-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:2px 0 20px;padding:0;border:0}
+    .mode-label{display:flex;align-items:center;gap:8px;padding:12px;border:1px solid #d8d0c5;border-radius:11px;background:#fff;font-weight:800;cursor:pointer}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .check-row{display:flex;align-items:center;gap:9px;margin:8px 0 18px;font-size:14px;font-weight:800}
+    .admin-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:18px}
+    .admin-button{min-height:44px;padding:0 17px;border:0;border-radius:11px;background:var(--green);color:#fff;font-weight:900;cursor:pointer}
+    .admin-button.secondary{border:1px solid #d5cdc1;background:#fff;color:#3a403d}
+    .admin-button.danger{background:#a34d48}
+    .admin-button:disabled{opacity:.55;cursor:wait}
+    .admin-status{min-height:24px;margin:12px 0 0;color:var(--green-deep);font-size:14px;line-height:1.6;font-weight:700}
+    .progress{display:none;width:100%;height:9px;margin-top:10px;overflow:hidden;border-radius:999px;background:#e5ddd2}
+    .progress > span{display:block;width:0;height:100%;background:var(--green);transition:width .2s ease}
+    .delete-video{margin-top:14px;min-height:35px;padding:0 11px;border:1px solid rgba(163,77,72,.28);border-radius:9px;color:#8f403c;background:rgba(255,255,255,.55);font-size:12px;font-weight:800;cursor:pointer}
+    .empty-state{grid-column:1/-1;padding:42px 20px;border:1px dashed rgba(58,106,75,.32);border-radius:18px;text-align:center;color:var(--muted);font-weight:700}
 
     body.theme-day .page-kicker,body.theme-day .card-category{color:#a95050}
     body.theme-day .featured-label{color:#a95050;background:rgba(185,95,85,.11)}
@@ -204,11 +256,13 @@
     body.theme-night .featured,body.theme-night .video-card{background:linear-gradient(145deg,rgba(61,45,84,.96),rgba(26,23,56,.94));border-color:rgba(255,225,211,.15);box-shadow:0 26px 60px rgba(5,4,18,.38),inset 0 1px 0 rgba(255,255,255,.07)}
     body.theme-night .page-kicker,body.theme-night .card-category{color:#f1b66d}
     body.theme-night .featured-label{color:#f1b66d;background:rgba(241,182,109,.14)}
+    body.theme-night .admin-open{border-color:rgba(255,231,193,.22);color:#ffe7c1;background:rgba(61,45,84,.72)}
 
     @media(max-width:900px){
       .video-page{padding:28px 10px 48px}
       .page-heading{display:block;margin-bottom:20px;padding:0 6px}
-      .page-intro{margin-top:14px;font-size:14px}
+      .heading-actions{align-items:center;justify-content:space-between;margin-top:14px}
+      .page-intro{margin:0;font-size:14px}
       .featured{display:block;padding:14px;border-radius:21px}
       .featured-media{border-radius:16px}
       .featured-copy{padding:20px 5px 8px}
@@ -217,6 +271,7 @@
       .archive-title{font-size:24px}
       .video-grid{grid-template-columns:1fr;gap:16px}
       .video-card{border-radius:18px}
+      .admin-panel{padding:18px 16px}.form-row{grid-template-columns:1fr}
     }
 
     @media(prefers-reduced-motion:reduce){.video-card,.card-media img{transition:none}}
@@ -231,21 +286,18 @@
         <p class="page-kicker">THE SUWON VIDEO</p>
         <h1 class="page-title">영상으로 전하는<br>더수원의 이야기</h1>
       </div>
-      <p class="page-intro">어르신의 일상과 프로그램, 공간의 분위기를 보호자분들이 편하게 확인하실 수 있도록 담았습니다.</p>
+      <div class="heading-actions">
+        <p class="page-intro">어르신의 일상과 프로그램, 공간의 분위기를 보호자분들이 편하게 확인하실 수 있도록 담았습니다.</p>
+        <button class="admin-open" id="admin-open" type="button">관리자</button>
+      </div>
     </header>
 
     <section class="featured" aria-labelledby="featured-title">
-      <div class="featured-media">
-        <!-- 아래 src만 실제 대표 영상 주소로 바꾸면 됩니다. -->
-        <video controls playsinline preload="metadata" poster="더수원영상 썸네일.png">
-          <source src="더수원 영상.mp4" type="video/mp4" />
-          사용 중인 브라우저에서는 영상을 재생할 수 없습니다.
-        </video>
-      </div>
+      <div class="featured-media" id="featured-media"></div>
       <div class="featured-copy">
         <p class="featured-label">대표 영상</p>
-        <h2 class="featured-title" id="featured-title">가까이에서 만나는<br>더수원의 하루</h2>
-        <p class="featured-text">직원들의 돌봄과 어르신들의 편안한 일상을 영상으로 확인해 보세요.</p>
+        <h2 class="featured-title" id="featured-title">영상 준비 중입니다</h2>
+        <p class="featured-text" id="featured-text">새로운 더수원 영상을 곧 소개해 드리겠습니다.</p>
       </div>
     </section>
 
@@ -259,86 +311,436 @@
 
   <dialog class="video-dialog" id="video-dialog" aria-labelledby="dialog-title">
     <video class="dialog-video" id="dialog-video" controls playsinline></video>
+    <iframe class="dialog-frame" id="dialog-frame" title="유튜브 영상" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     <div class="dialog-foot">
       <p class="dialog-title" id="dialog-title"></p>
       <button class="dialog-close" id="dialog-close" type="button">닫기</button>
     </div>
   </dialog>
 
+  <dialog class="admin-dialog" id="admin-dialog" aria-labelledby="admin-title">
+    <div class="admin-head">
+      <h2 id="admin-title">영상 관리자</h2>
+      <button class="admin-x" id="admin-close" type="button" aria-label="관리자 화면 닫기">×</button>
+    </div>
+
+    <section class="admin-panel" id="login-panel">
+      <p class="admin-note">등록된 관리자 계정으로 로그인하면 영상 파일 업로드와 YouTube 주소 등록을 모두 사용할 수 있습니다.</p>
+      <form id="login-form">
+        <div class="field"><label for="admin-email">이메일</label><input id="admin-email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="admin-password">비밀번호</label><input id="admin-password" type="password" autocomplete="current-password" required></div>
+        <div class="admin-actions"><button class="admin-button" type="submit">로그인</button></div>
+        <p class="admin-status" id="login-status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel" id="upload-panel" hidden>
+      <p class="admin-note"><strong id="admin-account"></strong> 계정으로 로그인했습니다. 새 영상은 등록 즉시 이 페이지에 표시됩니다.</p>
+      <form id="video-form">
+        <fieldset class="field upload-modes">
+          <legend class="sr-only">영상 등록 방식</legend>
+          <label class="mode-label"><input type="radio" name="sourceType" value="upload" checked> 영상 파일 업로드</label>
+          <label class="mode-label"><input type="radio" name="sourceType" value="youtube"> YouTube 주소</label>
+        </fieldset>
+        <div class="field" id="upload-field"><label for="video-file">영상 파일</label><input id="video-file" type="file" accept="video/mp4,video/webm,video/quicktime"></div>
+        <div class="field" id="youtube-field" hidden><label for="youtube-url">YouTube 주소</label><input id="youtube-url" type="url" inputmode="url" placeholder="https://youtu.be/영상ID"></div>
+        <div class="field"><label for="video-title">제목</label><input id="video-title" maxlength="100" required placeholder="예: 더수원 주간보호 직원소개"></div>
+        <div class="form-row">
+          <div class="field"><label for="video-category">분류</label><select id="video-category"><option>기관 소개</option><option>주간보호</option><option>요양원</option><option>프로그램</option><option>직원 소개</option></select></div>
+          <div class="field"><label for="video-thumbnail">썸네일 이미지</label><input id="video-thumbnail" type="file" accept="image/jpeg,image/png,image/webp"></div>
+        </div>
+        <div class="field"><label for="video-description">간단한 설명</label><textarea id="video-description" maxlength="300" placeholder="영상 내용을 간단히 적어 주세요."></textarea></div>
+        <div class="form-row">
+          <label class="check-row"><input id="video-featured" type="checkbox"> 메인페이지 대표 영상으로 노출</label>
+          <label class="check-row"><input id="video-published" type="checkbox" checked> 홈페이지에 공개</label>
+        </div>
+        <div class="field"><label for="video-sort-order">표시 순서 <span style="font-weight:600;color:#777">(작을수록 먼저)</span></label><input id="video-sort-order" type="number" value="0" step="1"></div>
+        <div class="progress" id="upload-progress" aria-hidden="true"><span></span></div>
+        <p class="admin-status" id="upload-status" role="status"></p>
+        <div class="admin-actions">
+          <button class="admin-button secondary" id="sign-out" type="button">로그아웃</button>
+          <button class="admin-button" id="save-video" type="submit">영상 등록</button>
+        </div>
+      </form>
+    </section>
+  </dialog>
+
   <div id="site-footer"></div>
   <script src="/layout.js?v=20260503"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./video-config.js"></script>
   <script>
-    /* 영상 추가 시 아래 배열에 항목을 복사해 제목, 설명, 주소, 썸네일만 바꾸세요. */
-    const videos = [
-      {
-        category:'기관 소개',
-        title:'더수원, 돌봄의 하루',
-        description:'더수원의 공간과 돌봄 분위기를 한눈에 소개합니다.',
-        src:'/videos/the-suwon-story.mp4',
-        poster:'https://cdn.imweb.me/upload/S20250616705368ebc899d/cb5144d219845.png'
-      },
-      {
-        category:'주간보호',
-        title:'함께 웃고 움직이는 주간보호 프로그램',
-        description:'인지·여가·운동 프로그램 속 어르신들의 모습을 담았습니다.',
-        src:'/videos/daycare-program.mp4',
-        poster:'https://cdn.imweb.me/upload/S20250616705368ebc899d/37b58603932fd.png'
-      },
-      {
-        category:'요양원',
-        title:'편안한 생활을 돕는 요양원 돌봄',
-        description:'건강관리와 일상 지원이 이루어지는 현장을 소개합니다.',
-        src:'/videos/nursing-home-care.mp4',
-        poster:'https://cdn.imweb.me/upload/S20250616705368ebc899d/079cf5c21c067.png'
+    (()=>{
+      'use strict';
+
+      const config=window.THE_SUWON_VIDEO_CONFIG||{};
+      const configured=Boolean(
+        config.supabaseUrl &&
+        config.supabaseAnonKey &&
+        config.adminUserId &&
+        !String(config.supabaseUrl).includes('YOUR_') &&
+        !String(config.supabaseAnonKey).includes('YOUR_') &&
+        !String(config.adminUserId).includes('YOUR_')
+      );
+      const db=configured&&window.supabase
+        ? window.supabase.createClient(config.supabaseUrl,config.supabaseAnonKey)
+        : null;
+
+      let videos=[];
+      let isAdmin=false;
+      const MAX_VIDEO_BYTES=50*1024*1024;
+
+      const $=(id)=>document.getElementById(id);
+      const grid=$('video-grid');
+      const count=$('video-count');
+      const featuredMedia=$('featured-media');
+      const featuredTitle=$('featured-title');
+      const featuredText=$('featured-text');
+      const videoDialog=$('video-dialog');
+      const dialogVideo=$('dialog-video');
+      const dialogFrame=$('dialog-frame');
+      const dialogTitle=$('dialog-title');
+      const adminDialog=$('admin-dialog');
+      const loginPanel=$('login-panel');
+      const uploadPanel=$('upload-panel');
+
+      const escapeHtml=(value)=>String(value??'').replace(/[&<>'"]/g,(char)=>({
+        '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
+      })[char]);
+
+      function youtubeId(value){
+        try{
+          const url=new URL(value);
+          if(url.hostname==='youtu.be')return url.pathname.slice(1).split('/')[0]||null;
+          if(url.hostname.endsWith('youtube.com')){
+            if(url.pathname==='/watch')return url.searchParams.get('v');
+            const match=url.pathname.match(/^\/(?:shorts|embed|live)\/([^/?]+)/);
+            return match?match[1]:null;
+          }
+        }catch(error){return null}
+        return null;
       }
-    ];
 
-    const grid=document.getElementById('video-grid');
-    const count=document.getElementById('video-count');
-    const dialog=document.getElementById('video-dialog');
-    const dialogVideo=document.getElementById('dialog-video');
-    const dialogTitle=document.getElementById('dialog-title');
-    const closeButton=document.getElementById('dialog-close');
+      function itemYoutubeId(item){
+        return item.video_type==='youtube' ? youtubeId(item.video_url) : null;
+      }
 
-    count.textContent=`총 ${videos.length}개의 영상`;
+      function getPoster(item){
+        const ytId=itemYoutubeId(item);
+        return item.thumbnail_url||(ytId?`https://i.ytimg.com/vi/${encodeURIComponent(ytId)}/hqdefault.jpg`:'');
+      }
 
-    videos.forEach((item,index)=>{
-      const article=document.createElement('article');
-      article.className='video-card';
-      article.innerHTML=`
-        <div class="card-media">
-          <img src="${item.poster}" alt="${item.title} 영상 썸네일" loading="lazy">
-          <button class="play-button" type="button" aria-label="${item.title} 재생" data-index="${index}"></button>
-        </div>
-        <div class="card-body">
-          <p class="card-category">${item.category}</p>
-          <h3 class="card-title">${item.title}</h3>
-          <p class="card-desc">${item.description}</p>
-        </div>`;
-      grid.appendChild(article);
-    });
+      function renderFeatured(){
+        const item=videos.find((video)=>video.is_featured)||videos[0];
+        featuredMedia.replaceChildren();
+        if(!item){
+          featuredMedia.innerHTML='<div class="empty-state">등록된 영상이 없습니다.</div>';
+          featuredTitle.textContent='영상 준비 중입니다';
+          featuredText.textContent='새로운 더수원 영상을 곧 소개해 드리겠습니다.';
+          return;
+        }
 
-    grid.addEventListener('click',(event)=>{
-      const button=event.target.closest('.play-button');
-      if(!button)return;
-      const item=videos[Number(button.dataset.index)];
-      dialogVideo.src=item.src;
-      dialogVideo.poster=item.poster;
-      dialogTitle.textContent=item.title;
-      dialog.showModal();
-      dialogVideo.play().catch(()=>{});
-    });
+        if(item.video_type==='youtube'){
+          const ytId=itemYoutubeId(item);
+          const iframe=document.createElement('iframe');
+          iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(ytId||'')}?rel=0`;
+          iframe.title=item.title;
+          iframe.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen=true;
+          featuredMedia.appendChild(iframe);
+        }else{
+          const video=document.createElement('video');
+          video.controls=true;
+          video.playsInline=true;
+          video.preload='metadata';
+          video.src=item.video_url;
+          video.poster=getPoster(item);
+          featuredMedia.appendChild(video);
+        }
+        featuredTitle.textContent=item.title;
+        featuredText.textContent=item.description||'더수원의 따뜻한 일상을 영상으로 확인해 보세요.';
+      }
 
-    function closeDialog(){
-      dialogVideo.pause();
-      dialogVideo.removeAttribute('src');
-      dialogVideo.load();
-      dialog.close();
-    }
+      function renderVideos(){
+        count.textContent=`총 ${videos.length}개의 영상`;
+        grid.replaceChildren();
+        if(!videos.length){
+          grid.innerHTML='<p class="empty-state">아직 등록된 영상이 없습니다.</p>';
+          renderFeatured();
+          return;
+        }
 
-    closeButton.addEventListener('click',closeDialog);
-    dialog.addEventListener('click',(event)=>{if(event.target===dialog)closeDialog()});
-    dialog.addEventListener('cancel',(event)=>{event.preventDefault();closeDialog()});
+        videos.forEach((item,index)=>{
+          const article=document.createElement('article');
+          article.className='video-card';
+          const hiddenBadge=isAdmin&&!item.is_published
+            ? '<span style="display:inline-block;margin-left:7px;padding:3px 7px;border-radius:999px;background:#eee;color:#777;font-size:11px">비공개</span>'
+            : '';
+          article.innerHTML=`
+            <div class="card-media">
+              <img src="${escapeHtml(getPoster(item))}" alt="${escapeHtml(item.title)} 영상 썸네일" loading="lazy">
+              <button class="play-button" type="button" aria-label="${escapeHtml(item.title)} 재생" data-index="${index}"></button>
+            </div>
+            <div class="card-body">
+              <p class="card-category">${escapeHtml(item.category||'영상')}${hiddenBadge}</p>
+              <h3 class="card-title">${escapeHtml(item.title)}</h3>
+              <p class="card-desc">${escapeHtml(item.description||'')}</p>
+              ${isAdmin?`<button class="delete-video" type="button" data-id="${escapeHtml(item.id)}">영상 삭제</button>`:''}
+            </div>`;
+          grid.appendChild(article);
+        });
+        renderFeatured();
+      }
+
+      async function loadVideos(){
+        if(!db){
+          videos=[];
+          renderVideos();
+          count.textContent='Supabase 연결 전입니다';
+          return;
+        }
+
+        let query=db.from('videos')
+          .select('id,title,description,category,video_type,video_url,storage_path,thumbnail_url,is_featured,is_published,sort_order,created_at')
+          .order('sort_order',{ascending:true})
+          .order('created_at',{ascending:false});
+
+        if(!isAdmin)query=query.eq('is_published',true);
+
+        const {data,error}=await query;
+        if(error){
+          console.error(error);
+          grid.innerHTML='<p class="empty-state">영상 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
+          return;
+        }
+        videos=data||[];
+        renderVideos();
+      }
+
+      function openVideo(item){
+        dialogTitle.textContent=item.title;
+        if(item.video_type==='youtube'){
+          const ytId=itemYoutubeId(item);
+          dialogVideo.style.display='none';
+          dialogFrame.style.display='block';
+          dialogFrame.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(ytId||'')}?autoplay=1&rel=0`;
+        }else{
+          dialogFrame.style.display='none';
+          dialogVideo.style.display='block';
+          dialogVideo.src=item.video_url;
+          dialogVideo.poster=getPoster(item);
+          dialogVideo.play().catch(()=>{});
+        }
+        videoDialog.showModal();
+      }
+
+      function closeVideo(){
+        dialogVideo.pause();
+        dialogVideo.removeAttribute('src');
+        dialogVideo.load();
+        dialogFrame.removeAttribute('src');
+        videoDialog.close();
+      }
+
+      function verifyAdmin(session){
+        return Boolean(session?.user?.id && session.user.id===config.adminUserId);
+      }
+
+      async function refreshAdmin(session){
+        isAdmin=verifyAdmin(session);
+        loginPanel.hidden=isAdmin;
+        uploadPanel.hidden=!isAdmin;
+        if(isAdmin)$('admin-account').textContent=session.user.email||'관리자';
+        await loadVideos();
+      }
+
+      function safeName(name){
+        const ext=(name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'');
+        return `${Date.now()}-${crypto.randomUUID()}.${ext||'bin'}`;
+      }
+
+      async function uploadFile(bucket,file,userId){
+        const path=`${userId}/${safeName(file.name)}`;
+        const {error}=await db.storage.from(bucket).upload(path,file,{
+          contentType:file.type,
+          upsert:false,
+          cacheControl:'3600'
+        });
+        if(error)throw error;
+        return {path,url:db.storage.from(bucket).getPublicUrl(path).data.publicUrl};
+      }
+
+      function storagePathFromPublicUrl(url,bucket){
+        if(!url)return null;
+        try{
+          const marker=`/storage/v1/object/public/${bucket}/`;
+          const decoded=decodeURIComponent(new URL(url).pathname);
+          const index=decoded.indexOf(marker);
+          return index>=0?decoded.slice(index+marker.length):null;
+        }catch(error){return null}
+      }
+
+      async function deleteVideo(item){
+        if(!isAdmin||!confirm(`“${item.title}” 영상을 삭제할까요?`))return;
+        const {error}=await db.from('videos').delete().eq('id',item.id);
+        if(error){alert(`삭제하지 못했습니다: ${error.message}`);return}
+
+        if(item.storage_path){
+          await db.storage.from('videos').remove([item.storage_path]);
+        }
+        const thumbPath=storagePathFromPublicUrl(item.thumbnail_url,'thumbnails');
+        if(thumbPath){
+          await db.storage.from('thumbnails').remove([thumbPath]);
+        }
+        await loadVideos();
+      }
+
+      grid.addEventListener('click',(event)=>{
+        const play=event.target.closest('.play-button');
+        if(play){openVideo(videos[Number(play.dataset.index)]);return}
+        const remove=event.target.closest('.delete-video');
+        if(remove){
+          const item=videos.find((video)=>String(video.id)===String(remove.dataset.id));
+          if(item)deleteVideo(item);
+        }
+      });
+
+      $('dialog-close').addEventListener('click',closeVideo);
+      videoDialog.addEventListener('click',(event)=>{if(event.target===videoDialog)closeVideo()});
+      videoDialog.addEventListener('cancel',(event)=>{event.preventDefault();closeVideo()});
+
+      $('admin-open').addEventListener('click',async()=>{
+        if(!configured){
+          alert('video-config.js에 Supabase Project URL, anon key, 관리자 UID를 입력해 주세요.');
+          return;
+        }
+        const {data:{session}}=await db.auth.getSession();
+        await refreshAdmin(session);
+        adminDialog.showModal();
+      });
+
+      $('admin-close').addEventListener('click',()=>adminDialog.close());
+      adminDialog.addEventListener('cancel',(event)=>{event.preventDefault();adminDialog.close()});
+
+      $('login-form').addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const status=$('login-status');
+        status.textContent='로그인 중입니다…';
+        const {data,error}=await db.auth.signInWithPassword({
+          email:$('admin-email').value.trim(),
+          password:$('admin-password').value
+        });
+        if(error){status.textContent='이메일 또는 비밀번호를 확인해 주세요.';return}
+        if(!verifyAdmin(data.session)){
+          await db.auth.signOut();
+          status.textContent='관리자 권한이 없는 계정입니다.';
+          return;
+        }
+        status.textContent='';
+        await refreshAdmin(data.session);
+      });
+
+      document.querySelectorAll('input[name="sourceType"]').forEach((radio)=>radio.addEventListener('change',()=>{
+        const type=document.querySelector('input[name="sourceType"]:checked').value;
+        $('upload-field').hidden=type!=='upload';
+        $('youtube-field').hidden=type!=='youtube';
+      }));
+
+      $('sign-out').addEventListener('click',async()=>{
+        await db.auth.signOut();
+        isAdmin=false;
+        loginPanel.hidden=false;
+        uploadPanel.hidden=true;
+        await loadVideos();
+      });
+
+      $('video-form').addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const save=$('save-video');
+        const status=$('upload-status');
+        const progress=$('upload-progress');
+        const bar=progress.querySelector('span');
+        const type=document.querySelector('input[name="sourceType"]:checked').value;
+        const file=$('video-file').files[0];
+        const thumb=$('video-thumbnail').files[0];
+        const ytId=type==='youtube'?youtubeId($('youtube-url').value.trim()):null;
+
+        if(type==='upload'&&!file){status.textContent='업로드할 영상 파일을 선택해 주세요.';return}
+        if(type==='upload'&&file.size>MAX_VIDEO_BYTES){status.textContent='직접 업로드는 50MB 이하 영상만 가능합니다. 더 큰 영상은 YouTube 주소 등록을 이용해 주세요.';return}
+        if(type==='youtube'&&!ytId){status.textContent='올바른 YouTube 주소를 입력해 주세요.';return}
+        if(type==='upload'&&!thumb){status.textContent='영상 파일 등록에는 썸네일 이미지를 선택해 주세요.';return}
+
+        save.disabled=true;
+        progress.style.display=type==='upload'?'block':'none';
+        bar.style.width='0%';
+        status.textContent='등록을 준비하고 있습니다…';
+
+        let media=null;
+        let thumbnail=null;
+        try{
+          const {data:{session}}=await db.auth.getSession();
+          if(!verifyAdmin(session))throw new Error('관리자 로그인이 만료되었습니다.');
+
+          if(thumb){
+            status.textContent='썸네일을 업로드하고 있습니다…';
+            thumbnail=await uploadFile('thumbnails',thumb,session.user.id);
+          }
+
+          if(type==='upload'){
+            status.textContent='영상을 업로드하고 있습니다…';
+            bar.style.width='40%';
+            media=await uploadFile('videos',file,session.user.id);
+            bar.style.width='90%';
+          }
+
+          if($('video-featured').checked){
+            const {error}=await db.from('videos').update({is_featured:false}).eq('is_featured',true);
+            if(error)throw error;
+          }
+
+          const record={
+            title:$('video-title').value.trim(),
+            description:$('video-description').value.trim(),
+            category:$('video-category').value,
+            video_type:type,
+            video_url:type==='upload'?media.url:`https://www.youtube.com/watch?v=${ytId}`,
+            storage_path:media?.path||null,
+            thumbnail_url:thumbnail?.url||(ytId?`https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`:null),
+            is_featured:$('video-featured').checked,
+            is_published:$('video-published').checked,
+            sort_order:Number.parseInt($('video-sort-order').value,10)||0
+          };
+
+          const {error}=await db.from('videos').insert(record);
+          if(error)throw error;
+
+          bar.style.width='100%';
+          status.textContent='영상이 등록되었습니다.';
+          event.target.reset();
+          $('video-published').checked=true;
+          $('video-sort-order').value='0';
+          $('upload-field').hidden=false;
+          $('youtube-field').hidden=true;
+          await loadVideos();
+        }catch(error){
+          console.error(error);
+          status.textContent=`등록하지 못했습니다: ${error.message}`;
+          if(media?.path)await db.storage.from('videos').remove([media.path]);
+          if(thumbnail?.path)await db.storage.from('thumbnails').remove([thumbnail.path]);
+        }finally{
+          save.disabled=false;
+          setTimeout(()=>{bar.style.width='0%';progress.style.display='none'},900);
+        }
+      });
+
+      (async()=>{
+        if(db){
+          const {data:{session}}=await db.auth.getSession();
+          isAdmin=verifyAdmin(session);
+        }
+        await loadVideos();
+      })();
+    })();
   </script>
 </body>
 </html>

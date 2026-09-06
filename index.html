@@ -1384,8 +1384,8 @@
 
 <section class="video-preview-wrap dsw-reveal" aria-labelledby="home-video-title">
   <div class="video-preview">
-    <div class="video-preview-media">
-      <!-- 아래 src만 실제 업로드한 대표 영상 주소로 바꾸면 됩니다. -->
+    <div class="video-preview-media" id="home-video-media">
+      <!-- Supabase 연결 전에도 기존 대표 영상이 보이도록 폴백을 유지합니다. -->
       <video controls playsinline preload="metadata" poster="더수원영상 썸네일.png">
         <source src="더수원 영상.mp4" type="video/mp4" />
         사용 중인 브라우저에서는 영상을 재생할 수 없습니다.
@@ -1395,7 +1395,7 @@
     <div class="video-preview-copy">
       <p class="video-preview-kicker">▶ 더수원 영상</p>
       <h2 class="video-preview-title" id="home-video-title">영상으로 만나는<br>더수원의 하루</h2>
-      <p class="video-preview-text">
+      <p class="video-preview-text" id="home-video-description">
         어르신의 표정과 직원들의 돌봄 모습을 영상으로 확인해 보세요.
         시설의 분위기와 프로그램을 가장 자연스럽게 보여드립니다.
       </p>
@@ -1794,6 +1794,101 @@
     };
     paint(document.body);
     new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)paint(n);else if(n.nodeType===3&&n.parentElement)paint(n.parentElement);}))).observe(document.body,{childList:true,subtree:true});
+  })();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/video-config.js"></script>
+<script id="home-featured-video-script">
+  (()=>{
+    const config=window.THE_SUWON_VIDEO_CONFIG||{};
+    const ready=window.supabase&&config.supabaseUrl&&config.supabaseAnonKey&&!String(config.supabaseUrl).includes('YOUR_')&&!String(config.supabaseAnonKey).includes('YOUR_');
+    if(!ready) return;
+
+    const db=window.supabase.createClient(config.supabaseUrl,config.supabaseAnonKey);
+    const media=document.getElementById('home-video-media');
+    const title=document.getElementById('home-video-title');
+    const description=document.getElementById('home-video-description');
+    if(!media||!title||!description) return;
+
+    const youtubeId=(value)=>{
+      try{
+        const url=new URL(value);
+        if(url.hostname==='youtu.be') return url.pathname.slice(1).split('/')[0]||null;
+        if(url.hostname.endsWith('youtube.com')){
+          if(url.pathname==='/watch') return url.searchParams.get('v');
+          const match=url.pathname.match(/^\/(?:shorts|embed|live)\/([^/?]+)/);
+          return match?match[1]:null;
+        }
+      }catch(e){}
+      return null;
+    };
+
+    const setHeading=(item)=>{
+      const br=document.createElement('br');
+      title.replaceChildren(
+        document.createTextNode('영상으로 만나는'),
+        br,
+        document.createTextNode(item.title||'더수원의 하루')
+      );
+      description.textContent=item.description||'어르신의 표정과 직원들의 돌봄 모습을 영상으로 확인해 보세요.';
+    };
+
+    const show=(item)=>{
+      media.replaceChildren();
+      if(item.video_type==='youtube'){
+        const id=youtubeId(item.video_url);
+        if(!id) throw new Error('YouTube 주소에서 영상 ID를 확인할 수 없습니다.');
+        const iframe=document.createElement('iframe');
+        iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0`;
+        iframe.title=item.title||'더수원 영상';
+        iframe.loading='lazy';
+        iframe.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen=true;
+        iframe.style.cssText='width:100%;height:100%;border:0;display:block';
+        media.appendChild(iframe);
+      }else{
+        const video=document.createElement('video');
+        video.controls=true;
+        video.playsInline=true;
+        video.preload='metadata';
+        video.src=item.video_url;
+        if(item.thumbnail_url) video.poster=item.thumbnail_url;
+        media.appendChild(video);
+      }
+      setHeading(item);
+    };
+
+    (async()=>{
+      try{
+        let result=await db.from('videos')
+          .select('title,description,video_type,video_url,thumbnail_url,is_featured,is_published,sort_order,created_at')
+          .eq('is_published',true)
+          .eq('is_featured',true)
+          .order('sort_order',{ascending:true})
+          .order('created_at',{ascending:false})
+          .limit(1);
+
+        if(result.error) throw result.error;
+        let item=result.data?.[0];
+
+        if(!item){
+          result=await db.from('videos')
+            .select('title,description,video_type,video_url,thumbnail_url,is_featured,is_published,sort_order,created_at')
+            .eq('is_published',true)
+            .order('sort_order',{ascending:true})
+            .order('created_at',{ascending:false})
+            .limit(1);
+          if(result.error) throw result.error;
+          item=result.data?.[0];
+        }
+
+        if(item) show(item);
+      }catch(error){
+        /* Supabase 연결 오류가 있어도 기존 폴백 영상은 그대로 유지합니다. */
+        console.error('메인 대표 영상을 불러오지 못했습니다.',error);
+      }
+    })();
   })();
 </script>
 </body>
