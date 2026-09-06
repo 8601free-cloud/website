@@ -256,6 +256,29 @@ function injectAdminNavStyle() {
       box-shadow:0 8px 20px rgba(241,182,109,.18);
     }
 
+    .nav-admin-login.is-logout{
+      border-color:rgba(163,77,72,.24);
+      background:rgba(163,77,72,.08);
+      color:#8f403c !important;
+    }
+
+    .nav-admin-login.is-logout:hover{
+      background:#9b4b46;
+      color:#fff !important;
+      box-shadow:0 8px 18px rgba(155,75,70,.18);
+    }
+
+    body.theme-night .nav-admin-login.is-logout{
+      border-color:rgba(255,170,161,.24);
+      background:rgba(255,170,161,.09);
+      color:#ffb3aa !important;
+    }
+
+    body.theme-night .nav-admin-login.is-logout:hover{
+      background:#b65f65;
+      color:#fff !important;
+    }
+
     @media (max-width:900px){
       .nav-admin-login{
         margin-left:0;
@@ -264,6 +287,228 @@ function injectAdminNavStyle() {
   `;
 
   document.head.appendChild(style);
+}
+
+
+function initAdminNavAuth() {
+  const adminLink = document.querySelector('.nav-admin-login');
+  if (!adminLink) return;
+
+  const LOGIN_HREF = '/관리자로그인.html';
+  const SUPABASE_CDN =
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+  const CONFIG_SRC = '/video-config.js';
+
+  function setLoggedOutState() {
+    adminLink.textContent = '관리자 로그인';
+    adminLink.href = LOGIN_HREF;
+    adminLink.classList.remove('is-logout');
+    adminLink.setAttribute(
+      'aria-label',
+      '더수원 영상 관리자 로그인'
+    );
+    adminLink.onclick = null;
+  }
+
+  function setLoggedInState(db) {
+    adminLink.textContent = '관리자 로그아웃';
+    adminLink.href = '#';
+    adminLink.classList.add('is-logout');
+    adminLink.setAttribute(
+      'aria-label',
+      '더수원 관리자 로그아웃'
+    );
+
+    adminLink.onclick = async function (event) {
+      event.preventDefault();
+
+      const confirmed = window.confirm(
+        '정말 로그아웃 하시겠습니까?'
+      );
+
+      if (!confirmed) return;
+
+      const originalText = adminLink.textContent;
+      adminLink.textContent = '로그아웃 중…';
+      adminLink.style.pointerEvents = 'none';
+
+      try {
+        const { error } = await db.auth.signOut();
+
+        if (error) {
+          throw error;
+        }
+
+        setLoggedOutState();
+      } catch (error) {
+        console.error(
+          '관리자 로그아웃에 실패했습니다.',
+          error
+        );
+
+        window.alert(
+          '로그아웃에 실패했습니다. 잠시 후 다시 시도해 주세요.'
+        );
+
+        adminLink.textContent = originalText;
+      } finally {
+        adminLink.style.pointerEvents = '';
+      }
+    };
+  }
+
+  function loadScriptOnce(src, selector) {
+    return new Promise(function (resolve, reject) {
+      const existing = document.querySelector(selector);
+
+      if (existing) {
+        if (
+          src === SUPABASE_CDN &&
+          window.supabase
+        ) {
+          resolve();
+          return;
+        }
+
+        if (
+          src === CONFIG_SRC &&
+          window.THE_SUWON_VIDEO_CONFIG
+        ) {
+          resolve();
+          return;
+        }
+
+        existing.addEventListener(
+          'load',
+          function () {
+            resolve();
+          },
+          { once: true }
+        );
+
+        existing.addEventListener(
+          'error',
+          function () {
+            reject(
+              new Error(
+                '스크립트를 불러오지 못했습니다: ' + src
+              )
+            );
+          },
+          { once: true }
+        );
+
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = src;
+      script.defer = true;
+
+      if (src === SUPABASE_CDN) {
+        script.dataset.dswSupabase = 'true';
+      } else if (src === CONFIG_SRC) {
+        script.dataset.dswVideoConfig = 'true';
+      }
+
+      script.addEventListener(
+        'load',
+        function () {
+          resolve();
+        },
+        { once: true }
+      );
+
+      script.addEventListener(
+        'error',
+        function () {
+          reject(
+            new Error(
+              '스크립트를 불러오지 못했습니다: ' + src
+            )
+          );
+        },
+        { once: true }
+      );
+
+      document.head.appendChild(script);
+    });
+  }
+
+  async function start() {
+    setLoggedOutState();
+
+    try {
+      if (!window.THE_SUWON_VIDEO_CONFIG) {
+        await loadScriptOnce(
+          CONFIG_SRC,
+          'script[data-dsw-video-config="true"], script[src$="/video-config.js"], script[src="video-config.js"]'
+        );
+      }
+
+      if (!window.supabase) {
+        await loadScriptOnce(
+          SUPABASE_CDN,
+          'script[data-dsw-supabase="true"], script[src*="@supabase/supabase-js@2"]'
+        );
+      }
+
+      const config =
+        window.THE_SUWON_VIDEO_CONFIG || {};
+
+      const configured = Boolean(
+        config.supabaseUrl &&
+        config.supabaseAnonKey &&
+        config.adminUserId &&
+        !String(config.supabaseUrl).includes('YOUR_') &&
+        !String(config.supabaseAnonKey).includes('YOUR_') &&
+        !String(config.adminUserId).includes('YOUR_')
+      );
+
+      if (!configured || !window.supabase) {
+        return;
+      }
+
+      const db = window.supabase.createClient(
+        config.supabaseUrl,
+        config.supabaseAnonKey
+      );
+
+      function applySession(session) {
+        const isAdmin = Boolean(
+          session?.user?.id &&
+          session.user.id === config.adminUserId
+        );
+
+        if (isAdmin) {
+          setLoggedInState(db);
+        } else {
+          setLoggedOutState();
+        }
+      }
+
+      const {
+        data: { session }
+      } = await db.auth.getSession();
+
+      applySession(session);
+
+      db.auth.onAuthStateChange(
+        function (_event, nextSession) {
+          applySession(nextSession);
+        }
+      );
+    } catch (error) {
+      console.warn(
+        '관리자 로그인 상태를 확인하지 못했습니다.',
+        error
+      );
+
+      setLoggedOutState();
+    }
+  }
+
+  start();
 }
 
 function injectTrackingScript() {
@@ -1382,6 +1627,7 @@ document.addEventListener(
 
     initCareAssessment();
     initLayout();
+    initAdminNavAuth();
     openAdmissionTabFromUrl();
     injectTrackingScript();
   }
