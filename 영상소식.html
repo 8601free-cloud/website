@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>더수원 영상 소식 | 주간보호·요양원 이야기</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="더수원 어르신 주간보호와 요양원의 일상, 프로그램, 시설 이야기를 영상으로 만나보세요." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/layout.css?v=20260503" />
+
+  <style>
+    :root{
+      --green:#3a6a4b;
+      --green-deep:#2f5a40;
+      --ink:#2b2b2b;
+      --muted:#636a66;
+      --cream:#f4eee5;
+      --card:rgba(255,255,255,.72);
+      --line:rgba(43,43,43,.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{width:100%;max-width:100%;margin:0;overflow-x:hidden}
+    body{
+      min-height:100vh;
+      color:var(--ink);
+      font-family:'Noto Sans KR',sans-serif;
+      background:
+        radial-gradient(circle at 13% 12%,rgba(58,106,75,.10),transparent 25%),
+        radial-gradient(circle at 86% 76%,rgba(58,106,75,.10),transparent 24%),
+        linear-gradient(180deg,#f7f2e9 0%,#eee7dc 100%);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    img,video{display:block;max-width:100%}
+    button,a{font:inherit}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    .video-page{
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      padding:48px 20px 72px;
+    }
+
+    .page-heading{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:28px;
+    }
+
+    .page-kicker{
+      margin:0 0 10px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.06em;
+    }
+
+    .page-title{
+      margin:0;
+      color:#26352c;
+      font-size:clamp(34px,5vw,58px);
+      line-height:1.16;
+      letter-spacing:-.055em;
+      word-break:keep-all;
+    }
+
+    .page-intro{
+      max-width:470px;
+      margin:0 0 4px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      font-weight:600;
+      word-break:keep-all;
+    }
+
+    .featured{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(300px,.5fr);
+      gap:30px;
+      align-items:center;
+      padding:30px;
+      border:1px solid rgba(255,255,255,.60);
+      border-radius:30px;
+      background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,255,255,.42));
+      box-shadow:0 28px 68px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .featured-media{
+      aspect-ratio:16/9;
+      overflow:hidden;
+      border-radius:22px;
+      background:#17251d;
+      box-shadow:0 20px 44px rgba(0,0,0,.23);
+    }
+
+    .featured-media video{width:100%;height:100%;object-fit:cover}
+
+    .featured-label{
+      display:inline-block;
+      margin:0 0 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      color:var(--green-deep);
+      background:rgba(58,106,75,.10);
+      font-size:13px;
+      line-height:1;
+      font-weight:900;
+    }
+
+    .featured-title{
+      margin:0;
+      color:#26352c;
+      font-size:clamp(25px,3vw,38px);
+      line-height:1.35;
+      letter-spacing:-.04em;
+      word-break:keep-all;
+    }
+
+    .featured-text{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.78;
+      font-weight:600;
+      word-break:keep-all;
+    }
+
+    .archive-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin:54px 0 20px;
+    }
+
+    .archive-title{margin:0;font-size:28px;line-height:1.3;letter-spacing:-.04em}
+    .archive-count{margin:0;color:var(--muted);font-size:14px;font-weight:700}
+    .video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+
+    .video-card{
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.60);
+      border-radius:22px;
+      background:var(--card);
+      box-shadow:0 18px 42px rgba(0,0,0,.09),inset 0 1px 0 rgba(255,255,255,.74);
+      transition:transform .22s ease,box-shadow .22s ease;
+    }
+
+    .video-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.13)}
+    .card-media{position:relative;aspect-ratio:16/9;background:#213629;overflow:hidden}
+    .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .video-card:hover .card-media img{transform:scale(1.035)}
+    .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.34))}
+
+    .play-button{
+      position:absolute;
+      z-index:2;
+      left:50%;
+      top:50%;
+      width:58px;
+      height:58px;
+      border:1px solid rgba(255,255,255,.62);
+      border-radius:50%;
+      background:rgba(26,45,34,.76);
+      color:#fff;
+      cursor:pointer;
+      transform:translate(-50%,-50%);
+      box-shadow:0 10px 24px rgba(0,0,0,.24);
+    }
+
+    .play-button::before{content:"";position:absolute;left:23px;top:18px;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:17px solid #fff}
+    .card-body{padding:18px 18px 20px}
+    .card-category{margin:0 0 7px;color:var(--green);font-size:13px;font-weight:900}
+    .card-title{margin:0;color:#2c3730;font-size:19px;line-height:1.48;letter-spacing:-.025em;word-break:keep-all}
+    .card-desc{margin:9px 0 0;color:var(--muted);font-size:14px;line-height:1.7;font-weight:600;word-break:keep-all}
+
+    .video-dialog{
+      width:min(920px,calc(100% - 28px));
+      padding:0;
+      border:0;
+      border-radius:22px;
+      background:#101713;
+      box-shadow:0 30px 90px rgba(0,0,0,.48);
+      overflow:hidden;
+    }
+
+    .video-dialog::backdrop{background:rgba(10,15,12,.78);backdrop-filter:blur(5px)}
+    .dialog-video{width:100%;aspect-ratio:16/9;background:#000}
+    .dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;color:#fff}
+    .dialog-title{margin:0;font-size:15px;font-weight:800}
+    .dialog-close{min-width:66px;min-height:40px;border:1px solid rgba(255,255,255,.24);border-radius:10px;background:rgba(255,255,255,.10);color:#fff;cursor:pointer}
+
+    body.theme-day .page-kicker,body.theme-day .card-category{color:#a95050}
+    body.theme-day .featured-label{color:#a95050;background:rgba(185,95,85,.11)}
+    body.theme-night{color:#f7edf1;background:radial-gradient(circle at 16% 10%,rgba(241,182,109,.10),transparent 26%),radial-gradient(circle at 85% 80%,rgba(217,120,145,.12),transparent 24%),linear-gradient(180deg,#241f43,#15132e)}
+    body.theme-night .page-title,body.theme-night .featured-title,body.theme-night .archive-title,body.theme-night .card-title{color:#ffe7c1}
+    body.theme-night .page-intro,body.theme-night .featured-text,body.theme-night .archive-count,body.theme-night .card-desc{color:#d8cbd8}
+    body.theme-night .featured,body.theme-night .video-card{background:linear-gradient(145deg,rgba(61,45,84,.96),rgba(26,23,56,.94));border-color:rgba(255,225,211,.15);box-shadow:0 26px 60px rgba(5,4,18,.38),inset 0 1px 0 rgba(255,255,255,.07)}
+    body.theme-night .page-kicker,body.theme-night .card-category{color:#f1b66d}
+    body.theme-night .featured-label{color:#f1b66d;background:rgba(241,182,109,.14)}
+
+    @media(max-width:900px){
+      .video-page{padding:28px 10px 48px}
+      .page-heading{display:block;margin-bottom:20px;padding:0 6px}
+      .page-intro{margin-top:14px;font-size:14px}
+      .featured{display:block;padding:14px;border-radius:21px}
+      .featured-media{border-radius:16px}
+      .featured-copy{padding:20px 5px 8px}
+      .featured-title{font-size:25px}
+      .archive-head{margin:40px 5px 16px}
+      .archive-title{font-size:24px}
+      .video-grid{grid-template-columns:1fr;gap:16px}
+      .video-card{border-radius:18px}
+    }
+
+    @media(prefers-reduced-motion:reduce){.video-card,.card-media img{transition:none}}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="video-page">
+    <header class="page-heading">
+      <div>
+        <p class="page-kicker">THE SUWON VIDEO</p>
+        <h1 class="page-title">영상으로 전하는<br>더수원의 이야기</h1>
+      </div>
+      <p class="page-intro">어르신의 일상과 프로그램, 공간의 분위기를 보호자분들이 편하게 확인하실 수 있도록 담았습니다.</p>
+    </header>
+
+    <section class="featured" aria-labelledby="featured-title">
+      <div class="featured-media">
+        <!-- 아래 src만 실제 대표 영상 주소로 바꾸면 됩니다. -->
+        <video controls playsinline preload="metadata" poster="https://cdn.imweb.me/upload/S20250616705368ebc899d/cb5144d219845.png">
+          <source src="/videos/the-suwon-story.mp4" type="video/mp4" />
+          사용 중인 브라우저에서는 영상을 재생할 수 없습니다.
+        </video>
+      </div>
+      <div class="featured-copy">
+        <p class="featured-label">대표 영상</p>
+        <h2 class="featured-title" id="featured-title">가까이에서 만나는<br>더수원의 하루</h2>
+        <p class="featured-text">직원들의 돌봄과 어르신들의 편안한 일상을 영상으로 확인해 보세요.</p>
+      </div>
+    </section>
+
+    <div class="archive-head">
+      <h2 class="archive-title">더수원 영상 모음</h2>
+      <p class="archive-count" id="video-count"></p>
+    </div>
+
+    <section class="video-grid" id="video-grid" aria-label="더수원 영상 목록"></section>
+  </main>
+
+  <dialog class="video-dialog" id="video-dialog" aria-labelledby="dialog-title">
+    <video class="dialog-video" id="dialog-video" controls playsinline></video>
+    <div class="dialog-foot">
+      <p class="dialog-title" id="dialog-title"></p>
+      <button class="dialog-close" id="dialog-close" type="button">닫기</button>
+    </div>
+  </dialog>
+
+  <div id="site-footer"></div>
+  <script src="/layout.js?v=20260503"></script>
+  <script>
+    /* 영상 추가 시 아래 배열에 항목을 복사해 제목, 설명, 주소, 썸네일만 바꾸세요. */
+    const videos = [
+      {
+        category:'기관 소개',
+        title:'더수원, 돌봄의 하루',
+        description:'더수원의 공간과 돌봄 분위기를 한눈에 소개합니다.',
+        src:'/videos/the-suwon-story.mp4',
+        poster:'https://cdn.imweb.me/upload/S20250616705368ebc899d/cb5144d219845.png'
+      },
+      {
+        category:'주간보호',
+        title:'함께 웃고 움직이는 주간보호 프로그램',
+        description:'인지·여가·운동 프로그램 속 어르신들의 모습을 담았습니다.',
+        src:'/videos/daycare-program.mp4',
+        poster:'https://cdn.imweb.me/upload/S20250616705368ebc899d/37b58603932fd.png'
+      },
+      {
+        category:'요양원',
+        title:'편안한 생활을 돕는 요양원 돌봄',
+        description:'건강관리와 일상 지원이 이루어지는 현장을 소개합니다.',
+        src:'/videos/nursing-home-care.mp4',
+        poster:'https://cdn.imweb.me/upload/S20250616705368ebc899d/079cf5c21c067.png'
+      }
+    ];
+
+    const grid=document.getElementById('video-grid');
+    const count=document.getElementById('video-count');
+    const dialog=document.getElementById('video-dialog');
+    const dialogVideo=document.getElementById('dialog-video');
+    const dialogTitle=document.getElementById('dialog-title');
+    const closeButton=document.getElementById('dialog-close');
+
+    count.textContent=`총 ${videos.length}개의 영상`;
+
+    videos.forEach((item,index)=>{
+      const article=document.createElement('article');
+      article.className='video-card';
+      article.innerHTML=`
+        <div class="card-media">
+          <img src="${item.poster}" alt="${item.title} 영상 썸네일" loading="lazy">
+          <button class="play-button" type="button" aria-label="${item.title} 재생" data-index="${index}"></button>
+        </div>
+        <div class="card-body">
+          <p class="card-category">${item.category}</p>
+          <h3 class="card-title">${item.title}</h3>
+          <p class="card-desc">${item.description}</p>
+        </div>`;
+      grid.appendChild(article);
+    });
+
+    grid.addEventListener('click',(event)=>{
+      const button=event.target.closest('.play-button');
+      if(!button)return;
+      const item=videos[Number(button.dataset.index)];
+      dialogVideo.src=item.src;
+      dialogVideo.poster=item.poster;
+      dialogTitle.textContent=item.title;
+      dialog.showModal();
+      dialogVideo.play().catch(()=>{});
+    });
+
+    function closeDialog(){
+      dialogVideo.pause();
+      dialogVideo.removeAttribute('src');
+      dialogVideo.load();
+      dialog.close();
+    }
+
+    closeButton.addEventListener('click',closeDialog);
+    dialog.addEventListener('click',(event)=>{if(event.target===dialog)closeDialog()});
+    dialog.addEventListener('cancel',(event)=>{event.preventDefault();closeDialog()});
+  </script>
+</body>
+</html>

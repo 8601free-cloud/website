@@ -1112,6 +1112,9 @@ document.addEventListener(
                   <a href="/활동사진.html">
                     활동사진
                   </a>
+                  <a href="/영상소식.html">
+                    영상 소식
+                  </a>
                 </div>
               </div>
 
