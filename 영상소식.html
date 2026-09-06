@@ -503,7 +503,7 @@
       const editDialog=$('edit-dialog');
       const editForm=$('edit-video-form');
 
-      adminOpen.hidden=!adminEntryAllowed;
+      adminOpen.hidden=true;
 
       const escapeHtml=(value)=>String(value??'').replace(/[&<>'"]/g,(char)=>({
         '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
@@ -647,11 +647,29 @@
         return Boolean(session?.user?.id && session.user.id===config.adminUserId);
       }
 
+      function syncAdminEntryButton(){
+        if(isAdmin){
+          adminOpen.hidden=false;
+          adminOpen.textContent='영상 등록';
+          adminOpen.setAttribute('aria-label','새 영상 등록 및 영상 관리');
+          return;
+        }
+
+        adminOpen.hidden=!adminEntryAllowed;
+        adminOpen.textContent='관리자';
+        adminOpen.setAttribute('aria-label','관리자 로그인');
+      }
+
       async function refreshAdmin(session){
         isAdmin=verifyAdmin(session);
         loginPanel.hidden=isAdmin;
         uploadPanel.hidden=!isAdmin;
-        if(isAdmin)$('admin-account').textContent=session.user.email||'관리자';
+
+        if(isAdmin){
+          $('admin-account').textContent=session.user.email||'관리자';
+        }
+
+        syncAdminEntryButton();
         await loadVideos();
       }
 
@@ -817,6 +835,7 @@
         loginPanel.hidden=false;
         uploadPanel.hidden=true;
         closeEditDialog();
+        syncAdminEntryButton();
         await loadVideos();
       });
 
@@ -1049,18 +1068,22 @@
         if(db){
           const result=await db.auth.getSession();
           session=result.data.session;
-          isAdmin=verifyAdmin(session);
-        }
+          await refreshAdmin(session);
 
-        await loadVideos();
+          db.auth.onAuthStateChange(async(_event,nextSession)=>{
+            await refreshAdmin(nextSession);
+          });
+        }else{
+          isAdmin=false;
+          syncAdminEntryButton();
+          await loadVideos();
+        }
 
         if(adminAutoOpen){
           if(!configured){
             alert('video-config.js에 Supabase Project URL, anon key, 관리자 UID를 입력해 주세요.');
             return;
           }
-
-          await refreshAdmin(session);
 
           if(!adminDialog.open){
             adminDialog.showModal();
