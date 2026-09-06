@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>더수원 영상 소식 | 주간보호·요양원 이야기</title>
+  <!-- 관리자 진입: ?admin=1 / 관리자 로그인 후 영상별 수정·삭제 지원 -->
   <meta name="robots" content="index,follow" />
   <meta name="description" content="더수원 어르신 주간보호와 요양원의 일상, 프로그램, 시설 이야기를 영상으로 만나보세요." />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -245,7 +246,14 @@
     .admin-status{min-height:24px;margin:12px 0 0;color:var(--green-deep);font-size:14px;line-height:1.6;font-weight:700}
     .progress{display:none;width:100%;height:9px;margin-top:10px;overflow:hidden;border-radius:999px;background:#e5ddd2}
     .progress > span{display:block;width:0;height:100%;background:var(--green);transition:width .2s ease}
-    .delete-video{margin-top:14px;min-height:35px;padding:0 11px;border:1px solid rgba(163,77,72,.28);border-radius:9px;color:#8f403c;background:rgba(255,255,255,.55);font-size:12px;font-weight:800;cursor:pointer}
+    .edit-video{margin-top:14px;min-height:37px;padding:0 13px;border:1px solid rgba(58,106,75,.28);border-radius:9px;color:var(--green-deep);background:rgba(255,255,255,.60);font-size:12px;font-weight:900;cursor:pointer}
+    .edit-video:hover{background:rgba(58,106,75,.09)}
+    .edit-current{margin:-4px 0 12px;color:#777;font-size:12px;line-height:1.6;font-weight:600;word-break:break-all}
+    .edit-thumb-preview{width:180px;max-width:100%;aspect-ratio:16/9;margin:4px 0 12px;border-radius:10px;object-fit:cover;background:#ddd}
+    .danger-zone{margin-top:26px;padding-top:20px;border-top:1px solid #e1d8cc}
+    .danger-zone-title{margin:0 0 6px;color:#8f403c;font-size:14px;font-weight:900}
+    .danger-zone-text{margin:0 0 12px;color:#806b68;font-size:12px;line-height:1.6;font-weight:600}
+    .danger-zone .admin-button.danger{width:100%}
     .empty-state{grid-column:1/-1;padding:42px 20px;border:1px dashed rgba(58,106,75,.32);border-radius:18px;text-align:center;color:var(--muted);font-weight:700}
 
     body.theme-day .page-kicker,body.theme-day .card-category{color:#a95050}
@@ -288,7 +296,7 @@
       </div>
       <div class="heading-actions">
         <p class="page-intro">어르신의 일상과 프로그램, 공간의 분위기를 보호자분들이 편하게 확인하실 수 있도록 담았습니다.</p>
-        <button class="admin-open" id="admin-open" type="button">관리자</button>
+        <button class="admin-open" id="admin-open" type="button" hidden>관리자</button>
       </div>
     </header>
 
@@ -365,6 +373,90 @@
     </section>
   </dialog>
 
+  <dialog class="admin-dialog" id="edit-dialog" aria-labelledby="edit-title">
+    <div class="admin-head">
+      <h2 id="edit-title">영상 수정</h2>
+      <button class="admin-x" id="edit-close" type="button" aria-label="영상 수정 화면 닫기">×</button>
+    </div>
+
+    <section class="admin-panel">
+      <p class="admin-note">등록할 때 입력한 내용을 수정할 수 있습니다. 파일 입력은 보안상 기존 파일명이 자동으로 채워지지 않으며, 새 파일을 선택하지 않으면 현재 파일을 그대로 유지합니다.</p>
+
+      <form id="edit-video-form">
+        <fieldset class="field upload-modes">
+          <legend class="sr-only">영상 등록 방식 수정</legend>
+          <label class="mode-label"><input type="radio" name="editSourceType" value="upload"> 영상 파일 업로드</label>
+          <label class="mode-label"><input type="radio" name="editSourceType" value="youtube"> YouTube 주소</label>
+        </fieldset>
+
+        <div class="field" id="edit-upload-field">
+          <label for="edit-video-file">새 영상 파일 <span style="font-weight:600;color:#777">(선택)</span></label>
+          <input id="edit-video-file" type="file" accept="video/mp4,video/webm,video/quicktime">
+          <p class="edit-current" id="edit-current-video"></p>
+        </div>
+
+        <div class="field" id="edit-youtube-field" hidden>
+          <label for="edit-youtube-url">YouTube 주소</label>
+          <input id="edit-youtube-url" type="url" inputmode="url" placeholder="https://youtu.be/영상ID">
+        </div>
+
+        <div class="field">
+          <label for="edit-video-title">제목</label>
+          <input id="edit-video-title" maxlength="100" required>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="edit-video-category">분류</label>
+            <select id="edit-video-category">
+              <option>기관 소개</option>
+              <option>주간보호</option>
+              <option>요양원</option>
+              <option>프로그램</option>
+              <option>직원 소개</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="edit-video-thumbnail">새 썸네일 <span style="font-weight:600;color:#777">(선택)</span></label>
+            <input id="edit-video-thumbnail" type="file" accept="image/jpeg,image/png,image/webp">
+          </div>
+        </div>
+
+        <img class="edit-thumb-preview" id="edit-thumb-preview" alt="현재 영상 썸네일">
+
+        <div class="field">
+          <label for="edit-video-description">간단한 설명</label>
+          <textarea id="edit-video-description" maxlength="300" placeholder="영상 내용을 간단히 적어 주세요."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label class="check-row"><input id="edit-video-featured" type="checkbox"> 메인페이지 대표 영상으로 노출</label>
+          <label class="check-row"><input id="edit-video-published" type="checkbox"> 홈페이지에 공개</label>
+        </div>
+
+        <div class="field">
+          <label for="edit-video-sort-order">표시 순서 <span style="font-weight:600;color:#777">(작을수록 먼저)</span></label>
+          <input id="edit-video-sort-order" type="number" value="0" step="1">
+        </div>
+
+        <div class="progress" id="edit-upload-progress" aria-hidden="true"><span></span></div>
+        <p class="admin-status" id="edit-status" role="status"></p>
+
+        <div class="admin-actions">
+          <button class="admin-button secondary" id="edit-cancel" type="button">취소</button>
+          <button class="admin-button" id="edit-save" type="submit">수정 저장</button>
+        </div>
+
+        <div class="danger-zone">
+          <p class="danger-zone-title">영상 삭제</p>
+          <p class="danger-zone-text">삭제하면 게시물과 직접 업로드한 영상·썸네일 파일이 함께 삭제됩니다.</p>
+          <button class="admin-button danger" id="edit-delete-video" type="button">이 영상 삭제</button>
+        </div>
+      </form>
+    </section>
+  </dialog>
+
   <div id="site-footer"></div>
   <script src="/layout.js?v=20260503"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -388,7 +480,9 @@
 
       let videos=[];
       let isAdmin=false;
+      let editingVideoId=null;
       const MAX_VIDEO_BYTES=50*1024*1024;
+      const adminEntryAllowed=new URLSearchParams(window.location.search).get('admin')==='1';
 
       const $=(id)=>document.getElementById(id);
       const grid=$('video-grid');
@@ -403,6 +497,11 @@
       const adminDialog=$('admin-dialog');
       const loginPanel=$('login-panel');
       const uploadPanel=$('upload-panel');
+      const adminOpen=$('admin-open');
+      const editDialog=$('edit-dialog');
+      const editForm=$('edit-video-form');
+
+      adminOpen.hidden=!adminEntryAllowed;
 
       const escapeHtml=(value)=>String(value??'').replace(/[&<>'"]/g,(char)=>({
         '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
@@ -485,7 +584,7 @@
               <p class="card-category">${escapeHtml(item.category||'영상')}${hiddenBadge}</p>
               <h3 class="card-title">${escapeHtml(item.title)}</h3>
               <p class="card-desc">${escapeHtml(item.description||'')}</p>
-              ${isAdmin?`<button class="delete-video" type="button" data-id="${escapeHtml(item.id)}">영상 삭제</button>`:''}
+              ${isAdmin?`<button class="edit-video" type="button" data-id="${escapeHtml(item.id)}">영상 수정</button>`:''}
             </div>`;
           grid.appendChild(article);
         });
@@ -581,27 +680,91 @@
       }
 
       async function deleteVideo(item){
-        if(!isAdmin||!confirm(`“${item.title}” 영상을 삭제할까요?`))return;
+        if(!isAdmin||!item)return false;
+        if(!confirm(`“${item.title}” 영상을 정말 삭제할까요?\n삭제 후에는 되돌릴 수 없습니다.`))return false;
+
         const {error}=await db.from('videos').delete().eq('id',item.id);
-        if(error){alert(`삭제하지 못했습니다: ${error.message}`);return}
+        if(error){
+          alert(`삭제하지 못했습니다: ${error.message}`);
+          return false;
+        }
 
         if(item.storage_path){
           await db.storage.from('videos').remove([item.storage_path]);
         }
+
         const thumbPath=storagePathFromPublicUrl(item.thumbnail_url,'thumbnails');
         if(thumbPath){
           await db.storage.from('thumbnails').remove([thumbPath]);
         }
+
         await loadVideos();
+        return true;
+      }
+
+      function updateEditSourceFields(){
+        const type=document.querySelector('input[name="editSourceType"]:checked')?.value||'upload';
+        $('edit-upload-field').hidden=type!=='upload';
+        $('edit-youtube-field').hidden=type!=='youtube';
+      }
+
+      function openEditDialog(item){
+        if(!isAdmin||!item)return;
+        editingVideoId=item.id;
+
+        document.querySelectorAll('input[name="editSourceType"]').forEach((radio)=>{
+          radio.checked=radio.value===item.video_type;
+        });
+
+        $('edit-video-file').value='';
+        $('edit-video-thumbnail').value='';
+        $('edit-video-title').value=item.title||'';
+        $('edit-video-category').value=item.category||'기관 소개';
+        $('edit-video-description').value=item.description||'';
+        $('edit-video-featured').checked=Boolean(item.is_featured);
+        $('edit-video-published').checked=Boolean(item.is_published);
+        $('edit-video-sort-order').value=Number.isFinite(Number(item.sort_order))?String(item.sort_order):'0';
+        $('edit-youtube-url').value=item.video_type==='youtube'?(item.video_url||''):'';
+
+        if(item.video_type==='upload'){
+          const name=(item.storage_path||'').split('/').pop()||'현재 업로드 영상';
+          $('edit-current-video').textContent=`현재 영상: ${name} · 새 파일을 선택하지 않으면 그대로 유지됩니다.`;
+        }else{
+          $('edit-current-video').textContent='YouTube 영상입니다. 업로드 방식으로 변경하려면 새 영상 파일을 선택해 주세요.';
+        }
+
+        const poster=getPoster(item);
+        const thumb=$('edit-thumb-preview');
+        if(poster){
+          thumb.src=poster;
+          thumb.hidden=false;
+        }else{
+          thumb.removeAttribute('src');
+          thumb.hidden=true;
+        }
+
+        $('edit-status').textContent='';
+        const progress=$('edit-upload-progress');
+        progress.style.display='none';
+        progress.querySelector('span').style.width='0%';
+
+        updateEditSourceFields();
+        editDialog.showModal();
+      }
+
+      function closeEditDialog(){
+        editingVideoId=null;
+        if(editDialog.open)editDialog.close();
       }
 
       grid.addEventListener('click',(event)=>{
         const play=event.target.closest('.play-button');
         if(play){openVideo(videos[Number(play.dataset.index)]);return}
-        const remove=event.target.closest('.delete-video');
-        if(remove){
-          const item=videos.find((video)=>String(video.id)===String(remove.dataset.id));
-          if(item)deleteVideo(item);
+
+        const edit=event.target.closest('.edit-video');
+        if(edit){
+          const item=videos.find((video)=>String(video.id)===String(edit.dataset.id));
+          if(item)openEditDialog(item);
         }
       });
 
@@ -609,7 +772,7 @@
       videoDialog.addEventListener('click',(event)=>{if(event.target===videoDialog)closeVideo()});
       videoDialog.addEventListener('cancel',(event)=>{event.preventDefault();closeVideo()});
 
-      $('admin-open').addEventListener('click',async()=>{
+      adminOpen.addEventListener('click',async()=>{
         if(!configured){
           alert('video-config.js에 Supabase Project URL, anon key, 관리자 UID를 입력해 주세요.');
           return;
@@ -651,7 +814,152 @@
         isAdmin=false;
         loginPanel.hidden=false;
         uploadPanel.hidden=true;
+        closeEditDialog();
         await loadVideos();
+      });
+
+      document.querySelectorAll('input[name="editSourceType"]').forEach((radio)=>{
+        radio.addEventListener('change',updateEditSourceFields);
+      });
+
+      $('edit-close').addEventListener('click',closeEditDialog);
+      $('edit-cancel').addEventListener('click',closeEditDialog);
+      editDialog.addEventListener('cancel',(event)=>{
+        event.preventDefault();
+        closeEditDialog();
+      });
+
+      $('edit-delete-video').addEventListener('click',async()=>{
+        const item=videos.find((video)=>String(video.id)===String(editingVideoId));
+        if(!item)return;
+        const deleted=await deleteVideo(item);
+        if(deleted)closeEditDialog();
+      });
+
+      editForm.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+
+        const item=videos.find((video)=>String(video.id)===String(editingVideoId));
+        if(!item){
+          $('edit-status').textContent='수정할 영상을 찾지 못했습니다.';
+          return;
+        }
+
+        const save=$('edit-save');
+        const status=$('edit-status');
+        const progress=$('edit-upload-progress');
+        const bar=progress.querySelector('span');
+        const type=document.querySelector('input[name="editSourceType"]:checked')?.value||item.video_type;
+        const file=$('edit-video-file').files[0];
+        const thumb=$('edit-video-thumbnail').files[0];
+        const ytId=type==='youtube'?youtubeId($('edit-youtube-url').value.trim()):null;
+
+        if(type==='upload'&&item.video_type!=='upload'&&!file){
+          status.textContent='YouTube에서 직접 업로드 방식으로 바꾸려면 새 영상 파일을 선택해 주세요.';
+          return;
+        }
+        if(type==='upload'&&file&&file.size>MAX_VIDEO_BYTES){
+          status.textContent='직접 업로드는 50MB 이하 영상만 가능합니다.';
+          return;
+        }
+        if(type==='youtube'&&!ytId){
+          status.textContent='올바른 YouTube 주소를 입력해 주세요.';
+          return;
+        }
+
+        save.disabled=true;
+        $('edit-delete-video').disabled=true;
+        progress.style.display=(file||thumb)?'block':'none';
+        bar.style.width='0%';
+        status.textContent='수정 내용을 저장하고 있습니다…';
+
+        let newMedia=null;
+        let newThumbnail=null;
+
+        try{
+          const {data:{session}}=await db.auth.getSession();
+          if(!verifyAdmin(session))throw new Error('관리자 로그인이 만료되었습니다.');
+
+          if(thumb){
+            status.textContent='새 썸네일을 업로드하고 있습니다…';
+            newThumbnail=await uploadFile('thumbnails',thumb,session.user.id);
+            bar.style.width='35%';
+          }
+
+          if(type==='upload'&&file){
+            status.textContent='새 영상을 업로드하고 있습니다…';
+            newMedia=await uploadFile('videos',file,session.user.id);
+            bar.style.width='75%';
+          }
+
+          if($('edit-video-featured').checked){
+            const {error}=await db.from('videos')
+              .update({is_featured:false})
+              .eq('is_featured',true)
+              .neq('id',item.id);
+            if(error)throw error;
+          }
+
+          let videoUrl=item.video_url;
+          let storagePath=item.storage_path;
+
+          if(type==='youtube'){
+            videoUrl=`https://www.youtube.com/watch?v=${ytId}`;
+            storagePath=null;
+          }else if(newMedia){
+            videoUrl=newMedia.url;
+            storagePath=newMedia.path;
+          }
+
+          const thumbnailUrl=newThumbnail?.url
+            || item.thumbnail_url
+            || (ytId?`https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`:null);
+
+          const changes={
+            title:$('edit-video-title').value.trim(),
+            description:$('edit-video-description').value.trim(),
+            category:$('edit-video-category').value,
+            video_type:type,
+            video_url:videoUrl,
+            storage_path:storagePath,
+            thumbnail_url:thumbnailUrl,
+            is_featured:$('edit-video-featured').checked,
+            is_published:$('edit-video-published').checked,
+            sort_order:Number.parseInt($('edit-video-sort-order').value,10)||0
+          };
+
+          const {error}=await db.from('videos').update(changes).eq('id',item.id);
+          if(error)throw error;
+
+          if(item.storage_path && (type==='youtube' || newMedia)){
+            await db.storage.from('videos').remove([item.storage_path]);
+          }
+
+          if(newThumbnail){
+            const oldThumbPath=storagePathFromPublicUrl(item.thumbnail_url,'thumbnails');
+            if(oldThumbPath)await db.storage.from('thumbnails').remove([oldThumbPath]);
+          }
+
+          bar.style.width='100%';
+          status.textContent='수정되었습니다.';
+          await loadVideos();
+
+          setTimeout(()=>{
+            closeEditDialog();
+          },450);
+        }catch(error){
+          console.error(error);
+          status.textContent=`수정하지 못했습니다: ${error.message}`;
+          if(newMedia?.path)await db.storage.from('videos').remove([newMedia.path]);
+          if(newThumbnail?.path)await db.storage.from('thumbnails').remove([newThumbnail.path]);
+        }finally{
+          save.disabled=false;
+          $('edit-delete-video').disabled=false;
+          setTimeout(()=>{
+            bar.style.width='0%';
+            progress.style.display='none';
+          },900);
+        }
       });
 
       $('video-form').addEventListener('submit',async(event)=>{
